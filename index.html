@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>REDSEED × CỒN DẬP • Triad Badminton Cup 2026 | The Design Society Edition</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <!-- GSAP & ScrollTrigger for Antigravity Spatial 3D Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <style>
+    /* ======================================================== */
+    /* THE DESIGN SOCIETY (FRANCE) EXACT COLOR SYSTEM           */
+    /* ======================================================== */
+    :root {
+      --background: #ebedf5;            /* Soft lilac-cool editorial paper */
+      --background-card: #ffffff;       /* Crisp white cards */
+      --content: #1e1e1e;                /* Deep solid charcoal ink */
+      --content-subtle: #6c7080;         /* Muted editorial secondary */
+      --brand-blue: #350aff;             /* The Design Society Signature Klein Blue */
+      --brand-lime: #bcf015;             /* The Design Society Signature Acid Lime */
+      --border-hairline: rgba(30, 30, 30, 0.12);
+      --border-strong: rgba(30, 30, 30, 0.25);
+      --shadow-soft: 0 16px 36px -12px rgba(30, 30, 30, 0.08);
+      --shadow-hover: 0 30px 60px -15px rgba(53, 10, 255, 0.22);
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--content);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Scroll Progress Line */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3.5px;
+      width: 0%;
+      background: var(--brand-blue);
+      z-index: 99999;
+      transition: width 0.08s linear;
+      box-shadow: 0 0 10px rgba(53, 10, 255, 0.6);
+    }
+
+    /* ======================================================== */
+    /* SCROLL GLITCH FX (KINETIC CHROMATIC ABERRATION)          */
+    /* ======================================================== */
+    #glitch-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9996;
+      opacity: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(53, 10, 255, 0.05) 0px,
+        rgba(53, 10, 255, 0.05) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      transition: opacity 0.12s ease;
+      mix-blend-mode: multiply;
+    }
+    body.is-scroll-glitching #glitch-overlay {
+      opacity: 1;
+    }
+
+    /* Chromatic RGB Split & Jitter when actively scrolling */
+    body.is-scroll-glitching .glitch-on-scroll {
+      text-shadow: 3px 0 rgba(53, 10, 255, 0.85), -3px 0 rgba(188, 240, 21, 0.9);
+      transform: skewX(-0.8deg) scale(0.998);
+      transition: transform 0.04s ease, text-shadow 0.04s ease;
+    }
+    body.is-scroll-glitching.scroll-up .glitch-on-scroll {
+      text-shadow: -3px 0 rgba(53, 10, 255, 0.85), 3px 0 rgba(188, 240, 21, 0.9);
+      transform: skewX(0.8deg) scale(0.998);
+    }
+
+    /* ======================================================== */
+    /* AWWWARDS ELEGANT SCALE-UP (CHOREOGRAPHED ~150MS DELAY)   */
+    /* ======================================================== */
+    .scale-scroll-section {
+      opacity: 0;
+      transform: translateY(26px) scale(0.96);
+      transform-origin: center center;
+      transition: opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: 150ms;
+      will-change: opacity, transform;
+    }
+    .scale-scroll-section.is-in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Staggered Delay for Child Cards (Starting from 150ms) */
+    .stagger-scale-item {
+      opacity: 0;
+      transform: translateY(18px) scale(0.96);
+      transform-origin: center center;
+      transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .is-in-view .stagger-scale-item {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .is-in-view .stagger-scale-item:nth-child(1) { transition-delay: 150ms; }
+    .is-in-view .stagger-scale-item:nth-child(2) { transition-delay: 175ms; }
+    .is-in-view .stagger-scale-item:nth-child(3) { transition-delay: 200ms; }
+    .is-in-view .stagger-scale-item:nth-child(4) { transition-delay: 225ms; }
+    .is-in-view .stagger-scale-item:nth-child(5) { transition-delay: 250ms; }
+    .is-in-view .stagger-scale-item:nth-child(6) { transition-delay: 275ms; }
+    .is-in-view .stagger-scale-item:nth-child(7) { transition-delay: 300ms; }
+    .is-in-view .stagger-scale-item:nth-child(8) { transition-delay: 325ms; }
+    .is-in-view .stagger-scale-item:nth-child(9) { transition-delay: 350ms; }
+
+    /* ======================================================== */
+    /* ANTIGRAVITY MOTION: WEIGHTLESSNESS & GLASSMORPHISM       */
+    /* ======================================================== */
+    @keyframes weightlessFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(0.4deg);
+      }
+    }
+    @keyframes weightlessFloatSlow {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(-0.6deg);
+      }
+    }
+    .antigravity-float {
+      animation: weightlessFloat 5.5s ease-in-out infinite;
+      will-change: transform;
+    }
+    .antigravity-float-slow {
+      animation: weightlessFloatSlow 8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Spatial Depth Glassmorphism Card Style */
+    .tds-card {
+      background-color: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 40px -15px rgba(30, 30, 30, 0.06),
+                  0 0 0 1px rgba(30, 30, 30, 0.05),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease;
+    }
+    .tds-card:hover {
+      transform: translateY(-8px) scale(1.025);
+      box-shadow: 0 30px 60px -12px rgba(53, 10, 255, 0.2),
+                  0 0 0 1px rgba(53, 10, 255, 0.3),
+                  inset 0 1px 0 rgba(255, 255, 255, 1);
+      border-color: rgba(53, 10, 255, 0.45);
+    }
+
+    /* Accessibility: Respect Reduced Motion (Antigravity Constraint) */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .scale-scroll-section, .stagger-scale-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .antigravity-float, .antigravity-float-slow {
+        animation: none !important;
+      }
+    }
+
+    /* Floating Navigation Pill */
+    .twostep-nav-wrap {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-hairline);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Expandable Menu Drawer */
+    #two-step-menu {
+      transform: translateY(-110%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+    #two-step-menu.is-open {
+      transform: translateY(0%);
+    }
+
+    /* Interactive Mouse Sticker Trail */
+    .mouse-trail-sticker {
+      pointer-events: none;
+      position: fixed;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 9990;
+      user-select: none;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      white-space: nowrap;
+    }
+
+    /* Crosshair Pointer */
+    #mouse-crosshair {
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+      z-index: 9995;
+    }
+
+    /* Marquee */
+    @keyframes tdsMarquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .tds-marquee-track {
+      display: flex;
+      width: 200%;
+      animation: tdsMarquee 26s linear infinite;
+    }
+    .tds-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* 3D Court Stage */
+    .court-stage {
+      perspective: 1200px;
+      perspective-origin: 50% 42%;
+    }
+    .court-plane {
+      transform-style: preserve-3d;
+      transform: rotateX(24deg) rotateZ(-6deg);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .court-plane.view-2d {
+      transform: rotateX(0deg) rotateZ(0deg) !important;
+    }
+    .pin-3d {
+      transform-style: preserve-3d;
+      transform: translateZ(24px) rotateZ(6deg) rotateX(-24deg);
+      transition: transform 0.5s ease;
+    }
+    .view-2d .pin-3d {
+      transform: translateZ(0) rotateX(0deg) rotateZ(0deg) !important;
+    }
+
+    /* Dice Scramble Animation */
+    @keyframes diceRoll {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.2); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    .rolling-dice {
+      animation: diceRoll 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  </style>
+</head>
+<body class="selection:bg-[#350aff] selection:text-white">
+
+  <!-- Awwwards Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Dynamic Scroll Glitch Scanline Overlay -->
+  <div id="glitch-overlay"></div>
+
+  <!-- Interactive Crosshair Cursor (Desktop) -->
+  <div id="mouse-crosshair" class="fixed z-[9995] pointer-events-none hidden md:block">
+    <div class="relative w-6 h-6 -translate-x-1/2 -translate-y-1/2">
+      <div class="absolute inset-x-0 top-1/2 h-[1px] bg-[#350aff]/70"></div>
+      <div class="absolute inset-y-0 left-1/2 w-[1px] bg-[#350aff]/70"></div>
+      <div class="absolute inset-1.5 border border-[#350aff] rounded-full"></div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- ANTIGRAVITY SPATIAL PARALLAX BACKGROUND    -->
+  <!-- ========================================== -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none opacity-40">
+    <!-- Floating Spatial Element 1: Top Right Wireframe Shuttlecock -->
+    <div class="parallax-bg absolute top-24 -right-12 w-64 h-64 antigravity-float" data-parallax-speed="0.16">
+      <svg class="w-full h-full text-[#350aff]/20" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="50" cy="50" r="44" stroke-dasharray="4 6"/>
+        <path d="M 25,20 L 75,20 L 60,65 L 40,65 Z"/>
+        <line x1="50" y1="20" x2="50" y2="65"/>
+        <circle cx="50" cy="72" r="8" fill="rgba(188, 240, 21, 0.25)" stroke="#350aff"/>
+      </svg>
+    </div>
+
+    <!-- Floating Spatial Element 2: Middle Left Isometric Grid -->
+    <div class="parallax-bg absolute top-[48%] -left-16 w-72 h-72 antigravity-float-slow" data-parallax-speed="0.10">
+      <svg class="w-full h-full text-zinc-400/25" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M 60,10 L 110,40 L 60,70 L 10,40 Z"/>
+        <path d="M 60,40 L 110,70 L 60,100 L 10,70 Z"/>
+        <line x1="60" y1="10" x2="60" y2="100"/>
+        <circle cx="60" cy="40" r="4" fill="rgba(53, 10, 255, 0.4)"/>
+      </svg>
+    </div>
+
+    <!-- Floating Spatial Element 3: Bottom Right Coordinate Compass -->
+    <div class="parallax-bg absolute bottom-32 right-8 font-mono text-[10px] text-[#350aff]/35 font-bold tracking-widest hidden lg:block" data-parallax-speed="0.20">
+      <div class="p-4 rounded-2xl border border-[#350aff]/20 bg-white/40 backdrop-blur-sm">
+        <div>[ SPATIAL DEPTH: Z-AXIS ]</div>
+        <div class="text-zinc-400 mt-1">ISOMETRIC PERSPECTIVE: 60°</div>
+        <div class="text-[#350aff] font-bold mt-0.5">ANTIGRAVITY DESIGN EXPERT</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 1. TWO-STEP NAVIGATION DRAWER (TDS STYLE)  -->
+  <!-- ========================================== -->
+  <div id="two-step-menu" class="fixed inset-x-0 top-0 z-[100] bg-[#ffffff] border-b border-[#350aff]/30 p-6 md:p-12 shadow-2xl">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center justify-between border-b border-zinc-200 pb-6 mb-8">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 bg-[#350aff] rounded-full animate-ping"></span>
+          <span class="font-mono text-xs tracking-widest text-[#350aff] font-bold">[ ĐIỀU HƯỚNG // THE DESIGN SOCIETY STYLE ]</span>
+        </div>
+        <button onclick="toggleTwoStepMenu()" class="font-mono text-xs tracking-wider px-4 py-2 rounded-full border border-zinc-300 hover:bg-zinc-100 transition-all text-[#1e1e1e] font-bold">
+          ĐÓNG [ ESC ] ✕
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 font-mono text-xs">
+        <div>
+          <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">[ MỤC LỤC GIẢI ĐẤU ]</div>
+          <ul class="space-y-3 text-[#1e1e1e] text-sm font-sans font-medium">
+            <li><a href="#hero-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>01.</span> Trang Chủ // Tuyên Ngôn</a></li>
+            <li><a href="#about-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>02.</span> Tinh Thần Collab & Thể Thức</a></li>
+            <li><a href="#events-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>03.</span> Lịch Trình Thi Đấu (07:00 – 11:30)</a></li>
+            <li><a href="#athletes-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>04.</span> 27 Vận Động Viên Chính Thức</a></li>
+            <li><a href="#squads-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>05.</span> Cấu Trúc 9 Đội Hình Triad</a></li>
+            <li><a href="#court-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>06.</span> Sa Bàn Điều Phối 3 Sân</a></li>
+            <li><a href="#broadcast-section" onclick="toggleTwoStepMenu()" class="hover:text-[#350aff] transition-colors flex items-center gap-2"><span>07.</span> Bản Tin Zalo 1-Chạm</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">[ THÔNG TIN TỔ CHỨC ]</div>
+          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2">
+            <div>SỰ KIỆN: <b class="text-[#1e1e1e]">REDSEED × CỒN DẬP</b></div>
+            <div>THỂ THỨC: <b class="text-[#350aff]">TRIAD (2 NAM + 1 NỮ)</b></div>
+            <div>ĐỊA ĐIỂM: <b class="text-[#1e1e1e]">CỤM 3 SÂN TIÊU CHUẨN</b></div>
+            <div>THỜI GIAN: <b class="text-[#350aff] event-date-display">CHỦ NHẬT, 15/11/2026</b> <span class="text-zinc-500 font-normal">(07:00 – 11:30)</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">[ QUAN TRỌNG: SÂN 3 ]</div>
+          <div class="p-4 rounded-xl bg-[#bcf015]/20 border border-[#bcf015] space-y-1.5 text-[#1e1e1e]">
+            <div class="font-black text-sm flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#1e1e1e]"></span>
+              TRẢ SÂN 3 ĐÚNG 09:30
+            </div>
+            <p class="text-xs leading-relaxed text-zinc-700">
+              Sân 3 thuê 2 tiếng (07:30 – 09:30). Đánh thần tốc 3 trận Bảng C và bàn giao trả sân đúng 09:30 để dồn quân về Sân 1 & Sân 2.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">[ CÔNG CỤ ĐIỀU PHỐI ]</div>
+          <div class="space-y-3">
+            <button onclick="randomizeSquads(); toggleTwoStepMenu();" class="w-full py-2.5 px-3 rounded-xl bg-[#bcf015] text-[#1e1e1e] font-bold text-left flex items-center justify-between shadow-sm">
+              <span>🎲 BỐC THĂM LẠI ĐỘI HÌNH</span>
+              <span>➜</span>
+            </button>
+            <a href="#broadcast-section" onclick="toggleTwoStepMenu()" class="block w-full py-2.5 px-3 rounded-xl bg-[#350aff] text-white font-bold text-left flex items-center justify-between shadow-sm">
+              <span>📋 COPY BẢN TIN ZALO</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. FLOATING HEADER (THE DESIGN SOCIETY)    -->
+  <!-- ========================================== -->
+  <header class="fixed top-4 inset-x-4 md:inset-x-8 z-50 pointer-events-none">
+    <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+      
+      <!-- Brand Pill & Date Display -->
+      <div class="flex items-center gap-2">
+        <a href="#hero-section" class="twostep-nav-wrap flex items-center gap-3 px-4 py-2 rounded-full text-xs font-mono font-bold text-[#1e1e1e] group transition-all">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#350aff] group-hover:scale-125 transition-transform"></span>
+          <span class="tracking-wider uppercase">REDSEED × CỒN DẬP</span>
+          <span class="text-zinc-400 hidden sm:inline">// TRIAD CUP 2026</span>
+        </a>
+        <button onclick="editEventDate()" class="hidden md:flex items-center gap-1.5 px-3.5 py-2 rounded-full twostep-nav-wrap text-xs font-mono font-bold text-[#350aff] hover:border-[#350aff] transition-all cursor-pointer shadow-sm" title="Bấm để chỉnh sửa ngày thi đấu">
+          <span>📅</span>
+          <span class="event-date-display">Chủ Nhật, 15/11/2026</span>
+          <span class="text-[9px] opacity-60">✎</span>
+        </button>
+      </div>
+
+      <!-- Center Links (Desktop) -->
+      <div class="hidden lg:flex items-center gap-2 twostep-nav-wrap px-4 py-1.5 rounded-full text-xs font-mono font-medium text-zinc-600">
+        <a href="#about-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Thể Thức</a>
+        <a href="#events-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Lịch Trình</a>
+        <a href="#athletes-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">27 VĐV</a>
+        <a href="#squads-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">9 Đội Tuyển</a>
+        <a href="#court-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Sa Bàn 3 Sân</a>
+      </div>
+
+      <!-- Right Action Button & Quick Randomize -->
+      <div class="flex items-center gap-2 font-mono text-xs">
+        <button onclick="randomizeSquads()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black tracking-wider uppercase transition-all shadow-sm" title="Bốc thăm ngẫu nhiên ghép cặp 1 Nam RS + 1 Nam CD + 1 Nữ">
+          <span id="header-dice" class="text-sm">🎲</span>
+          <span>BỐC THĂM ĐỘI</span>
+        </button>
+
+        <button onclick="toggleTwoStepMenu()" class="px-5 py-2 rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold tracking-wider uppercase transition-all shadow-lg shadow-[#350aff]/25 flex items-center gap-2">
+          <span>MENU</span>
+          <span class="text-xs">☰</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- 3. HERO SECTION (`mwg020` THE DESIGN SOCIETY) -->
+  <!-- ========================================== -->
+  <section id="hero-section" class="min-h-screen pt-28 pb-16 px-4 md:px-8 flex flex-col justify-between max-w-7xl mx-auto relative select-none scale-scroll-section is-in-view">
+    
+    <!-- Top Metadata Tags -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-zinc-600 border-b border-zinc-300 pb-4 gap-2">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded-full bg-white border border-zinc-300 text-[#350aff] font-bold">[ COLLAB BADMINTON CUP 2026 ]</span>
+        <span class="hidden sm:inline">•</span>
+        <span class="hidden sm:inline">2 ĐƠN VỊ • 9 ĐỘI TUYỂN • 3 SÂN THI ĐẤU</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-bold text-[#1e1e1e]">KHỞI TRANH: <span class="event-date-display text-[#350aff]">CHỦ NHẬT, 15/11/2026</span> • 07:00</span>
+      </div>
+    </div>
+
+    <!-- Center Typography & Interactive Emblem -->
+    <div class="my-auto py-10 md:py-14 relative">
+      
+      <!-- Category & Date Pills -->
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-mono text-xs font-black tracking-widest uppercase shadow-sm">
+          <span>⚡ GIẢI CẦU LÔNG ĐỒNG ĐỘI COLLAB</span>
+        </div>
+        <button onclick="editEventDate()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-300 text-xs font-mono text-[#350aff] hover:border-[#350aff] hover:shadow-md transition-all shadow-sm cursor-pointer group" title="Bấm để chỉnh sửa ngày tổ chức">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="font-bold event-date-display">CHỦ NHẬT, 15/11/2026</span>
+          <span class="text-[10px] text-zinc-400 group-hover:text-[#350aff]">✎ Đổi Ngày</span>
+        </button>
+      </div>
+
+      <!-- Giant Editorial Title & Interactive 3D Antigravity Shuttlecock Card -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 mb-8">
+        <h1 class="glitch-on-scroll text-4xl sm:text-6xl md:text-8xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.92] text-[#1e1e1e]">
+          <span class="hero-title-line inline-block">REDSEED <span class="text-[#350aff]">×</span> CỒN DẬP</span> <br/>
+          <span class="hero-title-line inline-block"><span class="text-[#350aff] underline decoration-[#350aff]/30 underline-offset-8">TRIAD CUP</span> 2026.</span>
+        </h1>
+
+        <!-- 3D Interactive Antigravity Shuttlecock Card (GSAP Driven) -->
+        <div id="hero-shuttlecock-card" onclick="triggerHeroSmash()" class="group cursor-pointer select-none mx-auto lg:mx-0 p-5 rounded-2xl bg-white/85 backdrop-blur-xl border border-white/80 shadow-2xl shadow-[#350aff]/10 flex flex-col items-center justify-center min-w-[220px] max-w-[260px] relative overflow-hidden transition-colors" title="✦ BẤM VÀO ĐỂ KÍCH HOẠT CÚ SMASH 3D 417 KM/H ✦">
+          <div class="absolute inset-0 bg-gradient-to-br from-[#350aff]/5 via-transparent to-[#bcf015]/15 pointer-events-none"></div>
+          <div class="w-full flex items-center justify-between font-mono text-[9px] text-zinc-400 mb-2">
+            <span>[ 3D SPATIAL ARTIFACT ]</span>
+            <span class="text-[#350aff] font-bold animate-pulse">GSAP 3D</span>
+          </div>
+          
+          <!-- 3D Shuttlecock SVG & Geometry -->
+          <div id="hero-3d-shuttlecock" class="w-24 h-24 relative flex items-center justify-center my-1" style="transform-style: preserve-3d;">
+            <svg class="w-20 h-20 text-[#350aff] drop-shadow-xl" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <linearGradient id="featherGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#350aff" />
+                  <stop offset="100%" stop-color="#1e1e1e" />
+                </linearGradient>
+                <radialGradient id="corkGrad">
+                  <stop offset="0%" stop-color="#bcf015" />
+                  <stop offset="100%" stop-color="#350aff" />
+                </radialGradient>
+              </defs>
+              <!-- Cone Feathers -->
+              <polygon points="50,15 20,70 80,70" fill="url(#featherGrad)" fill-opacity="0.15" stroke="#350aff" stroke-width="2"/>
+              <line x1="50" y1="15" x2="32" y2="70" stroke="#350aff" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <line x1="50" y1="15" x2="50" y2="70" stroke="#350aff" stroke-width="2"/>
+              <line x1="50" y1="15" x2="68" y2="70" stroke="#350aff" stroke-width="1.5" stroke-dasharray="2 2"/>
+              <ellipse cx="50" cy="70" rx="30" ry="8" fill="none" stroke="#350aff" stroke-width="2"/>
+              <!-- Cork Dome -->
+              <ellipse cx="50" cy="20" rx="14" ry="12" fill="url(#corkGrad)" stroke="#1e1e1e" stroke-width="2"/>
+              <circle cx="50" cy="18" r="4" fill="#ffffff"/>
+            </svg>
+            <!-- Orbit Ring -->
+            <div class="absolute inset-0 border border-[#bcf015]/60 rounded-full animate-spin pointer-events-none" style="animation-duration: 9s;"></div>
+          </div>
+
+          <div class="text-center mt-2 z-10">
+            <span class="font-mono text-[11px] font-black text-[#1e1e1e] block tracking-wider uppercase">CẦU LÔNG KHÔNG TRỌNG LỰC</span>
+            <span class="inline-flex items-center gap-1 font-mono text-[10px] text-[#350aff] font-bold mt-1 group-hover:scale-105 transition-transform">
+              <span>⚡ BẤM ĐỂ SMASH</span>
+              <span>➜</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subtitle & Story Hook Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pt-6 border-t border-zinc-300">
+        
+        <div class="md:col-span-4 font-mono text-xs text-zinc-600 space-y-2">
+          <p class="text-[#1e1e1e] font-bold uppercase text-sm">[ CHƠI HẾT MÌNH – GẮN KẾT ĐỒNG ĐỘI ]</p>
+          <p class="leading-relaxed">
+            Sự kiện giao hữu thể thao đỉnh cao giữa 2 tập thể Redseed và Cồn Dập. 27 vận động viên cùng hội tụ tranh tài chiếc cúp vô địch danh giá.
+          </p>
+        </div>
+
+        <div class="md:col-span-5 text-sm md:text-base font-normal text-zinc-700 leading-relaxed">
+          Đội hình chuẩn hóa <b>3 người/đội (2 Nam + 1 Nữ) ghép cặp Collab</b>. Vận hành liên hoàn <b>3 sân thi đấu</b> mở màn lúc 07:30. Thể thức thông minh: <b>mỗi VĐV thi đấu đúng 2 trận và có 1 trận nghỉ trọn vẹn</b> để phục hồi thể lực.
+        </div>
+
+        <div class="md:col-span-3 flex flex-col gap-3 font-mono text-xs">
+          <button onclick="randomizeSquads()" class="px-5 py-3.5 rounded-xl bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-center tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2">
+            <span>🎲 BỐC THĂM ĐỘI HÌNH NGAY</span>
+          </button>
+          <a href="#court-section" class="px-5 py-3.5 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-center tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25">
+            XEM SA BÀN 3 SÂN ➜
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Telemetry Badges -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs border-t border-zinc-300 pt-6 text-zinc-500">
+      <div class="bg-white/80 p-3.5 rounded-xl border border-zinc-200">
+        <span class="text-zinc-400 block text-[10px] uppercase font-bold">[ 01 ] THỜI GIAN:</span>
+        <span class="event-date-display text-[#1e1e1e] font-bold text-sm block">CHỦ NHẬT, 15/11/2026</span>
+        <span class="text-zinc-500 text-[10px] block mt-0.5">07:00 – 11:30 (SÁNG)</span>
+      </div>
+      <div class="bg-white/80 p-3.5 rounded-xl border border-zinc-200">
+        <span class="text-zinc-400 block text-[10px] uppercase font-bold">[ 02 ] QUY MÔ SÂN:</span>
+        <span class="text-[#1e1e1e] font-bold text-sm">3 SÂN ĐỒNG LOẠT</span>
+      </div>
+      <div class="bg-white/80 p-3.5 rounded-xl border border-zinc-200">
+        <span class="text-zinc-400 block text-[10px] uppercase font-bold">[ 03 ] ĐỘI HÌNH:</span>
+        <span class="text-[#1e1e1e] font-bold text-sm">27 VĐV (9 ĐỘI)</span>
+      </div>
+      <div class="bg-white/80 p-3.5 rounded-xl border border-zinc-200">
+        <span class="text-zinc-400 block text-[10px] uppercase font-bold">[ 04 ] THỂ THỨC:</span>
+        <span class="text-[#350aff] font-bold text-sm">1 SET 21 ĐIỂM</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 4. TICKER STRIP (THE DESIGN SOCIETY STYLE) -->
+  <!-- ========================================== -->
+  <div class="border-y border-zinc-300 bg-[#350aff] text-white py-3.5 font-mono text-xs font-black tracking-widest uppercase overflow-hidden select-none">
+    <div class="tds-marquee-track">
+      <span class="px-4">⚡ REDSEED × CỒN DẬP</span>
+      <span class="px-4">•</span>
+      <span class="px-4">TRIAD BADMINTON CUP 2026</span>
+      <span class="px-4">•</span>
+      <span class="px-4 text-[#bcf015]">SÂN 1: BẢNG A & CHUNG KẾT (4 TIẾNG)</span>
+      <span class="px-4">•</span>
+      <span class="px-4">SÂN 2: BẢNG B & HẠNG BA (4 TIẾNG)</span>
+      <span class="px-4">•</span>
+      <span class="px-4 text-[#bcf015]">SÂN 3: BẢNG C (2 TIẾNG - TRẢ SÂN ĐÚNG 09:30)</span>
+      <span class="px-4">•</span>
+      <span class="px-4">THỂ THỨC: 2 TRẬN ĐÁNH + 1 TRẬN NGHỈ</span>
+      <span class="px-4">•</span>
+      <span class="px-4">⚡ REDSEED × CỒN DẬP</span>
+      <span class="px-4">•</span>
+      <span class="px-4">TRIAD BADMINTON CUP 2026</span>
+      <span class="px-4">•</span>
+      <span class="px-4 text-[#bcf015]">SÂN 1: BẢNG A & CHUNG KẾT (4 TIẾNG)</span>
+      <span class="px-4">•</span>
+      <span class="px-4">SÂN 2: BẢNG B & HẠNG BA (4 TIẾNG)</span>
+      <span class="px-4">•</span>
+      <span class="px-4 text-[#bcf015]">SÂN 3: BẢNG C (2 TIẾNG - TRẢ SÂN ĐÚNG 09:30)</span>
+      <span class="px-4">•</span>
+      <span class="px-4">THỂ THỨC: 2 TRẬN ĐÁNH + 1 TRẬN NGHỈ</span>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 5. ABOUT SECTION (`mwg005` MANIFESTO)      -->
+  <!-- ========================================== -->
+  <section id="about-section" class="py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+    
+    <div class="max-w-4xl mb-16">
+      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-3 font-bold">[ 01 // TINH THẦN & NGUYÊN TẮC ]</div>
+      <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e] leading-tight">
+        TẠI SAO LẠI LÀ ĐỘI HÌNH 3 NGƯỜI (TRIAD)?
+      </h2>
+      <p class="text-base md:text-lg text-zinc-600 mt-6 leading-relaxed font-normal">
+        Nảy sinh từ mong muốn tạo ra một giải đấu vừa mang tính cạnh tranh công bằng, vừa tối ưu hóa thể lực cho tất cả anh chị em, <b>REDSEED × CỒN DẬP TRIAD CUP 2026</b> áp dụng cấu trúc 3 vận động viên (2 Nam + 1 Nữ) nhằm đem lại trải nghiệm hoàn hảo nhất.
+      </p>
+    </div>
+
+    <!-- 3 Pillars (White Cards TDS Style With Stagger Scale) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Pillar 1 -->
+      <div class="tds-card p-8 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#350aff] text-white font-mono font-bold text-sm flex items-center justify-center mb-6">
+            01
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-3">ĐỘI HÌNH 2 NAM + 1 NỮ</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed font-normal">
+            Mỗi đội gồm 2 VĐV Nam và 1 VĐV Nữ chủ lực ghép cặp Collab. Mỗi cặp đấu giữa 2 đội (1 Tie) bao gồm 3 trận bắt buộc: <b>Đôi Nam Nữ 1 ➜ Đôi Nam ➜ Đôi Nam Nữ 2</b>.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-zinc-200 font-mono text-xs text-[#350aff] font-bold">
+          [ 9 ĐỘI • 27 VẬN ĐỘNG VIÊN ]
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="tds-card p-8 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#bcf015] text-[#1e1e1e] font-mono font-bold text-sm flex items-center justify-center mb-6">
+            02
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-3">2 ĐÁNH + 1 NGHỈ HỒI PHỤC</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed font-normal">
+            Không ai bị kiệt sức. Mỗi VĐV đánh đúng 2 trận và có 1 trận nghỉ 15 phút giữa hiệp để uống nước, hồi sức và cổ vũ cho đồng đội.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-zinc-200 font-mono text-xs text-zinc-600 font-bold">
+          [ TỐI ƯU HÓA THỂ LỰC ]
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="tds-card p-8 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="w-10 h-10 rounded-full bg-[#1e1e1e] text-white font-mono font-bold text-sm flex items-center justify-center mb-6">
+            03
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-3">SET 21 ĐIỂM (RALLY POINT)</h3>
+          <p class="text-sm text-zinc-600 leading-relaxed font-normal">
+            1 Set duy nhất đến 21 điểm chạm đích. Áp dụng luật tính điểm trực tiếp và cách 2 điểm khi hòa 20-20 (tối đa chạm mốc 30 điểm). Từng đường cầu đều đầy kịch tính!
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-zinc-200 font-mono text-xs text-[#350aff] font-bold">
+          [ LUẬT BWF CHUẨN MỰC ]
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 6. EVENTS & TIMELINE (`section-6` TDS)     -->
+  <!-- ========================================== -->
+  <section id="events-section" class="py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div>
+        <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-3 font-bold">[ 02 // CHƯƠNG TRÌNH SỰ KIỆN ]</div>
+        <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+          LỊCH TRÌNH THI ĐẤU
+        </h2>
+        <p class="text-sm md:text-base text-zinc-600 mt-2 font-normal">
+          Khởi tranh duy nhất vào sáng <b><span class="event-date-display text-[#350aff]">Chủ Nhật, 15/11/2026</span></b> (07:00 – 11:30) tại cụm 3 sân tiêu chuẩn.
+        </p>
+      </div>
+
+      <!-- Notice for Court 3 Extraction (TDS Lime Badge) -->
+      <div class="p-4 rounded-xl bg-[#bcf015] border border-black/10 flex items-center gap-3 font-mono text-xs text-[#1e1e1e]">
+        <span class="w-3 h-3 rounded-full bg-[#1e1e1e] animate-ping"></span>
+        <span><b>LƯU Ý ĐẶC BIỆT:</b> Sân 3 thuê 2 tiếng (07:30 – 09:30). Đúng 09:30 kết thúc và <b>trả Sân 3</b> để dồn toàn lực về Sân 1 & Sân 2!</span>
+      </div>
+    </div>
+
+    <!-- Timeline Cards Grid (Stagger Scale Items) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Phase 1 -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 01</span>
+            <span class="font-bold text-[#350aff]">07:00 – 07:30</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">Check-in, Khởi Động & Chụp Ảnh</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
+            27 VĐV có mặt đầy đủ tại sân, bốc thăm chia bảng A - B - C, nhận áo đấu và chụp hình lưu niệm tập thể toàn đoàn Redseed × Cồn Dập.
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
+          ĐỊA ĐIỂM: SẢNH CỤM SÂN
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="tds-card p-6 border-[#350aff]/40 bg-[#350aff]/5 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 02</span>
+            <span class="font-bold text-[#350aff]">07:30 – 09:30</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">VÒNG BẢNG: 3 SÂN ĐỒNG LOẠT</h3>
+          <p class="text-xs text-zinc-700 leading-relaxed font-normal">
+            • <b>Sân 1:</b> 3 trận Bảng A (Đội 1 vs Đội 2 vs Đội 3)<br>
+            • <b>Sân 2:</b> 3 trận Bảng B (Đội 4 vs Đội 5 vs Đội 6)<br>
+            • <b>Sân 3:</b> 3 trận Bảng C (Đội 7 vs Đội 8 vs Đội 9)
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-[#350aff]/20 font-mono text-[11px] text-[#350aff] font-bold">
+          ĐỒNG THỜI 3 MẶT SÂN
+        </div>
+      </div>
+
+      <!-- Phase 3 (Court 3 Checkout) -->
+      <div class="tds-card p-6 border-[#bcf015] bg-[#bcf015]/15 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-600 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#1e1e1e] text-white font-bold">GIAI ĐOẠN 03</span>
+            <span class="font-bold text-red-600">09:30 ĐÚNG HẠN</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">TRẢ SÂN 3 • DỒN VỀ SÂN 1 & 2</h3>
+          <p class="text-xs text-zinc-800 leading-relaxed font-normal">
+            Hoàn tất trọn vẹn 3 trận Bảng C lúc 09:30. Ban tổ chức bàn giao lại Sân 3 cho quản lý. Toàn bộ hội đồng tập trung về Sân 1 và Sân 2.
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-black/10 font-mono text-[11px] text-[#1e1e1e] font-black">
+          ⚡ BÀN GIAO SÂN 3 ĐÚNG GIỜ
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 04</span>
+            <span class="font-bold text-[#350aff]">09:40 – 10:30</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">VÒNG BÁN KẾT (SEMI-FINALS)</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
+            • <b>Sân 1:</b> Nhất Bảng A vs Đội Nhì có thành tích tốt nhất.<br>
+            • <b>Sân 2:</b> Nhất Bảng B vs Nhất Bảng C.
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
+          THI ĐẤU TẠI SÂN 1 & SÂN 2
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="tds-card p-6 border-[#350aff] bg-white flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 05</span>
+            <span class="font-bold text-[#350aff]">10:30 – 11:15</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">🏆 CHUNG KẾT CÚP VÀNG</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
+            • <b>Sân 1:</b> CHUNG KẾT TRANH NGÔI VÔ ĐỊCH TRIAD CUP 2026.<br>
+            • <b>Sân 2:</b> Trận tranh Hạng Ba giữa 2 đội thua Bán Kết.
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-[#350aff] font-bold">
+          ĐỈNH CAO DANH GIÁ @ SÂN 1
+        </div>
+      </div>
+
+      <!-- Phase 6 -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
+        <div>
+          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
+            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 06</span>
+            <span class="font-bold text-zinc-600">11:15 – 11:30</span>
+          </div>
+          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">Trao Cúp, Huy Chương & Liên Hoan</h3>
+          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
+            Lễ trao cúp Vô Địch, Á Quân, Quý Quân và giải Phong Cách. Toàn đoàn di chuyển tới bữa tiệc liên hoan thân mật thắt chặt tình cảm RS × CD.
+          </p>
+        </div>
+        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
+          TIỆC LIÊN HOAN GẮN KẾT
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 7. ATHLETES SECTION (`section-5` TDS)      -->
+  <!-- ========================================== -->
+  <section id="athletes-section" class="py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div>
+        <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-3 font-bold">[ 03 // NHÂN SỰ CHÍNH THỨC ]</div>
+        <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+          27 VẬN ĐỘNG VIÊN
+        </h2>
+        <p class="text-sm md:text-base text-zinc-600 mt-2 font-normal">
+          Danh sách chính thức được cập nhật từ bảng đăng ký của <b>REDSEED</b> và <b>CỒN DẬP</b>.
+        </p>
+      </div>
+
+      <!-- Filter Controls (TDS Pill Buttons) -->
+      <div class="flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
+        <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (27)</button>
+        <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (13)</button>
+        <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (12)</button>
+      </div>
+    </div>
+
+    <!-- Notice for 2 Missing Men -->
+    <div class="mb-8 p-4 rounded-xl bg-amber-50 border border-amber-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-amber-900">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+        <span><b>THÔNG BÁO NHÂN SỰ:</b> Đã có 16 Nam + 9 Nữ (25 VĐV chính thức). Đang chờ <b>2 Slot Nam bổ sung</b> để chốt trọn vẹn 18 Nam (9 Đội).</span>
+      </div>
+      <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-900 font-bold whitespace-nowrap">ĐỘI 09 CHỜ BỔ SUNG</span>
+    </div>
+
+    <!-- Athletes Grid (White Cards TDS Style With Stagger Scale) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="athletes-grid">
+      <!-- Rendered by JS with stagger animation -->
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 8. SQUADS SECTION (`mwg008` TDS SQUADS)    -->
+  <!-- ========================================== -->
+  <section id="squads-section" class="py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div>
+        <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-3 font-bold">[ 04 // CẤU TRÚC ĐỘI HÌNH ]</div>
+        <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+          9 ĐỘI HÌNH TRIAD COLLAB
+        </h2>
+        <p class="text-sm md:text-base text-zinc-600 mt-3 font-normal max-w-2xl">
+          Mỗi đội gồm <b>1 Nam Redseed + 1 Nam Cồn Dập + 1 Nữ</b> (ghép cặp giao hữu Collab công bằng). Bấm nút bên phải để bốc thăm ngẫu nhiên trực tiếp!
+        </p>
+      </div>
+
+      <!-- Randomize Controls (TDS Lime Action Hub) -->
+      <div class="flex items-center gap-3">
+        <button onclick="randomizeSquads()" class="px-6 py-3.5 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-xs font-mono tracking-wider uppercase transition-all shadow-md flex items-center gap-2 group">
+          <span id="btn-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
+          <span>BỐC THĂM RANDOM ĐỘI HÌNH</span>
+        </button>
+        <button onclick="resetDefaultSquads()" class="px-4 py-3.5 rounded-full bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-600 font-mono text-xs font-bold transition-all" title="Khôi phục đội hình mặc định">
+          ↺ ĐẶT LẠI
+        </button>
+      </div>
+    </div>
+
+    <!-- Squads Dynamic Grid (With Stagger Scale) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="squads-grid">
+      <!-- Rendered by JS -->
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 9. 3-COURT SA BAN SECTION                  -->
+  <!-- ========================================== -->
+  <section id="court-section" class="py-24 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+    
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-3 font-bold">[ 05 // SA BÀN THI ĐẤU ]</div>
+      <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+        ĐIỀU PHỐI 3 SÂN
+      </h2>
+      <p class="text-sm md:text-base text-zinc-600 mt-3 font-normal">
+        Mô phỏng vị trí các VĐV thật trên từng mặt sân (tự động đồng bộ với kết quả bốc thăm ngẫu nhiên ở trên).
+      </p>
+
+      <!-- 2D / 3D Switch -->
+      <div class="mt-6 inline-flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
+        <button id="view-mode-3d" onclick="setCourtPerspective('3d')" class="px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md">
+          GÓC NHÌN 3D
+        </button>
+        <button id="view-mode-2d" onclick="setCourtPerspective('2d')" class="px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">
+          GÓC NHÌN 2D
+        </button>
+      </div>
+    </div>
+
+    <!-- Court Board Card with Hover Scale -->
+    <div class="tds-card p-6 md:p-10">
+      
+      <!-- Stage Buttons -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8 font-mono text-xs">
+        <button onclick="switchCourt(0)" id="court-btn-0" class="p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all">
+          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+            <span>SÂN 1 (4 TIẾNG)</span>
+            <span class="w-2 h-2 rounded-full bg-[#350aff]"></span>
+          </div>
+          <div class="text-sm font-black text-[#1e1e1e] mt-1">BẢNG A + CHUNG KẾT</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">07:30 – 11:30</div>
+        </button>
+
+        <button onclick="switchCourt(1)" id="court-btn-1" class="p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
+          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+            <span>SÂN 2 (4 TIẾNG)</span>
+            <span class="w-2 h-2 rounded-full bg-zinc-400"></span>
+          </div>
+          <div class="text-sm font-black text-[#1e1e1e] mt-1">BẢNG B + HẠNG BA</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">07:30 – 11:30</div>
+        </button>
+
+        <button onclick="switchCourt(2)" id="court-btn-2" class="p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
+          <div class="flex items-center justify-between text-zinc-600 text-[10px] font-bold">
+            <span>⚡ SÂN 3 (2 TIẾNG)</span>
+            <span class="w-2 h-2 rounded-full bg-[#bcf015]"></span>
+          </div>
+          <div class="text-sm font-black text-[#1e1e1e] mt-1">BẢNG C (TRẢ 09:30)</div>
+          <div class="text-[11px] text-[#350aff] font-bold mt-0.5">07:30 – 09:30 [TRẢ SÂN]</div>
+        </button>
+
+        <button onclick="switchCourt(3)" id="court-btn-3" class="p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
+          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+            <span>🏆 CHUNG KẾT</span>
+            <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
+          </div>
+          <div class="text-sm font-black text-[#1e1e1e] mt-1">CHUNG KẾT CÚP VÀNG</div>
+          <div class="text-[11px] text-zinc-500 mt-0.5">10:30 @ SÂN 1</div>
+        </button>
+      </div>
+
+      <!-- Court Visualizer -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Court Field Viewport -->
+        <div id="court-viewport" class="lg:col-span-7 flex flex-col items-center justify-center p-6 md:p-10 bg-zinc-100 rounded-2xl border border-zinc-200 court-stage min-h-[420px] relative overflow-hidden cursor-crosshair">
+          
+          <!-- Live 3D Tactical Gyro Telemetry Badge (GSAP 3D Tracking) -->
+          <div id="court-gyro-telemetry" class="absolute top-4 left-4 z-30 font-mono text-[9px] text-[#350aff] bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-[#350aff]/20 pointer-events-none hidden sm:flex items-center gap-2 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#350aff] animate-ping"></span>
+            <span>3D GYRO: PITCH <b id="gyro-pitch">24.0°</b> • YAW <b id="gyro-yaw">-6.0°</b></span>
+            <span class="text-zinc-400">| DI CHUỘT ĐỂ XOAY 3D SA BÀN</span>
+          </div>
+          
+          <div id="court-plane" class="court-plane w-full max-w-[460px] aspect-[1/1.55] bg-[#1e2330] border-2 border-white rounded-md relative shadow-2xl p-3 flex flex-col justify-between">
+            
+            <!-- Lines -->
+            <div class="absolute inset-2 border border-white/50 pointer-events-none"></div>
+            <div class="absolute top-[22%] left-0 right-0 h-[1px] bg-white/60"></div>
+            <div class="absolute bottom-[22%] left-0 right-0 h-[1px] bg-white/60"></div>
+            <div class="absolute top-[22%] bottom-[22%] left-1/2 w-[1px] bg-white/60 -translate-x-1/2"></div>
+            
+            <!-- Net -->
+            <div class="absolute top-1/2 left-0 right-0 h-[4px] bg-[#350aff] -translate-y-1/2 z-20 flex items-center justify-center shadow-lg">
+              <div class="w-full h-[18px] bg-[#350aff]/25 border-b border-[#350aff]/60 flex items-center justify-center">
+                <span class="text-[7px] font-mono font-bold text-white tracking-widest">NET • RS × CD</span>
+              </div>
+            </div>
+
+            <!-- TEAM A (TOP) -->
+            <div class="relative z-10 h-1/2 flex flex-col justify-around p-3">
+              <div class="flex items-center justify-between font-mono text-[9px]">
+                <span class="px-2 py-0.5 rounded bg-black/80 text-white font-bold border border-white/20 uppercase" id="field-squad-a">ĐỘI 01</span>
+                <span class="text-zinc-400 font-bold" id="field-squad-a-tag">SÂN TRÊN</span>
+              </div>
+              <div class="flex justify-around items-center pt-2">
+                <div class="pin-3d flex flex-col items-center" id="pin-a1-wrap">
+                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a1-circle">
+                    <span id="pin-a1-sub" class="text-[#1e1e1e]">HT</span>
+                  </div>
+                  <span id="pin-a1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Hiếu Trưởng Thôn</span>
+                  <span id="pin-a1-role" class="text-[8px] font-mono text-zinc-300">NAM 1</span>
+                </div>
+
+                <div class="pin-3d flex flex-col items-center" id="pin-a2-wrap">
+                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a2-circle">
+                    <span id="pin-a2-sub" class="text-white">DU</span>
+                  </div>
+                  <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Dung (Nữ)</span>
+                  <span id="pin-a2-role" class="text-[8px] font-mono text-[#bcf015]">NỮ CHỦ LỰC</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TEAM B (BOTTOM) -->
+            <div class="relative z-10 h-1/2 flex flex-col justify-around p-3">
+              <div class="flex justify-around items-center pb-2">
+                <div class="pin-3d flex flex-col items-center" id="pin-b1-wrap">
+                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b1-circle">
+                    <span id="pin-b1-sub" class="text-[#1e1e1e]">CD</span>
+                  </div>
+                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Chiến Door</span>
+                  <span id="pin-b1-role" class="text-[8px] font-mono text-zinc-300">NAM 1</span>
+                </div>
+
+                <div class="pin-3d flex flex-col items-center" id="pin-b2-wrap">
+                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b2-circle">
+                    <span id="pin-b2-sub" class="text-white">NG</span>
+                  </div>
+                  <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Nga (Nữ)</span>
+                  <span id="pin-b2-role" class="text-[8px] font-mono text-[#bcf015]">NỮ CHỦ LỰC</span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between font-mono text-[9px]">
+                <span class="text-zinc-400 font-bold" id="field-squad-b-tag">SÂN DƯỚI</span>
+                <span class="px-2 py-0.5 rounded bg-black/80 text-white font-bold border border-white/20 uppercase" id="field-squad-b">ĐỘI 02</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bench Indicator -->
+          <div class="mt-6 flex items-center gap-3 bg-white border border-zinc-200 px-4 py-2 rounded-xl text-xs font-mono shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#350aff] animate-ping"></span>
+            <span class="text-zinc-500 font-bold">VĐV NGHỈ HIỆP:</span>
+            <span id="field-bench-text" class="text-[#1e1e1e] font-bold">Vũ (Nghỉ hiệp 1 để chuẩn bị thể lực cho trận Đôi Nam)</span>
+          </div>
+        </div>
+
+        <!-- Briefing Column -->
+        <div class="lg:col-span-5 space-y-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#350aff]/10 text-[#350aff] text-xs font-mono font-bold mb-3" id="court-time-badge">
+              SÂN 1 (4 TIẾNG) • 07:30 – 11:30
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black uppercase tracking-tight text-[#1e1e1e]" id="court-title">
+              SÂN 1: VÒNG BẢNG A & CHUNG KẾT CÚP
+            </h3>
+            <p class="text-sm text-zinc-600 mt-3 font-normal leading-relaxed" id="court-desc">
+              Mở màn lúc 07:30 giữa <b>Đội 01</b> và <b>Đội 02</b>. Sân 1 vận hành liên tục qua Bán Kết 1 và đón nhận Trận Chung Kết lúc 10:30.
+            </p>
+          </div>
+
+          <!-- 3 Matches Sequence (Interactive Match Tabs) -->
+          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2.5 font-mono text-xs">
+            <div class="flex items-center justify-between text-zinc-400 uppercase tracking-widest text-[10px] font-bold mb-1">
+              <span>[ TIẾN TRÌNH 3 TRẬN BẮT BUỘC ]</span>
+              <span class="text-[#350aff] text-[9px] animate-pulse">✦ BẤM ĐỂ ĐỔI VĐV TRÊN SÂN</span>
+            </div>
+            
+            <button type="button" onclick="switchMatchSequence(0)" id="match-btn-0" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#350aff] match-dot"></span>
+                <span class="font-bold match-title">TRẬN 1: ĐÔI NAM NỮ</span>
+              </div>
+              <span class="text-[10px] opacity-80 match-desc">Nam 1 + Nữ (Nam 2 nghỉ)</span>
+            </button>
+
+            <button type="button" onclick="switchMatchSequence(1)" id="match-btn-1" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot"></span>
+                <span class="font-bold match-title">TRẬN 2: ĐÔI NAM</span>
+              </div>
+              <span class="text-[10px] opacity-80 match-desc">Nam 1 + Nam 2 (Nữ nghỉ)</span>
+            </button>
+
+            <button type="button" onclick="switchMatchSequence(2)" id="match-btn-2" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot"></span>
+                <span class="font-bold match-title">TRẬN 3: ĐÔI NAM NỮ</span>
+              </div>
+              <span class="text-[10px] opacity-80 match-desc">Nam 2 + Nữ (Nam 1 nghỉ)</span>
+            </button>
+          </div>
+
+          <!-- Note -->
+          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 text-xs font-mono text-zinc-600" id="court-note">
+            Sân 1 được thuê trọn gói 4 tiếng (07:00 – 11:30), sử dụng thảm BWF tiêu chuẩn phục vụ trận đấu đỉnh cao.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 10. BROADCAST COPY SECTION                 -->
+  <!-- ========================================== -->
+  <section id="broadcast-section" class="py-24 px-4 md:px-8 max-w-4xl mx-auto scale-scroll-section">
+    
+    <div class="tds-card p-6 md:p-10">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div>
+          <div class="text-xs font-mono text-[#350aff] uppercase tracking-widest mb-1 font-bold">[ TRUYỀN THÔNG // ZALO ]</div>
+          <h3 class="text-2xl font-black uppercase text-[#1e1e1e]">THÔNG BÁO CHÍNH THỨC GỬI CÁC VĐV</h3>
+          <p class="text-xs font-mono text-zinc-500 mt-0.5">Sao chép văn bản đã chuẩn hóa emoji để phát đi trong group Zalo chung (Tự động cập nhật theo kết quả bốc thăm!).</p>
+        </div>
+        <button onclick="copyBroadcastMessage(this)" class="px-6 py-3 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-lg shadow-[#350aff]/25 flex items-center justify-center gap-2 whitespace-nowrap">
+          <span class="btn-copy-label">SAO CHÉP THÔNG BÁO</span>
+        </button>
+      </div>
+
+      <textarea id="broadcast-content" readonly class="w-full h-64 p-4 rounded-xl bg-zinc-50 border border-zinc-300 font-mono text-xs text-zinc-800 leading-relaxed resize-none focus:outline-none focus:border-[#350aff]">
+🏸 THÔNG BÁO CHÍNH THỨC: GIẢI CẦU LÔNG REDSEED × CỒN DẬP 2026 🏸
+"Chơi Hết Mình – Gắn Kết Đồng Đội"
+
+⏰ Thời gian: 07:00 – 11:30 (Chủ Nhật)
+📍 Địa điểm: Cụm 3 Sân Cầu Lông Tiêu Chuẩn
+
+🔥 THỂ THỨC TRIAD COLLAB (2 NAM + 1 NỮ / ĐỘI):
+• 9 Đội tuyển ghép cặp giao hữu Redseed × Cồn Dập (Tổng 27 VĐV)
+• Mỗi lượt đối đầu gồm 3 trận bắt buộc (1 set 21 điểm):
+  - Trận 1: Đôi Nam Nữ (Nam 1 + Nữ) [Nam 2 nghỉ]
+  - Trận 2: Đôi Nam (Nam 1 + Nam 2) [Nữ nghỉ]
+  - Trận 3: Đôi Nam Nữ (Nam 2 + Nữ) [Nam 1 nghỉ]
+👉 Đảm bảo mỗi VĐV đánh đúng 2 trận và có 1 trận nghỉ hồi phục trọn vẹn!
+
+🏟️ PHÂN BỔ 3 SÂN THI ĐẤU:
+• Sân 1 (4H, 07:00–11:30): Bảng A (Đội 1-3) + Bán Kết 1 + CHUNG KẾT CÚP VÀNG
+• Sân 2 (4H, 07:00–11:30): Bảng B (Đội 4-6) + Bán Kết 2 + Tranh Hạng Ba
+• Sân 3 (2H, 07:30–09:30): Bảng C (Đội 7-9) - [Hoàn tất và trả sân đúng 09:30]
+
+👥 DANH SÁCH 27 CHIẾN BINH RS × CD:
+• REDSEED: Hiếu Trưởng Thôn, Vũ, Chiến Door, Xuân Dị, Trọng Hiệp, Trọng Khou, a Hoàng, a Tuấn Bin, Dung, Nga, Tường Vy, Thảo, My.
+• CỒN DẬP: Phúc Khánh, Thanh Nam, Lý Đức, Đức Lưu, Văn Thọ, Văn Vĩnh Chiến Thắng, Văn Vĩnh Minh Chiến, Thành Ngô, Mai Hương Sushi, Thuỷ Soo, Khánh Huyền, Thanh Hà.
+(Hiện có 16 Nam + 2 Slot Nam bổ sung Đội 09 + 9 Nữ đầy đủ).
+
+Anh chị em vui lòng có mặt đúng 07:00 để khởi động, chụp ảnh lưu niệm và nhận áo thi đấu! 🏸🔥
+      </textarea>
+    </div>
+
+  </section>
+
+  <!-- ========================================== -->
+  <!-- 11. FOOTER (THE DESIGN SOCIETY EXACT FORM) -->
+  <!-- ========================================== -->
+  <footer class="border-t border-zinc-300 py-16 px-4 md:px-8 bg-white font-mono text-xs text-zinc-500">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="text-[#1e1e1e] font-black text-sm uppercase tracking-wider">REDSEED × CỒN DẬP // TRIAD CUP 2026</div>
+        <div class="text-zinc-400 mt-1">THE DESIGN SOCIETY EDITORIAL STYLE • KHỞI TRANH: <span class="event-date-display text-[#350aff] font-bold">CHỦ NHẬT, 15/11/2026</span> (07:00 – 11:30)</div>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#hero-section" class="hover:text-[#350aff] transition-colors font-bold uppercase">LÊN ĐẦU TRANG ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notice -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="px-5 py-3 rounded-xl bg-[#350aff] text-white font-mono text-xs font-bold shadow-2xl flex items-center gap-2">
+      <span>✓ ĐÃ SAO CHÉP THÔNG BÁO VÀO BỘ NHỚ!</span>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 12. SCRIPT ENGINE                          -->
+  <!-- ========================================== -->
+  <script>
+    // ----------------------------------------------------
+    // 1. SCROLL GLITCH ENGINE (ACTIVE SCROLLING DETECTION)
+    // ----------------------------------------------------
+    let isScrollTimer = null;
+    let lastScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollDiff = currentScroll - lastScrollPosition;
+
+      if (Math.abs(scrollDiff) > 3) {
+        document.body.classList.add('is-scroll-glitching');
+        if (scrollDiff > 0) {
+          document.body.classList.add('scroll-down');
+          document.body.classList.remove('scroll-up');
+        } else {
+          document.body.classList.add('scroll-up');
+          document.body.classList.remove('scroll-down');
+        }
+      }
+
+      lastScrollPosition = currentScroll;
+
+      clearTimeout(isScrollTimer);
+      isScrollTimer = setTimeout(() => {
+        document.body.classList.remove('is-scroll-glitching');
+        document.body.classList.remove('scroll-down');
+        document.body.classList.remove('scroll-up');
+      }, 100);
+
+      // Scroll Progress Bar
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (currentScroll / height) * 100;
+      const bar = document.getElementById('scroll-progress');
+      if (bar) bar.style.width = scrolled + '%';
+
+      // Antigravity Spatial Parallax Update (Z-Axis Depth)
+      const parallaxBg = document.querySelectorAll('.parallax-bg');
+      if (parallaxBg.length > 0) {
+        parallaxBg.forEach(el => {
+          const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.15;
+          el.style.transform = `translate3d(0, ${currentScroll * speed}px, 0)`;
+        });
+      }
+    }, { passive: true });
+
+    // ----------------------------------------------------
+    // 2. CHOREOGRAPHED SCALE-UP SCROLL REVEAL (~150MS DELAY)
+    // ----------------------------------------------------
+    const scaleObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in-view');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.02,
+      rootMargin: "0px 0px -20px 0px" // Triggers when 20px enters viewport, then 150ms delay
+    });
+
+    document.querySelectorAll('.scale-scroll-section').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.75) {
+        el.classList.add('is-in-view');
+      }
+      scaleObserver.observe(el);
+    });
+
+    // ----------------------------------------------------
+    // 3. TWO-STEP NAVIGATION DRAWER
+    // ----------------------------------------------------
+    function toggleTwoStepMenu() {
+      const menu = document.getElementById('two-step-menu');
+      menu.classList.toggle('is-open');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('two-step-menu');
+        if (menu.classList.contains('is-open')) menu.classList.remove('is-open');
+      }
+    });
+
+    // ----------------------------------------------------
+    // 4. MOUSE STICKER / IMAGE TRAIL
+    // ----------------------------------------------------
+    const crosshair = document.getElementById('mouse-crosshair');
+    let lastTrailTime = 0;
+    const stickerPool = [
+      { text: "REDSEED × CỒN DẬP", bg: "#350aff", color: "#fff" },
+      { text: "TRIAD CUP 2026", bg: "#bcf015", color: "#1e1e1e" },
+      { text: "🏸 21 POINTS", bg: "#1e1e1e", color: "#fff" },
+      { text: "2 ĐÁNH + 1 NGHỈ", bg: "#ffffff", color: "#350aff" },
+      { text: "TRẢ SÂN 3 @ 09:30", bg: "#bcf015", color: "#1e1e1e" },
+      { text: "27 VĐV CHÍNH THỨC", bg: "#350aff", color: "#fff" }
+    ];
+
+    window.addEventListener('mousemove', (e) => {
+      if (crosshair) {
+        crosshair.style.left = e.clientX + 'px';
+        crosshair.style.top = e.clientY + 'px';
+      }
+
+      const now = Date.now();
+      if (now - lastTrailTime > 150 && e.clientY < window.innerHeight * 0.85) {
+        lastTrailTime = now;
+        const item = stickerPool[Math.floor(Math.random() * stickerPool.length)];
+        const sticker = document.createElement('div');
+        sticker.className = 'mouse-trail-sticker';
+        sticker.innerText = item.text;
+        sticker.style.backgroundColor = item.bg;
+        sticker.style.color = item.color;
+        sticker.style.left = e.clientX + (Math.random() * 24 - 12) + 'px';
+        sticker.style.top = e.clientY + (Math.random() * 24 - 12) + 'px';
+        document.body.appendChild(sticker);
+
+        setTimeout(() => {
+          sticker.style.opacity = '0';
+          sticker.style.transform = 'translate(-50%, -90%) scale(0.85)';
+          setTimeout(() => sticker.remove(), 750);
+        }, 120);
+      }
+    });
+
+    // Dynamic Spotlight Glare & GSAP 3D Spatial Card Tilt
+    function initCardGlares() {
+      document.querySelectorAll('.tds-card').forEach(card => {
+        if (!card.dataset.glareInit) {
+          card.dataset.glareInit = "true";
+          card.style.transformStyle = 'preserve-3d';
+
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            let glare = card.querySelector('.card-glare');
+            if (!glare) {
+              glare = document.createElement('div');
+              glare.className = 'card-glare absolute inset-0 pointer-events-none rounded-[inherit] transition-opacity duration-300';
+              card.appendChild(glare);
+            }
+            glare.style.background = `radial-gradient(circle 260px at ${x}px ${y}px, rgba(53, 10, 255, 0.08), transparent 75%)`;
+
+            // GSAP 3D Spatial Tilt
+            if (window.gsap) {
+              const xNorm = (x / rect.width) - 0.5;
+              const yNorm = (y / rect.height) - 0.5;
+              gsap.to(card, {
+                rotateY: xNorm * 10,
+                rotateX: -yNorm * 10,
+                z: 14,
+                duration: 0.25,
+                ease: "power2.out",
+                transformPerspective: 900
+              });
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            const glare = card.querySelector('.card-glare');
+            if (glare) glare.style.background = 'transparent';
+            if (window.gsap) {
+              gsap.to(card, {
+                rotateY: 0,
+                rotateX: 0,
+                z: 0,
+                duration: 0.55,
+                ease: "power3.out"
+              });
+            }
+          });
+        }
+      });
+    }
+
+    // ----------------------------------------------------
+    // 5. OFFICIAL ATHLETES RAW DATA
+    // ----------------------------------------------------
+    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Chiến Door", "Xuân Dị", "Trọng Hiệp", "Trọng Khou", "a Hoàng", "a Tuấn Bin"];
+    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô"];
+    const pendingMen = ["[Slot Nam Bổ Sung 1]", "[Slot Nam Bổ Sung 2]"];
+    const rsWomen = ["Dung", "Nga", "Tường Vy", "Thảo", "My"];
+    const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà"];
+
+    // Roster of all 27 Athletes for Directory
+    const athletesDirectory = [
+      ...rsMen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NAM", num: i + 1 })),
+      ...rsWomen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true, num: i + 9 })),
+      ...cdMen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM", num: i + 14 })),
+      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 22 })),
+      { name: pendingMen[0], org: "CHỜ BỔ SUNG", orgKey: "pending", role: "NAM", isPending: true, num: 26 },
+      { name: pendingMen[1], org: "CHỜ BỔ SUNG", orgKey: "pending", role: "NAM", isPending: true, num: 27 }
+    ];
+
+    function renderAthletes(filter = 'all') {
+      const container = document.getElementById('athletes-grid');
+      container.innerHTML = '';
+
+      let count = 0;
+      athletesDirectory.forEach((ath) => {
+        if (filter !== 'all' && ath.orgKey !== filter && ath.orgKey !== 'pending') return;
+
+        const card = document.createElement('div');
+        card.className = "tds-card p-4 flex flex-col justify-between stagger-scale-item";
+        card.style.transitionDelay = `${150 + (count % 6) * 25}ms`;
+        count++;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between font-mono text-[10px] text-zinc-400 mb-2 font-bold">
+              <span class="text-[#350aff]">[ #${String(ath.num).padStart(2, '0')} ]</span>
+              <span class="text-zinc-600">${ath.org}</span>
+            </div>
+            <h4 class="text-base font-black text-[#1e1e1e] tracking-tight ${ath.isPending ? 'text-zinc-400 italic' : ''}">${ath.name}</h4>
+            <div class="text-xs font-mono text-zinc-500 mt-1">${ath.org}</div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[10px]">
+            <span class="px-2.5 py-0.5 rounded-full font-bold ${ath.isFemale ? 'bg-[#350aff] text-white' : ath.isPending ? 'border border-dashed border-zinc-400 text-zinc-500' : 'bg-[#bcf015] text-[#1e1e1e]'}">${ath.role}</span>
+            <span class="text-zinc-400 font-bold">VĐV CHÍNH THỨC</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      initCardGlares();
+    }
+    renderAthletes('all');
+
+    function filterAthletes(tab) {
+      ['all', 'rs', 'cd'].forEach(t => {
+        const btn = document.getElementById('tab-ath-' + t);
+        if (t === tab) {
+          btn.className = "px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all";
+        } else {
+          btn.className = "px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+        }
+      });
+      renderAthletes(tab);
+    }
+
+    // ----------------------------------------------------
+    // 6. TRUE COLLAB SQUADS GENERATION & RANDOMIZER
+    // ----------------------------------------------------
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function generateCollabSquads(isRandom = false) {
+      const menRS = isRandom ? shuffleArray(rsMen) : [...rsMen];
+      const menCD = isRandom ? shuffleArray(cdMen) : [...cdMen];
+      const womenAll = isRandom ? shuffleArray([...rsWomen, ...cdWomen]) : [...rsWomen, ...cdWomen];
+
+      const pools = [
+        "BẢNG A (SÂN 1)", "BẢNG A (SÂN 1)", "BẢNG A (SÂN 1)",
+        "BẢNG B (SÂN 2)", "BẢNG B (SÂN 2)", "BẢNG B (SÂN 2)",
+        "BẢNG C (SÂN 3)", "BẢNG C (SÂN 3)", "BẢNG C (SÂN 3)"
+      ];
+
+      const newSquads = [];
+
+      for (let i = 0; i < 9; i++) {
+        const teamNum = `ĐỘI 0${i + 1}`;
+        let m1, m2, isPending = false;
+
+        if (i < 8) {
+          m1 = `${menRS[i]} (RS)`;
+          m2 = `${menCD[i]} (CD)`;
+        } else {
+          m1 = pendingMen[0];
+          m2 = pendingMen[1];
+          isPending = true;
+        }
+
+        const femaleName = womenAll[i];
+        const isRSWoman = rsWomen.includes(femaleName);
+        const f = `${femaleName} (${isRSWoman ? 'RS' : 'CD'})`;
+
+        newSquads.push({
+          id: teamNum,
+          pool: pools[i],
+          m1: m1,
+          m2: m2,
+          f: f,
+          isPending: isPending,
+          base: isPending ? "CHỜ 2 NAM BỔ SUNG" : "COLLAB RS × CD"
+        });
+      }
+      return newSquads;
+    }
+
+    let currentSquads = generateCollabSquads(false);
+
+    function renderSquadsGrid() {
+      const container = document.getElementById('squads-grid');
+      container.innerHTML = '';
+
+      currentSquads.forEach((sq, idx) => {
+        const card = document.createElement('div');
+        card.className = "tds-card p-6 flex flex-col justify-between stagger-scale-item";
+        card.style.transitionDelay = `${150 + (idx % 6) * 25}ms`;
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between font-mono text-xs mb-3">
+              <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">${sq.id}</span>
+              <span class="text-zinc-500 font-bold">${sq.pool}</span>
+            </div>
+            <h3 class="text-xl font-black text-[#1e1e1e] uppercase tracking-tight mb-4">${sq.id}</h3>
+
+            <div class="space-y-2 font-mono text-xs">
+              <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
+                <span class="text-zinc-500 font-bold">NAM 1:</span>
+                <span class="font-bold ${sq.isPending && sq.m1.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m1}</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
+                <span class="text-zinc-500 font-bold">NAM 2:</span>
+                <span class="font-bold ${sq.isPending && sq.m2.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m2}</span>
+              </div>
+              <div class="flex items-center justify-between p-2 rounded-lg bg-[#350aff]/10 border border-[#350aff]/30">
+                <span class="text-[#350aff] font-bold">NỮ CHỦ LỰC:</span>
+                <span class="font-bold text-[#1e1e1e]">${sq.f}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[10px] text-zinc-500">
+            <span>2 ĐÁNH + 1 NGHỈ</span>
+            <span class="text-[#350aff] font-bold">${sq.base}</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      initCardGlares();
+      if (typeof updateCourtDataFromSquads === 'function') {
+        updateCourtDataFromSquads();
+      }
+    }
+
+    // Randomize Handler with Animation
+    function randomizeSquads() {
+      const dice = document.getElementById('btn-dice-icon');
+      const headerDice = document.getElementById('header-dice');
+      if (dice) dice.classList.add('rolling-dice');
+      if (headerDice) headerDice.classList.add('rolling-dice');
+
+      setTimeout(() => {
+        currentSquads = generateCollabSquads(true);
+        renderSquadsGrid();
+        if (dice) dice.classList.remove('rolling-dice');
+        if (headerDice) headerDice.classList.remove('rolling-dice');
+
+        // Toast feedback
+        const toast = document.getElementById('toast');
+        toast.querySelector('span').innerText = "🎲 ĐÃ BỐC THĂM ĐỘI HÌNH NGẪU NHIÊN!";
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2200);
+      }, 350);
+    }
+
+    function resetDefaultSquads() {
+      currentSquads = generateCollabSquads(false);
+      renderSquadsGrid();
+    }
+
+    // ----------------------------------------------------
+    // 7. TOURNAMENT DATE STATE & MANAGEMENT
+    // ----------------------------------------------------
+    let currentEventDate = "Chủ Nhật, 15/11/2026";
+    try {
+      const savedDate = localStorage.getItem('triad_event_date');
+      // If previous placeholder was cached, update to official document date
+      if (savedDate && savedDate.trim() && savedDate !== "Chủ Nhật, 25/10/2026") {
+        currentEventDate = savedDate.trim();
+      } else {
+        localStorage.setItem('triad_event_date', currentEventDate);
+      }
+    } catch(e) {}
+
+    function updateAllDateDisplays() {
+      const els = document.querySelectorAll('.event-date-display');
+      els.forEach(el => {
+        if (el.classList.contains('uppercase') || el.dataset.upper === "true") {
+          el.innerText = currentEventDate.toUpperCase();
+        } else {
+          el.innerText = currentEventDate;
+        }
+      });
+      updateBroadcastText();
+    }
+
+    function editEventDate() {
+      const val = prompt("Nhập ngày tổ chức giải đấu (Ví dụ: Chủ Nhật, 15/11/2026):", currentEventDate);
+      if (val && val.trim()) {
+        currentEventDate = val.trim();
+        try {
+          localStorage.setItem('triad_event_date', currentEventDate);
+        } catch(e) {}
+        updateAllDateDisplays();
+        showToast("📅 ĐÃ CẬP NHẬT NGÀY: " + currentEventDate);
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.querySelector('span').innerText = msg;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 2200);
+    }
+
+    // ----------------------------------------------------
+    // 8. 3-COURT SA BAN DYNAMIC DATA & 3-MATCH PROGRESSION
+    // ----------------------------------------------------
+    function getInitials(fullName) {
+      if (!fullName) return "";
+      const clean = fullName.replace(/\s*\(.*?\)\s*/g, '').trim();
+      const parts = clean.split(' ');
+      if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    let courtStages = [];
+    let currentActiveCourt = 0;
+    let currentActiveMatch = 0; // 0: Trận 1 (Nam 1 + Nữ), 1: Trận 2 (Nam 1 + Nam 2), 2: Trận 3 (Nam 2 + Nữ)
+
+    function updateCourtDataFromSquads() {
+      const sq1 = currentSquads[0];
+      const sq2 = currentSquads[1];
+      const sq4 = currentSquads[3];
+      const sq5 = currentSquads[4];
+      const sq7 = currentSquads[6];
+      const sq8 = currentSquads[7];
+
+      courtStages = [
+        {
+          badge: "SÂN 1 (4 TIẾNG) • 07:30 – 11:30",
+          title: "SÂN 1: VÒNG BẢNG A & CHUNG KẾT CÚP",
+          desc: `Mở màn lúc 07:30 giữa <b>${sq1.id}</b> (${sq1.m1}, ${sq1.m2}, ${sq1.f}) và <b>${sq2.id}</b> (${sq2.m1}, ${sq2.m2}, ${sq2.f}). Sân 1 vận hành liên tục qua Bán Kết 1 và đón nhận Trận Chung Kết lúc 10:30.`,
+          note: "Sân 1 được thuê trọn gói 4 tiếng (07:00 – 11:30), sử dụng thảm BWF tiêu chuẩn phục vụ trận đấu đỉnh cao.",
+          squadA: sq1,
+          squadB: sq2
+        },
+        {
+          badge: "SÂN 2 (4 TIẾNG) • 07:30 – 11:30",
+          title: "SÂN 2: VÒNG BẢNG B & TRANH HẠNG BA",
+          desc: `Đánh đồng thời từ 07:30 giữa <b>${sq4.id}</b> (${sq4.m1}, ${sq4.m2}, ${sq4.f}) và <b>${sq5.id}</b> (${sq5.m1}, ${sq5.m2}, ${sq5.f}). Tiếp tục Bán Kết 2 và Trận Tranh Hạng Ba lúc 10:30.`,
+          note: "Sân 2 vận hành 4 tiếng liên tục song song cùng Sân 1, phục vụ Bảng B và nhánh đấu Bán Kết 2.",
+          squadA: sq4,
+          squadB: sq5
+        },
+        {
+          badge: "⚡ SÂN 3 (2 TIẾNG) • 07:30 – 09:30 [TRẢ SÂN]",
+          title: "⚡ SÂN 3: BẢNG C (TRẢ SÂN ĐÚNG 09:30)",
+          desc: `Tranh tài giữa <b>${sq7.id}</b> (${sq7.m1}, ${sq7.m2}, ${sq7.f}) và <b>${sq8.id}</b> (${sq8.m1}, ${sq8.m2}, ${sq8.f}). <b>Đúng 09:30 kết thúc và TRẢ SÂN 3 đúng hạn</b>.`,
+          note: "⚠️ LƯU Ý SÂN 3: Thuê 2 tiếng (07:30 - 09:30). Đúng 09:30 dứt điểm vòng bảng và bàn giao trả sân ngay lập tức!",
+          squadA: sq7,
+          squadB: sq8
+        },
+        {
+          badge: "🏆 SÂN 1 (GRAND FINAL) • 10:30 – 11:15",
+          title: "🏆 CHUNG KẾT CÚP VÀNG: ĐỈNH CAO TRIAD 2026",
+          desc: "Trận chiến danh giá nhất giữa 2 Đội Xuất Sắc Nhất. Tranh chấp chiếc Cúp Vô Địch và Huy Chương Vàng của giải đấu Collab RS × CD.",
+          note: "Toàn bộ 27 VĐV và cổ động viên tập trung quanh khán đài Sân 1 chứng kiến thời khắc đăng quang.",
+          squadA: { id: "FINALIST 1", m1: "Nam 1 (BK1)", m2: "Nam 2 (BK1)", f: "Nữ Chủ Lực (BK1)" },
+          squadB: { id: "FINALIST 2", m1: "Nam 1 (BK2)", m2: "Nam 2 (BK2)", f: "Nữ Chủ Lực (BK2)" }
+        }
+      ];
+
+      switchCourt(currentActiveCourt);
+      switchMatchSequence(currentActiveMatch, false);
+      updateBroadcastText();
+    }
+
+    function switchCourt(idx) {
+      currentActiveCourt = idx;
+      if (!courtStages.length) return;
+
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById('court-btn-' + i);
+        if (!btn) continue;
+        if (i === idx) {
+          btn.className = "p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all shadow-sm";
+        } else {
+          btn.className = "p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all";
+        }
+      }
+
+      const plane = document.getElementById('court-plane');
+      if (window.gsap && plane && !plane.classList.contains('view-2d')) {
+        gsap.timeline()
+          .to(plane, { scale: 0.92, rotateY: 15, opacity: 0.45, duration: 0.18, ease: "power2.in" })
+          .call(() => { updateCourtVisuals(); })
+          .to(plane, { scale: 1, rotateY: 0, opacity: 1, duration: 0.4, ease: "back.out(1.4)" });
+      } else {
+        updateCourtVisuals();
+      }
+    }
+
+    function switchMatchSequence(matchIdx, triggerFeedback = true) {
+      currentActiveMatch = matchIdx;
+
+      // Update 3 match button styles
+      for (let m = 0; m < 3; m++) {
+        const btn = document.getElementById('match-btn-' + m);
+        if (!btn) continue;
+        const dot = btn.querySelector('.match-dot');
+        const title = btn.querySelector('.match-title');
+        const desc = btn.querySelector('.match-desc');
+
+        if (m === matchIdx) {
+          btn.className = "w-full flex items-center justify-between p-3 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all group cursor-pointer shadow-sm";
+          if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-[#350aff] ring-4 ring-[#350aff]/25 match-dot";
+          if (title) title.className = "font-bold text-[#350aff] match-title";
+          if (desc) desc.className = "text-[10px] text-[#350aff] font-bold match-desc";
+        } else {
+          btn.className = "w-full flex items-center justify-between p-3 rounded-xl border border-zinc-200 bg-white hover:bg-zinc-100 text-left transition-all group cursor-pointer";
+          if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot";
+          if (title) title.className = "font-bold text-[#1e1e1e] group-hover:text-[#350aff] transition-colors match-title";
+          if (desc) desc.className = "text-[10px] text-zinc-500 match-desc";
+        }
+      }
+
+      // GSAP 3D Pin Levitation & Landing Bounce
+      if (window.gsap) {
+        gsap.timeline()
+          .to(['#pin-a1-wrap', '#pin-a2-wrap', '#pin-b1-wrap', '#pin-b2-wrap'], {
+            z: 60,
+            scale: 1.3,
+            rotateY: 180,
+            opacity: 0.85,
+            stagger: 0.04,
+            duration: 0.2,
+            ease: "power2.out"
+          })
+          .call(() => {
+            updateCourtVisuals();
+          })
+          .to(['#pin-a1-wrap', '#pin-a2-wrap', '#pin-b1-wrap', '#pin-b2-wrap'], {
+            z: 24,
+            scale: 1,
+            rotateY: 0,
+            opacity: 1,
+            stagger: 0.04,
+            duration: 0.38,
+            ease: "elastic.out(1.2, 0.45)"
+          });
+      } else {
+        updateCourtVisuals();
+      }
+
+      if (triggerFeedback) {
+        const labels = ["TRẬN 1: ĐÔI NAM NỮ", "TRẬN 2: ĐÔI NAM", "TRẬN 3: ĐÔI NAM NỮ"];
+        showToast("🏸 " + labels[matchIdx] + " (VĐV ĐÃ ĐƯỢC ĐIỀU ĐỘNG LÊN SÂN)");
+      }
+    }
+
+    function updateCourtVisuals() {
+      if (!courtStages.length) return;
+      const data = courtStages[currentActiveCourt];
+      if (!data) return;
+
+      document.getElementById('court-time-badge').innerText = data.badge;
+      document.getElementById('court-title').innerHTML = data.title;
+      document.getElementById('court-desc').innerHTML = data.desc;
+      document.getElementById('court-note').innerHTML = data.note;
+
+      const sqA = data.squadA;
+      const sqB = data.squadB;
+
+      document.getElementById('field-squad-a').innerText = sqA.id;
+      document.getElementById('field-squad-b').innerText = sqB.id;
+
+      let a1, a2, aBench;
+      let b1, b2, bBench;
+
+      if (currentActiveMatch === 0) {
+        // TRẬN 1: Đôi Nam Nữ (Nam 1 + Nữ) | Nam 2 nghỉ
+        a1 = { name: sqA.m1, role: "NAM 1", isFemale: false };
+        a2 = { name: sqA.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        aBench = `${sqA.m2} (Nghỉ hồi phục hiệp 1 chuẩn bị Đôi Nam)`;
+
+        b1 = { name: sqB.m1, role: "NAM 1", isFemale: false };
+        b2 = { name: sqB.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        bBench = `${sqB.m2} (Nghỉ hồi phục hiệp 1 chuẩn bị Đôi Nam)`;
+      } else if (currentActiveMatch === 1) {
+        // TRẬN 2: Đôi Nam (Nam 1 + Nam 2) | Nữ nghỉ
+        a1 = { name: sqA.m1, role: "NAM 1", isFemale: false };
+        a2 = { name: sqA.m2, role: "NAM 2", isFemale: false };
+        aBench = `${sqA.f} (Nữ nghỉ hiệp 2 theo dõi đối thủ)`;
+
+        b1 = { name: sqB.m1, role: "NAM 1", isFemale: false };
+        b2 = { name: sqB.m2, role: "NAM 2", isFemale: false };
+        bBench = `${sqB.f} (Nữ nghỉ hiệp 2 theo dõi đối thủ)`;
+      } else {
+        // TRẬN 3: Đôi Nam Nữ (Nam 2 + Nữ) | Nam 1 nghỉ
+        a1 = { name: sqA.m2, role: "NAM 2", isFemale: false };
+        a2 = { name: sqA.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        aBench = `${sqA.m1} (Nghỉ hiệp 3 sau 2 set cống hiến)`;
+
+        b1 = { name: sqB.m2, role: "NAM 2", isFemale: false };
+        b2 = { name: sqB.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        bBench = `${sqB.m1} (Nghỉ hiệp 3 sau 2 set cống hiến)`;
+      }
+
+      function renderPin(prefix, p) {
+        const sub = document.getElementById(`pin-${prefix}-sub`);
+        const lbl = document.getElementById(`pin-${prefix}-lbl`);
+        const role = document.getElementById(`pin-${prefix}-role`);
+        const circle = document.getElementById(`pin-${prefix}-circle`);
+
+        if (sub) sub.innerText = getInitials(p.name);
+        if (lbl) {
+          lbl.innerText = p.name;
+          if (p.isFemale) {
+            lbl.className = "mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap shadow-sm";
+          } else {
+            lbl.className = "mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm";
+          }
+        }
+        if (role) {
+          role.innerText = p.role;
+          role.className = p.isFemale ? "text-[8px] font-mono text-[#bcf015] font-bold" : "text-[8px] font-mono text-zinc-300";
+        }
+        if (circle) {
+          if (p.isFemale) {
+            circle.className = "w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors";
+            if (sub) sub.className = "text-white";
+          } else {
+            circle.className = "w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors";
+            if (sub) sub.className = "text-[#1e1e1e]";
+          }
+        }
+      }
+
+      renderPin('a1', a1);
+      renderPin('a2', a2);
+      renderPin('b1', b1);
+      renderPin('b2', b2);
+
+      const benchEl = document.getElementById('field-bench-text');
+      if (benchEl) {
+        benchEl.innerHTML = `<span><b>${sqA.id}:</b> ${aBench}</span> <span class="text-zinc-300 mx-2">|</span> <span><b>${sqB.id}:</b> ${bBench}</span>`;
+      }
+    }
+
+    function setCourtPerspective(mode) {
+      const plane = document.getElementById('court-plane');
+      const btn3D = document.getElementById('view-mode-3d');
+      const btn2D = document.getElementById('view-mode-2d');
+
+      if (mode === '3d') {
+        plane.classList.remove('view-2d');
+        btn3D.className = "px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md";
+        btn2D.className = "px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+      } else {
+        plane.classList.add('view-2d');
+        btn2D.className = "px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md";
+        btn3D.className = "px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+      }
+    }
+
+    // ----------------------------------------------------
+    // 9. DYNAMIC BROADCAST GENERATOR & COPY
+    // ----------------------------------------------------
+    function updateBroadcastText() {
+      const area = document.getElementById('broadcast-content');
+      if (!area) return;
+
+      let squadList = "";
+      if (currentSquads && currentSquads.length) {
+        currentSquads.forEach((sq, i) => {
+          squadList += `• ${sq.id} (${sq.base}): ${sq.m1} + ${sq.m2} + ${sq.f} (Nữ)\n`;
+        });
+      }
+
+      area.value = `🏸 THÔNG BÁO CHÍNH THỨC: GIẢI CẦU LÔNG REDSEED × CỒN DẬP 2026 🏸
+"Chơi Hết Mình – Gắn Kết Đồng Đội"
+
+⏰ Thời gian: 07:00 – 11:30 (${currentEventDate})
+📍 Địa điểm: Cụm 3 Sân Cầu Lông Tiêu Chuẩn
+
+🔥 THỂ THỨC TRIAD COLLAB (2 NAM + 1 NỮ / ĐỘI):
+• 9 Đội tuyển ghép cặp giao hữu Redseed × Cồn Dập (Tổng 27 VĐV)
+• Mỗi lượt đối đầu gồm 3 trận bắt buộc (1 set 21 điểm):
+  - Trận 1: Đôi Nam Nữ (Nam 1 + Nữ) [Nam 2 nghỉ]
+  - Trận 2: Đôi Nam (Nam 1 + Nam 2) [Nữ nghỉ]
+  - Trận 3: Đôi Nam Nữ (Nam 2 + Nữ) [Nam 1 nghỉ]
+👉 Đảm bảo mỗi VĐV đánh đúng 2 trận và có 1 trận nghỉ hồi phục trọn vẹn!
+
+🏟️ PHÂN BỔ 3 SÂN THI ĐẤU:
+• Sân 1 (4H, 07:00–11:30): Bảng A (Đội 1-3) + Bán Kết 1 + CHUNG KẾT CÚP VÀNG
+• Sân 2 (4H, 07:00–11:30): Bảng B (Đội 4-6) + Bán Kết 2 + Tranh Hạng Ba
+• Sân 3 (2H, 07:30–09:30): Bảng C (Đội 7-9) - [Hoàn tất và trả sân đúng 09:30]
+
+👥 DANH SÁCH 9 ĐỘI HÌNH COLLAB CHÍNH THỨC:
+${squadList}
+Anh chị em vui lòng có mặt đúng 07:00 ngày ${currentEventDate} để khởi động, chụp ảnh lưu niệm và nhận áo thi đấu! 🏸🔥`;
+    }
+
+    function copyBroadcastMessage(btn) {
+      const area = document.getElementById('broadcast-content');
+      area.select();
+      area.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(area.value).then(() => {
+        showToast("✓ ĐÃ SAO CHÉP THÔNG BÁO VÀO BỘ NHỚ!");
+
+        const lbl = btn.querySelector('.btn-copy-label');
+        if (lbl) {
+          lbl.innerText = "✓ ĐÃ SAO CHÉP!";
+          setTimeout(() => { lbl.innerText = "SAO CHÉP THÔNG BÁO"; }, 2000);
+        }
+      });
+    }
+
+    // ----------------------------------------------------
+    // 10. GSAP 3D ANTIGRAVITY EXPERT MOTION ENGINES
+    // ----------------------------------------------------
+    function initHero3DShuttlecock() {
+      const card = document.getElementById('hero-shuttlecock-card');
+      const shuttle = document.getElementById('hero-3d-shuttlecock');
+      if (!card || !shuttle || !window.gsap) return;
+
+      // Continuous weightless floating in 3D
+      gsap.to(shuttle, {
+        y: -14,
+        rotateZ: 6,
+        rotateY: 15,
+        duration: 3.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+
+      // Mouse Parallax inside Hero card
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const xNorm = (e.clientX - rect.left) / rect.width - 0.5;
+        const yNorm = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(card, {
+          rotateY: xNorm * 18,
+          rotateX: -yNorm * 18,
+          z: 20,
+          duration: 0.3,
+          ease: "power2.out",
+          transformPerspective: 800
+        });
+
+        gsap.to(shuttle, {
+          rotateY: xNorm * 45,
+          rotateX: -yNorm * 45,
+          x: xNorm * 20,
+          y: yNorm * 20,
+          duration: 0.35,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          rotateY: 0,
+          rotateX: 0,
+          z: 0,
+          duration: 0.7,
+          ease: "power3.out"
+        });
+        gsap.to(shuttle, {
+          rotateY: 0,
+          rotateX: 0,
+          x: 0,
+          duration: 0.7,
+          ease: "power3.out"
+        });
+      });
+    }
+
+    function triggerHeroSmash() {
+      const shuttle = document.getElementById('hero-3d-shuttlecock');
+      if (!shuttle) return;
+
+      if (window.gsap) {
+        document.body.classList.add('is-scroll-glitching');
+        setTimeout(() => document.body.classList.remove('is-scroll-glitching'), 350);
+
+        gsap.timeline()
+          .to(shuttle, {
+            scale: 0.7,
+            rotateZ: -30,
+            duration: 0.12,
+            ease: "power2.in"
+          })
+          .to(shuttle, {
+            scale: 2.2,
+            x: 120,
+            y: -70,
+            rotateZ: 720,
+            duration: 0.26,
+            ease: "power4.out"
+          })
+          .to(shuttle, {
+            scale: 1,
+            x: 0,
+            y: 0,
+            rotateZ: 0,
+            duration: 0.55,
+            ease: "elastic.out(1.15, 0.45)"
+          });
+      }
+
+      showToast("⚡ CÚ SMASH 417 KM/H! QUỸ ĐẠO KHÍ ĐỘNG HỌC 3D HOÀN HẢO!");
+    }
+
+    function initCourt3DGyro() {
+      const courtViewport = document.getElementById('court-viewport');
+      const courtPlane = document.getElementById('court-plane');
+      const gyroPitch = document.getElementById('gyro-pitch');
+      const gyroYaw = document.getElementById('gyro-yaw');
+
+      if (!courtViewport || !courtPlane || !window.gsap) return;
+
+      courtViewport.addEventListener('mousemove', (e) => {
+        if (courtPlane.classList.contains('view-2d')) return;
+        const rect = courtViewport.getBoundingClientRect();
+        const xNorm = (e.clientX - rect.left) / rect.width - 0.5;
+        const yNorm = (e.clientY - rect.top) / rect.height - 0.5;
+
+        const pitch = 24 - (yNorm * 16);
+        const yaw = -6 + (xNorm * 20);
+
+        gsap.to(courtPlane, {
+          rotateX: pitch,
+          rotateZ: yaw,
+          duration: 0.3,
+          ease: "power1.out"
+        });
+
+        if (gyroPitch) gyroPitch.innerText = pitch.toFixed(1) + '°';
+        if (gyroYaw) gyroYaw.innerText = yaw.toFixed(1) + '°';
+      });
+
+      courtViewport.addEventListener('mouseleave', () => {
+        if (courtPlane.classList.contains('view-2d')) return;
+        gsap.to(courtPlane, {
+          rotateX: 24,
+          rotateZ: -6,
+          duration: 0.7,
+          ease: "power2.out"
+        });
+        if (gyroPitch) gyroPitch.innerText = '24.0°';
+        if (gyroYaw) gyroYaw.innerText = '-6.0°';
+      });
+    }
+
+    function initScrollTriggerDominoes() {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Hero Title Stagger Reveal
+      gsap.from('.hero-title-line', {
+        y: 40,
+        opacity: 0,
+        rotateX: -18,
+        stagger: 0.12,
+        duration: 0.9,
+        ease: "power3.out",
+        delay: 0.1
+      });
+
+      // Staggered domino cascade for timeline cards
+      ScrollTrigger.batch('.stagger-scale-item', {
+        onEnter: batch => gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.08,
+          duration: 0.5,
+          ease: "back.out(1.2)",
+          overwrite: "auto"
+        }),
+        once: true
+      });
+    }
+
+    // Initial calls
+    renderSquadsGrid();
+    updateAllDateDisplays();
+    updateCourtDataFromSquads();
+    initHero3DShuttlecock();
+    initCourt3DGyro();
+    initScrollTriggerDominoes();
+  </script>
+</body>
+</html>
