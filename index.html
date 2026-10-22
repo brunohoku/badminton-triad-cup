@@ -249,6 +249,59 @@
       animation-play-state: paused;
     }
 
+    /* ======================================================== */
+    /* TREE TIMELINE & CIRCULAR ICON BADGES (IMAGE STYLE)      */
+    /* ======================================================== */
+    .timeline-tree-stem {
+      position: absolute;
+      top: 1rem;
+      bottom: 2rem;
+      width: 4px;
+      background: #e4e4e7;
+      border-radius: 9999px;
+    }
+    .timeline-tree-stem-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(180deg, #350aff 0%, #350aff 65%, #bcf015 100%);
+      border-radius: 9999px;
+      box-shadow: 0 0 14px rgba(53, 10, 255, 0.45);
+      transition: height 0.12s ease-out;
+    }
+    @keyframes timelineIconFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(2deg);
+      }
+    }
+    @keyframes timelineIconFloatAlt {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-5px) rotate(-2deg);
+      }
+    }
+    .timeline-icon-float {
+      animation: timelineIconFloat 3.8s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center center;
+    }
+    .timeline-icon-float-alt {
+      animation: timelineIconFloatAlt 4.4s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center center;
+    }
+
     /* 3D Court Stage */
     .court-stage {
       perspective: 1200px;
@@ -677,7 +730,7 @@
           </div>
           <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-3">ĐỘI HÌNH 2 NAM + 1 NỮ</h3>
           <p class="text-sm text-zinc-600 leading-relaxed font-normal">
-            Mỗi đội gồm 2 VĐV Nam và 1 VĐV Nữ chủ lực ghép cặp Collab. Mỗi cặp đấu giữa 2 đội (1 Tie) bao gồm 3 trận bắt buộc: <b>Đôi Nam Nữ 1 ➜ Đôi Nam ➜ Đôi Nam Nữ 2</b>.
+            Mỗi đội gồm 2 VĐV Nam (1 Redseed + 1 Cồn Dập) và 1 Bóng Hồng ghép cặp Collab. Mỗi cặp đấu giữa 2 đội (1 Tie) bao gồm 3 trận bắt buộc: <b>Đôi Nam Nữ 1 ➜ Đôi Nam ➜ Đôi Nam Nữ 2</b>.
           </p>
         </div>
         <div class="mt-8 pt-4 border-t border-zinc-200 font-mono text-xs text-[#350aff] font-bold">
@@ -744,112 +797,428 @@
       </div>
     </div>
 
-    <!-- Timeline Cards Grid (Stagger Scale Items) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- ========================================== -->
+    <!-- TREE TIMELINE CONTAINER (SCROLL DOWN TREE) -->
+    <!-- ========================================== -->
+    <div id="timeline-tree-container" class="relative max-w-5xl mx-auto py-6">
       
-      <!-- Phase 1 -->
-      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 01</span>
-            <span class="font-bold text-[#350aff]">07:00 – 07:30</span>
-          </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">Check-in, Khởi Động & Chụp Ảnh</h3>
-          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
-            27 VĐV có mặt đầy đủ tại sân (mỗi người tự chuẩn bị đồng phục thể thao), bốc thăm chia bảng A - B - C, khởi động kỹ lưỡng và chụp hình lưu niệm tập thể toàn đoàn Redseed × Cồn Dập.
-          </p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
-          ĐỊA ĐIỂM: SẢNH CỤM SÂN
-        </div>
+      <!-- Central Tree Trunk (Stem) -->
+      <!-- On Desktop (lg): Centered (50%). On Mobile (<lg): Left-aligned at 24px (left-6) -->
+      <div class="timeline-tree-stem left-6 lg:left-1/2 -translate-x-1/2">
+        <!-- Dynamic Scroll-Linked Fill Progress -->
+        <div id="timeline-tree-progress" class="timeline-tree-stem-progress"></div>
       </div>
 
-      <!-- Phase 2 -->
-      <div class="tds-card p-6 border-[#350aff]/40 bg-[#350aff]/5 flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 02</span>
-            <span class="font-bold text-[#350aff]">07:30 – 09:30</span>
+      <!-- Tree Nodes & Event Branches -->
+      <div class="space-y-12 lg:space-y-16">
+
+        <!-- ========================================== -->
+        <!-- PHASE 01 (Left Branch on Desktop)          -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-white border-2 border-[#350aff] shadow-lg flex items-center justify-center font-mono font-black text-xs text-[#350aff] group-hover:scale-110 transition-transform">
+            <span>01</span>
+            <span class="absolute -inset-1 rounded-full border border-[#bcf015] animate-ping opacity-30 pointer-events-none"></span>
           </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">VÒNG BẢNG: 3 SÂN ĐỒNG LOẠT</h3>
-          <p class="text-xs text-zinc-700 leading-relaxed font-normal">
-            • <b>Sân 1:</b> 3 trận Bảng A (Đội 1 vs Đội 2 vs Đội 3)<br>
-            • <b>Sân 2:</b> 3 trận Bảng B (Đội 4 vs Đội 5 vs Đội 6)<br>
-            • <b>Sân 3:</b> 3 trận Bảng C (Đội 7 vs Đội 8 vs Đội 9)
-          </p>
+
+          <!-- Branch Connector (Desktop Left Branch) -->
+          <div class="hidden lg:block absolute left-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+
+          <!-- Card Content (Left on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+            <div class="tds-card p-6 sm:p-7 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 01</span>
+                <span class="font-bold text-[#350aff] text-xs sm:text-sm">07:00 – 07:30</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#bcf015]/30 to-[#350aff]/20 blur-sm opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#bcf015] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-[#bcf015] animate-spin pointer-events-none" style="animation-duration: 18s;"></div>
+                    <!-- Animated Vector Icon: Check-in & Camera -->
+                    <div class="relative z-10 timeline-icon-float">
+                      <svg class="w-10 h-10 text-[#350aff]" viewBox="0 0 48 48" fill="none">
+                        <rect x="6" y="14" width="36" height="26" rx="5" stroke="#1e1e1e" stroke-width="2.5" fill="#f4f6fb"/>
+                        <path d="M16 14 L20 8 L28 8 L32 14 Z" stroke="#1e1e1e" stroke-width="2.5" fill="#ffffff" stroke-linejoin="round"/>
+                        <circle cx="24" cy="27" r="9" stroke="#350aff" stroke-width="2.5" fill="#ebedf5"/>
+                        <circle cx="24" cy="27" r="5" stroke="#1e1e1e" stroke-width="2" fill="#350aff"/>
+                        <circle cx="22.5" cy="25.5" r="1.5" fill="#ffffff"/>
+                        <circle cx="12" cy="18" r="2" fill="#bcf015" stroke="#1e1e1e" stroke-width="1.5"/>
+                        <path d="M37 9 L38 12 L41 13 L38 14 L37 17 L36 14 L33 13 L36 12 Z" fill="#bcf015"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">Check-in, Khởi Động & Chụp Ảnh</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+                    27 VĐV có mặt đầy đủ tại sân (mỗi người tự chuẩn bị đồng phục thể thao), bốc thăm chia bảng A - B - C, khởi động kỹ lưỡng và chụp hình lưu niệm tập thể toàn đoàn Redseed × Cồn Dập.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[11px] text-zinc-500">
+                <span>ĐỊA ĐIỂM: SẢNH CỤM SÂN</span>
+                <span class="text-[#350aff] font-bold">KHỞI ĐỘNG ●</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mt-6 pt-3 border-t border-[#350aff]/20 font-mono text-[11px] text-[#350aff] font-bold">
-          ĐỒNG THỜI 3 MẶT SÂN
+
+        <!-- ========================================== -->
+        <!-- PHASE 02 (Right Branch on Desktop)         -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-[#350aff] border-2 border-[#bcf015] shadow-lg flex items-center justify-center font-mono font-black text-xs text-white group-hover:scale-110 transition-transform">
+            <span>02</span>
+          </div>
+
+          <!-- Branch Connector (Desktop Right Branch) -->
+          <div class="hidden lg:block absolute right-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-[#350aff]/50 pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#350aff]/50 pointer-events-none"></div>
+
+          <!-- Card Content (Right on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+            <div class="tds-card p-6 sm:p-7 border-[#350aff]/40 bg-[#350aff]/5 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff] group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 02</span>
+                <span class="font-bold text-[#350aff] text-xs sm:text-sm">07:30 – 09:30</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#350aff]/30 to-[#bcf015]/30 blur-sm opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#bcf015] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-[#bcf015] animate-spin pointer-events-none" style="animation-duration: 22s;"></div>
+                    <!-- Animated Vector Icon: 3 Courts & Shuttlecock -->
+                    <div class="relative z-10 timeline-icon-float-alt">
+                      <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                        <polygon points="12,18 24,12 36,18 24,24" stroke="#71717a" stroke-width="1.5" fill="#f4f6fb"/>
+                        <polygon points="8,26 24,18 40,26 24,34" stroke="#350aff" stroke-width="2" fill="#ebedf5"/>
+                        <line x1="8" y1="26" x2="40" y2="26" stroke="#1e1e1e" stroke-width="1.8" stroke-dasharray="2 1.5"/>
+                        <line x1="24" y1="18" x2="24" y2="34" stroke="#350aff" stroke-width="1.2"/>
+                        <path d="M30 16 L34 11 L37 14 Z" stroke="#350aff" stroke-width="1.5" fill="#ffffff"/>
+                        <circle cx="29" cy="17" r="2.5" fill="#bcf015" stroke="#1e1e1e" stroke-width="1.2"/>
+                        <path d="M14 36 Q 22 28 29 17" stroke="#bcf015" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 2"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">VÒNG BẢNG: 3 SÂN ĐỒNG LOẠT</h3>
+                  <div class="text-xs sm:text-sm text-zinc-700 leading-relaxed font-normal space-y-1">
+                    <p>• <b>Sân 1:</b> 3 trận Bảng A (Đội 1 vs Đội 2 vs Đội 3)</p>
+                    <p>• <b>Sân 2:</b> 3 trận Bảng B (Đội 4 vs Đội 5 vs Đội 6)</p>
+                    <p>• <b>Sân 3:</b> 3 trận Bảng C (Đội 7 vs Đội 8 vs Đội 9)</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-[#350aff]/20 flex items-center justify-between font-mono text-[11px] text-[#350aff] font-bold">
+                <span>ĐỒNG THỜI 3 MẶT SÂN</span>
+                <span>9 TRẬN VÒNG BẢNG</span>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- ========================================== -->
+        <!-- PHASE 03 (Left Branch on Desktop)          -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-[#1e1e1e] border-2 border-[#bcf015] shadow-lg flex items-center justify-center font-mono font-black text-xs text-[#bcf015] group-hover:scale-110 transition-transform">
+            <span>03</span>
+            <span class="absolute -inset-1 rounded-full border border-red-500 animate-ping opacity-35 pointer-events-none"></span>
+          </div>
+
+          <!-- Branch Connector (Desktop Left Branch) -->
+          <div class="hidden lg:block absolute left-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-[#bcf015] pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#bcf015] pointer-events-none"></div>
+
+          <!-- Card Content (Left on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+            <div class="tds-card p-6 sm:p-7 border-[#bcf015] bg-[#bcf015]/15 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-black group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#1e1e1e] text-white font-bold">GIAI ĐOẠN 03</span>
+                <span class="font-bold text-red-600 text-xs sm:text-sm">09:30 ĐÚNG HẠN</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-red-500/30 to-[#bcf015]/40 blur-sm opacity-85 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#1e1e1e] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-red-500 animate-spin pointer-events-none" style="animation-duration: 14s;"></div>
+                    <!-- Animated Vector Icon: Stopwatch 09:30 & Handover -->
+                    <div class="relative z-10 timeline-icon-float">
+                      <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="26" r="17" stroke="#1e1e1e" stroke-width="2.5" fill="#ffffff"/>
+                        <path d="M21 5 H27 V9 H21 Z" fill="#1e1e1e"/>
+                        <line x1="24" y1="3" x2="24" y2="5" stroke="#1e1e1e" stroke-width="2.5"/>
+                        <line x1="36" y1="14" x2="39" y2="11" stroke="#350aff" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="24" cy="26" r="13" stroke="#bcf015" stroke-width="1.5" stroke-dasharray="1 3"/>
+                        <line x1="24" y1="26" x2="16" y2="23" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="24" y1="26" x2="24" y2="36" stroke="#350aff" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="24" cy="26" r="2.5" fill="#bcf015" stroke="#1e1e1e" stroke-width="1.5"/>
+                        <path d="M37 28 L32 35 H36 L34 41 L41 33 H36 Z" fill="#bcf015" stroke="#1e1e1e" stroke-width="1.2" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-red-600 transition-colors mb-2">TRẢ SÂN 3 • DỒN VỀ SÂN 1 & 2</h3>
+                  <p class="text-xs sm:text-sm text-zinc-800 leading-relaxed font-normal">
+                    Hoàn tất trọn vẹn 3 trận Bảng C lúc 09:30. Ban tổ chức bàn giao lại Sân 3 cho ban quản lý. Toàn bộ hội đồng tập trung về Sân 1 và Sân 2 để chuẩn bị các loạt trận loại trực tiếp gay cấn.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-black/10 flex items-center justify-between font-mono text-[11px] text-[#1e1e1e] font-black">
+                <span>⚡ BÀN GIAO SÂN 3 ĐÚNG GIỜ</span>
+                <span class="text-red-600 font-mono">DỒN LỰC SÂN 1 & 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PHASE 04 (Right Branch on Desktop)         -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-white border-2 border-[#350aff] shadow-lg flex items-center justify-center font-mono font-black text-xs text-[#350aff] group-hover:scale-110 transition-transform">
+            <span>04</span>
+          </div>
+
+          <!-- Branch Connector (Desktop Right Branch) -->
+          <div class="hidden lg:block absolute right-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+
+          <!-- Card Content (Right on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+            <div class="tds-card p-6 sm:p-7 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 04</span>
+                <span class="font-bold text-[#350aff] text-xs sm:text-sm">09:40 – 10:30</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#350aff]/25 to-[#bcf015]/30 blur-sm opacity-75 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#bcf015] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-[#bcf015] animate-spin pointer-events-none" style="animation-duration: 20s;"></div>
+                    <!-- Animated Vector Icon: Crossed Rackets Clash -->
+                    <div class="relative z-10 timeline-icon-float-alt">
+                      <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                        <line x1="8" y1="40" x2="24" y2="24" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round"/>
+                        <ellipse cx="32" cy="16" rx="8" ry="11" transform="rotate(45 32 16)" stroke="#350aff" stroke-width="2.5" fill="#ebedf5"/>
+                        <line x1="26" y1="16" x2="38" y2="16" stroke="#350aff" stroke-width="1" stroke-opacity="0.6"/>
+                        <line x1="32" y1="10" x2="32" y2="22" stroke="#350aff" stroke-width="1" stroke-opacity="0.6"/>
+                        <line x1="40" y1="40" x2="24" y2="24" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round"/>
+                        <ellipse cx="16" cy="16" rx="8" ry="11" transform="rotate(-45 16 16)" stroke="#1e1e1e" stroke-width="2.5" fill="#ffffff"/>
+                        <line x1="10" y1="16" x2="22" y2="16" stroke="#1e1e1e" stroke-width="1" stroke-opacity="0.6"/>
+                        <line x1="16" y1="10" x2="16" y2="22" stroke="#1e1e1e" stroke-width="1" stroke-opacity="0.6"/>
+                        <circle cx="24" cy="24" r="5" fill="#bcf015" stroke="#350aff" stroke-width="1.8"/>
+                        <polygon points="24,19 25.5,22.5 29,24 25.5,25.5 24,29 22.5,25.5 19,24 22.5,22.5" fill="#350aff"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">VÒNG BÁN KẾT (SEMI-FINALS)</h3>
+                  <div class="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal space-y-1">
+                    <p>• <b>Sân 1:</b> Nhất Bảng A vs Đội Nhì có thành tích tốt nhất toàn đoàn.</p>
+                    <p>• <b>Sân 2:</b> Nhất Bảng B vs Nhất Bảng C.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[11px] text-zinc-500">
+                <span>THI ĐẤU TẠI SÂN 1 & SÂN 2</span>
+                <span class="text-[#350aff] font-bold">TOP 4 TRANH TÀI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PHASE 05 (Left Branch on Desktop)          -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-[#350aff] border-2 border-[#bcf015] shadow-lg flex items-center justify-center font-mono font-black text-xs text-[#bcf015] group-hover:scale-110 transition-transform">
+            <span>05</span>
+            <span class="absolute -inset-1 rounded-full border border-[#bcf015] animate-ping opacity-40 pointer-events-none"></span>
+          </div>
+
+          <!-- Branch Connector (Desktop Left Branch) -->
+          <div class="hidden lg:block absolute left-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-[#350aff] pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#350aff] pointer-events-none"></div>
+
+          <!-- Card Content (Left on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+            <div class="tds-card p-6 sm:p-7 border-[#350aff] bg-white relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[#350aff] group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 05</span>
+                <span class="font-bold text-[#350aff] text-xs sm:text-sm">10:30 – 11:15</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#350aff]/40 to-[#bcf015]/40 blur-md opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#bcf015] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-[#bcf015] animate-spin pointer-events-none" style="animation-duration: 16s;"></div>
+                    <!-- Animated Vector Icon: Championship Trophy -->
+                    <div class="relative z-10 timeline-icon-float">
+                      <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                        <path d="M14 10 H34 V22 C34 28 29.5 32 24 32 C18.5 32 14 28 14 22 Z" fill="#ebedf5" stroke="#350aff" stroke-width="2.5" stroke-linejoin="round"/>
+                        <line x1="24" y1="32" x2="24" y2="38" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round"/>
+                        <rect x="15" y="38" width="18" height="5" rx="2" fill="#1e1e1e" stroke="#bcf015" stroke-width="1.8"/>
+                        <path d="M14 13 C9 13 8 20 14 23" stroke="#350aff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <path d="M34 13 C39 13 40 20 34 23" stroke="#350aff" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                        <polygon points="24,15 25.5,19.5 30,19.5 26.5,22.5 28,27 24,24 20,27 21.5,22.5 18,19.5 22.5,19.5" fill="#bcf015" stroke="#1e1e1e" stroke-width="1"/>
+                        <polygon points="24,5 25,7.5 27.5,8.5 25,9.5 24,12 23,9.5 20.5,8.5 23,7.5" fill="#350aff"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">🏆 CHUNG KẾT CÚP VÀNG</h3>
+                  <div class="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal space-y-1">
+                    <p>• <b>Sân 1:</b> CHUNG KẾT TRANH NGÔI VÔ ĐỊCH TRIAD CUP 2026.</p>
+                    <p>• <b>Sân 2:</b> Trận tranh Hạng Ba giữa 2 đội thua ở vòng Bán Kết.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[11px] text-[#350aff] font-bold">
+                <span>ĐỈNH CAO DANH GIÁ @ SÂN 1</span>
+                <span>TRANH NGÔI VƯƠNG 🏆</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- PHASE 06 (Right Branch on Desktop)         -->
+        <!-- ========================================== -->
+        <div class="relative flex flex-col lg:flex-row items-center stagger-scale-item">
+          <!-- Tree Trunk Milestone Node -->
+          <div class="absolute left-6 lg:left-1/2 -translate-x-1/2 top-6 z-20 w-11 h-11 rounded-full bg-white border-2 border-zinc-800 shadow-lg flex items-center justify-center font-mono font-black text-xs text-[#1e1e1e] group-hover:scale-110 transition-transform">
+            <span>06</span>
+          </div>
+
+          <!-- Branch Connector (Desktop Right Branch) -->
+          <div class="hidden lg:block absolute right-[calc(50%-2.5rem)] top-11 w-10 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+          <!-- Branch Connector (Mobile) -->
+          <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
+
+          <!-- Card Content (Right on Desktop, Right on Mobile) -->
+          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+            <div class="tds-card p-6 sm:p-7 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
+              <!-- Top Pill & Time -->
+              <div class="flex items-center justify-between font-mono text-xs mb-4">
+                <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 06</span>
+                <span class="font-bold text-zinc-600 text-xs sm:text-sm">11:15 – 11:30</span>
+              </div>
+
+              <!-- Body: Circular Icon Badge + Text -->
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                <!-- Circular Icon Badge (Aesthetic Image 2) -->
+                <div class="relative shrink-0 flex items-center justify-center">
+                  <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-[#350aff]/20 to-[#bcf015]/30 blur-sm opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                  <div class="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-2 border-[#bcf015] bg-white/95 backdrop-blur-md p-3 shadow-md relative flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <!-- Spinning Dashed Orbit Ring -->
+                    <div class="absolute -inset-[3px] rounded-full border border-dashed border-[#bcf015] animate-spin pointer-events-none" style="animation-duration: 24s;"></div>
+                    <!-- Animated Vector Icon: Medals & Celebration Drinks -->
+                    <div class="relative z-10 timeline-icon-float-alt">
+                      <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
+                        <path d="M12 6 L19 22 L15 22 L8 6 Z" fill="#350aff" stroke="#1e1e1e" stroke-width="1.5"/>
+                        <path d="M26 6 L19 22 L23 22 L30 6 Z" fill="#350aff" stroke="#1e1e1e" stroke-width="1.5"/>
+                        <path d="M16 6 L19 14 L22 6 Z" fill="#bcf015"/>
+                        <circle cx="19" cy="27" r="9" fill="#ffffff" stroke="#1e1e1e" stroke-width="2.2"/>
+                        <circle cx="19" cy="27" r="6.5" stroke="#bcf015" stroke-width="2" fill="#ebedf5"/>
+                        <polygon points="19,23.5 20,26 22.5,26 20.5,27.5 21.5,30 19,28.5 16.5,30 17.5,27.5 15.5,26 18,26" fill="#350aff"/>
+                        <path d="M33 24 L37 20 L40 23 L36 27 Z" stroke="#1e1e1e" stroke-width="1.8" fill="#bcf015"/>
+                        <line x1="36" y1="27" x2="34" y2="35" stroke="#1e1e1e" stroke-width="1.8"/>
+                        <line x1="31" y1="35" x2="37" y2="35" stroke="#1e1e1e" stroke-width="1.8" stroke-linecap="round"/>
+                        <circle cx="36" cy="18" r="1.5" fill="#350aff"/>
+                        <circle cx="41" cy="16" r="1" fill="#bcf015"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Block -->
+                <div class="flex-1 text-center sm:text-left">
+                  <h3 class="text-lg sm:text-xl font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">Trao Cúp, Huy Chương & Liên Hoan</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed font-normal">
+                    Lễ trao cúp Vô Địch, Á Quân, Quý Quân và giải Phong Cách. Toàn đoàn di chuyển tới bữa tiệc liên hoan thân mật thắt chặt tình cảm RS × CD.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Footer Tag -->
+              <div class="mt-5 pt-3 border-t border-zinc-100 flex items-center justify-between font-mono text-[11px] text-zinc-500">
+                <span>TIỆC LIÊN HOAN GẮN KẾT</span>
+                <span class="text-[#350aff] font-bold">RS × CD 🍻</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- Phase 3 (Court 3 Checkout) -->
-      <div class="tds-card p-6 border-[#bcf015] bg-[#bcf015]/15 flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-600 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-[#1e1e1e] text-white font-bold">GIAI ĐOẠN 03</span>
-            <span class="font-bold text-red-600">09:30 ĐÚNG HẠN</span>
-          </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">TRẢ SÂN 3 • DỒN VỀ SÂN 1 & 2</h3>
-          <p class="text-xs text-zinc-800 leading-relaxed font-normal">
-            Hoàn tất trọn vẹn 3 trận Bảng C lúc 09:30. Ban tổ chức bàn giao lại Sân 3 cho quản lý. Toàn bộ hội đồng tập trung về Sân 1 và Sân 2.
-          </p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-black/10 font-mono text-[11px] text-[#1e1e1e] font-black">
-          ⚡ BÀN GIAO SÂN 3 ĐÚNG GIỜ
-        </div>
-      </div>
-
-      <!-- Phase 4 -->
-      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 04</span>
-            <span class="font-bold text-[#350aff]">09:40 – 10:30</span>
-          </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">VÒNG BÁN KẾT (SEMI-FINALS)</h3>
-          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
-            • <b>Sân 1:</b> Nhất Bảng A vs Đội Nhì có thành tích tốt nhất.<br>
-            • <b>Sân 2:</b> Nhất Bảng B vs Nhất Bảng C.
-          </p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
-          THI ĐẤU TẠI SÂN 1 & SÂN 2
-        </div>
-      </div>
-
-      <!-- Phase 5 -->
-      <div class="tds-card p-6 border-[#350aff] bg-white flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-[#350aff] text-white font-bold">GIAI ĐOẠN 05</span>
-            <span class="font-bold text-[#350aff]">10:30 – 11:15</span>
-          </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">🏆 CHUNG KẾT CÚP VÀNG</h3>
-          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
-            • <b>Sân 1:</b> CHUNG KẾT TRANH NGÔI VÔ ĐỊCH TRIAD CUP 2026.<br>
-            • <b>Sân 2:</b> Trận tranh Hạng Ba giữa 2 đội thua Bán Kết.
-          </p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-[#350aff] font-bold">
-          ĐỈNH CAO DANH GIÁ @ SÂN 1
-        </div>
-      </div>
-
-      <!-- Phase 6 -->
-      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item">
-        <div>
-          <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-3">
-            <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 font-bold text-[#1e1e1e]">GIAI ĐOẠN 06</span>
-            <span class="font-bold text-zinc-600">11:15 – 11:30</span>
-          </div>
-          <h3 class="text-xl font-black uppercase text-[#1e1e1e] mb-2">Trao Cúp, Huy Chương & Liên Hoan</h3>
-          <p class="text-xs text-zinc-600 leading-relaxed font-normal">
-            Lễ trao cúp Vô Địch, Á Quân, Quý Quân và giải Phong Cách. Toàn đoàn di chuyển tới bữa tiệc liên hoan thân mật thắt chặt tình cảm RS × CD.
-          </p>
-        </div>
-        <div class="mt-6 pt-3 border-t border-zinc-100 font-mono text-[11px] text-zinc-500">
-          TIỆC LIÊN HOAN GẮN KẾT
+      <!-- Tree Terminal Milestone / Base -->
+      <div class="mt-14 text-center relative z-10">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border border-zinc-300 shadow-sm text-xs font-mono font-bold text-zinc-700">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#bcf015] animate-pulse"></span>
+          <span>11:30 // KẾT THÚC THI ĐẤU & DI CHUYỂN TIỆC LIÊN HOAN GẮN KẾT</span>
         </div>
       </div>
 
@@ -1056,7 +1425,7 @@
                     <span id="pin-a2-sub" class="text-white">DU</span>
                   </div>
                   <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Dung (Nữ)</span>
-                  <span id="pin-a2-role" class="text-[8px] font-mono text-[#bcf015]">NỮ CHỦ LỰC</span>
+                  <span id="pin-a2-role" class="text-[8px] font-mono text-[#bcf015]">BÓNG HỒNG</span>
                 </div>
               </div>
             </div>
@@ -1077,7 +1446,7 @@
                     <span id="pin-b2-sub" class="text-white">NG</span>
                   </div>
                   <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Nga (Nữ)</span>
-                  <span id="pin-b2-role" class="text-[8px] font-mono text-[#bcf015]">NỮ CHỦ LỰC</span>
+                  <span id="pin-b2-role" class="text-[8px] font-mono text-[#bcf015]">BÓNG HỒNG</span>
                 </div>
               </div>
               <div class="flex items-center justify-between font-mono text-[9px]">
@@ -1276,12 +1645,12 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
           <!-- Slot 1: Nam Redseed -->
           <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-1">
             <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-rose-600 font-black">REDSEED (NAM 1)</span>
+              <span class="text-rose-600 font-black">REDSEED (NAM)</span>
               <span id="slot-status-1" class="text-zinc-400">CHỜ...</span>
             </div>
             <div class="my-auto text-center py-2">
               <span id="slot-name-1" class="text-base md:text-lg font-black text-[#1e1e1e] block truncate">---</span>
-              <span id="slot-role-1" class="text-[10px] text-zinc-400 mt-1 block">Vợt 1 / Nam Chủ Lực</span>
+              <span id="slot-role-1" class="text-[10px] text-zinc-400 mt-1 block">Vợt Thủ Redseed</span>
             </div>
             <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
               <div id="slot-bar-1" class="h-full bg-rose-500 w-0 transition-all duration-100"></div>
@@ -1291,22 +1660,22 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
           <!-- Slot 2: Nam Cồn Dập -->
           <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-2">
             <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-[#350aff] font-black">CỒN DẬP (NAM 2)</span>
+              <span class="text-[#350aff] font-black">CỒN DẬP (NAM)</span>
               <span id="slot-status-2" class="text-zinc-400">CHỜ...</span>
             </div>
             <div class="my-auto text-center py-2">
               <span id="slot-name-2" class="text-base md:text-lg font-black text-[#1e1e1e] block truncate">---</span>
-              <span id="slot-role-2" class="text-[10px] text-zinc-400 mt-1 block">Vợt 2 / Nam Bổ Trợ</span>
+              <span id="slot-role-2" class="text-[10px] text-zinc-400 mt-1 block">Vợt Thủ Cồn Dập</span>
             </div>
             <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
               <div id="slot-bar-2" class="h-full bg-[#350aff] w-0 transition-all duration-100"></div>
             </div>
           </div>
 
-          <!-- Slot 3: Nữ Chủ Lực -->
+          <!-- Slot 3: Bóng Hồng -->
           <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-3">
             <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-emerald-600 font-black">NỮ CHỦ LỰC</span>
+              <span class="text-emerald-600 font-black">BÓNG HỒNG</span>
               <span id="slot-status-3" class="text-zinc-400">CHỜ...</span>
             </div>
             <div class="my-auto text-center py-2">
@@ -1669,15 +2038,15 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
 
             <div class="space-y-2 font-mono text-xs">
               <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
-                <span class="text-zinc-500 font-bold">NAM 1:</span>
+                <span class="text-zinc-500 font-bold">NAM REDSEED:</span>
                 <span class="font-bold ${sq.isPending && sq.m1.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m1}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
-                <span class="text-zinc-500 font-bold">NAM 2:</span>
+                <span class="text-zinc-500 font-bold">NAM CỒN DẬP:</span>
                 <span class="font-bold ${sq.isPending && sq.m2.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m2}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-[#350aff]/10 border border-[#350aff]/30">
-                <span class="text-[#350aff] font-bold">NỮ CHỦ LỰC:</span>
+                <span class="text-[#350aff] font-bold">BÓNG HỒNG:</span>
                 <span class="font-bold text-[#1e1e1e]">${sq.f}</span>
               </div>
             </div>
@@ -1904,16 +2273,16 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
       if (poolLabel) poolLabel.innerText = team.pool;
       if (stepCounter) stepCounter.innerText = `${teamIdx + 1} / 9 ĐỘI`;
 
-      resetSlotBox(1, "REDSEED (NAM 1)", "ĐANG QUAY...");
-      resetSlotBox(2, "CỒN DẬP (NAM 2)", "CHỜ LƯỢT...");
-      resetSlotBox(3, "NỮ CHỦ LỰC", "CHỜ LƯỢT...");
+      resetSlotBox(1, "REDSEED (NAM)", "ĐANG QUAY...");
+      resetSlotBox(2, "CỒN DẬP (NAM)", "CHỜ LƯỢT...");
+      resetSlotBox(3, "BÓNG HỒNG", "CHỜ LƯỢT...");
 
       spinSingleSlot(1, rsMen, team.m1, () => {
         if (!isDrawing) return;
-        resetSlotBox(2, "CỒN DẬP (NAM 2)", "ĐANG QUAY...");
+        resetSlotBox(2, "CỒN DẬP (NAM)", "ĐANG QUAY...");
         spinSingleSlot(2, cdMen, team.m2, () => {
           if (!isDrawing) return;
-          resetSlotBox(3, "NỮ CHỦ LỰC", "ĐANG QUAY...");
+          resetSlotBox(3, "BÓNG HỒNG", "ĐANG QUAY...");
           const allWomen = [...rsWomen, ...cdWomen];
           spinSingleSlot(3, allWomen, team.f, () => {
             if (!isDrawing) return;
@@ -2219,8 +2588,8 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
           title: "🏆 CHUNG KẾT CÚP VÀNG: ĐỈNH CAO TRIAD 2026",
           desc: "Trận chiến danh giá nhất giữa 2 Đội Xuất Sắc Nhất. Tranh chấp chiếc Cúp Vô Địch và Huy Chương Vàng của giải đấu Collab RS × CD.",
           note: "Toàn bộ 27 VĐV và cổ động viên tập trung quanh khán đài Sân 1 chứng kiến thời khắc đăng quang.",
-          squadA: { id: "FINALIST 1", m1: "Nam 1 (BK1)", m2: "Nam 2 (BK1)", f: "Nữ Chủ Lực (BK1)" },
-          squadB: { id: "FINALIST 2", m1: "Nam 1 (BK2)", m2: "Nam 2 (BK2)", f: "Nữ Chủ Lực (BK2)" }
+          squadA: { id: "FINALIST 1", m1: "Nam 1 (BK1)", m2: "Nam 2 (BK1)", f: "Bóng Hồng (BK1)" },
+          squadB: { id: "FINALIST 2", m1: "Nam 1 (BK2)", m2: "Nam 2 (BK2)", f: "Bóng Hồng (BK2)" }
         }
       ];
 
@@ -2334,29 +2703,29 @@ Anh chị em vui lòng có mặt đúng 07:00 (mỗi người tự chuẩn bị 
       if (currentActiveMatch === 0) {
         // TRẬN 1: Đôi Nam Nữ (Nam 1 + Nữ) | Nam 2 nghỉ
         a1 = { name: sqA.m1, role: "NAM 1", isFemale: false };
-        a2 = { name: sqA.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        a2 = { name: sqA.f, role: "BÓNG HỒNG", isFemale: true };
         aBench = `${sqA.m2} (Nghỉ hồi phục hiệp 1 chuẩn bị Đôi Nam)`;
 
         b1 = { name: sqB.m1, role: "NAM 1", isFemale: false };
-        b2 = { name: sqB.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        b2 = { name: sqB.f, role: "BÓNG HỒNG", isFemale: true };
         bBench = `${sqB.m2} (Nghỉ hồi phục hiệp 1 chuẩn bị Đôi Nam)`;
       } else if (currentActiveMatch === 1) {
         // TRẬN 2: Đôi Nam (Nam 1 + Nam 2) | Nữ nghỉ
         a1 = { name: sqA.m1, role: "NAM 1", isFemale: false };
         a2 = { name: sqA.m2, role: "NAM 2", isFemale: false };
-        aBench = `${sqA.f} (Nữ nghỉ hiệp 2 theo dõi đối thủ)`;
+        aBench = `${sqA.f} (Bóng hồng nghỉ hiệp 2 theo dõi đối thủ)`;
 
         b1 = { name: sqB.m1, role: "NAM 1", isFemale: false };
         b2 = { name: sqB.m2, role: "NAM 2", isFemale: false };
-        bBench = `${sqB.f} (Nữ nghỉ hiệp 2 theo dõi đối thủ)`;
+        bBench = `${sqB.f} (Bóng hồng nghỉ hiệp 2 theo dõi đối thủ)`;
       } else {
         // TRẬN 3: Đôi Nam Nữ (Nam 2 + Nữ) | Nam 1 nghỉ
         a1 = { name: sqA.m2, role: "NAM 2", isFemale: false };
-        a2 = { name: sqA.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        a2 = { name: sqA.f, role: "BÓNG HỒNG", isFemale: true };
         aBench = `${sqA.m1} (Nghỉ hiệp 3 sau 2 set cống hiến)`;
 
         b1 = { name: sqB.m2, role: "NAM 2", isFemale: false };
-        b2 = { name: sqB.f, role: "NỮ CHỦ LỰC", isFemale: true };
+        b2 = { name: sqB.f, role: "BÓNG HỒNG", isFemale: true };
         bBench = `${sqB.m1} (Nghỉ hiệp 3 sau 2 set cống hiến)`;
       }
 
@@ -2609,6 +2978,30 @@ Anh chị em vui lòng có mặt đúng 07:00 ngày ${currentEventDate} (mỗi n
       });
     }
 
+    // ----------------------------------------------------
+    // TIMELINE TREE SCROLL PROGRESS TRACKER
+    // ----------------------------------------------------
+    function initTimelineTreeProgress() {
+      const container = document.getElementById('timeline-tree-container');
+      const progressBar = document.getElementById('timeline-tree-progress');
+      if (!container || !progressBar) return;
+
+      function updateProgress() {
+        const rect = container.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        // Calculation starts when container reaches 75% down viewport
+        const startOffset = windowH * 0.75;
+        const current = startOffset - rect.top;
+        const total = rect.height;
+        let progress = Math.max(0, Math.min(1, current / total));
+        progressBar.style.height = `${(progress * 100).toFixed(1)}%`;
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress, { passive: true });
+      updateProgress();
+    }
+
     function initScrollTriggerDominoes() {
       if (!window.gsap || !window.ScrollTrigger) return;
       gsap.registerPlugin(ScrollTrigger);
@@ -2647,6 +3040,7 @@ Anh chị em vui lòng có mặt đúng 07:00 ngày ${currentEventDate} (mỗi n
     initHero3DShuttlecock();
     initCourt3DGyro();
     initScrollTriggerDominoes();
+    initTimelineTreeProgress();
   </script>
 </body>
 </html>
