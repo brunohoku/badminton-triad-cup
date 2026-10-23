@@ -1235,18 +1235,18 @@
       <!-- Filter Controls (TDS Pill Buttons) -->
       <div class="flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
         <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (27)</button>
-        <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (13)</button>
+        <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (14)</button>
         <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (12)</button>
       </div>
     </div>
 
-    <!-- Notice for 2 Missing Men -->
+    <!-- Notice for 1 Missing Man -->
     <div class="mb-8 p-4 rounded-xl bg-amber-50 border border-amber-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-amber-900">
       <div class="flex items-center gap-3">
         <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-        <span><b>THÔNG BÁO NHÂN SỰ:</b> Đã có 16 Nam + 9 Nữ (25 VĐV chính thức). Đang chờ <b>2 Slot Nam bổ sung</b> để chốt trọn vẹn 18 Nam (9 Đội).</span>
+        <span><b>THÔNG BÁO NHÂN SỰ:</b> Đã có 17 Nam + 9 Nữ (26 VĐV chính thức • Team Redseed đã đủ 9 Nam với sự bổ sung của <b>Gia Huy</b>). Đang chờ <b>1 Slot Nam bổ sung (Cồn Dập)</b> để chốt trọn vẹn 18 Nam (9 Đội).</span>
       </div>
-      <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-900 font-bold whitespace-nowrap">ĐỘI 09 CHỜ BỔ SUNG</span>
+      <span class="px-3 py-1 rounded-full bg-amber-200 text-amber-900 font-bold whitespace-nowrap">ĐỘI 09 CÒN 1 SLOT</span>
     </div>
 
     <!-- Athletes Grid (White Cards TDS Style With Stagger Scale) -->
@@ -1551,9 +1551,9 @@
 • Sân 3 (2H, 13:30–15:30): Bảng C (Đội 7-9) - [Hoàn tất và trả sân đúng 15:30]
 
 👥 DANH SÁCH 27 CHIẾN BINH RS × CD:
-• REDSEED: Hiếu Trưởng Thôn, Vũ, Chiến Door, Xuân Dị, Trọng Hiệp, Trọng Khou, a Hoàng, a Tuấn Bin, Dung, Nga, Tường Vy, Thảo, My.
-• CỒN DẬP: Phúc Khánh, Thanh Nam, Lý Đức, Đức Lưu, Văn Thọ, Văn Vĩnh Chiến Thắng, Văn Vĩnh Minh Chiến, Thành Ngô, Mai Hương Sushi, Thuỷ Soo, Khánh Huyền, Thanh Hà.
-(Hiện có 16 Nam + 2 Slot Nam bổ sung Đội 09 + 9 Nữ đầy đủ).
+• REDSEED (14 VĐV): Hiếu Trưởng Thôn, Vũ, Chiến Door, Xuân Dị, Trọng Hiệp, Trọng Khou, a Hoàng, a Tuấn Bin, Gia Huy, Dung, Nga, Tường Vy, Thảo, My.
+• CỒN DẬP (12 VĐV + 1 Chờ): Phúc Khánh, Thanh Nam, Lý Đức, Đức Lưu, Văn Thọ, Văn Vĩnh Chiến Thắng, Văn Vĩnh Minh Chiến, Thành Ngô, Mai Hương Sushi, Thuỷ Soo, Khánh Huyền, Thanh Hà.
+(Hiện có 17 Nam + 1 Slot Nam bổ sung Đội 09 + 9 Nữ đầy đủ).
 
 Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị đồng phục thể thao), khởi động và chụp ảnh lưu niệm toàn đoàn! 🏸🔥
       </textarea>
@@ -1890,20 +1890,19 @@ Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị 
     // ----------------------------------------------------
     // 5. OFFICIAL ATHLETES RAW DATA
     // ----------------------------------------------------
-    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Chiến Door", "Xuân Dị", "Trọng Hiệp", "Trọng Khou", "a Hoàng", "a Tuấn Bin"];
+    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Chiến Door", "Xuân Dị", "Trọng Hiệp", "Trọng Khou", "a Hoàng", "a Tuấn Bin", "Gia Huy"];
     const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô"];
-    const pendingMen = ["[Slot Nam Bổ Sung 1]", "[Slot Nam Bổ Sung 2]"];
+    const pendingMen = ["[Slot Nam Bổ Sung (CD)]"];
     const rsWomen = ["Dung", "Nga", "Tường Vy", "Thảo", "My"];
     const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà"];
 
     // Roster of all 27 Athletes for Directory
     const athletesDirectory = [
       ...rsMen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NAM", num: i + 1 })),
-      ...rsWomen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true, num: i + 9 })),
-      ...cdMen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM", num: i + 14 })),
-      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 22 })),
-      { name: pendingMen[0], org: "CHỜ BỔ SUNG", orgKey: "pending", role: "NAM", isPending: true, num: 26 },
-      { name: pendingMen[1], org: "CHỜ BỔ SUNG", orgKey: "pending", role: "NAM", isPending: true, num: 27 }
+      ...rsWomen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true, num: i + 10 })),
+      ...cdMen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM", num: i + 15 })),
+      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 23 })),
+      { name: pendingMen[0], org: "CỒN DẬP (CHỜ BỔ SUNG)", orgKey: "pending", role: "NAM", isPending: true, num: 27 }
     ];
 
     function renderAthletes(filter = 'all') {
@@ -1912,7 +1911,8 @@ Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị 
 
       let count = 0;
       athletesDirectory.forEach((ath) => {
-        if (filter !== 'all' && ath.orgKey !== filter && ath.orgKey !== 'pending') return;
+        if (filter === 'rs' && ath.orgKey !== 'rs') return;
+        if (filter === 'cd' && ath.orgKey !== 'cd' && ath.orgKey !== 'pending') return;
 
         const card = document.createElement('div');
         card.className = "tds-card p-4 flex flex-col justify-between stagger-scale-item";
@@ -1979,14 +1979,13 @@ Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị 
 
       for (let i = 0; i < 9; i++) {
         const teamNum = `ĐỘI 0${i + 1}`;
-        let m1, m2, isPending = false;
+        const m1 = `${menRS[i]} (RS)`;
+        let m2, isPending = false;
 
         if (i < 8) {
-          m1 = `${menRS[i]} (RS)`;
           m2 = `${menCD[i]} (CD)`;
         } else {
-          m1 = pendingMen[0];
-          m2 = pendingMen[1];
+          m2 = pendingMen[0];
           isPending = true;
         }
 
@@ -2001,7 +2000,7 @@ Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị 
           m2: m2,
           f: f,
           isPending: isPending,
-          base: isPending ? "CHỜ 2 NAM BỔ SUNG" : "COLLAB RS × CD"
+          base: isPending ? "CHỜ 1 NAM CD" : "COLLAB RS × CD"
         });
       }
       return newSquads;
@@ -2270,7 +2269,7 @@ Anh chị em vui lòng có mặt đúng 13:00 (mỗi người tự chuẩn bị 
       spinSingleSlot(1, rsMen, team.m1, () => {
         if (!isDrawing) return;
         resetSlotBox(2, "CỒN DẬP (NAM)", "ĐANG QUAY...");
-        spinSingleSlot(2, cdMen, team.m2, () => {
+        spinSingleSlot(2, [...cdMen, ...pendingMen], team.m2, () => {
           if (!isDrawing) return;
           resetSlotBox(3, "BÓNG HỒNG", "ĐANG QUAY...");
           const allWomen = [...rsWomen, ...cdWomen];
