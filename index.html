@@ -1207,7 +1207,7 @@
         <div class="flex items-center gap-1 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
           <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-3.5 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (27)</button>
           <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (14)</button>
-          <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (12)</button>
+          <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (13)</button>
         </div>
 
         <!-- View Switcher (Cards / List) -->
@@ -1222,13 +1222,13 @@
       </div>
     </div>
 
-    <!-- Notice for 1 Missing Man -->
-    <div class="mb-8 p-3.5 rounded-xl bg-amber-50 border border-amber-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-amber-900 shadow-sm">
+    <!-- Notice for Roster Completion -->
+    <div class="mb-8 p-3.5 rounded-xl bg-[#bcf015]/20 border border-[#bcf015] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-[#1e1e1e] shadow-sm">
       <div class="flex items-center gap-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
-        <span><b>NHÂN SỰ:</b> 17 Nam + 9 Nữ (26 VĐV chính thức • RS đủ 9 Nam với <b>Gia Huy</b>). Đang chờ <b>1 Slot Nam bổ sung (CD)</b> cho Đội 09.</span>
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+        <span><b>CHỐT ĐỦ ĐỘI HÌNH:</b> 18 Nam + 9 Nữ = <b>27 VĐV chính thức</b> (REDSEED 14 & CỒN DẬP 13 với <b>Phạm Hậu</b> vừa bổ sung). Sẵn sàng bốc thăm 9 Đội Triad!</span>
       </div>
-      <span class="px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-900 font-bold whitespace-nowrap text-[11px]">ĐỘI 09 CÒN 1 SLOT</span>
+      <span class="px-2.5 py-0.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black whitespace-nowrap text-[11px]">✓ ĐỦ 27 VĐV (100%)</span>
     </div>
 
     <!-- Athletes Grid / List Container -->
@@ -1862,8 +1862,7 @@
     // 5. OFFICIAL ATHLETES RAW DATA & VIEW ENGINES
     // ----------------------------------------------------
     const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Chiến Door", "Xuân Dị", "Trọng Hiệp", "Trọng Khou", "a Hoàng", "a Tuấn Bin", "Gia Huy"];
-    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô"];
-    const pendingMen = ["[Slot Nam Bổ Sung (CD)]"];
+    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu"];
     const rsWomen = ["Dung", "Nga", "Tường Vy", "Thảo", "My"];
     const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà"];
 
@@ -1872,15 +1871,14 @@
       ...rsMen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NAM", num: i + 1 })),
       ...rsWomen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true, num: i + 10 })),
       ...cdMen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM", num: i + 15 })),
-      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 23 })),
-      { name: pendingMen[0], org: "CỒN DẬP (CHỜ BỔ SUNG)", orgKey: "pending", role: "NAM", isPending: true, num: 27 }
+      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 24 }))
     ];
 
     let currentAthleteFilter = 'all';
     let athleteViewMode = 'grid'; // 'grid' or 'list'
 
     function getAthleteInitials(name) {
-      if (!name || name.includes('Slot')) return '✦';
+      if (!name) return '✦';
       const clean = name.replace(/^(a\s+|chị\s+)/i, '').trim();
       const parts = clean.split(/\s+/);
       if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
@@ -1895,7 +1893,7 @@
 
       const filtered = athletesDirectory.filter(ath => {
         if (filter === 'rs') return ath.orgKey === 'rs';
-        if (filter === 'cd') return ath.orgKey === 'cd' || ath.orgKey === 'pending';
+        if (filter === 'cd') return ath.orgKey === 'cd';
         return true;
       });
 
@@ -2016,14 +2014,7 @@
       for (let i = 0; i < 9; i++) {
         const teamNum = `ĐỘI 0${i + 1}`;
         const m1 = `${menRS[i]} (RS)`;
-        let m2, isPending = false;
-
-        if (i < 8) {
-          m2 = `${menCD[i]} (CD)`;
-        } else {
-          m2 = pendingMen[0];
-          isPending = true;
-        }
+        const m2 = `${menCD[i]} (CD)`;
 
         const femaleName = womenAll[i];
         const isRSWoman = rsWomen.includes(femaleName);
@@ -2035,8 +2026,8 @@
           m1: m1,
           m2: m2,
           f: f,
-          isPending: isPending,
-          base: isPending ? "CHỜ 1 NAM CD" : "COLLAB RS × CD"
+          isPending: false,
+          base: "COLLAB RS × CD"
         });
       }
       return newSquads;
@@ -2310,7 +2301,7 @@
       spinSingleSlot(1, rsMen, team.m1, () => {
         if (!isDrawing) return;
         resetSlotBox(2, "CỒN DẬP (NAM)", "ĐANG QUAY...");
-        spinSingleSlot(2, [...cdMen, ...pendingMen], team.m2, () => {
+        spinSingleSlot(2, cdMen, team.m2, () => {
           if (!isDrawing) return;
           resetSlotBox(3, "BÓNG HỒNG", "ĐANG QUAY...");
           const allWomen = [...rsWomen, ...cdWomen];
