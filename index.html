@@ -1190,19 +1190,17 @@
   <!-- ========================================== -->
   <section id="athletes-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-      <div>
-        <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">03 // DANH SÁCH VẬN ĐỘNG VIÊN</div>
-        <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
-          27 VẬN ĐỘNG VIÊN
-        </h2>
-        <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal">
-          Danh sách chính thức cập nhật từ ban đăng ký của <b>REDSEED</b> và <b>CỒN DẬP</b>.
-        </p>
-      </div>
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">03 // DANH SÁCH VẬN ĐỘNG VIÊN</div>
+      <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+        27 VẬN ĐỘNG VIÊN
+      </h2>
+      <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal">
+        Danh sách chính thức cập nhật từ ban đăng ký của <b>REDSEED</b> và <b>CỒN DẬP</b>.
+      </p>
 
       <!-- Controls: Filters + View Mode Switcher -->
-      <div class="flex flex-wrap items-center gap-3">
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
         <!-- Filter Controls (TDS Pill Buttons) -->
         <div class="flex items-center gap-1 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
           <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-3.5 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (27)</button>
@@ -1243,24 +1241,22 @@
   <!-- ========================================== -->
   <section id="squads-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-      <div>
-        <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">04 // ĐỘI HÌNH COLLAB</div>
-        <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
-          9 ĐỘI HÌNH TRIAD COLLAB
-        </h2>
-        <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal max-w-2xl">
-          Mỗi đội gồm <b>1 Nam Redseed + 1 Nam Cồn Dập + 1 Nữ</b> (ghép cặp giao hữu Collab công bằng). Bấm nút bên phải để bốc thăm ngẫu nhiên trực tiếp!
-        </p>
-      </div>
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">04 // ĐỘI HÌNH COLLAB</div>
+      <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
+        9 ĐỘI HÌNH TRIAD COLLAB
+      </h2>
+      <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal max-w-2xl mx-auto">
+        Mỗi đội gồm <b>1 Nam Redseed + 1 Nam Cồn Dập + 1 Nữ</b> (ghép cặp giao hữu Collab công bằng). Bấm nút bên dưới để bốc thăm ngẫu nhiên trực tiếp!
+      </p>
 
-      <!-- Randomize Controls (TDS Lime Action Hub) -->
-      <div class="flex items-center gap-3">
-        <button onclick="randomizeSquads()" class="px-5 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-xs font-mono tracking-wider uppercase transition-all shadow-md flex items-center gap-2 group">
+      <!-- Randomize Controls (TDS Lime Action Hub - Centered) -->
+      <div class="mt-5 flex items-center justify-center gap-3">
+        <button onclick="randomizeSquads()" class="px-5 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-xs font-mono tracking-wider uppercase transition-all shadow-md flex items-center gap-2 group cursor-pointer">
           <span id="btn-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
           <span>BỐC THĂM ĐỘI HÌNH</span>
         </button>
-        <button onclick="resetDefaultSquads()" class="px-4 py-3 rounded-full bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-600 font-mono text-xs font-bold transition-all" title="Khôi phục đội hình mặc định">
+        <button onclick="resetDefaultSquads()" class="px-4 py-3 rounded-full bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-600 font-mono text-xs font-bold transition-all cursor-pointer" title="Khôi phục đội hình mặc định">
           ↺ ĐẶT LẠI
         </button>
       </div>
