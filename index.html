@@ -84,6 +84,233 @@
     }
 
     /* ======================================================== */
+    /* HERO BACKGROUND ANALOG & DIGITAL GLITCH ENGINE           */
+    /* ======================================================== */
+    .hero-glitch-wrapper {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Video with Film Glitch Keyframe Animation */
+    .hero-glitch-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: grayscale(100%) contrast(140%) brightness(95%);
+      transform: scale(1.05);
+      animation: heroGlitchJitter 5.5s infinite ease-in-out;
+      will-change: transform, filter, opacity;
+      transition: opacity 0.5s ease;
+    }
+
+    @keyframes heroGlitchJitter {
+      0%, 80%, 100% {
+        transform: scale(1.05) translate(0, 0);
+        filter: grayscale(100%) contrast(140%) brightness(95%);
+        opacity: 0.35;
+      }
+      81% {
+        transform: scale(1.065) translate(-4px, 2px) skewX(-0.8deg);
+        filter: grayscale(75%) contrast(200%) brightness(125%) drop-shadow(4px 0 #350aff);
+        opacity: 0.55;
+      }
+      82% {
+        transform: scale(1.045) translate(5px, -3px) skewX(1deg);
+        filter: grayscale(60%) contrast(230%) brightness(135%) drop-shadow(-5px 0 #bcf015);
+        opacity: 0.65;
+      }
+      83% {
+        transform: scale(1.07) translate(-3px, -1px);
+        filter: grayscale(90%) contrast(170%) brightness(85%);
+        opacity: 0.25;
+      }
+      84% {
+        transform: scale(1.055) translate(4px, 2px) skewX(-0.5deg);
+        filter: grayscale(80%) contrast(210%) brightness(120%) drop-shadow(4px 0 #350aff);
+        opacity: 0.58;
+      }
+      85% {
+        transform: scale(1.05) translate(0, 0);
+        filter: grayscale(100%) contrast(140%) brightness(95%);
+        opacity: 0.35;
+      }
+      92% {
+        transform: scale(1.05) translate(0, 0);
+        opacity: 0.35;
+      }
+      93% {
+        transform: scale(1.06) translate(-5px, 1px) skewX(0.7deg);
+        filter: grayscale(50%) contrast(220%) brightness(130%) drop-shadow(-4px 0 #bcf015) drop-shadow(3px 0 #350aff);
+        opacity: 0.62;
+      }
+      94% {
+        transform: scale(1.04) translate(3px, -2px);
+        filter: grayscale(95%) contrast(160%);
+        opacity: 0.38;
+      }
+      95% {
+        transform: scale(1.05) translate(0, 0);
+        filter: grayscale(100%) contrast(140%) brightness(95%);
+        opacity: 0.35;
+      }
+    }
+
+    /* Glitch Slice Tearing Overlay */
+    .hero-glitch-slice {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      animation: heroSliceTear 5.5s infinite ease-in-out;
+      will-change: clip-path, transform, opacity;
+    }
+
+    @keyframes heroSliceTear {
+      0%, 80%, 86%, 92%, 96%, 100% {
+        opacity: 0;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+      }
+      81% {
+        opacity: 0.55;
+        clip-path: inset(14% 0 68% 0);
+        transform: translateX(-14px);
+        background: rgba(53, 10, 255, 0.35);
+      }
+      82% {
+        opacity: 0.65;
+        clip-path: inset(54% 0 26% 0);
+        transform: translateX(16px);
+        background: rgba(188, 240, 21, 0.4);
+      }
+      83% {
+        opacity: 0.4;
+        clip-path: inset(84% 0 6% 0);
+        transform: translateX(-8px);
+        background: rgba(255, 255, 255, 0.5);
+      }
+      84% {
+        opacity: 0.55;
+        clip-path: inset(32% 0 52% 0);
+        transform: translateX(12px);
+        background: rgba(53, 10, 255, 0.3);
+      }
+      93% {
+        opacity: 0.65;
+        clip-path: inset(8% 0 76% 0);
+        transform: translateX(-18px);
+        background: rgba(53, 10, 255, 0.35);
+      }
+      94% {
+        opacity: 0.55;
+        clip-path: inset(66% 0 16% 0);
+        transform: translateX(14px);
+        background: rgba(188, 240, 21, 0.45);
+      }
+    }
+
+    /* CRT Scanlines & Electron Beam */
+    .hero-scanlines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(30, 30, 30, 0.08) 0px,
+        rgba(30, 30, 30, 0.08) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      mix-blend-mode: multiply;
+      opacity: 0.75;
+    }
+
+    .hero-scanline-beam {
+      position: absolute;
+      inset-x: 0;
+      height: 140px;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(53, 10, 255, 0.09) 40%,
+        rgba(188, 240, 21, 0.14) 80%,
+        transparent 100%
+      );
+      animation: heroScanBeam 6.5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heroScanBeam {
+      0% { top: -160px; }
+      100% { top: 100%; }
+    }
+
+    /* Interactive Glitch Flash Burst */
+    .hero-glitch-wrapper.hero-glitch-burst .hero-glitch-video {
+      animation: heroBurstFlash 0.45s ease-out !important;
+    }
+    .hero-glitch-wrapper.hero-glitch-burst .hero-glitch-slice {
+      animation: heroBurstSlice 0.45s ease-out !important;
+    }
+
+    @keyframes heroBurstFlash {
+      0% {
+        transform: scale(1.08) translate(-8px, 4px) skewX(-1.5deg);
+        filter: grayscale(30%) contrast(280%) brightness(140%) drop-shadow(8px 0 #350aff) drop-shadow(-8px 0 #bcf015);
+        opacity: 0.85;
+      }
+      25% {
+        transform: scale(1.04) translate(8px, -5px) skewX(2deg);
+        filter: grayscale(20%) contrast(300%) brightness(135%) drop-shadow(-10px 0 #350aff);
+        opacity: 0.9;
+      }
+      50% {
+        transform: scale(1.07) translate(-5px, 3px);
+        filter: grayscale(70%) contrast(220%) brightness(115%);
+        opacity: 0.65;
+      }
+      75% {
+        transform: scale(1.05) translate(3px, -1px);
+        filter: grayscale(85%) contrast(170%);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.05) translate(0, 0);
+        filter: grayscale(100%) contrast(140%) brightness(95%);
+        opacity: 0.35;
+      }
+    }
+
+    @keyframes heroBurstSlice {
+      0% {
+        opacity: 0.75;
+        clip-path: inset(22% 0 50% 0);
+        transform: translateX(-22px);
+        background: rgba(53, 10, 255, 0.45);
+      }
+      40% {
+        opacity: 0.85;
+        clip-path: inset(58% 0 15% 0);
+        transform: translateX(25px);
+        background: rgba(188, 240, 21, 0.55);
+      }
+      80% {
+        opacity: 0.4;
+        clip-path: inset(5% 0 82% 0);
+        transform: translateX(-12px);
+        background: rgba(255, 255, 255, 0.6);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(0);
+        clip-path: inset(0 0 0 0);
+      }
+    }
+
+    /* ======================================================== */
     /* AWWWARDS ELEGANT SCALE-UP (CHOREOGRAPHED ~150MS DELAY)   */
     /* ======================================================== */
     .scale-scroll-section {
@@ -495,15 +722,44 @@
   <section id="hero-section" class="relative w-full overflow-hidden min-h-screen flex flex-col justify-center select-none scale-scroll-section is-in-view">
     
     <!-- Film Grain Glitch Background Video Canvas -->
-    <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-      <video id="hero-bg-video" autoplay loop muted playsinline class="w-full h-full object-cover opacity-25 filter grayscale contrast-125 brightness-95 scale-105 pointer-events-none transition-opacity duration-1000"></video>
-      <!-- Atmospheric Gradients: Vignette & seamless blend into background #ebedf5 -->
-      <div class="absolute inset-0 bg-gradient-to-b from-[#ebedf5]/60 via-transparent to-[#ebedf5]"></div>
-      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#ebedf5_85%)]"></div>
+    <div class="hero-glitch-wrapper">
+      <!-- 1. The HLS Film-Grain Glitch Video with CSS Jitter & Glitch Flash -->
+      <video id="hero-bg-video" autoplay loop muted playsinline class="hero-glitch-video pointer-events-none"></video>
+      
+      <!-- 2. Glitch Slice Distortion Overlay (Horizontal RGB Tearing) -->
+      <div class="hero-glitch-slice"></div>
+      
+      <!-- 3. CRT Scanlines & Moving Electron Beam -->
+      <div class="hero-scanlines">
+        <div class="hero-scanline-beam"></div>
+      </div>
+
+      <!-- 4. Atmospheric Vignette & Gradients (Maintains Readability & Blends Edges) -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#ebedf5]/70 via-transparent to-[#ebedf5]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,#ebedf5_88%)]"></div>
     </div>
 
     <!-- Center Typography & Interactive Emblem -->
     <div class="relative z-10 pt-24 sm:pt-28 pb-16 px-4 md:px-8 my-auto py-4 md:py-6 flex flex-col items-center text-center max-w-6xl mx-auto w-full">
+
+      <!-- Editorial Broadcast HUD Strip (Top) -->
+      <div class="w-full flex items-center justify-between mb-4 px-2 font-mono text-[10px] text-zinc-500 uppercase tracking-widest pointer-events-none select-none">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+          <span class="font-bold text-zinc-700">REC [●] 00:13:00</span>
+          <span class="hidden sm:inline text-zinc-400">|</span>
+          <span class="hidden sm:inline">LIVE HLS 4K GLITCH FEED</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[#350aff] font-bold">SIGNAL: OPTIMAL</span>
+          <span class="inline-flex gap-0.5 items-end h-2.5">
+            <span class="w-0.5 h-1 bg-[#350aff] animate-pulse"></span>
+            <span class="w-0.5 h-2.5 bg-[#bcf015]"></span>
+            <span class="w-0.5 h-1.5 bg-[#350aff]"></span>
+            <span class="w-0.5 h-2 bg-[#bcf015]"></span>
+          </span>
+        </div>
+      </div>
       
       <!-- Category Pill -->
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-mono text-xs font-black tracking-widest uppercase shadow-sm mb-6">
@@ -610,6 +866,15 @@
             <span>⚡ BẤM ĐỂ SMASH</span>
             <span>➜</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Editorial Broadcast HUD Strip (Bottom) -->
+      <div class="w-full flex items-center justify-between mt-8 px-2 font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-widest pointer-events-none select-none">
+        <div>COORDINATES: 10°46'37"N 106°41'52"E • SÂN LIÊN HOÀN</div>
+        <div class="flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#bcf015]"></span>
+          <span>TRIAD CUP 2026 // GLITCH ENGINE</span>
         </div>
       </div>
 
@@ -2231,6 +2496,7 @@
     }
 
     function randomizeSquads() {
+      triggerHeroGlitchBurst();
       startCeremonialRandomDraw();
     }
 
@@ -2938,6 +3204,7 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
     }
 
     function triggerHeroSmash() {
+      triggerHeroGlitchBurst();
       const shuttle = document.getElementById('hero-3d-shuttlecock');
       if (!shuttle) return;
 
@@ -3069,8 +3336,19 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
     }
 
     // ----------------------------------------------------
-    // FILM-GRAIN GLITCH BACKGROUND VIDEO (HLS.JS + NATIVE HLS)
+    // HERO GLITCH ENGINE (VIVID ANALOG & DIGITAL GLITCH FX)
     // ----------------------------------------------------
+    function triggerHeroGlitchBurst() {
+      const wrapper = document.querySelector('.hero-glitch-wrapper');
+      if (!wrapper) return;
+      wrapper.classList.remove('hero-glitch-burst');
+      void wrapper.offsetWidth; // Force CSS reflow to re-trigger keyframe animation
+      wrapper.classList.add('hero-glitch-burst');
+      setTimeout(() => {
+        wrapper.classList.remove('hero-glitch-burst');
+      }, 480);
+    }
+
     function initHeroGlitchVideo() {
       const video = document.getElementById('hero-bg-video');
       if (!video) return;
@@ -3133,6 +3411,26 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
       window.addEventListener('click', resumePlay, { once: true, passive: true });
       window.addEventListener('touchstart', resumePlay, { once: true, passive: true });
       window.addEventListener('scroll', resumePlay, { once: true, passive: true });
+
+      // Periodic automatic cyber glitch burst every 7.5 seconds
+      setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          triggerHeroGlitchBurst();
+        }
+      }, 7500);
+
+      // Interactive mousemove glitch trigger across hero banner
+      const heroSec = document.getElementById('hero-section');
+      if (heroSec) {
+        let lastGlitchMove = 0;
+        heroSec.addEventListener('mousemove', () => {
+          const now = Date.now();
+          if (now - lastGlitchMove > 2800) {
+            lastGlitchMove = now;
+            triggerHeroGlitchBurst();
+          }
+        }, { passive: true });
+      }
     }
 
     // Initial calls
