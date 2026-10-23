@@ -1204,8 +1204,8 @@
         <!-- Filter Controls (TDS Pill Buttons) -->
         <div class="flex items-center gap-1 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
           <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-3.5 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (27)</button>
-          <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (14)</button>
-          <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (13)</button>
+          <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (13)</button>
+          <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (14)</button>
         </div>
 
         <!-- View Switcher (Cards / List) -->
@@ -1224,7 +1224,7 @@
     <div class="mb-8 p-3.5 rounded-xl bg-[#bcf015]/20 border border-[#bcf015] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-[#1e1e1e] shadow-sm">
       <div class="flex items-center gap-2.5">
         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-        <span><b>CHỐT ĐỦ ĐỘI HÌNH:</b> 18 Nam + 9 Nữ = <b>27 VĐV chính thức</b> (REDSEED 14 & CỒN DẬP 13 với <b>Phạm Hậu</b> vừa bổ sung). Sẵn sàng bốc thăm 9 Đội Triad!</span>
+        <span><b>CHỐT ĐỦ ĐỘI HÌNH:</b> 18 Nam + 9 Nữ = <b>27 VĐV chính thức</b> (REDSEED 13 & CỒN DẬP 14 với bóng hồng <b>Tớ là Nhun</b>). Sẵn sàng bốc thăm 9 Đội Triad!</span>
       </div>
       <span class="px-2.5 py-0.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black whitespace-nowrap text-[11px]">✓ ĐỦ 27 VĐV (100%)</span>
     </div>
@@ -1859,16 +1859,17 @@
     // ----------------------------------------------------
     const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Chiến Door", "Xuân Dị", "Trọng Hiệp", "Trọng Khou", "a Hoàng", "a Tuấn Bin", "Gia Huy"];
     const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu"];
-    const rsWomen = ["Dung", "Nga", "Tường Vy", "Thảo", "My"];
-    const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà"];
+    const rsWomen = ["Dung", "Nga", "Thảo", "My"];
+    const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà", "Tớ là Nhun"];
 
     // Roster of all 27 Athletes for Directory
-    const athletesDirectory = [
-      ...rsMen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NAM", num: i + 1 })),
-      ...rsWomen.map((name, i) => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true, num: i + 10 })),
-      ...cdMen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM", num: i + 15 })),
-      ...cdWomen.map((name, i) => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true, num: i + 24 }))
+    const rawAthletes = [
+      ...rsMen.map(name => ({ name, org: "REDSEED", orgKey: "rs", role: "NAM" })),
+      ...rsWomen.map(name => ({ name, org: "REDSEED", orgKey: "rs", role: "NỮ", isFemale: true })),
+      ...cdMen.map(name => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NAM" })),
+      ...cdWomen.map(name => ({ name, org: "CỒN DẬP", orgKey: "cd", role: "NỮ", isFemale: true }))
     ];
+    const athletesDirectory = rawAthletes.map((ath, i) => ({ ...ath, num: i + 1 }));
 
     let currentAthleteFilter = 'all';
     let athleteViewMode = 'grid'; // 'grid' or 'list'
