@@ -8,6 +8,8 @@
   <!-- GSAP & ScrollTrigger for Antigravity Spatial 3D Motion -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- HLS.js for Streaming Film Glitch Background Video -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
   <style>
     /* ======================================================== */
     /* THE DESIGN SOCIETY (FRANCE) EXACT COLOR SYSTEM           */
@@ -490,10 +492,18 @@
   <!-- ========================================== -->
   <!-- 3. HERO SECTION (`mwg020` THE DESIGN SOCIETY) -->
   <!-- ========================================== -->
-  <section id="hero-section" class="min-h-screen pt-24 sm:pt-28 pb-16 px-4 md:px-8 flex flex-col justify-center max-w-7xl mx-auto relative select-none scale-scroll-section is-in-view">
+  <section id="hero-section" class="relative w-full overflow-hidden min-h-screen flex flex-col justify-center select-none scale-scroll-section is-in-view">
     
+    <!-- Film Grain Glitch Background Video Canvas -->
+    <div class="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+      <video id="hero-bg-video" autoplay loop muted playsinline class="w-full h-full object-cover opacity-25 filter grayscale contrast-125 brightness-95 scale-105 pointer-events-none transition-opacity duration-1000"></video>
+      <!-- Atmospheric Gradients: Vignette & seamless blend into background #ebedf5 -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#ebedf5]/60 via-transparent to-[#ebedf5]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,#ebedf5_85%)]"></div>
+    </div>
+
     <!-- Center Typography & Interactive Emblem -->
-    <div class="my-auto py-4 md:py-6 relative flex flex-col items-center text-center max-w-6xl mx-auto w-full">
+    <div class="relative z-10 pt-24 sm:pt-28 pb-16 px-4 md:px-8 my-auto py-4 md:py-6 flex flex-col items-center text-center max-w-6xl mx-auto w-full">
       
       <!-- Category Pill -->
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-mono text-xs font-black tracking-widest uppercase shadow-sm mb-6">
@@ -3058,6 +3068,73 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
       });
     }
 
+    // ----------------------------------------------------
+    // FILM-GRAIN GLITCH BACKGROUND VIDEO (HLS.JS + NATIVE HLS)
+    // ----------------------------------------------------
+    function initHeroGlitchVideo() {
+      const video = document.getElementById('hero-bg-video');
+      if (!video) return;
+
+      const videoSrc = 'https://cms-public-artifacts.motionarray.com/content/motion-array/2639630/PRD-2639630-OOUhSJGRDcl0dB0t-original_playlist_1719863462.m3u8';
+      
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+
+      if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Native HLS for Safari (macOS & iOS)
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', () => {
+          video.play().catch(() => {});
+        });
+      } else if (window.Hls && Hls.isSupported()) {
+        // Hls.js for Chrome, Edge, Firefox, Android
+        const hls = new Hls({
+          autoStartLoad: true,
+          startLevel: -1,
+          capLevelToPlayerSize: true,
+          maxBufferLength: 8,
+          maxMaxBufferLength: 15
+        });
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          video.play().catch(() => {});
+        });
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) {
+            switch (data.type) {
+              case Hls.ErrorTypes.NETWORK_ERROR:
+                hls.startLoad();
+                break;
+              case Hls.ErrorTypes.MEDIA_ERROR:
+                hls.recoverMediaError();
+                break;
+              default:
+                hls.destroy();
+                break;
+            }
+          }
+        });
+      }
+
+      // Seamless infinite loop trigger
+      video.addEventListener('ended', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+
+      // Browser autoplay policy fallback on interaction
+      const resumePlay = () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+      };
+      window.addEventListener('click', resumePlay, { once: true, passive: true });
+      window.addEventListener('touchstart', resumePlay, { once: true, passive: true });
+      window.addEventListener('scroll', resumePlay, { once: true, passive: true });
+    }
+
     // Initial calls
     renderSquadsGrid();
     updateAllDateDisplays();
@@ -3067,6 +3144,7 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
     initCourt3DGyro();
     initScrollTriggerDominoes();
     initTimelineTreeProgress();
+    initHeroGlitchVideo();
   </script>
 </body>
 </html>
