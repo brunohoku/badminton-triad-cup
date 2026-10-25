@@ -806,57 +806,67 @@
         <span class="hero-title-line inline-block whitespace-nowrap"><span class="text-[#350aff] underline decoration-[#350aff]/30 underline-offset-8">TRIAD CUP</span> 2026.</span>
       </h1>
 
-      <!-- Subtitle Description (Centered, Easy to Read) -->
-      <p class="text-xs sm:text-sm md:text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed font-normal mb-8 text-center">
-        <b class="text-[#1e1e1e] font-bold">10 Đội hình Triad</b> (2 Nam + 1 Nữ) • Vận hành liên hoàn tại <b>Sân cầu Lông PinPon (Sân 6, 7, 8)</b><br class="hidden sm:inline" />
-        Mỗi VĐV thi đấu đúng 2 trận và có 1 trận nghỉ ngơi hồi phục thể lực trọn vẹn.
-      </p>
+      <!-- Quick Tournament Key Specs (Glanceable Visual Chips) -->
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 font-mono text-xs mb-8">
+        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
+          <span>🏸</span>
+          <span>10 ĐỘI</span>
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
+          <span>👥</span>
+          <span>30 VĐV (20 NAM + 10 NỮ)</span>
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
+          <span>📍</span>
+          <span>SÂN PINPON (6, 7, 8)</span>
+        </span>
+        <span class="px-3.5 py-1.5 rounded-full bg-[#bcf015] border border-black/10 text-[#1e1e1e] font-black shadow-sm flex items-center gap-1.5">
+          <span>⏰</span>
+          <span>13:00 CHIỀU</span>
+        </span>
+      </div>
 
-      <!-- Live Tournament Countdown Timer (Centered) -->
-      <div id="hero-countdown-box" class="w-full max-w-2xl mx-auto mb-8 p-4 sm:p-6 rounded-2xl bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-xl shadow-[#350aff]/5">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-200 pb-3 mb-4 font-mono text-xs">
-          <div class="flex items-center justify-center sm:justify-start gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-            <span class="font-bold text-[#1e1e1e] uppercase tracking-wider">ĐẾM NGƯỢC THỜI GIAN KHỞI TRANH</span>
+      <!-- Live Tournament Countdown Timer (Centered, Compact) -->
+      <div id="hero-countdown-box" class="w-full max-w-xl mx-auto mb-8 p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-xl border border-zinc-200 shadow-xl shadow-[#350aff]/5">
+        <div class="flex items-center justify-between border-b border-zinc-100 pb-2.5 mb-3.5 font-mono text-xs">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="font-bold text-[#1e1e1e] uppercase tracking-wider text-[11px]">KHỞI TRANH SAU</span>
           </div>
-          <div class="text-[#350aff] font-bold text-[11px] text-center sm:text-right">
-            <span>CHÍNH THỨC: </span>
+          <div class="text-[#350aff] font-bold text-[11px] text-right">
             <span class="event-date-display font-black">CHỦ NHẬT, 15/11/2026</span>
-            <span class="text-zinc-500 font-normal"> • 13:00 CHIỀU</span>
+            <span class="text-zinc-500 font-normal"> • 13:00</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 font-mono text-center">
-          <div class="p-3 md:p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
-            <span id="cd-days" class="block text-2xl sm:text-4xl md:text-5xl font-black text-[#1e1e1e] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[11px] text-zinc-400 font-bold uppercase tracking-wider mt-1 block">NGÀY</span>
+        <div class="grid grid-cols-4 gap-2 sm:gap-3 font-mono text-center">
+          <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
+            <span id="cd-days" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#1e1e1e] tracking-tight">--</span>
+            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">NGÀY</span>
           </div>
-          <div class="p-3 md:p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
-            <span id="cd-hours" class="block text-2xl sm:text-4xl md:text-5xl font-black text-[#350aff] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[11px] text-zinc-400 font-bold uppercase tracking-wider mt-1 block">GIỜ</span>
+          <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
+            <span id="cd-hours" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#350aff] tracking-tight">--</span>
+            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">GIỜ</span>
           </div>
-          <div class="p-3 md:p-4 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
-            <span id="cd-mins" class="block text-2xl sm:text-4xl md:text-5xl font-black text-[#1e1e1e] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[11px] text-zinc-400 font-bold uppercase tracking-wider mt-1 block">PHÚT</span>
+          <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
+            <span id="cd-mins" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#1e1e1e] tracking-tight">--</span>
+            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">PHÚT</span>
           </div>
-          <div class="p-3 md:p-4 rounded-xl bg-[#350aff]/10 border border-[#350aff]/30 shadow-sm relative overflow-hidden">
-            <span id="cd-secs" class="block text-2xl sm:text-4xl md:text-5xl font-black text-[#350aff] tracking-tight animate-pulse">--</span>
-            <span class="text-[9px] md:text-[11px] text-[#350aff] font-bold uppercase tracking-wider mt-1 block">GIÂY</span>
+          <div class="p-2.5 sm:p-3.5 rounded-xl bg-[#350aff]/10 border border-[#350aff]/30 shadow-sm relative overflow-hidden">
+            <span id="cd-secs" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#350aff] tracking-tight animate-pulse">--</span>
+            <span class="text-[9px] md:text-[10px] text-[#350aff] font-bold uppercase tracking-wider mt-0.5 block">GIÂY</span>
           </div>
         </div>
       </div>
 
       <!-- Quick Actions (Centered) -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 font-mono text-xs w-full">
-        <div class="flex flex-col items-center">
-          <button onclick="randomizeSquads()" class="px-6 py-3.5 rounded-xl bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-center tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer">
-            <span id="hero-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
-            <span>BỐC THĂM ĐỘI HÌNH</span>
-          </button>
-          <span class="text-[9px] text-zinc-400 font-mono text-center block mt-1.5">*(Mục đích vui vẻ • Chưa chính thức)</span>
-        </div>
-        <a href="#court-section" class="px-6 py-3.5 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-center tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 self-center sm:self-start flex items-center gap-2">
-          <span>SA BÀN SÂN PINPON (6, 7, 8)</span>
+      <div class="flex items-center justify-center gap-3 font-mono text-xs w-full">
+        <button onclick="randomizeSquads()" class="px-5 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-center tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer">
+          <span id="hero-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
+          <span>BỐC THĂM ĐỘI HÌNH</span>
+        </button>
+        <a href="#events-section" class="px-5 py-3 rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-center tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center gap-2">
+          <span>LỊCH THI ĐẤU</span>
           <span>➜</span>
         </a>
       </div>
@@ -902,15 +912,6 @@
         </div>
       </div>
 
-      <!-- Editorial Broadcast HUD Strip (Bottom) -->
-      <div class="w-full flex items-center justify-between mt-8 px-2 font-mono text-[9px] sm:text-[10px] text-zinc-400 uppercase tracking-widest pointer-events-none select-none">
-        <div>ĐỊA ĐIỂM: SÂN CẦU LÔNG PINPON (SÂN 6, 7, 8) • 3 SÂN LIÊN HOÀN</div>
-        <div class="flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#bcf015]"></span>
-          <span>TRIAD CUP 2026 // GLITCH ENGINE</span>
-        </div>
-      </div>
-
     </div>
 
   </section>
@@ -953,87 +954,70 @@
   <!-- ========================================== -->
   <!-- 5. ABOUT SECTION (`mwg005` MANIFESTO)      -->
   <!-- ========================================== -->
-  <section id="about-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="about-section" class="py-16 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">01 // THỂ THỨC THI ĐẤU</div>
-      <h2 class="glitch-on-scroll text-3xl md:text-5xl font-black uppercase tracking-tight text-[#1e1e1e] leading-tight">
-        TẠI SAO LẠI LÀ ĐỘI HÌNH 3 NGƯỜI (TRIAD)?
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-1.5 font-bold">01 // THỂ THỨC TRIAD</div>
+      <h2 class="glitch-on-scroll text-2xl md:text-4xl font-black uppercase tracking-tight text-[#1e1e1e]">
+        LUẬT CHƠI RÚT GỌN TRONG 3 BƯỚC
       </h2>
-      <p class="text-sm md:text-base text-zinc-600 mt-4 leading-relaxed font-normal max-w-2xl mx-auto">
-        Giải pháp thể thức tối ưu cho 2 tập thể <b>Redseed × Cồn Dập</b>: bảo toàn thể lực, tăng cường gắn kết đồng đội, thi đấu công bằng và bùng nổ kịch tính.
-      </p>
     </div>
 
-    <!-- 3 Pillars (White Cards TDS Style With Stagger Scale) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- 3 Pillars: Visual Formula (Clean, Minimal Text) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 font-mono">
       
-      <!-- Pillar 1 -->
-      <div class="tds-card p-6 md:p-7 flex flex-col justify-between stagger-scale-item">
+      <!-- Pillar 1: Đội hình 3 người -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item text-center">
         <div>
-          <div class="w-10 h-10 rounded-full bg-[#350aff] text-white font-mono font-bold text-sm flex items-center justify-center mb-5">
-            01
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#350aff]/10 text-[#350aff] text-xs font-bold mb-4">
+            <span>BƯỚC 01</span>
           </div>
-          <h3 class="text-lg font-black uppercase text-[#1e1e1e] mb-3">ĐỘI HÌNH 2 NAM + 1 NỮ</h3>
-          <ul class="text-xs sm:text-sm text-zinc-600 space-y-2 font-normal leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-[#350aff] font-bold">•</span>
-              <span>Ghép cặp Collab: <b>1 Nam Redseed + 1 Nam Cồn Dập + 1 Nữ</b>.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#350aff] font-bold">•</span>
-              <span>Mỗi cặp đấu gồm 3 trận: <b>Đôi Nam Nữ 1 ➜ Đôi Nam ➜ Đôi Nam Nữ 2</b>.</span>
-            </li>
-          </ul>
+          <div class="text-3xl sm:text-4xl font-black text-[#1e1e1e] tracking-tight mb-2">
+            2 👨 + 1 👩
+          </div>
+          <h3 class="text-sm font-black uppercase text-zinc-900 mb-1">MỖI ĐỘI 3 VĐV</h3>
+          <p class="text-xs text-zinc-500 font-sans">2 Nam + 1 Nữ ghép cặp Collab RS × CD</p>
         </div>
-        <div class="mt-6 pt-4 border-t border-zinc-200 font-mono text-xs text-[#350aff] font-bold">
-          9 ĐỘI • 30 VẬN ĐỘNG VIÊN
+        <div class="mt-6 pt-3 border-t border-zinc-200 text-[11px] text-[#350aff] font-bold">
+          10 ĐỘI • 30 VẬN ĐỘNG VIÊN
         </div>
       </div>
 
-      <!-- Pillar 2 -->
-      <div class="tds-card p-6 md:p-7 flex flex-col justify-between stagger-scale-item">
+      <!-- Pillar 2: 3 Trận đôi xoay tua -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item text-center bg-[#bcf015]/10 border-[#bcf015]">
         <div>
-          <div class="w-10 h-10 rounded-full bg-[#bcf015] text-[#1e1e1e] font-mono font-bold text-sm flex items-center justify-center mb-5">
-            02
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#bcf015] text-[#1e1e1e] text-xs font-bold mb-4">
+            <span>BƯỚC 02</span>
           </div>
-          <h3 class="text-lg font-black uppercase text-[#1e1e1e] mb-3">2 ĐÁNH + 1 NGHỈ HỒI SỨC</h3>
-          <ul class="text-xs sm:text-sm text-zinc-600 space-y-2 font-normal leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-[#1e1e1e] font-bold">•</span>
-              <span>Mỗi VĐV thi đấu đúng <b>2 trận / lượt đối đầu</b>.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#1e1e1e] font-bold">•</span>
-              <span>Có <b>1 trận nghỉ 15 phút</b> giữa hiệp để hồi sức và tiếp nước.</span>
-            </li>
-          </ul>
+          <div class="text-xs sm:text-sm font-black text-[#1e1e1e] mb-2.5 flex items-center justify-center gap-1.5 flex-wrap">
+            <span class="px-2 py-1 rounded bg-white border border-zinc-300">Nam Nữ 1</span>
+            <span>➜</span>
+            <span class="px-2 py-1 rounded bg-[#350aff] text-white">Đôi Nam</span>
+            <span>➜</span>
+            <span class="px-2 py-1 rounded bg-white border border-zinc-300">Nam Nữ 2</span>
+          </div>
+          <h3 class="text-sm font-black uppercase text-zinc-900 mb-1">3 TRẬN ĐÔI / LƯỢT ĐẤU</h3>
+          <p class="text-xs text-zinc-600 font-sans">Ai cũng đánh đúng 2 trận, nghỉ 1 trận hồi sức</p>
         </div>
-        <div class="mt-6 pt-4 border-t border-zinc-200 font-mono text-xs text-zinc-700 font-bold">
-          BẢO TOÀN THỂ LỰC VĐV
+        <div class="mt-6 pt-3 border-t border-zinc-300 text-[11px] text-[#1e1e1e] font-black">
+          ⚡ 2 ĐÁNH + 1 NGHỈ HỒI PHỤC
         </div>
       </div>
 
-      <!-- Pillar 3 -->
-      <div class="tds-card p-6 md:p-7 flex flex-col justify-between stagger-scale-item">
+      <!-- Pillar 3: 21 điểm -->
+      <div class="tds-card p-6 flex flex-col justify-between stagger-scale-item text-center">
         <div>
-          <div class="w-10 h-10 rounded-full bg-[#1e1e1e] text-white font-mono font-bold text-sm flex items-center justify-center mb-5">
-            03
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1e1e1e] text-white text-xs font-bold mb-4">
+            <span>BƯỚC 03</span>
           </div>
-          <h3 class="text-lg font-black uppercase text-[#1e1e1e] mb-3">SET 21 ĐIỂM RALLY POINT</h3>
-          <ul class="text-xs sm:text-sm text-zinc-600 space-y-2 font-normal leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="text-[#350aff] font-bold">•</span>
-              <span>1 Set duy nhất đến <b>21 điểm chạm đích</b> tính điểm trực tiếp.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-[#350aff] font-bold">•</span>
-              <span>Hòa 20-20 áp dụng cách 2 điểm (tối đa chạm mốc 30 điểm).</span>
-            </li>
-          </ul>
+          <div class="text-3xl sm:text-4xl font-black text-[#350aff] tracking-tight mb-2">
+            21 PTS
+          </div>
+          <h3 class="text-sm font-black uppercase text-zinc-900 mb-1">1 VÁN RALLY POINT</h3>
+          <p class="text-xs text-zinc-500 font-sans">Đánh 1 ván 21 điểm chạm đích (cách 2 điểm, max 30)</p>
         </div>
-        <div class="mt-6 pt-4 border-t border-zinc-200 font-mono text-xs text-[#350aff] font-bold">
-          LUẬT BWF CHUẨN MỰC
+        <div class="mt-6 pt-3 border-t border-zinc-200 text-[11px] text-zinc-600 font-bold">
+          NHANH • GỌN • TIẾT KIỆM SỨC
         </div>
       </div>
 
@@ -1054,12 +1038,6 @@
       <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal">
         Khởi tranh chiều <b><span class="event-date-display text-[#350aff]">Chủ Nhật, 15/11/2026</span></b> (13:00 – 17:30) tại <b>Sân cầu Lông PinPon (Sân 6, 7, 8)</b>.
       </p>
-
-      <!-- Notice for Court 3 Extraction (TDS Lime Badge - Centered) -->
-      <div class="mt-5 inline-flex items-center gap-2.5 p-3.5 rounded-xl bg-[#bcf015] border border-black/10 font-mono text-xs text-[#1e1e1e] shadow-sm text-left sm:text-center">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#1e1e1e] animate-ping shrink-0"></span>
-        <span><b>LƯU Ý SÂN 8:</b> Thuê 2 tiếng (13:30 – 15:30). Đúng 15:30 bàn giao sân và <b>dồn toàn lực về Sân 6 & Sân 7</b>!</span>
-      </div>
     </div>
 
     <!-- ========================================== -->
@@ -1124,11 +1102,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">Check-in, Khởi Động & Chụp Ảnh</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-600 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• <b>13:00:</b> Có mặt tại sảnh (tự chuẩn bị đồng phục thể thao).</li>
-                    <li>• Bốc thăm chia bảng A - B - C & chụp hình lưu niệm toàn đoàn.</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-1">Check-in & Chụp Ảnh</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 font-sans">13:00 có mặt tại sảnh PinPon • Điểm danh 30 VĐV & chụp ảnh lưu niệm toàn đoàn.</p>
                 </div>
               </div>
 
@@ -1187,12 +1162,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">VÒNG BẢNG: 3 SÂN ĐỒNG LOẠT</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-700 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• <b>Sân 6:</b> 4 trận Bảng A (Đội 1 vs Đội 2 vs Đội 3 vs Đội 4)</li>
-                    <li>• <b>Sân 7:</b> 3 trận Bảng B (Đội 5 vs Đội 6 vs Đội 7)</li>
-                    <li>• <b>Sân 8:</b> 3 trận Bảng C (Đội 8 vs Đội 9 vs Đội 10)</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-1">VÒNG BẢNG (3 SÂN)</h3>
+                  <p class="text-xs sm:text-sm text-zinc-700 font-sans">Sân 6 (Bảng A) • Sân 7 (Bảng B) • Sân 8 (Bảng C) • Đánh đồng loạt 10 đội.</p>
                 </div>
               </div>
 
@@ -1254,11 +1225,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-red-600 transition-colors mb-2">TRẢ SÂN 8 • DỒN VỀ SÂN 6 & 7</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-800 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• Hoàn tất 3 trận Bảng C lúc 15:30 và bàn giao Sân 8 cho BQL.</li>
-                    <li>• Toàn đoàn tập trung về Sân 6 & 7 cổ vũ các trận loại trực tiếp gay cấn.</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-red-600 transition-colors mb-1">TRẢ SÂN 8 • DỒN VỀ SÂN 6 & 7</h3>
+                  <p class="text-xs sm:text-sm text-zinc-800 font-sans">Bàn giao Sân 8 đúng 15:30 • Toàn bộ VĐV và CĐV dồn về Sân 6 & 7 cổ vũ.</p>
                 </div>
               </div>
 
@@ -1320,11 +1288,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">VÒNG BÁN KẾT (SEMI-FINALS)</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-600 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• <b>Sân 6:</b> Bán Kết 1 (Nhất Bảng A vs Đội Nhì có thành tích cao nhất).</li>
-                    <li>• <b>Sân 7:</b> Bán Kết 2 (Nhất Bảng B vs Nhất Bảng C).</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-1">VÒNG BÁN KẾT</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 font-sans">Sân 6 (Bán kết 1) & Sân 7 (Bán kết 2) • 4 đội mạnh nhất tranh vé Chung kết.</p>
                 </div>
               </div>
 
@@ -1384,11 +1349,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">🏆 CHUNG KẾT CÚP VÀNG</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-600 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• <b>Sân 6:</b> CHUNG KẾT TRANH NGÔI VÔ ĐỊCH TRIAD CUP 2026.</li>
-                    <li>• <b>Sân 7:</b> Trận tranh Hạng Ba giữa 2 đội thua ở Bán Kết.</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-1">🏆 CHUNG KẾT CÚP VÀNG</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 font-sans">Sân 6: Chung Kết Cúp Vàng • Sân 7: Trận Tranh Hạng Ba.</p>
                 </div>
               </div>
 
@@ -1451,11 +1413,8 @@
 
                 <!-- Text Block -->
                 <div class="flex-1 text-center sm:text-left">
-                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-2">Trao Cúp, Huy Chương & Liên Hoan</h3>
-                  <ul class="text-xs sm:text-sm text-zinc-600 space-y-1 font-normal leading-relaxed text-left">
-                    <li>• Trao cúp Vô Địch, Á Quân, Quý Quân & giải Phong Cách.</li>
-                    <li>• Toàn đoàn di chuyển tới tiệc liên hoan thắt chặt tình cảm RS × CD.</li>
-                  </ul>
+                  <h3 class="text-base sm:text-lg font-black uppercase text-[#1e1e1e] group-hover:text-[#350aff] transition-colors mb-1">Trao Cúp & Liên Hoan</h3>
+                  <p class="text-xs sm:text-sm text-zinc-600 font-sans">Trao cúp, huy chương & di chuyển tới tiệc liên hoan thắt chặt tình cảm RS × CD.</p>
                 </div>
               </div>
 
@@ -1471,10 +1430,10 @@
       </div>
 
       <!-- Tree Terminal Milestone / Base -->
-      <div class="mt-12 text-center relative z-10">
-        <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white border border-zinc-300 shadow-sm text-xs font-mono font-bold text-zinc-700">
-          <span class="w-2.5 h-2.5 rounded-full bg-[#bcf015] animate-pulse"></span>
-          <span>17:30 // KẾT THÚC THI ĐẤU & DI CHUYỂN TIỆC LIÊN HOAN GẮN KẾT</span>
+      <div class="mt-10 text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-zinc-300 shadow-sm text-xs font-mono font-bold text-zinc-700">
+          <span class="w-2 h-2 rounded-full bg-[#bcf015] animate-pulse"></span>
+          <span>17:30 // BẾ MẠC & LIÊN HOAN RS × CD 🍻</span>
         </div>
       </div>
 
@@ -1517,15 +1476,6 @@
       </div>
     </div>
 
-    <!-- Notice for Roster Completion -->
-    <div class="mb-8 p-3.5 rounded-xl bg-[#bcf015]/20 border border-[#bcf015] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono text-xs text-[#1e1e1e] shadow-sm">
-      <div class="flex items-center gap-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-        <span><b>CHỐT ĐỦ ĐỘI HÌNH:</b> 20 Nam + 10 Nữ = <b>30 VĐV chính thức</b> (REDSEED 16 & CỒN DẬP 14). Sẵn sàng bốc thăm 10 Đội Triad!</span>
-      </div>
-      <span class="px-2.5 py-0.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black whitespace-nowrap text-[11px]">✓ ĐỦ 30 VĐV (100%)</span>
-    </div>
-
     <!-- Athletes Grid / List Container -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3" id="athletes-grid">
       <!-- Rendered by JS -->
@@ -1544,7 +1494,7 @@
         10 ĐỘI HÌNH TRIAD COLLAB
       </h2>
       <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal max-w-2xl mx-auto">
-        Mỗi đội gồm <b>2 Nam + 1 Nữ</b> (ghép cặp giao hữu Collab công bằng giữa REDSEED và CỒN DẬP). Bấm nút bên dưới để bốc thăm ngẫu nhiên trực tiếp!
+        Mỗi đội gồm <b>2 Nam + 1 Nữ</b> (ghép cặp giao hữu REDSEED × CỒN DẬP).
       </p>
 
       <!-- Randomize Controls (TDS Lime Action Hub - Centered) -->
@@ -1557,15 +1507,6 @@
           ↺ ĐẶT LẠI
         </button>
       </div>
-    </div>
-
-    <!-- Disclaimer Banner for Fun/Unofficial Randomizer -->
-    <div class="mb-8 p-3.5 rounded-xl bg-amber-50 border border-amber-300 flex items-center justify-between gap-3 text-xs font-mono text-amber-900 shadow-sm">
-      <div class="flex items-center gap-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse shrink-0"></span>
-        <span><b>LƯU Ý:</b> Bốc thăm ngẫu nhiên nhằm mục đích <b>thử nghiệm vui vẻ</b> • Danh sách chính thức sẽ do BTC công bố trước ngày thi đấu.</span>
-      </div>
-      <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full bg-amber-200 text-amber-950 font-bold text-[10px] uppercase tracking-wider shrink-0">CHƯA CHÍNH THỨC</span>
     </div>
 
     <!-- Squads Dynamic Grid (With Stagger Scale) -->
@@ -1586,7 +1527,7 @@
         ĐIỀU PHỐI SÂN PINPON (6, 7, 8)
       </h2>
       <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal">
-        Mô phỏng vị trí các VĐV thật trên từng mặt sân (tự động đồng bộ với kết quả bốc thăm ngẫu nhiên ở trên).
+        Mô phỏng vị trí thi đấu thực tế trên 3 sân PinPon.
       </p>
 
       <!-- 2D / 3D Switch -->
@@ -1649,10 +1590,9 @@
         <div id="court-viewport" class="lg:col-span-7 flex flex-col items-center justify-center p-6 md:p-10 bg-zinc-100 rounded-2xl border border-zinc-200 court-stage min-h-[420px] relative overflow-hidden cursor-crosshair">
           
           <!-- Live 3D Tactical Gyro Telemetry Badge -->
-          <div id="court-gyro-telemetry" class="absolute top-4 left-4 z-30 font-mono text-[9px] text-[#350aff] bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-[#350aff]/20 pointer-events-none hidden sm:flex items-center gap-2 shadow-sm">
+          <div id="court-gyro-telemetry" class="absolute top-4 left-4 z-30 font-mono text-[10px] text-[#350aff] bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg border border-[#350aff]/20 pointer-events-none hidden sm:flex items-center gap-2 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-[#350aff] animate-ping"></span>
-            <span>3D GYRO: PITCH <b id="gyro-pitch">24.0°</b> • YAW <b id="gyro-yaw">-6.0°</b></span>
-            <span class="text-zinc-400">| DI CHUỘT ĐỂ XOAY SA BÀN</span>
+            <span>3D SA BÀN • DI CHUỘT ĐỂ XOAY</span>
           </div>
           
           <div id="court-plane" class="court-plane w-full max-w-[460px] aspect-[1/1.55] bg-[#1e2330] border-2 border-white rounded-md relative shadow-2xl p-3 flex flex-col justify-between">
@@ -1740,7 +1680,7 @@
               SÂN 6: VÒNG BẢNG A & CHUNG KẾT CÚP
             </h3>
             <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal leading-relaxed" id="court-desc">
-              Mở màn lúc 13:30 giữa <b>Đội 01</b> và <b>Đội 02</b>. Sân 6 vận hành liên tục qua Bán Kết 1 và đón nhận Trận Chung Kết lúc 16:30.
+              Vòng Bảng A (Đội 01 vs Đội 02) ➜ Bán Kết 1 ➜ Chung Kết Cúp Vàng (16:30).
             </p>
           </div>
 
@@ -1778,7 +1718,7 @@
 
           <!-- Note -->
           <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 text-xs font-mono text-zinc-600" id="court-note">
-            Sân 6 được thuê trọn gói 4 tiếng (13:00 – 17:30) tại Sân PinPon, sử dụng thảm BWF tiêu chuẩn phục vụ trận đấu đỉnh cao.
+            Sân chính thi đấu suốt 4 tiếng (13:30 – 17:30) tại PinPon.
           </div>
         </div>
 
@@ -1798,12 +1738,12 @@
         <div>
           <div class="text-xs font-mono text-[#350aff] uppercase tracking-widest mb-1 font-bold">06 // TRUYỀN THÔNG GROUP ZALO</div>
           <h3 class="text-xl md:text-2xl font-black uppercase text-[#1e1e1e]">THÔNG BÁO GỬI CÁC VẬN ĐỘNG VIÊN</h3>
-          <p class="text-xs text-zinc-600 mt-1 font-normal">Đã chuẩn hóa emoji và lịch trình. Tự động đồng bộ theo kết quả bốc thăm.</p>
+          <p class="text-xs text-zinc-600 mt-1 font-normal">Nội dung thông báo Zalo tự động cập nhật theo kết quả bốc thăm.</p>
         </div>
 
         <div class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0">
           <button onclick="toggleBroadcastPreview()" id="btn-toggle-broadcast" class="px-4 py-3 rounded-xl bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-700 font-mono text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
-            <span>👁️ XEM NỘI DUNG</span>
+            <span>👁️ XEM TRƯỚC</span>
             <span id="broadcast-toggle-arrow">▾</span>
           </button>
           <button onclick="copyBroadcastMessage(this)" class="px-5 py-3 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center justify-center gap-2 whitespace-nowrap">
@@ -2890,32 +2830,32 @@
         {
           badge: "SÂN 6 (4 TIẾNG) • 13:30 – 17:30",
           title: "SÂN 6: VÒNG BẢNG A & CHUNG KẾT CÚP",
-          desc: `Mở màn lúc 13:30 giữa <b>${sq1.id}</b> (${sq1.m1}, ${sq1.m2}, ${sq1.f}) và <b>${sq2.id}</b> (${sq2.m1}, ${sq2.m2}, ${sq2.f}). Sân 6 vận hành liên tục qua Bán Kết 1 và đón nhận Trận Chung Kết lúc 16:30.`,
-          note: "Sân 6 được thuê trọn gói 4 tiếng (13:00 – 17:30) tại Sân PinPon, sử dụng thảm BWF tiêu chuẩn phục vụ trận đấu đỉnh cao.",
+          desc: `Vòng Bảng A (<b>${sq1.id}</b> vs <b>${sq2.id}</b>) ➜ Bán Kết 1 ➜ Chung Kết Cúp Vàng (16:30).`,
+          note: "Sân chính thi đấu suốt 4 tiếng (13:30 – 17:30) tại PinPon.",
           squadA: sq1,
           squadB: sq2
         },
         {
           badge: "SÂN 7 (4 TIẾNG) • 13:30 – 17:30",
           title: "SÂN 7: VÒNG BẢNG B & TRANH HẠNG BA",
-          desc: `Đánh đồng thời từ 13:30 giữa <b>${sq4.id}</b> (${sq4.m1}, ${sq4.m2}, ${sq4.f}) và <b>${sq5.id}</b> (${sq5.m1}, ${sq5.m2}, ${sq5.f}). Tiếp tục Bán Kết 2 và Trận Tranh Hạng Ba lúc 16:30.`,
-          note: "Sân 7 vận hành 4 tiếng liên tục song song cùng Sân 6, phục vụ Bảng B và nhánh đấu Bán Kết 2.",
+          desc: `Vòng Bảng B (<b>${sq4.id}</b> vs <b>${sq5.id}</b>) ➜ Bán Kết 2 ➜ Tranh Hạng Ba (16:30).`,
+          note: "Thi đấu song song 4 tiếng (13:30 – 17:30) cùng Sân 6.",
           squadA: sq4,
           squadB: sq5
         },
         {
           badge: "⚡ SÂN 8 (2 TIẾNG) • 13:30 – 15:30 [TRẢ SÂN]",
           title: "⚡ SÂN 8: BẢNG C (TRẢ SÂN ĐÚNG 15:30)",
-          desc: `Tranh tài giữa <b>${sq8.id}</b> (${sq8.m1}, ${sq8.m2}, ${sq8.f}) và <b>${sq9.id}</b> (${sq9.m1}, ${sq9.m2}, ${sq9.f}). <b>Đúng 15:30 kết thúc và TRẢ SÂN 8 đúng hạn</b>.`,
-          note: "⚠️ LƯU Ý SÂN 8: Thuê 2 tiếng (13:30 - 15:30). Đúng 15:30 dứt điểm vòng bảng và bàn giao trả sân ngay lập tức!",
+          desc: `Vòng Bảng C (<b>${sq8.id}</b> vs <b>${sq9.id}</b>). Đúng 15:30 kết thúc và bàn giao sân.`,
+          note: "⚡ Lưu ý: Thuê 2 tiếng (13:30 – 15:30). Đúng 15:30 dồn quân về Sân 6 & 7.",
           squadA: sq8,
           squadB: sq9
         },
         {
           badge: "🏆 SÂN 6 (GRAND FINAL) • 16:30 – 17:15",
           title: "🏆 CHUNG KẾT CÚP VÀNG: ĐỈNH CAO TRIAD 2026",
-          desc: "Trận chiến danh giá nhất giữa 2 Đội Xuất Sắc Nhất. Tranh chấp chiếc Cúp Vô Địch và Huy Chương Vàng của giải đấu Collab RS × CD.",
-          note: "Toàn bộ 30 VĐV và cổ động viên tập trung quanh khán đài Sân 6 chứng kiến thời khắc đăng quang.",
+          desc: "Trận tranh Cúp Vô Địch và Huy Chương Vàng giữa 2 đội thắng Bán Kết.",
+          note: "Diễn ra lúc 16:30 tại Sân 6 với sự cổ vũ của toàn đoàn 30 VĐV.",
           squadA: { id: "FINALIST 1", m1: "Nam 1 (BK1)", m2: "Nam 2 (BK1)", f: "Bóng Hồng (BK1)" },
           squadB: { id: "FINALIST 2", m1: "Nam 1 (BK2)", m2: "Nam 2 (BK2)", f: "Bóng Hồng (BK2)" }
         }
@@ -3170,7 +3110,7 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
         if (arrow) arrow.innerText = '▾';
         if (btn) {
           const span = btn.querySelector('span:first-child');
-          if (span) span.innerText = '👁️ XEM NỘI DUNG';
+          if (span) span.innerText = '👁️ XEM TRƯỚC';
         }
       }
     }
