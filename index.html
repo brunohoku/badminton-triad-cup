@@ -727,13 +727,13 @@
         </a>
       </div>
 
-      <!-- Center Links (Desktop) -->
-      <div class="hidden lg:flex items-center gap-2 twostep-nav-wrap px-4 py-1.5 rounded-full text-xs font-mono font-medium text-zinc-600">
-        <a href="#about-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Thể Thức</a>
-        <a href="#events-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Lịch Trình</a>
-        <a href="#athletes-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">30 VĐV</a>
-        <a href="#squads-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">10 Đội Tuyển</a>
-        <a href="#court-section" class="hover:text-[#350aff] px-2.5 py-1 rounded-full transition-colors">Sa Bàn 3 Sân</a>
+      <!-- Center Links (Desktop with Active Scrollspy) -->
+      <div id="desktop-nav-links" class="hidden lg:flex items-center gap-1.5 twostep-nav-wrap px-4 py-1.5 rounded-full text-xs font-mono font-medium text-zinc-600">
+        <a href="#about-section" data-nav="about-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">Thể Thức</a>
+        <a href="#events-section" data-nav="events-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">Lịch Trình</a>
+        <a href="#athletes-section" data-nav="athletes-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">30 VĐV</a>
+        <a href="#squads-section" data-nav="squads-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">10 Đội Tuyển</a>
+        <a href="#court-section" data-nav="court-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">Sa Bàn 3 Sân</a>
       </div>
 
       <!-- Right Action Button & Quick Randomize -->
@@ -980,8 +980,12 @@
     </div>
 
     <!-- 3 Pillars: Visual Formula (Clean, Minimal Text, Strict Design Consistency) -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono relative">
       
+      <!-- Desktop Sequential Flow Arrows (Hidden on Mobile) -->
+      <div class="hidden md:flex absolute top-1/2 left-[33.33%] -translate-x-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-zinc-200/90 text-[#350aff] items-center justify-center font-black text-xs shadow-md pointer-events-none">➜</div>
+      <div class="hidden md:flex absolute top-1/2 left-[66.66%] -translate-x-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-zinc-200/90 text-[#350aff] items-center justify-center font-black text-xs shadow-md pointer-events-none">➜</div>
+
       <!-- Pillar 1: Đội hình 3 người -->
       <div class="tds-card p-6 md:p-7 flex flex-col justify-between stagger-scale-item text-center hover:border-[#350aff]/60 hover:-translate-y-1 transition-all duration-300">
         <div>
@@ -1101,7 +1105,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
 
           <!-- Card Content (Left on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
             <div class="tds-card p-5 sm:p-6 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1161,7 +1165,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#350aff]/50 pointer-events-none"></div>
 
           <!-- Card Content (Right on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
             <div class="tds-card p-5 sm:p-6 border-[#350aff]/40 bg-[#350aff]/5 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff] group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1222,7 +1226,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#bcf015] pointer-events-none"></div>
 
           <!-- Card Content (Left on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
             <div class="tds-card p-5 sm:p-6 border-[#bcf015] bg-[#bcf015]/15 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-black group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1284,7 +1288,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
 
           <!-- Card Content (Right on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
             <div class="tds-card p-5 sm:p-6 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1348,7 +1352,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-[#350aff] pointer-events-none"></div>
 
           <!-- Card Content (Left on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:mr-auto">
             <div class="tds-card p-5 sm:p-6 border-[#350aff] bg-white relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-[#350aff] group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1408,7 +1412,7 @@
           <div class="block lg:hidden absolute left-6 top-11 w-8 border-t-2 border-dashed border-zinc-300 pointer-events-none"></div>
 
           <!-- Card Content (Right on Desktop, Right on Mobile) -->
-          <div class="w-full pl-14 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
+          <div class="w-full pl-12 sm:pl-16 lg:pl-0 lg:w-[calc(50%-2.5rem)] lg:ml-auto">
             <div class="tds-card p-5 sm:p-6 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-[#350aff]/50 group">
               <!-- Top Pill & Time -->
               <div class="flex items-center justify-between font-mono text-xs mb-3">
@@ -1485,6 +1489,17 @@
         Danh sách chính thức cập nhật từ ban đăng ký của <b>REDSEED</b> và <b>CỒN DẬP</b>.
       </p>
 
+      <!-- Instant Search Bar -->
+      <div class="mt-6 max-w-md mx-auto relative font-mono text-xs">
+        <div class="relative flex items-center">
+          <span class="absolute left-4 text-zinc-400 pointer-events-none flex items-center">
+            <svg class="w-4 h-4 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </span>
+          <input type="text" id="athlete-search-input" oninput="handleAthleteSearch(this.value)" placeholder="Tìm kiếm theo tên VĐV, số áo #01, hoặc cty..." class="w-full pl-11 pr-10 py-3 rounded-full bg-white border border-zinc-300 focus:border-[#350aff] focus:ring-2 focus:ring-[#350aff]/20 outline-none text-[#1e1e1e] placeholder-zinc-400 shadow-sm transition-all text-xs" aria-label="Tìm kiếm vận động viên">
+          <button id="athlete-search-clear" onclick="clearAthleteSearch()" class="absolute right-3.5 w-6 h-6 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hidden items-center justify-center text-xs font-bold transition-colors cursor-pointer" title="Xóa tìm kiếm">✕</button>
+        </div>
+      </div>
+
       <!-- Controls: Filters + View Mode Switcher (Min 44px Touch Targets) -->
       <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
         <!-- Filter Controls (TDS Pill Buttons - Min 44px Touch Target) -->
@@ -1528,6 +1543,10 @@
       <p class="text-xs sm:text-sm text-zinc-600 mt-2 font-normal max-w-2xl mx-auto">
         Mỗi đội gồm <b>2 Nam + 1 Nữ</b> (ghép cặp giao hữu REDSEED × CỒN DẬP).
       </p>
+      <div class="mt-2.5 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[11px] font-mono text-zinc-600">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Bốc thăm đội sẽ tự động đồng bộ lên sa bàn 3 sân đấu & bản tin Zalo bên dưới</span>
+      </div>
 
       <!-- Randomize Controls (TDS Lime Action Hub - Centered - Min 44px Touch Targets) -->
       <div class="mt-5 flex items-center justify-center gap-3">
@@ -1652,19 +1671,19 @@
                 <span class="text-zinc-400 font-bold" id="field-squad-a-tag">SÂN TRÊN</span>
               </div>
               <div class="flex justify-around items-center pt-2">
-                <div class="pin-3d flex flex-col items-center" id="pin-a1-wrap">
-                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a1-circle">
+                <div class="pin-3d flex flex-col items-center cursor-pointer group hover:scale-110 active:scale-95 transition-transform" id="pin-a1-wrap" title="Nhấn để xem thông tin VĐV">
+                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:border-[#350aff]" id="pin-a1-circle">
                     <span id="pin-a1-sub" class="text-[#1e1e1e]">HT</span>
                   </div>
-                  <span id="pin-a1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Hiếu Trưởng Thôn</span>
+                  <span id="pin-a1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Hiếu Trưởng Thôn</span>
                   <span id="pin-a1-role" class="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">NAM 1</span>
                 </div>
 
-                <div class="pin-3d flex flex-col items-center" id="pin-a2-wrap">
-                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a2-circle">
+                <div class="pin-3d flex flex-col items-center cursor-pointer group hover:scale-110 active:scale-95 transition-transform" id="pin-a2-wrap" title="Nhấn để xem thông tin VĐV">
+                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:scale-105" id="pin-a2-circle">
                     <span id="pin-a2-sub" class="text-white">DM</span>
                   </div>
-                  <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Dung MaMa (Nữ)</span>
+                  <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Dung MaMa (Nữ)</span>
                   <span id="pin-a2-role" class="text-[10px] font-mono font-bold text-[#bcf015] uppercase tracking-wider">BÓNG HỒNG</span>
                 </div>
               </div>
@@ -1673,19 +1692,19 @@
             <!-- TEAM B (BOTTOM) -->
             <div class="relative z-10 h-1/2 flex flex-col justify-around p-3">
               <div class="flex justify-around items-center pb-2">
-                <div class="pin-3d flex flex-col items-center" id="pin-b1-wrap">
-                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b1-circle">
+                <div class="pin-3d flex flex-col items-center cursor-pointer group hover:scale-110 active:scale-95 transition-transform" id="pin-b1-wrap" title="Nhấn để xem thông tin VĐV">
+                  <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:border-[#350aff]" id="pin-b1-circle">
                     <span id="pin-b1-sub" class="text-[#1e1e1e]">KC</span>
                   </div>
-                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Khầy Chiến</span>
+                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Khầy Chiến</span>
                   <span id="pin-b1-role" class="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">NAM 1</span>
                 </div>
 
-                <div class="pin-3d flex flex-col items-center" id="pin-b2-wrap">
-                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b2-circle">
+                <div class="pin-3d flex flex-col items-center cursor-pointer group hover:scale-110 active:scale-95 transition-transform" id="pin-b2-wrap" title="Nhấn để xem thông tin VĐV">
+                  <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:scale-105" id="pin-b2-circle">
                     <span id="pin-b2-sub" class="text-white">NV</span>
                   </div>
-                  <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Nga Villa (Nữ)</span>
+                  <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Nga Villa (Nữ)</span>
                   <span id="pin-b2-role" class="text-[10px] font-mono font-bold text-[#bcf015] uppercase tracking-wider">BÓNG HỒNG</span>
                 </div>
               </div>
@@ -1789,6 +1808,16 @@
         </div>
       </div>
 
+      <!-- Compact Preview Banner (Always Visible Peek) -->
+      <div onclick="toggleBroadcastPreview()" class="mt-5 p-3.5 px-4 rounded-xl bg-zinc-50 border border-zinc-200/80 hover:border-[#350aff]/50 cursor-pointer transition-all flex items-center justify-between gap-3 text-xs font-mono group">
+        <div class="flex items-center gap-2.5 truncate text-zinc-600">
+          <span class="w-2 h-2 rounded-full bg-[#350aff] shrink-0"></span>
+          <span class="font-bold text-[#1e1e1e]">TRÍCH ĐOẠN:</span>
+          <span class="truncate">🏸 GIẢI CẦU LÔNG ĐỒNG ĐỘI COLLAB 2026 // REDSEED × CỒN DẬP...</span>
+        </div>
+        <span class="text-[#350aff] font-bold text-[11px] shrink-0 group-hover:underline">BẤM ĐỂ MỞ RỘNG ▾</span>
+      </div>
+
       <!-- Collapsible Preview Container -->
       <div id="broadcast-preview-container" class="mt-6 pt-5 border-t border-zinc-200 hidden transition-all duration-300">
         <div class="flex items-center justify-between font-mono text-xs text-zinc-500 mb-2 font-bold">
@@ -1808,11 +1837,20 @@
   <footer class="border-t border-zinc-300 py-16 px-4 md:px-8 bg-white font-mono text-xs text-zinc-500">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <div class="text-[#1e1e1e] font-black text-sm uppercase tracking-wider">REDSEED × CỒN DẬP // TRIAD CUP 2026</div>
+        <div class="text-[#1e1e1e] font-black text-sm uppercase tracking-wider flex items-center gap-2">
+          <span>REDSEED × CỒN DẬP // TRIAD CUP 2026</span>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>ONLINE
+          </span>
+        </div>
         <div class="text-zinc-400 mt-1">THE DESIGN SOCIETY EDITORIAL STYLE • KHỞI TRANH: <span class="event-date-display text-[#350aff] font-bold">CHỦ NHẬT, 15/11/2026</span> (13:00 – 17:30)</div>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="#hero-section" class="hover:text-[#350aff] transition-colors font-bold uppercase">LÊN ĐẦU TRANG ↑</a>
+      <div class="flex items-center gap-4">
+        <button onclick="shareTournamentUrl()" aria-label="Sao chép liên kết trang giải đấu" class="px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold transition-all flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+          <svg class="w-3.5 h-3.5 text-zinc-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></svg>
+          <span>CHIA SẺ LINK</span>
+        </button>
+        <a href="#hero-section" class="hover:text-[#350aff] transition-colors font-bold uppercase py-2 px-3">LÊN ĐẦU TRANG ↑</a>
       </div>
     </div>
   </footer>
@@ -2148,7 +2186,29 @@
     const athletesDirectory = rawAthletes.map((ath, i) => ({ ...ath, num: i + 1 }));
 
     let currentAthleteFilter = 'all';
+    let currentAthleteSearchQuery = '';
     let athleteViewMode = 'grid'; // 'grid' or 'list'
+
+    function handleAthleteSearch(val) {
+      currentAthleteSearchQuery = (val || '').trim().toLowerCase();
+      const clearBtn = document.getElementById('athlete-search-clear');
+      if (clearBtn) {
+        if (currentAthleteSearchQuery) {
+          clearBtn.classList.remove('hidden');
+          clearBtn.classList.add('flex');
+        } else {
+          clearBtn.classList.add('hidden');
+          clearBtn.classList.remove('flex');
+        }
+      }
+      renderAthletes(currentAthleteFilter);
+    }
+
+    function clearAthleteSearch() {
+      const input = document.getElementById('athlete-search-input');
+      if (input) input.value = '';
+      handleAthleteSearch('');
+    }
 
     function getAthleteInitials(name) {
       if (!name) return '✦';
@@ -2166,10 +2226,33 @@
       container.innerHTML = '';
 
       const filtered = athletesDirectory.filter(ath => {
-        if (filter === 'rs') return ath.orgKey === 'rs';
-        if (filter === 'cd') return ath.orgKey === 'cd';
+        if (filter === 'rs' && ath.orgKey !== 'rs') return false;
+        if (filter === 'cd' && ath.orgKey !== 'cd') return false;
+        if (currentAthleteSearchQuery) {
+          const q = currentAthleteSearchQuery;
+          const nameMatch = ath.name.toLowerCase().includes(q);
+          const orgMatch = ath.org.toLowerCase().includes(q) || ath.orgKey.toLowerCase().includes(q);
+          const numMatch = String(ath.num).includes(q) || ('#' + ath.num).includes(q);
+          const roleMatch = ath.role.toLowerCase().includes(q);
+          if (!nameMatch && !orgMatch && !numMatch && !roleMatch) return false;
+        }
         return true;
       });
+
+      if (filtered.length === 0) {
+        container.className = "w-full col-span-full py-12 flex flex-col items-center justify-center text-center font-mono";
+        container.innerHTML = `
+          <div class="p-8 max-w-md w-full rounded-2xl bg-white border border-zinc-200 shadow-sm">
+            <div class="text-3xl mb-3">🔍</div>
+            <h4 class="font-bold text-[#1e1e1e] text-sm mb-1 uppercase">Không tìm thấy vận động viên</h4>
+            <p class="text-xs text-zinc-500 mb-4 font-sans">Không có kết quả nào khớp với "${currentAthleteSearchQuery}".</p>
+            <button onclick="clearAthleteSearch()" class="px-5 py-2.5 rounded-full bg-[#350aff] text-white text-xs font-bold uppercase transition-all shadow-md">
+              XÓA BỘ LỌC TÌM KIẾM
+            </button>
+          </div>
+        `;
+        return;
+      }
 
       if (athleteViewMode === 'grid') {
         container.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3";
@@ -3066,12 +3149,19 @@
         }
         if (circle) {
           if (p.isFemale) {
-            circle.className = "w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors";
+            circle.className = "w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:scale-105";
             if (sub) sub.className = "text-white";
           } else {
-            circle.className = "w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors";
+            circle.className = "w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:border-[#350aff]";
             if (sub) sub.className = "text-[#1e1e1e]";
           }
+        }
+
+        const wrap = document.getElementById(`pin-${prefix}-wrap`);
+        if (wrap) {
+          wrap.onclick = () => {
+            showToast(`🏸 ${p.name} (${p.role}) • ĐANG THI ĐẤU TRÊN SÂN`);
+          };
         }
       }
 
@@ -3776,6 +3866,62 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
       requestAnimationFrame(renderLoop);
     }
 
+    // ----------------------------------------------------
+    // 12. SCROLLSPY ENGINE FOR FLOATING HEADER
+    // ----------------------------------------------------
+    function initHeaderScrollspy() {
+      const sectionIds = ['about-section', 'events-section', 'athletes-section', 'squads-section', 'court-section'];
+      const links = document.querySelectorAll('.nav-item-link');
+      if (!links.length) return;
+
+      function onScroll() {
+        const scrollPosition = window.scrollY + 240;
+        let activeId = '';
+
+        for (const id of sectionIds) {
+          const sec = document.getElementById(id);
+          if (sec) {
+            const top = sec.offsetTop;
+            const bottom = top + sec.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < bottom) {
+              activeId = id;
+              break;
+            }
+          }
+        }
+
+        links.forEach(link => {
+          const target = link.getAttribute('data-nav');
+          if (target === activeId) {
+            link.classList.add('text-[#350aff]', 'bg-[#350aff]/10', 'font-bold');
+            link.classList.remove('text-zinc-600');
+          } else {
+            link.classList.remove('text-[#350aff]', 'bg-[#350aff]/10', 'font-bold');
+            link.classList.add('text-zinc-600');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    // ----------------------------------------------------
+    // 13. SHARE URL HELPER
+    // ----------------------------------------------------
+    function shareTournamentUrl() {
+      const url = window.location.href.split('#')[0];
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast("🔗 ĐÃ SAO CHÉP LINK GIẢI ĐẤU VÀO CLIPBOARD!");
+        }).catch(() => {
+          showToast("🔗 LINK: " + url);
+        });
+      } else {
+        showToast("🔗 LINK: " + url);
+      }
+    }
+
     // Initial calls
     renderSquadsGrid();
     updateAllDateDisplays();
@@ -3787,6 +3933,7 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
     initTimelineTreeProgress();
     initHeroGlitchVideo();
     initHeroTitleWebGLGlitch();
+    initHeaderScrollspy();
   </script>
 </body>
 </html>
