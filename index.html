@@ -647,7 +647,7 @@
           <span class="w-3 h-3 bg-[#350aff] rounded-full animate-ping"></span>
           <span class="font-mono text-xs tracking-widest text-[#350aff] font-bold">ĐIỀU HƯỚNG GIẢI ĐẤU</span>
         </div>
-        <button onclick="toggleTwoStepMenu()" class="font-mono text-xs tracking-wider px-4 py-2 rounded-full border border-zinc-300 hover:bg-zinc-100 transition-all text-[#1e1e1e] font-bold">
+        <button onclick="toggleTwoStepMenu()" aria-label="Đóng menu điều hướng" class="font-mono text-xs tracking-wider px-4 py-2 min-h-[44px] rounded-full border border-zinc-300 hover:bg-zinc-100 transition-all text-[#1e1e1e] font-bold focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
           ĐÓNG (ESC) ✕
         </button>
       </div>
@@ -692,12 +692,18 @@
         <div>
           <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">CÔNG CỤ ĐIỀU PHỐI</div>
           <div class="space-y-3">
-            <button onclick="randomizeSquads(); toggleTwoStepMenu();" class="w-full py-2.5 px-3 rounded-xl bg-[#bcf015] text-[#1e1e1e] font-bold text-left flex items-center justify-between shadow-sm">
-              <span>🎲 BỐC THĂM ĐỘI HÌNH</span>
+            <button onclick="randomizeSquads(); toggleTwoStepMenu();" aria-label="Bốc thăm đội hình và đóng menu" class="w-full min-h-[44px] py-2.5 px-3.5 rounded-xl bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-bold text-left flex items-center justify-between shadow-sm focus-visible:ring-2 focus-visible:ring-[#1e1e1e] focus-visible:outline-none transition-all">
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-[#1e1e1e] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg>
+                <span>BỐC THĂM ĐỘI HÌNH</span>
+              </span>
               <span>➜</span>
             </button>
-            <a href="#broadcast-section" onclick="toggleTwoStepMenu()" class="block w-full py-2.5 px-3 rounded-xl bg-[#350aff] text-white font-bold text-left flex items-center justify-between shadow-sm">
-              <span>📋 COPY BẢN TIN ZALO</span>
+            <a href="#broadcast-section" onclick="toggleTwoStepMenu()" aria-label="Chuyển đến mục sao chép bản tin Zalo" class="w-full min-h-[44px] py-2.5 px-3.5 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-left flex items-center justify-between shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none transition-all">
+              <span class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14h6"/><path d="M9 18h6"/><path d="M9 10h6"/></svg>
+                <span>COPY BẢN TIN ZALO</span>
+              </span>
               <span>➜</span>
             </a>
           </div>
@@ -732,12 +738,14 @@
 
       <!-- Right Action Button & Quick Randomize -->
       <div class="flex items-center gap-2 font-mono text-xs">
-        <button onclick="randomizeSquads()" class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black tracking-wider uppercase transition-all shadow-sm" title="Bốc thăm ngẫu nhiên ghép cặp 1 Nam RS + 1 Nam CD + 1 Nữ">
-          <span id="header-dice" class="text-sm">🎲</span>
+        <button onclick="randomizeSquads()" aria-label="Bốc thăm ngẫu nhiên 10 đội Triad" class="hidden sm:flex items-center gap-1.5 px-4 py-2 min-h-[40px] rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black tracking-wider uppercase transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="Bốc thăm ngẫu nhiên ghép cặp 1 Nam RS + 1 Nam CD + 1 Nữ">
+          <span id="header-dice" class="flex items-center">
+            <svg class="w-3.5 h-3.5 text-[#1e1e1e] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg>
+          </span>
           <span>BỐC THĂM ĐỘI</span>
         </button>
 
-        <button onclick="toggleTwoStepMenu()" class="px-5 py-2 rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold tracking-wider uppercase transition-all shadow-lg shadow-[#350aff]/25 flex items-center gap-2">
+        <button onclick="toggleTwoStepMenu()" id="btn-two-step-menu" aria-label="Mở menu điều hướng toàn trang" class="px-5 py-2 min-h-[40px] rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold tracking-wider uppercase transition-all shadow-lg shadow-[#350aff]/25 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
           <span>MENU</span>
           <span class="text-xs">☰</span>
         </button>
@@ -808,20 +816,20 @@
 
       <!-- Quick Tournament Key Specs (Glanceable Visual Chips) -->
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 font-mono text-xs mb-8">
-        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
-          <span>🏸</span>
+        <span class="px-4 py-2 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-[#350aff] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7.5c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1h9c.55 0 1-.45 1-1v-1c0-.55-.45-1-1-1H15c-.55 0-1-.45-1-1v-2.34"/><rect width="12" height="10" x="6" y="2" rx="2"/></svg>
           <span>10 ĐỘI</span>
         </span>
-        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
-          <span>👥</span>
+        <span class="px-4 py-2 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-[#350aff] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <span>30 VĐV (20 NAM + 10 NỮ)</span>
         </span>
-        <span class="px-3.5 py-1.5 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-1.5">
-          <span>📍</span>
+        <span class="px-4 py-2 rounded-full bg-white/95 border border-zinc-200 text-[#1e1e1e] font-bold shadow-sm flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-[#350aff] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           <span>SÂN PINPON (6, 7, 8)</span>
         </span>
-        <span class="px-3.5 py-1.5 rounded-full bg-[#bcf015] border border-black/10 text-[#1e1e1e] font-black shadow-sm flex items-center gap-1.5">
-          <span>⏰</span>
+        <span class="px-4 py-2 rounded-full bg-[#bcf015] border border-black/10 text-[#1e1e1e] font-black shadow-sm flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-[#1e1e1e] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span>13:00 CHIỀU</span>
         </span>
       </div>
@@ -842,37 +850,39 @@
         <div class="grid grid-cols-4 gap-2 sm:gap-3 font-mono text-center">
           <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
             <span id="cd-days" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#1e1e1e] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">NGÀY</span>
+            <span class="text-[11px] text-zinc-500 font-bold uppercase tracking-wider mt-1 block">NGÀY</span>
           </div>
           <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
             <span id="cd-hours" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#350aff] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">GIỜ</span>
+            <span class="text-[11px] text-zinc-500 font-bold uppercase tracking-wider mt-1 block">GIỜ</span>
           </div>
           <div class="p-2.5 sm:p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 shadow-sm">
             <span id="cd-mins" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#1e1e1e] tracking-tight">--</span>
-            <span class="text-[9px] md:text-[10px] text-zinc-400 font-bold uppercase tracking-wider mt-0.5 block">PHÚT</span>
+            <span class="text-[11px] text-zinc-500 font-bold uppercase tracking-wider mt-1 block">PHÚT</span>
           </div>
           <div class="p-2.5 sm:p-3.5 rounded-xl bg-[#350aff]/10 border border-[#350aff]/30 shadow-sm relative overflow-hidden">
             <span id="cd-secs" class="block text-2xl sm:text-3xl md:text-4xl font-black text-[#350aff] tracking-tight animate-pulse">--</span>
-            <span class="text-[9px] md:text-[10px] text-[#350aff] font-bold uppercase tracking-wider mt-0.5 block">GIÂY</span>
+            <span class="text-[11px] text-[#350aff] font-bold uppercase tracking-wider mt-1 block">GIÂY</span>
           </div>
         </div>
       </div>
 
-      <!-- Quick Actions (Centered) -->
+      <!-- Quick Actions (Centered - Min 44px Touch Targets) -->
       <div class="flex items-center justify-center gap-3 font-mono text-xs w-full">
-        <button onclick="randomizeSquads()" class="px-5 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-center tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer">
-          <span id="hero-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
+        <button onclick="randomizeSquads()" aria-label="Bốc thăm ngẫu nhiên 10 đội Triad" class="min-h-[44px] px-6 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-center tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          <span id="hero-dice-icon" class="flex items-center">
+            <svg class="w-4 h-4 text-[#1e1e1e] shrink-0 group-hover:rotate-180 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg>
+          </span>
           <span>BỐC THĂM ĐỘI HÌNH</span>
         </button>
-        <a href="#events-section" class="px-5 py-3 rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-center tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center gap-2">
+        <a href="#events-section" aria-label="Xem lịch thi đấu" class="min-h-[44px] px-6 py-3 rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-center tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
           <span>LỊCH THI ĐẤU</span>
           <span>➜</span>
         </a>
       </div>
 
       <!-- 3D Interactive Antigravity Shuttlecock Badge (Centered, Elegant) -->
-      <div id="hero-shuttlecock-card" onclick="triggerHeroSmash()" class="group cursor-pointer select-none mt-7 p-3 sm:p-3.5 px-5 rounded-2xl bg-white/90 backdrop-blur-md border border-zinc-200 hover:border-[#350aff]/40 shadow-lg shadow-[#350aff]/5 inline-flex items-center gap-3.5 transition-all" title="✦ BẤM VÀO ĐỂ KÍCH HOẠT CÚ SMASH 3D ✦">
+      <div id="hero-shuttlecock-card" onclick="triggerHeroSmash()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); triggerHeroSmash();}" role="button" tabindex="0" aria-label="Kích hoạt cú smash 3D vào quả cầu lông" class="group cursor-pointer select-none mt-7 p-3 sm:p-3.5 px-5 rounded-2xl bg-white/90 backdrop-blur-md border border-zinc-200 hover:border-[#350aff]/40 shadow-lg shadow-[#350aff]/5 inline-flex items-center gap-3.5 transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="✦ BẤM VÀO ĐỂ KÍCH HOẠT CÚ SMASH 3D ✦">
         <!-- 3D Shuttlecock SVG & Geometry -->
         <div id="hero-3d-shuttlecock" class="w-12 h-12 relative flex items-center justify-center shrink-0" style="transform-style: preserve-3d;">
           <svg class="w-10 h-10 text-[#350aff] drop-shadow-md" viewBox="0 0 100 100" fill="none">
@@ -954,7 +964,7 @@
   <!-- ========================================== -->
   <!-- 5. ABOUT SECTION (`mwg005` MANIFESTO)      -->
   <!-- ========================================== -->
-  <section id="about-section" class="py-16 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="about-section" class="scroll-mt-20 md:scroll-mt-24 py-16 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
     <div class="text-center max-w-2xl mx-auto mb-10">
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-1.5 font-bold">01 // THỂ THỨC TRIAD</div>
@@ -1028,7 +1038,7 @@
   <!-- ========================================== -->
   <!-- 6. EVENTS & TIMELINE (`section-6` TDS)     -->
   <!-- ========================================== -->
-  <section id="events-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="events-section" class="scroll-mt-20 md:scroll-mt-24 py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
     <div class="text-center max-w-3xl mx-auto mb-10">
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">02 // LỊCH TRÌNH THI ĐẤU</div>
@@ -1444,7 +1454,7 @@
   <!-- ========================================== -->
   <!-- 7. ATHLETES SECTION (`section-5` TDS)      -->
   <!-- ========================================== -->
-  <section id="athletes-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="athletes-section" class="scroll-mt-20 md:scroll-mt-24 py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
     <div class="text-center max-w-3xl mx-auto mb-10">
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">03 // DANH SÁCH VẬN ĐỘNG VIÊN</div>
@@ -1455,22 +1465,24 @@
         Danh sách chính thức cập nhật từ ban đăng ký của <b>REDSEED</b> và <b>CỒN DẬP</b>.
       </p>
 
-      <!-- Controls: Filters + View Mode Switcher -->
+      <!-- Controls: Filters + View Mode Switcher (Min 44px Touch Targets) -->
       <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
-        <!-- Filter Controls (TDS Pill Buttons) -->
-        <div class="flex items-center gap-1 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
-          <button onclick="filterAthletes('all')" id="tab-ath-all" class="px-3.5 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all">TẤT CẢ (30)</button>
-          <button onclick="filterAthletes('rs')" id="tab-ath-rs" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">REDSEED (16)</button>
-          <button onclick="filterAthletes('cd')" id="tab-ath-cd" class="px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">CỒN DẬP (14)</button>
+        <!-- Filter Controls (TDS Pill Buttons - Min 44px Touch Target) -->
+        <div class="flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm" role="tablist" aria-label="Lọc danh sách vận động viên">
+          <button onclick="filterAthletes('all')" id="tab-ath-all" role="tab" aria-selected="true" aria-label="Xem tất cả 30 vận động viên" class="min-h-[44px] px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">TẤT CẢ (30)</button>
+          <button onclick="filterAthletes('rs')" id="tab-ath-rs" role="tab" aria-selected="false" aria-label="Lọc vận động viên Redseed" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">REDSEED (16)</button>
+          <button onclick="filterAthletes('cd')" id="tab-ath-cd" role="tab" aria-selected="false" aria-label="Lọc vận động viên Cồn Dập" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">CỒN DẬP (14)</button>
         </div>
 
-        <!-- View Switcher (Cards / List) -->
-        <div class="flex items-center gap-1 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
-          <button onclick="setAthleteViewMode('grid')" id="ath-view-grid-btn" class="px-3 py-1.5 rounded-full bg-[#1e1e1e] text-white font-bold transition-all" title="Góc nhìn lưới thẻ">
-            ⊞ LƯỚI THẺ
+        <!-- View Switcher (Cards / List - Min 44px Touch Target) -->
+        <div class="flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm" role="group" aria-label="Chế độ hiển thị danh sách">
+          <button onclick="setAthleteViewMode('grid')" id="ath-view-grid-btn" aria-label="Xem dạng lưới thẻ" aria-pressed="true" class="min-h-[44px] px-4 py-2 rounded-full bg-[#1e1e1e] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5" title="Góc nhìn lưới thẻ">
+            <span>⊞</span>
+            <span>LƯỚI THẺ</span>
           </button>
-          <button onclick="setAthleteViewMode('list')" id="ath-view-list-btn" class="px-3 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all" title="Góc nhìn danh sách rút gọn">
-            ☰ DANH SÁCH GỌN
+          <button onclick="setAthleteViewMode('list')" id="ath-view-list-btn" aria-label="Xem dạng danh sách rút gọn" aria-pressed="false" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5" title="Góc nhìn danh sách rút gọn">
+            <span>☰</span>
+            <span>DANH SÁCH</span>
           </button>
         </div>
       </div>
@@ -1486,7 +1498,7 @@
   <!-- ========================================== -->
   <!-- 8. SQUADS SECTION (`mwg008` TDS SQUADS)    -->
   <!-- ========================================== -->
-  <section id="squads-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="squads-section" class="scroll-mt-20 md:scroll-mt-24 py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
     <div class="text-center max-w-3xl mx-auto mb-12">
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">04 // ĐỘI HÌNH COLLAB</div>
@@ -1497,14 +1509,17 @@
         Mỗi đội gồm <b>2 Nam + 1 Nữ</b> (ghép cặp giao hữu REDSEED × CỒN DẬP).
       </p>
 
-      <!-- Randomize Controls (TDS Lime Action Hub - Centered) -->
+      <!-- Randomize Controls (TDS Lime Action Hub - Centered - Min 44px Touch Targets) -->
       <div class="mt-5 flex items-center justify-center gap-3">
-        <button onclick="randomizeSquads()" class="px-5 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-xs font-mono tracking-wider uppercase transition-all shadow-md flex items-center gap-2 group cursor-pointer">
-          <span id="btn-dice-icon" class="text-base group-hover:rotate-180 transition-transform">🎲</span>
+        <button onclick="randomizeSquads()" aria-label="Bốc thăm ngẫu nhiên 10 đội Triad" class="min-h-[44px] px-6 py-3 rounded-full bg-[#bcf015] hover:opacity-90 text-[#1e1e1e] font-black text-xs font-mono tracking-wider uppercase transition-all shadow-md flex items-center gap-2 group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          <span id="btn-dice-icon" class="flex items-center">
+            <svg class="w-4 h-4 text-[#1e1e1e] shrink-0 group-hover:rotate-180 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="4"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/></svg>
+          </span>
           <span>BỐC THĂM ĐỘI HÌNH</span>
         </button>
-        <button onclick="resetDefaultSquads()" class="px-4 py-3 rounded-full bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-600 font-mono text-xs font-bold transition-all cursor-pointer" title="Khôi phục đội hình mặc định">
-          ↺ ĐẶT LẠI
+        <button onclick="resetDefaultSquads()" aria-label="Khôi phục đội hình mặc định" class="min-h-[44px] px-5 py-3 rounded-full bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-600 font-mono text-xs font-bold transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center gap-1.5" title="Khôi phục đội hình mặc định">
+          <span>↺</span>
+          <span>ĐẶT LẠI</span>
         </button>
       </div>
     </div>
@@ -1519,7 +1534,7 @@
   <!-- ========================================== -->
   <!-- 9. 3-COURT SA BAN SECTION                  -->
   <!-- ========================================== -->
-  <section id="court-section" class="py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
+  <section id="court-section" class="scroll-mt-20 md:scroll-mt-24 py-20 px-4 md:px-8 max-w-7xl mx-auto border-b border-zinc-300 scale-scroll-section">
     
     <div class="text-center max-w-3xl mx-auto mb-12">
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">05 // SA BÀN SÂN PINPON</div>
@@ -1530,12 +1545,12 @@
         Mô phỏng vị trí thi đấu thực tế trên 3 sân PinPon.
       </p>
 
-      <!-- 2D / 3D Switch -->
-      <div class="mt-5 inline-flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm">
-        <button id="view-mode-3d" onclick="setCourtPerspective('3d')" class="px-4 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md">
+      <!-- 2D / 3D Switch (Min 44px Touch Targets) -->
+      <div class="mt-5 inline-flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm" role="group" aria-label="Chọn góc nhìn sa bàn">
+        <button id="view-mode-3d" onclick="setCourtPerspective('3d')" aria-pressed="true" aria-label="Xem sa bàn ở góc nhìn không gian 3D" class="min-h-[44px] px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">
           GÓC NHÌN 3D
         </button>
-        <button id="view-mode-2d" onclick="setCourtPerspective('2d')" class="px-4 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all">
+        <button id="view-mode-2d" onclick="setCourtPerspective('2d')" aria-pressed="false" aria-label="Xem sa bàn ở góc nhìn phẳng 2D" class="min-h-[44px] px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">
           GÓC NHÌN 2D
         </button>
       </div>
@@ -1545,9 +1560,9 @@
     <div class="tds-card p-5 md:p-8">
       
       <!-- Stage Buttons -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8 font-mono text-xs">
-        <button onclick="switchCourt(0)" id="court-btn-0" class="p-3.5 sm:p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all">
-          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8 font-mono text-xs" role="tablist" aria-label="Lựa chọn sân thi đấu">
+        <button onclick="switchCourt(0)" id="court-btn-0" role="tab" aria-selected="true" aria-label="Xem sa bàn Sân 6" class="p-3.5 sm:p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+          <div class="flex items-center justify-between text-zinc-600 text-[11px] font-bold">
             <span>SÂN 6 (4 TIẾNG)</span>
             <span class="w-2 h-2 rounded-full bg-[#350aff]"></span>
           </div>
@@ -1555,8 +1570,8 @@
           <div class="text-[11px] text-zinc-500 mt-0.5">13:30 – 17:30</div>
         </button>
 
-        <button onclick="switchCourt(1)" id="court-btn-1" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
-          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+        <button onclick="switchCourt(1)" id="court-btn-1" role="tab" aria-selected="false" aria-label="Xem sa bàn Sân 7" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+          <div class="flex items-center justify-between text-zinc-500 text-[11px] font-bold">
             <span>SÂN 7 (4 TIẾNG)</span>
             <span class="w-2 h-2 rounded-full bg-zinc-400"></span>
           </div>
@@ -1564,8 +1579,8 @@
           <div class="text-[11px] text-zinc-500 mt-0.5">13:30 – 17:30</div>
         </button>
 
-        <button onclick="switchCourt(2)" id="court-btn-2" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
-          <div class="flex items-center justify-between text-zinc-600 text-[10px] font-bold">
+        <button onclick="switchCourt(2)" id="court-btn-2" role="tab" aria-selected="false" aria-label="Xem sa bàn Sân 8" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+          <div class="flex items-center justify-between text-zinc-700 text-[11px] font-bold">
             <span>⚡ SÂN 8 (2 TIẾNG)</span>
             <span class="w-2 h-2 rounded-full bg-[#bcf015]"></span>
           </div>
@@ -1573,8 +1588,8 @@
           <div class="text-[11px] text-[#350aff] font-bold mt-0.5">13:30 – 15:30 (TRẢ SÂN)</div>
         </button>
 
-        <button onclick="switchCourt(3)" id="court-btn-3" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all">
-          <div class="flex items-center justify-between text-zinc-500 text-[10px]">
+        <button onclick="switchCourt(3)" id="court-btn-3" role="tab" aria-selected="false" aria-label="Xem sa bàn Trận Chung Kết" class="p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+          <div class="flex items-center justify-between text-zinc-500 text-[11px] font-bold">
             <span>🏆 CHUNG KẾT</span>
             <span class="w-2 h-2 rounded-full bg-yellow-500"></span>
           </div>
@@ -1606,13 +1621,13 @@
             <!-- Net -->
             <div class="absolute top-1/2 left-0 right-0 h-[4px] bg-[#350aff] -translate-y-1/2 z-20 flex items-center justify-center shadow-lg">
               <div class="w-full h-[18px] bg-[#350aff]/25 border-b border-[#350aff]/60 flex items-center justify-center">
-                <span class="text-[7px] font-mono font-bold text-white tracking-widest">NET • RS × CD</span>
+                <span class="text-[9px] font-mono font-bold text-white tracking-widest">NET • RS × CD</span>
               </div>
             </div>
 
             <!-- TEAM A (TOP) -->
             <div class="relative z-10 h-1/2 flex flex-col justify-around p-3">
-              <div class="flex items-center justify-between font-mono text-[9px]">
+              <div class="flex items-center justify-between font-mono text-[11px]">
                 <span class="px-2 py-0.5 rounded bg-black/80 text-white font-bold border border-white/20 uppercase" id="field-squad-a">ĐỘI 01</span>
                 <span class="text-zinc-400 font-bold" id="field-squad-a-tag">SÂN TRÊN</span>
               </div>
@@ -1621,16 +1636,16 @@
                   <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a1-circle">
                     <span id="pin-a1-sub" class="text-[#1e1e1e]">HT</span>
                   </div>
-                  <span id="pin-a1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Hiếu Trưởng Thôn</span>
-                  <span id="pin-a1-role" class="text-[8px] font-mono text-zinc-300">NAM 1</span>
+                  <span id="pin-a1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Hiếu Trưởng Thôn</span>
+                  <span id="pin-a1-role" class="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">NAM 1</span>
                 </div>
 
                 <div class="pin-3d flex flex-col items-center" id="pin-a2-wrap">
                   <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-a2-circle">
                     <span id="pin-a2-sub" class="text-white">DM</span>
                   </div>
-                  <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Dung MaMa (Nữ)</span>
-                  <span id="pin-a2-role" class="text-[8px] font-mono text-[#bcf015]">BÓNG HỒNG</span>
+                  <span id="pin-a2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Dung MaMa (Nữ)</span>
+                  <span id="pin-a2-role" class="text-[10px] font-mono font-bold text-[#bcf015] uppercase tracking-wider">BÓNG HỒNG</span>
                 </div>
               </div>
             </div>
@@ -1642,19 +1657,19 @@
                   <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b1-circle">
                     <span id="pin-b1-sub" class="text-[#1e1e1e]">KC</span>
                   </div>
-                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Khầy Chiến</span>
-                  <span id="pin-b1-role" class="text-[8px] font-mono text-zinc-300">NAM 1</span>
+                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap">Khầy Chiến</span>
+                  <span id="pin-b1-role" class="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">NAM 1</span>
                 </div>
 
                 <div class="pin-3d flex flex-col items-center" id="pin-b2-wrap">
                   <div class="w-9 h-9 rounded-full bg-[#350aff] border-2 border-white flex items-center justify-center text-xs font-black shadow-lg transition-colors" id="pin-b2-circle">
                     <span id="pin-b2-sub" class="text-white">NV</span>
                   </div>
-                  <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Nga Villa (Nữ)</span>
-                  <span id="pin-b2-role" class="text-[8px] font-mono text-[#bcf015]">BÓNG HỒNG</span>
+                  <span id="pin-b2-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap">Nga Villa (Nữ)</span>
+                  <span id="pin-b2-role" class="text-[10px] font-mono font-bold text-[#bcf015] uppercase tracking-wider">BÓNG HỒNG</span>
                 </div>
               </div>
-              <div class="flex items-center justify-between font-mono text-[9px]">
+              <div class="flex items-center justify-between font-mono text-[11px]">
                 <span class="text-zinc-400 font-bold" id="field-squad-b-tag">SÂN DƯỚI</span>
                 <span class="px-2 py-0.5 rounded bg-black/80 text-white font-bold border border-white/20 uppercase" id="field-squad-b">ĐỘI 02</span>
               </div>
@@ -1685,34 +1700,34 @@
           </div>
 
           <!-- 3 Matches Sequence (Interactive Match Tabs) -->
-          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2.5 font-mono text-xs">
-            <div class="flex items-center justify-between text-zinc-500 uppercase tracking-widest text-[10px] font-bold mb-1">
+          <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-2.5 font-mono text-xs" role="tablist" aria-label="Tiến trình 3 trận đấu">
+            <div class="flex items-center justify-between text-zinc-500 uppercase tracking-widest text-[11px] font-bold mb-1">
               <span>TIẾN TRÌNH 3 TRẬN BẮT BUỘC</span>
-              <span class="text-[#350aff] text-[9px] animate-pulse">✦ BẤM ĐỂ ĐỔI VĐV TRÊN SÂN</span>
+              <span class="text-[#350aff] text-[11px] animate-pulse">✦ BẤM ĐỔI VĐV TRÊN SÂN</span>
             </div>
             
-            <button type="button" onclick="switchMatchSequence(0)" id="match-btn-0" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+            <button type="button" onclick="switchMatchSequence(0)" id="match-btn-0" role="tab" aria-selected="true" aria-label="Xem bố trí Trận 1: Đôi Nam Nữ" class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
               <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#350aff] match-dot"></span>
                 <span class="font-bold match-title">TRẬN 1: ĐÔI NAM NỮ</span>
               </div>
-              <span class="text-[10px] opacity-80 match-desc">Nam 1 + Nữ (Nam 2 nghỉ)</span>
+              <span class="text-[11px] opacity-80 match-desc">Nam 1 + Nữ (Nam 2 nghỉ)</span>
             </button>
 
-            <button type="button" onclick="switchMatchSequence(1)" id="match-btn-1" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+            <button type="button" onclick="switchMatchSequence(1)" id="match-btn-1" role="tab" aria-selected="false" aria-label="Xem bố trí Trận 2: Đôi Nam" class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
               <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot"></span>
                 <span class="font-bold match-title">TRẬN 2: ĐÔI NAM</span>
               </div>
-              <span class="text-[10px] opacity-80 match-desc">Nam 1 + Nam 2 (Nữ nghỉ)</span>
+              <span class="text-[11px] opacity-80 match-desc">Nam 1 + Nam 2 (Nữ nghỉ)</span>
             </button>
 
-            <button type="button" onclick="switchMatchSequence(2)" id="match-btn-2" class="w-full flex items-center justify-between p-3 rounded-xl border transition-all text-left group cursor-pointer">
+            <button type="button" onclick="switchMatchSequence(2)" id="match-btn-2" role="tab" aria-selected="false" aria-label="Xem bố trí Trận 3: Đôi Nam Nữ" class="w-full flex items-center justify-between p-3.5 rounded-xl border transition-all text-left group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
               <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot"></span>
                 <span class="font-bold match-title">TRẬN 3: ĐÔI NAM NỮ</span>
               </div>
-              <span class="text-[10px] opacity-80 match-desc">Nam 2 + Nữ (Nam 1 nghỉ)</span>
+              <span class="text-[11px] opacity-80 match-desc">Nam 2 + Nữ (Nam 1 nghỉ)</span>
             </button>
           </div>
 
@@ -1731,7 +1746,7 @@
   <!-- ========================================== -->
   <!-- 10. BROADCAST COPY SECTION                 -->
   <!-- ========================================== -->
-  <section id="broadcast-section" class="py-20 px-4 md:px-8 max-w-4xl mx-auto scale-scroll-section">
+  <section id="broadcast-section" class="scroll-mt-20 md:scroll-mt-24 py-20 px-4 md:px-8 max-w-4xl mx-auto scale-scroll-section">
     
     <div class="tds-card p-6 md:p-8">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
@@ -1742,12 +1757,14 @@
         </div>
 
         <div class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 shrink-0">
-          <button onclick="toggleBroadcastPreview()" id="btn-toggle-broadcast" class="px-4 py-3 rounded-xl bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-700 font-mono text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
-            <span>👁️ XEM TRƯỚC</span>
+          <button onclick="toggleBroadcastPreview()" id="btn-toggle-broadcast" aria-label="Xem trước nội dung văn bản gửi Zalo" aria-expanded="false" class="min-h-[44px] px-4 py-2.5 rounded-xl bg-white border border-zinc-300 hover:border-[#350aff] text-zinc-700 font-mono text-xs font-bold transition-all flex items-center gap-2 shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+            <svg class="w-4 h-4 text-zinc-700 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 .696 10.75 10.75 0 0 1-19.876 0Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span id="broadcast-btn-text">XEM TRƯỚC</span>
             <span id="broadcast-toggle-arrow">▾</span>
           </button>
-          <button onclick="copyBroadcastMessage(this)" class="px-5 py-3 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center justify-center gap-2 whitespace-nowrap">
-            <span class="btn-copy-label">📋 SAO CHÉP THÔNG BÁO</span>
+          <button onclick="copyBroadcastMessage(this)" aria-label="Sao chép toàn bộ thông báo Zalo vào clipboard" class="min-h-[44px] px-5 py-2.5 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#350aff]/25 flex items-center justify-center gap-2 whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer">
+            <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14h6"/><path d="M9 18h6"/><path d="M9 10h6"/></svg>
+            <span class="btn-copy-label">SAO CHÉP THÔNG BÁO</span>
           </button>
         </div>
       </div>
@@ -1808,11 +1825,12 @@
           </h3>
         </div>
         <div class="flex items-center gap-2">
-          <button id="draw-speed-btn" onclick="toggleDrawSpeed()" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-[10px] transition-colors cursor-pointer">
-            ⚡ TỐC ĐỘ: 1X
+          <button id="draw-speed-btn" onclick="toggleDrawSpeed()" aria-label="Thay đổi tốc độ quay bốc thăm" class="min-h-[40px] px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none flex items-center gap-1.5">
+            <span>⚡ TỐC ĐỘ: 1X</span>
           </button>
-          <button onclick="skipDrawToEnd()" class="px-3.5 py-1.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black text-[10px] hover:opacity-90 transition-opacity cursor-pointer">
-            BỎ QUA ➜
+          <button onclick="skipDrawToEnd()" aria-label="Bỏ qua hiệu ứng và xem ngay kết quả" class="min-h-[40px] px-4 py-2 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black text-xs hover:opacity-90 transition-opacity cursor-pointer focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none flex items-center gap-1">
+            <span>BỎ QUA</span>
+            <span>➜</span>
           </button>
         </div>
       </div>
@@ -1902,7 +1920,7 @@
           <span>⚠️ <i>Mục đích thử nghiệm vui vẻ, danh sách chính thức do BTC công bố trước ngày 15/11/2026.</i></span>
         </div>
         <div class="flex items-center gap-2 justify-end">
-          <button id="ceremony-finish-btn" onclick="closeCeremonyModal()" class="hidden px-6 py-2.5 rounded-xl bg-[#350aff] text-white font-bold tracking-wider uppercase shadow-lg shadow-[#350aff]/25 transition-all cursor-pointer">
+          <button id="ceremony-finish-btn" onclick="closeCeremonyModal()" aria-label="Hoàn tất bốc thăm và xem bảng đội hình" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#350aff] text-white font-bold tracking-wider uppercase shadow-lg shadow-[#350aff]/25 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">
             HOÀN TẤT & XEM BẢNG ĐỘI HÌNH ➜
           </button>
         </div>
@@ -2146,7 +2164,7 @@
                 ${getAthleteInitials(ath.name)}
               </div>
               <div class="min-w-0">
-                <div class="flex items-center gap-1.5 font-mono text-[10px] text-zinc-400">
+                <div class="flex items-center gap-1.5 font-mono text-[11px] text-zinc-500 font-bold">
                   <span>#${String(ath.num).padStart(2, '0')}</span>
                   <span>•</span>
                   <span class="font-bold text-zinc-600 truncate">${ath.org}</span>
@@ -2155,8 +2173,8 @@
               </div>
             </div>
             <div class="shrink-0">
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${ath.isFemale ? 'bg-[#350aff]/10 text-[#350aff] border border-[#350aff]/20' : ath.isPending ? 'border border-dashed border-amber-400 text-amber-700 bg-amber-50' : 'bg-zinc-100 text-zinc-800 border border-zinc-200'}">
-                ${ath.isFemale ? '🌸 NỮ' : ath.isPending ? 'CHỜ' : 'NAM'}
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold ${ath.isFemale ? 'bg-[#350aff]/10 text-[#350aff] border border-[#350aff]/20 inline-flex items-center gap-1' : ath.isPending ? 'border border-dashed border-amber-400 text-amber-700 bg-amber-50' : 'bg-zinc-100 text-zinc-800 border border-zinc-200'}">
+                ${ath.isFemale ? '<span class=\"w-1.5 h-1.5 rounded-full bg-[#350aff]\"></span>NỮ' : ath.isPending ? 'CHỜ' : 'NAM'}
               </span>
             </div>
           `;
@@ -2170,7 +2188,7 @@
           row.className = "p-2.5 px-3 rounded-xl bg-white border border-zinc-200 hover:border-[#350aff] flex items-center justify-between gap-3 text-xs font-mono transition-all";
           row.innerHTML = `
             <div class="flex items-center gap-2.5 min-w-0">
-              <span class="text-zinc-400 font-bold text-[10px] w-6">#${String(ath.num).padStart(2, '0')}</span>
+              <span class="text-zinc-500 font-bold text-[11px] w-7">#${String(ath.num).padStart(2, '0')}</span>
               <span class="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${ath.isFemale ? 'bg-[#350aff] text-white' : ath.isPending ? 'border border-dashed border-zinc-400 text-zinc-400' : 'bg-[#bcf015] text-[#1e1e1e]'}">
                 ${getAthleteInitials(ath.name)}
               </span>
@@ -2178,8 +2196,8 @@
             </div>
             <div class="flex items-center gap-2 shrink-0">
               <span class="text-[11px] text-zinc-500 hidden sm:inline">${ath.org}</span>
-              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${ath.isFemale ? 'bg-[#350aff]/10 text-[#350aff]' : ath.isPending ? 'text-amber-700 bg-amber-50' : 'bg-zinc-100 text-zinc-700'}">
-                ${ath.isFemale ? 'NỮ' : ath.isPending ? 'CHỜ' : 'NAM'}
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold ${ath.isFemale ? 'bg-[#350aff]/10 text-[#350aff] inline-flex items-center gap-1' : ath.isPending ? 'text-amber-700 bg-amber-50' : 'bg-zinc-100 text-zinc-700'}">
+                ${ath.isFemale ? '<span class=\"w-1.5 h-1.5 rounded-full bg-[#350aff]\"></span>NỮ' : ath.isPending ? 'CHỜ' : 'NAM'}
               </span>
             </div>
           `;
@@ -2197,9 +2215,11 @@
         const btn = document.getElementById('tab-ath-' + t);
         if (btn) {
           if (t === tab) {
-            btn.className = "px-3.5 py-1.5 rounded-full bg-[#350aff] text-white font-bold transition-all";
+            btn.className = "min-h-[44px] px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+            btn.setAttribute('aria-selected', 'true');
           } else {
-            btn.className = "px-3.5 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+            btn.className = "min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+            btn.setAttribute('aria-selected', 'false');
           }
         }
       });
@@ -2212,11 +2232,15 @@
       const listBtn = document.getElementById('ath-view-list-btn');
       if (gridBtn && listBtn) {
         if (mode === 'grid') {
-          gridBtn.className = "px-3 py-1.5 rounded-full bg-[#1e1e1e] text-white font-bold transition-all";
-          listBtn.className = "px-3 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+          gridBtn.className = "min-h-[44px] px-4 py-2 rounded-full bg-[#1e1e1e] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5";
+          gridBtn.setAttribute('aria-pressed', 'true');
+          listBtn.className = "min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5";
+          listBtn.setAttribute('aria-pressed', 'false');
         } else {
-          listBtn.className = "px-3 py-1.5 rounded-full bg-[#1e1e1e] text-white font-bold transition-all";
-          gridBtn.className = "px-3 py-1.5 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+          listBtn.className = "min-h-[44px] px-4 py-2 rounded-full bg-[#1e1e1e] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5";
+          listBtn.setAttribute('aria-pressed', 'true');
+          gridBtn.className = "min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center gap-1.5";
+          gridBtn.setAttribute('aria-pressed', 'false');
         }
       }
       renderAthletes(currentAthleteFilter);
@@ -2296,27 +2320,27 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-[#350aff]"></span>
                 <h3 class="text-base sm:text-lg font-black text-[#1e1e1e] tracking-tight uppercase">${sq.id}</h3>
               </div>
-              <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-200 font-mono text-[10px] font-bold text-zinc-700">${sq.pool}</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-200 font-mono text-[11px] font-bold text-zinc-700">${sq.pool}</span>
             </div>
 
             <!-- 3 Compact Roster Rows -->
             <div class="space-y-1.5 font-mono text-xs">
               <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
-                <span class="text-zinc-500 font-bold text-[11px]">🏸 RS:</span>
+                <span class="text-zinc-500 font-bold text-[11px]">RS:</span>
                 <span class="font-bold text-[#1e1e1e] truncate ml-2">${sq.m1.replaceAll(' (RS)', '')}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
-                <span class="text-zinc-500 font-bold text-[11px]">🏸 ${sq.m2.includes('(RS)') ? 'RS:' : 'CD:'}</span>
+                <span class="text-zinc-500 font-bold text-[11px]">${sq.m2.includes('(RS)') ? 'RS:' : 'CD:'}</span>
                 <span class="font-bold truncate ml-2 ${sq.isPending && sq.m2.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m2.replaceAll(' (CD)', '').replaceAll(' (RS)', '')}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-[#350aff]/10 border border-[#350aff]/30">
-                <span class="text-[#350aff] font-bold text-[11px]">🌸 NỮ:</span>
+                <span class="text-[#350aff] font-bold text-[11px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#350aff]"></span>NỮ:</span>
                 <span class="font-bold text-[#1e1e1e] truncate ml-2">${sq.f}</span>
               </div>
             </div>
           </div>
 
-          <div class="mt-4 pt-2.5 border-t border-zinc-100 flex items-center justify-between font-mono text-[10px] text-zinc-500">
+          <div class="mt-4 pt-2.5 border-t border-zinc-100 flex items-center justify-between font-mono text-[11px] text-zinc-500">
             <span>2 ĐÁNH + 1 NGHỈ</span>
             <span class="text-[#350aff] font-bold">${sq.base}</span>
           </div>
@@ -2874,9 +2898,11 @@
         const btn = document.getElementById('court-btn-' + i);
         if (!btn) continue;
         if (i === idx) {
-          btn.className = "p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all shadow-sm";
+          btn.className = "p-3.5 sm:p-4 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer";
+          btn.setAttribute('aria-selected', 'true');
         } else {
-          btn.className = "p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all";
+          btn.className = "p-3.5 sm:p-4 rounded-xl border border-zinc-200 bg-zinc-50 hover:bg-white text-left transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none cursor-pointer";
+          btn.setAttribute('aria-selected', 'false');
         }
       }
 
@@ -2903,15 +2929,17 @@
         const desc = btn.querySelector('.match-desc');
 
         if (m === matchIdx) {
-          btn.className = "w-full flex items-center justify-between p-3 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all group cursor-pointer shadow-sm";
+          btn.className = "w-full flex items-center justify-between p-3.5 rounded-xl border-2 border-[#350aff] bg-[#350aff]/10 text-left transition-all group cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none";
+          btn.setAttribute('aria-selected', 'true');
           if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-[#350aff] ring-4 ring-[#350aff]/25 match-dot";
           if (title) title.className = "font-bold text-[#350aff] match-title";
-          if (desc) desc.className = "text-[10px] text-[#350aff] font-bold match-desc";
+          if (desc) desc.className = "text-[11px] text-[#350aff] font-bold match-desc";
         } else {
-          btn.className = "w-full flex items-center justify-between p-3 rounded-xl border border-zinc-200 bg-white hover:bg-zinc-100 text-left transition-all group cursor-pointer";
+          btn.className = "w-full flex items-center justify-between p-3.5 rounded-xl border border-zinc-200 bg-white hover:bg-zinc-100 text-left transition-all group cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none";
+          btn.setAttribute('aria-selected', 'false');
           if (dot) dot.className = "w-2.5 h-2.5 rounded-full bg-zinc-300 match-dot";
           if (title) title.className = "font-bold text-[#1e1e1e] group-hover:text-[#350aff] transition-colors match-title";
-          if (desc) desc.className = "text-[10px] text-zinc-500 match-desc";
+          if (desc) desc.className = "text-[11px] text-zinc-500 match-desc";
         }
       }
 
@@ -3007,14 +3035,14 @@
         if (lbl) {
           lbl.innerText = p.name;
           if (p.isFemale) {
-            lbl.className = "mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap shadow-sm";
+            lbl.className = "mt-1 px-2.5 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-[#bcf015] border border-white/20 whitespace-nowrap shadow-sm";
           } else {
-            lbl.className = "mt-1 px-2 py-0.5 rounded bg-black/90 text-[10px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm";
+            lbl.className = "mt-1 px-2.5 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm";
           }
         }
         if (role) {
           role.innerText = p.role;
-          role.className = p.isFemale ? "text-[8px] font-mono text-[#bcf015] font-bold" : "text-[8px] font-mono text-zinc-300";
+          role.className = p.isFemale ? "text-[10px] font-mono text-[#bcf015] font-bold tracking-wider" : "text-[10px] font-mono text-zinc-300 font-bold tracking-wider";
         }
         if (circle) {
           if (p.isFemale) {
@@ -3045,12 +3073,16 @@
 
       if (mode === '3d') {
         plane.classList.remove('view-2d');
-        btn3D.className = "px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md";
-        btn2D.className = "px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+        btn3D.className = "min-h-[44px] px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+        btn3D.setAttribute('aria-pressed', 'true');
+        btn2D.className = "min-h-[44px] px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+        btn2D.setAttribute('aria-pressed', 'false');
       } else {
         plane.classList.add('view-2d');
-        btn2D.className = "px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md";
-        btn3D.className = "px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all";
+        btn2D.className = "min-h-[44px] px-5 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all shadow-md focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+        btn2D.setAttribute('aria-pressed', 'true');
+        btn3D.className = "min-h-[44px] px-5 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center";
+        btn3D.setAttribute('aria-pressed', 'false');
       }
     }
 
@@ -3096,22 +3128,19 @@ Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi n
       const cont = document.getElementById('broadcast-preview-container');
       const arrow = document.getElementById('broadcast-toggle-arrow');
       const btn = document.getElementById('btn-toggle-broadcast');
+      const label = document.getElementById('broadcast-btn-text');
       if (!cont) return;
       const isHidden = cont.classList.contains('hidden');
       if (isHidden) {
         cont.classList.remove('hidden');
         if (arrow) arrow.innerText = '▴';
-        if (btn) {
-          const span = btn.querySelector('span:first-child');
-          if (span) span.innerText = 'ẨN NỘI DUNG';
-        }
+        if (label) label.innerText = 'ẨN NỘI DUNG';
+        if (btn) btn.setAttribute('aria-expanded', 'true');
       } else {
         cont.classList.add('hidden');
         if (arrow) arrow.innerText = '▾';
-        if (btn) {
-          const span = btn.querySelector('span:first-child');
-          if (span) span.innerText = '👁️ XEM TRƯỚC';
-        }
+        if (label) label.innerText = 'XEM TRƯỚC';
+        if (btn) btn.setAttribute('aria-expanded', 'false');
       }
     }
 
