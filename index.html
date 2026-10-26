@@ -2096,6 +2096,10 @@
         </div>
         
         <div class="flex items-center gap-2 shrink-0">
+          <a href="quy-che-thi-dau-rs-cd.jpg" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none" title="Mở ảnh kích thước đầy đủ trong tab mới">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span class="hidden sm:inline">TAB MỚI</span>
+          </a>
           <a href="quy-che-thi-dau-rs-cd.jpg" download="Quy-Che-Thi-Dau-Triad-Cup-2026.jpg" class="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none" title="Tải ảnh quy chế về máy">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
             <span class="hidden sm:inline">TẢI VỀ</span>
@@ -2106,15 +2110,17 @@
         </div>
       </div>
 
-      <!-- Modal Body: High-Res Infographic Image Viewer with Smooth Scrolling -->
-      <div class="overflow-y-auto overflow-x-hidden p-2 sm:p-4 bg-zinc-900/5 flex items-center justify-center flex-1 min-h-0 select-none">
-        <img src="quy-che-thi-dau-rs-cd.jpg" alt="Sơ đồ quy chế thi đấu giải cầu lông đồng đội RS × CD" class="w-full max-w-3xl h-auto rounded-xl shadow-md border border-zinc-200/80 object-contain mx-auto" loading="lazy">
+      <!-- Modal Body: High-Res Infographic Image Viewer with Natural Top Alignment -->
+      <div id="rules-modal-scroll" class="overflow-y-auto overflow-x-hidden p-3 sm:p-5 md:p-6 bg-zinc-100 flex-1 min-h-0 overscroll-contain">
+        <div class="flex flex-col items-center justify-start min-h-full">
+          <img id="rules-infographic-img" src="quy-che-thi-dau-rs-cd.jpg" alt="Sơ đồ quy chế thi đấu giải cầu lông đồng đội RS × CD" class="w-full max-w-3xl h-auto rounded-2xl shadow-xl border border-zinc-200/90 object-contain mx-auto block shrink-0" loading="eager">
+        </div>
       </div>
 
       <!-- Modal Footer -->
       <div class="p-3 sm:p-3.5 bg-white border-t border-zinc-200 flex items-center justify-between text-zinc-500 font-mono text-[11px] shrink-0">
         <span class="truncate">✦ Ban hành bởi Ban Tổ Chức REDSEED × CỒN DẬP 2026</span>
-        <button onclick="closeRulesInfographicModal()" class="px-4 py-1.5 rounded-full bg-[#1e1e1e] text-white font-bold uppercase transition-colors hover:bg-zinc-800 cursor-pointer">
+        <button onclick="closeRulesInfographicModal()" class="px-5 py-2 rounded-full bg-[#1e1e1e] hover:bg-zinc-800 text-white font-bold uppercase transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
           ĐÓNG
         </button>
       </div>
@@ -3181,6 +3187,10 @@
       modal.classList.remove('opacity-0', 'pointer-events-none');
       modal.classList.add('opacity-100');
       document.body.style.overflow = 'hidden';
+      const scrollEl = document.getElementById('rules-modal-scroll');
+      if (scrollEl) {
+        scrollEl.scrollTop = 0;
+      }
     }
 
     function closeRulesInfographicModal() {
