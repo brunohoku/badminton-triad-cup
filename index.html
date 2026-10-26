@@ -1570,9 +1570,9 @@
       <div class="font-mono text-xs text-[#350aff] uppercase tracking-widest mb-2 font-bold">04 // ĐỘI HÌNH COLLAB</div>
       
       <!-- Prominent Status Pill -->
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-mono font-bold mb-3 shadow-xs">
+      <div id="squads-status-pill" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-mono font-bold mb-3 shadow-xs">
         <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
-        <span>TRẠNG THÁI: CHƯA PHÂN ĐỘI • CHỜ LỄ BỐC THĂM TRỰC TIẾP</span>
+        <span id="squads-status-pill-text">TRẠNG THÁI: CHƯA PHÂN ĐỘI • CHỜ LỄ BỐC THĂM TRỰC TIẾP</span>
       </div>
 
       <h2 class="glitch-on-scroll text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-[#1e1e1e]">
@@ -1613,11 +1613,19 @@
         </div>
       </div>
 
-      <!-- Action Button (Inactive with Clear Indicator) -->
-      <div class="mt-6 flex items-center justify-center gap-3">
-        <button onclick="showDrawNotOpenToast()" aria-label="Lễ bốc thăm chưa mở" class="min-h-[44px] px-6 py-3 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-2 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none" title="Bốc thăm đội hình sẽ mở lúc 13:15 ngày 15/11">
+      <!-- Action Buttons (Official Lock Indicator + Demo Simulator) -->
+      <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <button onclick="showDrawNotOpenToast()" aria-label="Lễ bốc thăm chưa mở" class="min-h-[44px] px-6 py-3 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-2 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none" title="Bốc thăm đội hình chính thức sẽ mở lúc 13:15 ngày 15/11">
           <span>🔒</span>
-          <span>BỐC THĂM ĐỘI (CHƯA MỞ - KHỞI QUAY LÚC 13:15)</span>
+          <span>BỐC THĂM CHÍNH THỨC (13:15 15/11)</span>
+        </button>
+        <button onclick="randomizeSquads()" aria-label="Bốc thăm thử nghiệm đội hình từng bước" class="min-h-[44px] px-6 py-3 rounded-full bg-[#350aff] hover:bg-[#2b08cc] text-white font-bold text-xs font-mono tracking-wider uppercase shadow-md shadow-[#350aff]/25 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="Chạy mô phỏng lễ bốc thăm 10 đội hình (dừng từng đội)">
+          <span id="btn-dice-icon">🎲</span>
+          <span>CHẠY BỐC THĂM THỬ NGHIỆM ➜</span>
+        </button>
+        <button id="reset-squads-btn" onclick="resetDefaultSquads()" aria-label="Khôi phục trạng thái chờ bốc thăm" class="hidden min-h-[44px] px-5 py-3 rounded-full bg-white hover:bg-zinc-100 text-zinc-700 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none">
+          <span>↺</span>
+          <span>KHÔI PHỤC CHỜ BỐC THĂM</span>
         </button>
       </div>
     </div>
@@ -2018,11 +2026,30 @@
 
         </div>
 
+        <!-- Next Team Interactive Action Bar (Appears after each team completes) -->
+        <div id="ceremony-next-action-wrap" class="hidden text-center py-2 animate-in fade-in zoom-in-95 duration-200">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:px-6 rounded-2xl bg-zinc-900 border border-[#bcf015]/40 shadow-xl shadow-black/15">
+            <div class="text-left w-full sm:w-auto">
+              <div class="flex items-center gap-1.5 text-[10px] text-zinc-400 font-mono uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ĐỘI VỪA RỒI</span>
+              </div>
+              <div id="ceremony-next-subtitle" class="text-xs sm:text-sm text-[#bcf015] font-black mt-0.5 tracking-wide">
+                SẴN SÀNG BỐC THĂM ĐỘI TIẾP THEO
+              </div>
+            </div>
+            <button id="ceremony-next-btn" onclick="nextTeamDrawStep()" aria-label="Bốc thăm đội tiếp theo" class="w-full sm:w-auto min-h-[48px] px-8 py-3 rounded-full bg-[#bcf015] hover:bg-[#d4ff38] text-[#1e1e1e] font-black text-xs sm:text-sm tracking-wider uppercase shadow-lg shadow-[#bcf015]/30 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
+              <span id="ceremony-next-btn-text">BỐC THĂM ĐỘI 02</span>
+              <span class="text-base font-bold">➜</span>
+            </button>
+          </div>
+        </div>
+
         <!-- History of Locked Teams so far -->
         <div>
           <div class="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mb-2 flex items-center justify-between">
             <span>CÁC ĐỘI ĐÃ HOÀN TẤT BỐC THĂM:</span>
-            <span id="ceremony-completed-count" class="text-zinc-600 font-bold">0 / 9</span>
+            <span id="ceremony-completed-count" class="text-zinc-600 font-bold">0 / 10</span>
           </div>
           <div id="ceremony-history-list" class="grid grid-cols-1 sm:grid-cols-3 gap-2 max-h-36 overflow-y-auto p-1">
             <!-- Dynamically populated as teams lock in -->
@@ -2037,6 +2064,10 @@
           <span>⚠️ <i>Mục đích thử nghiệm vui vẻ, danh sách chính thức do BTC công bố trước ngày 15/11/2026.</i></span>
         </div>
         <div class="flex items-center gap-2 justify-end">
+          <button id="ceremony-footer-next-btn" onclick="nextTeamDrawStep()" aria-label="Bốc thăm đội tiếp theo" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#bcf015] hover:bg-[#d4ff38] text-[#1e1e1e] font-black tracking-wider uppercase shadow-md shadow-[#bcf015]/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#1e1e1e]">
+            <span id="ceremony-footer-next-btn-text">BỐC THĂM ĐỘI 02</span>
+            <span>➜</span>
+          </button>
           <button id="ceremony-finish-btn" onclick="closeCeremonyModal()" aria-label="Hoàn tất bốc thăm và xem bảng đội hình" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#350aff] text-white font-bold tracking-wider uppercase shadow-lg shadow-[#350aff]/25 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">
             HOÀN TẤT & XEM BẢNG ĐỘI HÌNH ➜
           </button>
@@ -2178,6 +2209,19 @@
         if (menu && menu.classList.contains('is-open')) menu.classList.remove('is-open');
         if (typeof closeRulesInfographicModal === 'function') closeRulesInfographicModal();
         if (typeof closeCeremonyModal === 'function') closeCeremonyModal();
+      } else if (e.key === ' ' || e.key === 'Enter') {
+        const ceremonyModal = document.getElementById('draw-ceremony-modal');
+        if (ceremonyModal && ceremonyModal.classList.contains('opacity-100')) {
+          const nextWrap = document.getElementById('ceremony-next-action-wrap');
+          const finishBtn = document.getElementById('ceremony-finish-btn');
+          if (nextWrap && !nextWrap.classList.contains('hidden')) {
+            e.preventDefault();
+            if (typeof nextTeamDrawStep === 'function') nextTeamDrawStep();
+          } else if (finishBtn && !finishBtn.classList.contains('hidden')) {
+            e.preventDefault();
+            if (typeof closeCeremonyModal === 'function') closeCeremonyModal();
+          }
+        }
       }
     });
 
@@ -2769,6 +2813,7 @@
     let drawSpeed = 1;
     let candidateSquads = [];
     let drawTimer = null;
+    let currentDrawingTeamIdx = 0;
 
     function toggleDrawSpeed() {
       drawSpeed = drawSpeed === 1 ? 2 : 1;
@@ -2784,6 +2829,7 @@
     function startCeremonialRandomDraw() {
       if (isDrawing) return;
       isDrawing = true;
+      currentDrawingTeamIdx = 0;
 
       const dice = document.getElementById('btn-dice-icon');
       const headerDice = document.getElementById('header-dice');
@@ -2798,10 +2844,14 @@
       const histList = document.getElementById('ceremony-history-list');
       const finishBtn = document.getElementById('ceremony-finish-btn');
       const compCount = document.getElementById('ceremony-completed-count');
+      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
+      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
 
       if (!modal) return;
       if (histList) histList.innerHTML = '';
       if (finishBtn) finishBtn.classList.add('hidden');
+      if (nextActionWrap) nextActionWrap.classList.add('hidden');
+      if (footerNextBtn) footerNextBtn.classList.add('hidden');
       if (compCount) compCount.innerText = '0 / 10';
 
       modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -2819,6 +2869,20 @@
 
     function runTeamDrawStep(teamIdx) {
       if (!isDrawing) return;
+      currentDrawingTeamIdx = teamIdx;
+
+      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
+      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
+      if (nextActionWrap) nextActionWrap.classList.add('hidden');
+      if (footerNextBtn) footerNextBtn.classList.add('hidden');
+
+      const dice = document.getElementById('btn-dice-icon');
+      const headerDice = document.getElementById('header-dice');
+      const heroDice = document.getElementById('hero-dice-icon');
+      if (dice) dice.classList.add('rolling-dice');
+      if (headerDice) headerDice.classList.add('rolling-dice');
+      if (heroDice) heroDice.classList.add('rolling-dice');
+
       if (teamIdx >= 10) {
         finishCeremonyDraw();
         return;
@@ -2850,13 +2914,49 @@
           spinSingleSlot(3, allWomen, team.f, () => {
             if (!isDrawing) return;
             addTeamToHistory(team);
-            const pause = drawSpeed === 2 ? 220 : 500;
-            drawTimer = setTimeout(() => {
-              runTeamDrawStep(teamIdx + 1);
-            }, pause);
+
+            // Turn off dice rolling while paused waiting for next action
+            if (dice) dice.classList.remove('rolling-dice');
+            if (headerDice) headerDice.classList.remove('rolling-dice');
+            if (heroDice) heroDice.classList.remove('rolling-dice');
+
+            // If this was the final team (Team 10, index 9), wrap up!
+            if (teamIdx >= 9) {
+              const pause = drawSpeed === 2 ? 300 : 600;
+              drawTimer = setTimeout(() => {
+                finishCeremonyDraw();
+              }, pause);
+            } else {
+              // Pause and show interactive NEXT button to draw next team!
+              const nextTeam = candidateSquads[teamIdx + 1];
+              const nextBtnText = document.getElementById('ceremony-next-btn-text');
+              const footerNextBtnText = document.getElementById('ceremony-footer-next-btn-text');
+              const nextSubtitle = document.getElementById('ceremony-next-subtitle');
+
+              if (nextBtnText) nextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
+              if (footerNextBtnText) footerNextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
+              if (nextSubtitle) nextSubtitle.innerText = `TIẾP THEO: ${nextTeam.id} • ${nextTeam.pool}`;
+
+              if (nextActionWrap) {
+                nextActionWrap.classList.remove('hidden');
+                if (window.gsap) {
+                  gsap.fromTo(nextActionWrap, 
+                    { scale: 0.94, opacity: 0, y: 8 },
+                    { scale: 1, opacity: 1, y: 0, duration: 0.25, ease: "back.out(2)" }
+                  );
+                }
+              }
+              if (footerNextBtn) footerNextBtn.classList.remove('hidden');
+            }
           });
         });
       });
+    }
+
+    function nextTeamDrawStep() {
+      if (!isDrawing) return;
+      playTickSound();
+      runTeamDrawStep(currentDrawingTeamIdx + 1);
     }
 
     function resetSlotBox(slotNum, header, status) {
@@ -2951,6 +3051,13 @@
 
     function skipDrawToEnd() {
       clearTimeout(drawTimer);
+      const histList = document.getElementById('ceremony-history-list');
+      if (histList && candidateSquads) {
+        const curCount = histList.children.length;
+        for (let i = curCount; i < candidateSquads.length; i++) {
+          addTeamToHistory(candidateSquads[i]);
+        }
+      }
       finishCeremonyDraw();
     }
 
@@ -2958,13 +3065,36 @@
       isDrawing = false;
       clearTimeout(drawTimer);
 
+      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
+      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
+      if (nextActionWrap) nextActionWrap.classList.add('hidden');
+      if (footerNextBtn) footerNextBtn.classList.add('hidden');
+
       const statusEl = document.getElementById('ceremony-current-team');
       if (statusEl) statusEl.innerText = "🎉 BỐC THĂM HOÀN TẤT!";
       const poolEl = document.getElementById('ceremony-current-pool');
       if (poolEl) poolEl.innerText = "ĐÃ ĐẦY ĐỦ 10 ĐỘI HÌNH COLLAB TRIAD";
+      const stepCounter = document.getElementById('ceremony-step-counter');
+      if (stepCounter) stepCounter.innerText = "10 / 10 ĐỘI";
+
+      const histList = document.getElementById('ceremony-history-list');
+      if (histList && candidateSquads) {
+        const curCount = histList.children.length;
+        for (let i = curCount; i < candidateSquads.length; i++) {
+          addTeamToHistory(candidateSquads[i]);
+        }
+      }
 
       const finishBtn = document.getElementById('ceremony-finish-btn');
-      if (finishBtn) finishBtn.classList.remove('hidden');
+      if (finishBtn) {
+        finishBtn.classList.remove('hidden');
+        if (window.gsap) {
+          gsap.fromTo(finishBtn,
+            { scale: 0.9, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }
+          );
+        }
+      }
 
       const dice = document.getElementById('btn-dice-icon');
       const headerDice = document.getElementById('header-dice');
@@ -2982,10 +3112,38 @@
       updateCourtDataFromSquads();
       updateBroadcastText();
 
+      // Update Section 04 Status Pill and reveal Reset button
+      const statusPill = document.getElementById('squads-status-pill');
+      const statusPillText = document.getElementById('squads-status-pill-text');
+      const resetBtn = document.getElementById('reset-squads-btn');
+      if (statusPill) {
+        statusPill.className = "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-mono font-bold mb-3 shadow-xs";
+      }
+      if (statusPillText) {
+        statusPillText.innerText = "TRẠNG THÁI: ĐÃ BỐC THĂM THỬ NGHIỆM (10 ĐỘI COLLAB)";
+      }
+      if (resetBtn) {
+        resetBtn.classList.remove('hidden');
+      }
+
       showToast("🎲 ĐÃ BỐC THĂM HOÀN TẤT 10 ĐỘI HÌNH COLLAB!");
     }
 
     function closeCeremonyModal() {
+      isDrawing = false;
+      clearTimeout(drawTimer);
+      const dice = document.getElementById('btn-dice-icon');
+      const headerDice = document.getElementById('header-dice');
+      const heroDice = document.getElementById('hero-dice-icon');
+      if (dice) dice.classList.remove('rolling-dice');
+      if (headerDice) headerDice.classList.remove('rolling-dice');
+      if (heroDice) heroDice.classList.remove('rolling-dice');
+
+      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
+      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
+      if (nextActionWrap) nextActionWrap.classList.add('hidden');
+      if (footerNextBtn) footerNextBtn.classList.add('hidden');
+
       const modal = document.getElementById('draw-ceremony-modal');
       if (!modal) return;
       modal.classList.add('opacity-0', 'pointer-events-none');
@@ -2996,6 +3154,21 @@
       isDrawOpened = false;
       currentSquads = generateCollabSquads(false);
       renderSquadsGrid();
+
+      // Reset Section 04 Status Pill and hide Reset button
+      const statusPill = document.getElementById('squads-status-pill');
+      const statusPillText = document.getElementById('squads-status-pill-text');
+      const resetBtn = document.getElementById('reset-squads-btn');
+      if (statusPill) {
+        statusPill.className = "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-800 text-xs font-mono font-bold mb-3 shadow-xs";
+      }
+      if (statusPillText) {
+        statusPillText.innerText = "TRẠNG THÁI: CHƯA PHÂN ĐỘI • CHỜ LỄ BỐC THĂM TRỰC TIẾP";
+      }
+      if (resetBtn) {
+        resetBtn.classList.add('hidden');
+      }
+
       showToast("↺ ĐÃ KHÔI PHỤC TRẠNG THÁI CHỜ BỐC THĂM");
     }
 
