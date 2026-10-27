@@ -692,12 +692,12 @@
         <div>
           <div class="text-zinc-400 uppercase tracking-widest mb-3 font-bold">CÔNG CỤ ĐIỀU PHỐI</div>
           <div class="space-y-3">
-            <button onclick="randomizeSquads(); toggleTwoStepMenu();" aria-label="Mở vòng quay bốc thăm thử nghiệm 10 đội hình" class="w-full min-h-[44px] py-2.5 px-3.5 rounded-xl bg-zinc-900 hover:bg-black text-[#bcf015] font-bold text-left flex items-center justify-between border border-[#bcf015]/40 transition-all cursor-pointer shadow-md">
+            <button onclick="openPasscodeModal(); toggleTwoStepMenu();" aria-label="Mở lễ bốc thăm chính thức với mật mã bảo mật" class="w-full min-h-[44px] py-2.5 px-3.5 rounded-xl bg-zinc-900 hover:bg-black text-[#bcf015] font-bold text-left flex items-center justify-between border border-[#bcf015]/40 transition-all cursor-pointer shadow-md">
               <span class="flex items-center gap-2">
-                <span class="text-xs">🎲</span>
-                <span>BỐC THĂM THỬ NGHIỆM</span>
+                <span class="text-xs">🔐</span>
+                <span>BỐC THĂM CHÍNH THỨC</span>
               </span>
-              <span class="text-[10px] text-[#bcf015] font-mono font-bold">DEMO ➜</span>
+              <span class="text-[10px] text-amber-400 font-mono font-bold">MẬT MÃ ➜</span>
             </button>
             <a href="#broadcast-section" onclick="toggleTwoStepMenu()" aria-label="Chuyển đến mục sao chép bản tin Zalo" class="w-full min-h-[44px] py-2.5 px-3.5 rounded-xl bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold text-left flex items-center justify-between shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none transition-all">
               <span class="flex items-center gap-2">
@@ -736,11 +736,11 @@
         <a href="#court-section" data-nav="court-section" class="nav-item-link px-3 py-1 rounded-full transition-all hover:text-[#350aff]">Sa Bàn 3 Sân</a>
       </div>
 
-      <!-- Right Action Button & Quick Randomize (Simulation State) -->
+      <!-- Right Action Button & Quick Randomize (Official Auth State) -->
       <div class="flex items-center gap-2 font-mono text-xs">
-        <button onclick="randomizeSquads()" aria-label="Bốc thăm thử nghiệm 10 đội hình" class="hidden sm:flex items-center gap-1.5 px-4 py-2 min-h-[40px] rounded-full bg-[#1e1e1e] hover:bg-black text-[#bcf015] font-bold tracking-wider uppercase border border-[#bcf015]/40 transition-all shadow-md shadow-[#bcf015]/10 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none" title="Chạy mô phỏng vòng quay bốc thăm thử nghiệm">
-          <span id="header-dice" class="text-xs">🎲</span>
-          <span>BỐC THĂM THỬ NGHIỆM</span>
+        <button onclick="openPasscodeModal()" aria-label="Bốc thăm chính thức với mật mã BTC" class="hidden sm:flex items-center gap-1.5 px-4 py-2 min-h-[40px] rounded-full bg-[#1e1e1e] hover:bg-black text-[#bcf015] font-bold tracking-wider uppercase border border-[#bcf015]/40 transition-all shadow-md shadow-[#bcf015]/10 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none" title="Mở lễ bốc thăm chính thức (Cần mật mã BTC)">
+          <span id="header-dice" class="text-xs">🔐</span>
+          <span>BỐC THĂM CHÍNH THỨC</span>
         </button>
 
         <button onclick="toggleTwoStepMenu()" id="btn-two-step-menu" aria-label="Mở menu điều hướng toàn trang" class="px-5 py-2 min-h-[40px] rounded-full bg-[#350aff] hover:bg-[#2b00ff] text-white font-bold tracking-wider uppercase transition-all shadow-lg shadow-[#350aff]/25 flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
@@ -877,9 +877,9 @@
           <span>DANH SÁCH 30 VĐV</span>
           <span>➜</span>
         </a>
-        <button onclick="randomizeSquads()" aria-label="Mở lễ bốc thăm thử nghiệm 10 đội hình" class="min-h-[44px] px-6 py-3 rounded-full bg-white hover:bg-zinc-100 text-[#1e1e1e] font-bold text-center tracking-wider uppercase border border-zinc-300 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="Khởi chạy vòng quay bốc thăm thử nghiệm 10 đội hình">
-          <span id="hero-dice-icon">🎲</span>
-          <span>BỐC THĂM THỬ NGHIỆM</span>
+        <button onclick="openPasscodeModal()" aria-label="Mở lễ bốc thăm chính thức với mật mã BTC" class="min-h-[44px] px-6 py-3 rounded-full bg-white hover:bg-zinc-100 text-[#1e1e1e] font-bold text-center tracking-wider uppercase border border-zinc-300 transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="Khởi chạy lễ bốc thăm chính thức (Cần mật mã BTC)">
+          <span id="hero-dice-icon">🔐</span>
+          <span>BỐC THĂM CHÍNH THỨC</span>
         </button>
       </div>
 
@@ -1594,7 +1594,7 @@
               <span>LỄ BỐC THĂM CHÍNH THỨC // LIVESTREAM ONLINE 100% CÔNG BẰNG & MINH BẠCH</span>
             </div>
             <p class="text-xs text-amber-900 font-sans leading-relaxed mb-3">
-              Để bảo toàn yếu tố bất ngờ và công tâm tuyệt đối, ban tổ chức <b>chưa chia trước bất kỳ đội hình nào</b>. Lễ bốc thăm ghép cặp 10 đội sẽ diễn ra vào <b>tối Thứ Tư, 28/11/2026</b> theo hình thức <b>Livestream trên Facebook hoặc qua đường link Google Meet</b> để toàn bộ 30 VĐV cùng theo dõi trực tiếp. Bạn có thể bấm nút <b>Bốc Thăm Thử Nghiệm</b> bên dưới để trải nghiệm trước quy trình!
+              Để bảo toàn yếu tố bất ngờ và công tâm tuyệt đối, ban tổ chức <b>chưa chia trước bất kỳ đội hình nào</b>. Lễ bốc thăm ghép cặp 10 đội sẽ diễn ra vào <b>tối Thứ Tư, 28/11/2026</b> qua <b>Livestream Facebook / Google Meet</b>. Tính năng bốc thăm chính thức được <b>bảo mật bằng mật mã BTC</b>. Nhấn nút bên dưới để nhập mã kích hoạt hoặc chọn <b>Bốc Thăm Thử Nghiệm</b> để chạy thử!
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-mono">
               <div class="p-2.5 rounded-xl bg-white border border-amber-200/80 shadow-xs flex items-center justify-between">
@@ -1622,17 +1622,17 @@
         </div>
       </div>
 
-      <!-- Action Buttons: Official Draw Inactive + Test Simulation Active -->
+      <!-- Action Buttons: Official Draw (Passcode Protected) + Test Simulation Active -->
       <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-        <button onclick="showDrawNotOpenToast()" aria-label="Lễ bốc thăm chính thức chưa mở" class="min-h-[44px] px-6 py-3 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-2 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none" title="Lễ bốc thăm chính thức sẽ diễn ra vào tối Thứ 4, 28/11/2026 qua Livestream Facebook / Google Meet">
-          <span>🔒</span>
-          <span>BỐC THĂM CHÍNH THỨC (LIVESTREAM TỐI THỨ 4, 28/11)</span>
+        <button onclick="openPasscodeModal()" aria-label="Bốc thăm chính thức với mật mã bảo mật của BTC" class="min-h-[48px] px-8 py-3 rounded-full bg-[#350aff] hover:bg-[#2b08cc] text-white font-bold text-sm font-mono tracking-wider uppercase shadow-xl shadow-[#350aff]/30 transition-all flex items-center gap-2.5 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          <span class="text-base">🔐</span>
+          <span>BỐC THĂM CHÍNH THỨC (CẦN MẬT MÃ BTC) ➜</span>
         </button>
-        <button onclick="randomizeSquads()" aria-label="Bốc thăm thử nghiệm đội hình từng bước" class="min-h-[44px] px-7 py-3 rounded-full bg-[#350aff] hover:bg-[#2b08cc] text-white font-bold text-xs font-mono tracking-wider uppercase shadow-lg shadow-[#350aff]/25 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none" title="Chạy mô phỏng vòng quay bốc thăm 10 đội hình">
+        <button onclick="randomizeSquads(false)" aria-label="Bốc thăm thử nghiệm đội hình từng bước" class="min-h-[48px] px-6 py-3 rounded-full bg-white hover:bg-zinc-100 text-zinc-800 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none" title="Chạy mô phỏng vòng quay bốc thăm 10 đội hình">
           <span id="btn-dice-icon">🎲</span>
-          <span>BỐC THĂM THỬ NGHIỆM ➜</span>
+          <span>BỐC THĂM THỬ NGHIỆM</span>
         </button>
-        <button id="reset-squads-btn" onclick="resetDefaultSquads()" aria-label="Khôi phục trạng thái chờ bốc thăm" class="hidden min-h-[44px] px-5 py-3 rounded-full bg-white hover:bg-zinc-100 text-zinc-700 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none">
+        <button id="reset-squads-btn" onclick="resetDefaultSquads()" aria-label="Khôi phục trạng thái chờ bốc thăm" class="hidden min-h-[48px] px-5 py-3 rounded-full bg-white hover:bg-zinc-100 text-zinc-700 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none">
           <span>↺</span>
           <span>KHÔI PHỤC CHỜ BỐC THĂM</span>
         </button>
@@ -1942,6 +1942,90 @@
   <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-[300] hidden"></canvas>
 
   <!-- ========================================== -->
+  <!-- PASSCODE AUTHENTICATION MODAL (BTC GATE)   -->
+  <!-- ========================================== -->
+  <div id="passcode-auth-modal" onclick="handlePasscodeModalBackdrop(event)" class="fixed inset-0 z-[250] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Xác thực mật mã bốc thăm chính thức">
+    <div id="passcode-dialog-card" class="w-full max-w-md bg-white rounded-3xl border-2 border-[#1e1e1e] shadow-2xl overflow-hidden flex flex-col font-mono text-xs relative transform transition-all duration-300 scale-95">
+      
+      <!-- Modal Header -->
+      <div class="p-5 bg-[#1e1e1e] text-white flex items-center justify-between border-b border-white/10 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 flex items-center justify-center text-sm font-black shrink-0">
+            🔐
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5 text-[10px] text-amber-400 font-bold uppercase tracking-wider">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>BẢO MẬT BAN TỔ CHỨC</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-black uppercase tracking-tight text-white mt-0.5">
+              XÁC THỰC MẬT MÃ BỐC THĂM
+            </h3>
+          </div>
+        </div>
+        <button onclick="closePasscodeModal()" aria-label="Đóng bảng xác thực" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm transition-colors flex items-center justify-center cursor-pointer focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none">
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 sm:p-6 space-y-4 bg-zinc-50/50">
+        <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+          Lễ bốc thăm 10 đội hình chính thức yêu cầu xác minh mật mã phân quyền của Ban Tổ Chức (BTC) để bảo mật thông tin trước giờ công bố:
+        </p>
+
+        <!-- Input Box with Show/Hide toggle -->
+        <div>
+          <label for="passcode-input" class="block text-[11px] font-bold text-zinc-700 uppercase tracking-wider mb-1.5">
+            MẬT MÃ XÁC THỰC (PASSCODE):
+          </label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="passcode-input" 
+              autocomplete="off"
+              placeholder="Nhập mật mã BTC..." 
+              class="w-full min-h-[46px] px-4 pr-11 rounded-xl bg-white border-2 border-zinc-300 text-zinc-900 font-mono text-sm font-bold tracking-wider focus:border-[#350aff] focus:ring-2 focus:ring-[#350aff]/20 focus:outline-none transition-all"
+              onkeydown="if(event.key === 'Enter') submitPasscodeVerification();"
+            >
+            <button 
+              type="button" 
+              onclick="togglePasscodeVisibility()" 
+              aria-label="Ẩn hiện mật mã" 
+              class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 transition-colors cursor-pointer"
+              title="Ẩn/Hiện mật mã"
+            >
+              <span id="passcode-eye-icon" class="text-sm">👁️</span>
+            </button>
+          </div>
+          <!-- Error alert container -->
+          <div id="passcode-error-msg" class="hidden mt-2 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-[11px] font-sans font-bold flex items-center gap-1.5 animate-in fade-in duration-200">
+            <span>⚠️</span>
+            <span id="passcode-error-text">Mật mã không đúng, vui lòng thử lại!</span>
+          </div>
+        </div>
+
+        <!-- Quick Hint Button for Testing Ease -->
+        <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-900 font-sans flex items-center justify-between gap-2">
+          <span>💡 <b>Gợi ý BTC:</b> Sử dụng <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('TRIAD2026')" title="Bấm để điền nhanh">TRIAD2026</code> hoặc <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('2811')" title="Bấm để điền nhanh">2811</code></span>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-white border-t border-zinc-200 flex items-center justify-end gap-2.5">
+        <button onclick="closePasscodeModal()" class="min-h-[42px] px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold tracking-wider uppercase transition-colors cursor-pointer">
+          HỦY BỎ
+        </button>
+        <button onclick="submitPasscodeVerification()" aria-label="Xác thực mật mã và bắt đầu bốc thăm" class="min-h-[42px] px-6 py-2 rounded-xl bg-[#350aff] hover:bg-[#2b08cc] text-white font-bold tracking-wider uppercase shadow-md shadow-[#350aff]/25 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          <span>MỞ KHÓA BỐC THĂM</span>
+          <span>➜</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
   <!-- CEREMONIAL LIVE RANDOM DRAW MODAL          -->
   <!-- ========================================== -->
   <div id="draw-ceremony-modal" class="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
@@ -1952,9 +2036,9 @@
         <div>
           <div class="flex items-center gap-2 text-[#bcf015] font-bold text-[10px] tracking-widest uppercase">
             <span class="w-2 h-2 rounded-full bg-[#bcf015] animate-ping"></span>
-            <span>LỄ BỐC THĂM ĐỘI HÌNH COLLAB 2026 (THỬ NGHIỆM)</span>
+            <span id="ceremony-badge-text">LỄ BỐC THĂM ĐỘI HÌNH COLLAB 2026 (THỬ NGHIỆM)</span>
           </div>
-          <h3 class="text-lg md:text-2xl font-black uppercase tracking-tight text-white mt-1">
+          <h3 id="ceremony-title-text" class="text-lg md:text-2xl font-black uppercase tracking-tight text-white mt-1">
             VÒNG QUAY BỐC THĂM THỬ NGHIỆM 10 ĐỘI TRIAD
           </h3>
         </div>
@@ -2070,7 +2154,7 @@
       <!-- Modal Footer -->
       <div class="p-4 bg-zinc-50 border-t border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div class="text-zinc-500 text-[11px] flex items-center gap-2">
-          <span>⚠️ <i>Mục đích thử nghiệm vui vẻ. Lễ bốc thăm chính thức diễn ra tối Thứ Tư, 28/11/2026 qua Livestream Facebook / Google Meet.</i></span>
+          <span id="ceremony-footer-note">⚠️ <i>Mục đích thử nghiệm vui vẻ. Lễ bốc thăm chính thức diễn ra tối Thứ Tư, 28/11/2026 qua Livestream Facebook / Google Meet.</i></span>
         </div>
         <div class="flex items-center gap-2 justify-end">
           <button id="ceremony-footer-next-btn" onclick="nextTeamDrawStep()" aria-label="Bốc thăm đội tiếp theo" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#bcf015] hover:bg-[#d4ff38] text-[#1e1e1e] font-black tracking-wider uppercase shadow-md shadow-[#bcf015]/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#1e1e1e]">
@@ -2222,6 +2306,7 @@
       if (e.key === 'Escape') {
         const menu = document.getElementById('two-step-menu');
         if (menu && menu.classList.contains('is-open')) menu.classList.remove('is-open');
+        if (typeof closePasscodeModal === 'function') closePasscodeModal();
         if (typeof closeRulesInfographicModal === 'function') closeRulesInfographicModal();
         if (typeof closeCeremonyModal === 'function') closeCeremonyModal();
       } else if (e.key === ' ' || e.key === 'Enter') {
@@ -2822,6 +2907,127 @@
     }
 
     // ----------------------------------------------------
+    // PASSCODE AUTHENTICATION ENGINE (BTC VIP GATE)
+    // ----------------------------------------------------
+    const VALID_PASSCODES = [
+      "TRIAD2026",
+      "2811",
+      "BTC",
+      "REDSEED",
+      "CONDAP",
+      "PINPON",
+      "2026"
+    ];
+
+    let isOfficialDrawMode = false;
+
+    function openPasscodeModal() {
+      const modal = document.getElementById('passcode-auth-modal');
+      const input = document.getElementById('passcode-input');
+      const errMsg = document.getElementById('passcode-error-msg');
+      if (!modal) return;
+
+      if (errMsg) errMsg.classList.add('hidden');
+      if (input) {
+        input.value = '';
+        input.classList.remove('border-rose-500', 'bg-rose-50/50', 'border-emerald-500', 'bg-emerald-50/50');
+      }
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+
+      const card = document.getElementById('passcode-dialog-card');
+      if (card && window.gsap) {
+        gsap.fromTo(card, 
+          { scale: 0.9, opacity: 0, y: 20 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(1.5)" }
+        );
+      }
+
+      setTimeout(() => {
+        if (input) input.focus();
+      }, 100);
+    }
+
+    function closePasscodeModal() {
+      const modal = document.getElementById('passcode-auth-modal');
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+    }
+
+    function handlePasscodeModalBackdrop(e) {
+      if (e.target.id === 'passcode-auth-modal') {
+        closePasscodeModal();
+      }
+    }
+
+    function togglePasscodeVisibility() {
+      const input = document.getElementById('passcode-input');
+      const eye = document.getElementById('passcode-eye-icon');
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        if (eye) eye.innerText = '🙈';
+      } else {
+        input.type = 'password';
+        if (eye) eye.innerText = '👁️';
+      }
+    }
+
+    function fillPasscodeHint(code) {
+      const input = document.getElementById('passcode-input');
+      const errMsg = document.getElementById('passcode-error-msg');
+      if (errMsg) errMsg.classList.add('hidden');
+      if (input) {
+        input.value = code;
+        input.classList.remove('border-rose-500', 'bg-rose-50/50');
+        input.focus();
+      }
+    }
+
+    function submitPasscodeVerification() {
+      const input = document.getElementById('passcode-input');
+      const errMsg = document.getElementById('passcode-error-msg');
+      const card = document.getElementById('passcode-dialog-card');
+
+      if (!input) return;
+      const rawVal = input.value.trim().toUpperCase();
+
+      if (VALID_PASSCODES.includes(rawVal)) {
+        // Correct Passcode!
+        if (errMsg) errMsg.classList.add('hidden');
+        input.classList.remove('border-rose-500', 'bg-rose-50/50');
+        input.classList.add('border-emerald-500', 'bg-emerald-50/50');
+
+        playLockSound();
+        showToast("🔓 XÁC THỰC MẬT MÃ BTC THÀNH CÔNG! ĐANG KHỞI CHẠY BỐC THĂM CHÍNH THỨC...");
+
+        setTimeout(() => {
+          closePasscodeModal();
+          randomizeSquads(true);
+        }, 350);
+      } else {
+        // Incorrect Passcode!
+        if (errMsg) errMsg.classList.remove('hidden');
+        input.classList.add('border-rose-500', 'bg-rose-50/50');
+        input.focus();
+        input.select();
+
+        if (card && window.gsap) {
+          gsap.fromTo(card, 
+            { x: -10 },
+            { x: 10, duration: 0.08, repeat: 5, yoyo: true, ease: "power1.inOut", onComplete: () => {
+              gsap.set(card, { x: 0 });
+            }}
+          );
+        }
+      }
+    }
+
+    // ----------------------------------------------------
     // CEREMONIAL LIVE SLOT-MACHINE RANDOM DRAW ENGINE
     // ----------------------------------------------------
     let isDrawing = false;
@@ -2836,14 +3042,16 @@
       if (btn) btn.innerText = drawSpeed === 2 ? "⚡ TỐC ĐỘ: 2X (NHANH)" : "⚡ TỐC ĐỘ: 1X";
     }
 
-    function randomizeSquads() {
+    function randomizeSquads(isOfficial = false) {
+      isOfficialDrawMode = isOfficial;
       triggerHeroGlitchBurst();
-      startCeremonialRandomDraw();
+      startCeremonialRandomDraw(isOfficial);
     }
 
-    function startCeremonialRandomDraw() {
+    function startCeremonialRandomDraw(isOfficial = false) {
       if (isDrawing) return;
       isDrawing = true;
+      isOfficialDrawMode = isOfficial;
       currentDrawingTeamIdx = 0;
 
       const dice = document.getElementById('btn-dice-icon');
@@ -2861,6 +3069,22 @@
       const compCount = document.getElementById('ceremony-completed-count');
       const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
       const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
+
+      const badgeText = document.getElementById('ceremony-badge-text');
+      const titleText = document.getElementById('ceremony-title-text');
+      const footerNote = document.getElementById('ceremony-footer-note');
+
+      if (badgeText) {
+        badgeText.innerText = isOfficial ? "🔴 LỄ BỐC THĂM CHÍNH THỨC 2026 (XÁC THỰC BTC)" : "🎲 LỄ BỐC THĂM ĐỘI HÌNH COLLAB (THỬ NGHIỆM)";
+      }
+      if (titleText) {
+        titleText.innerText = isOfficial ? "VÒNG QUAY BỐC THĂM 10 ĐỘI HÌNH CHÍNH THỨC" : "VÒNG QUAY BỐC THĂM THỬ NGHIỆM 10 ĐỘI TRIAD";
+      }
+      if (footerNote) {
+        footerNote.innerHTML = isOfficial 
+          ? "🔒 <i>Phiên bốc thăm chính thức được ủy quyền và xác thực bởi Ban Tổ Chức REDSEED × CỒN DẬP 2026.</i>" 
+          : "⚠️ <i>Mục đích thử nghiệm vui vẻ. Lễ bốc thăm chính thức diễn ra tối Thứ Tư, 28/11/2026 qua Livestream Facebook / Google Meet.</i>";
+      }
 
       if (!modal) return;
       if (histList) histList.innerHTML = '';
@@ -3135,13 +3359,17 @@
         statusPill.className = "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-mono font-bold mb-3 shadow-xs";
       }
       if (statusPillText) {
-        statusPillText.innerText = "TRẠNG THÁI: KẾT QUẢ BỐC THĂM THỬ NGHIỆM (10 ĐỘI COLLAB)";
+        statusPillText.innerText = isOfficialDrawMode 
+          ? "TRẠNG THÁI: ĐÃ HOÀN TẤT BỐC THĂM CHÍNH THỨC (10 ĐỘI COLLAB)" 
+          : "TRẠNG THÁI: KẾT QUẢ BỐC THĂM THỬ NGHIỆM (10 ĐỘI COLLAB)";
       }
       if (resetBtn) {
         resetBtn.classList.remove('hidden');
       }
 
-      showToast("🎲 ĐÃ HOÀN TẤT BỐC THĂM THỬ NGHIỆM 10 ĐỘI COLLAB!");
+      showToast(isOfficialDrawMode 
+        ? "🎉 ĐÃ HOÀN TẤT LỄ BỐC THĂM CHÍNH THỨC 10 ĐỘI COLLAB TRIAD CUP!" 
+        : "🎲 ĐÃ HOÀN TẤT BỐC THĂM THỬ NGHIỆM 10 ĐỘI COLLAB!");
     }
 
     function closeCeremonyModal() {
@@ -3167,6 +3395,7 @@
 
     function resetDefaultSquads() {
       isDrawOpened = false;
+      isOfficialDrawMode = false;
       currentSquads = generateCollabSquads(false);
       renderSquadsGrid();
 
