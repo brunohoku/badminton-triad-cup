@@ -2007,7 +2007,7 @@
 
         <!-- Quick Hint Button for Testing Ease -->
         <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-900 font-sans flex items-center justify-between gap-2">
-          <span>💡 <b>Gợi ý BTC:</b> Sử dụng <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('TRIAD2026')" title="Bấm để điền nhanh">TRIAD2026</code> hoặc <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('2710')" title="Bấm để điền nhanh">2710</code></span>
+          <span>💡 <b>Gợi ý BTC:</b> Sử dụng mật mã <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('redcon2026')" title="Bấm để điền nhanh">redcon2026</code></span>
         </div>
       </div>
 
@@ -2910,14 +2910,7 @@
     // PASSCODE AUTHENTICATION ENGINE (BTC VIP GATE)
     // ----------------------------------------------------
     const VALID_PASSCODES = [
-      "TRIAD2026",
-      "2710",
-      "2811",
-      "BTC",
-      "REDSEED",
-      "CONDAP",
-      "PINPON",
-      "2026"
+      "REDCON2026"
     ];
 
     let isOfficialDrawMode = false;
@@ -2995,9 +2988,9 @@
       const card = document.getElementById('passcode-dialog-card');
 
       if (!input) return;
-      const rawVal = input.value.trim().toUpperCase();
+      const normalizedInput = input.value.trim().toUpperCase().replace(/[\s\-_]/g, '');
 
-      if (VALID_PASSCODES.includes(rawVal)) {
+      if (VALID_PASSCODES.includes(normalizedInput)) {
         // Correct Passcode!
         if (errMsg) errMsg.classList.add('hidden');
         input.classList.remove('border-rose-500', 'bg-rose-50/50');
