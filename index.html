@@ -1536,8 +1536,8 @@
         <!-- Filter Controls (TDS Pill Buttons - Min 44px Touch Target) -->
         <div class="flex items-center gap-1.5 p-1 bg-white border border-zinc-300 rounded-full font-mono text-xs shadow-sm" role="tablist" aria-label="Lọc danh sách vận động viên">
           <button onclick="filterAthletes('all')" id="tab-ath-all" role="tab" aria-selected="true" aria-label="Xem tất cả 30 vận động viên" class="min-h-[44px] px-4 py-2 rounded-full bg-[#350aff] text-white font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">TẤT CẢ (30)</button>
-          <button onclick="filterAthletes('rs')" id="tab-ath-rs" role="tab" aria-selected="false" aria-label="Lọc vận động viên Redseed" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">REDSEED (16)</button>
-          <button onclick="filterAthletes('cd')" id="tab-ath-cd" role="tab" aria-selected="false" aria-label="Lọc vận động viên Cồn Dập" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">CỒN DẬP (14)</button>
+          <button onclick="filterAthletes('rs')" id="tab-ath-rs" role="tab" aria-selected="false" aria-label="Lọc vận động viên Redseed" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">REDSEED (15)</button>
+          <button onclick="filterAthletes('cd')" id="tab-ath-cd" role="tab" aria-selected="false" aria-label="Lọc vận động viên Cồn Dập" class="min-h-[44px] px-4 py-2 rounded-full text-zinc-600 hover:text-[#1e1e1e] transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">CỒN DẬP (15)</button>
         </div>
 
         <!-- View Switcher (Cards / List - Min 44px Touch Target) -->
@@ -1599,11 +1599,11 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-mono">
               <div class="p-2.5 rounded-xl bg-white border border-amber-200/80 shadow-xs flex items-center justify-between">
                 <span class="text-zinc-600 font-bold">Rổ Nam RS:</span>
-                <span class="text-zinc-900 font-black px-1.5 py-0.5 rounded bg-zinc-100">11 VĐV</span>
+                <span class="text-zinc-900 font-black px-1.5 py-0.5 rounded bg-zinc-100">10 VĐV</span>
               </div>
               <div class="p-2.5 rounded-xl bg-white border border-amber-200/80 shadow-xs flex items-center justify-between">
                 <span class="text-zinc-600 font-bold">Rổ Nam CD:</span>
-                <span class="text-zinc-900 font-black px-1.5 py-0.5 rounded bg-zinc-100">9 VĐV</span>
+                <span class="text-zinc-900 font-black px-1.5 py-0.5 rounded bg-zinc-100">10 VĐV</span>
               </div>
               <div class="p-2.5 rounded-xl bg-white border border-amber-200/80 shadow-xs flex items-center justify-between">
                 <span class="text-[#350aff] font-bold">Rổ Nữ Collab:</span>
@@ -2425,8 +2425,8 @@
     // ----------------------------------------------------
     // 5. OFFICIAL ATHLETES RAW DATA & VIEW ENGINES
     // ----------------------------------------------------
-    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Khầy Chiến", "Xuân Dị", "Hiệp Harley", "K-H-O-U", "a Hoàng", "a Tuấn Bin", "Gia Huy", "Phạm Hiếu", "Xuân Trái Dứng"];
-    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu"];
+    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Khầy Chiến", "Xuân Dị", "K-H-O-U", "a Hoàng", "a Tuấn Bin", "Gia Huy", "Phạm Hiếu", "Xuân Trái Dứng"];
+    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu", "LeeBum"];
     const rsWomen = ["Dung MaMa", "Nga Villa", "Hoài Oanh", "Thảo", "Mi Mi"];
     const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà", "Tớ là Nhun"];
 
@@ -2467,6 +2467,7 @@
     function getAthleteInitials(name) {
       if (!name) return '✦';
       if (name === 'K-H-O-U') return 'KH';
+      if (name === 'LeeBum') return 'LB';
       const clean = name.replace(/^(a\s+|chị\s+)/i, '').trim();
       const parts = clean.split(/\s+/);
       if (parts.length === 1) return parts[0].substring(0, 2).toUpperCase();
@@ -2631,14 +2632,8 @@
       for (let i = 0; i < 10; i++) {
         const teamNum = i < 9 ? `ĐỘI 0${i + 1}` : `ĐỘI 10`;
 
-        let m1, m2;
-        if (i < 9) {
-          m1 = `${menRS[i]} (RS)`;
-          m2 = `${menCD[i]} (CD)`;
-        } else {
-          m1 = `${menRS[9]} (RS)`;
-          m2 = `${menRS[10]} (RS)`;
-        }
+        const m1 = `${menRS[i]} (RS)`;
+        const m2 = `${menCD[i]} (CD)`;
 
         const femaleName = womenAll[i];
         const isRSWoman = rsWomen.includes(femaleName);
@@ -2651,7 +2646,7 @@
           m2: m2,
           f: f,
           isPending: false,
-          base: i < 9 ? "COLLAB RS × CD" : "REDSEED × COLLAB"
+          base: "COLLAB RS × CD"
         });
       }
       return newSquads;
@@ -2702,8 +2697,8 @@
                   <span class="text-zinc-400 italic text-[11px] flex items-center gap-1"><span>⏳</span><span>Chờ bốc thăm (Rổ Nam RS)</span></span>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50/80 border border-zinc-200">
-                  <span class="text-zinc-500 font-bold text-[11px]">${i < 9 ? 'CD:' : 'RS:'}</span>
-                  <span class="text-zinc-400 italic text-[11px] flex items-center gap-1"><span>⏳</span><span>Chờ bốc thăm (${i < 9 ? 'Rổ Nam CD' : 'Rổ Nam RS'})</span></span>
+                  <span class="text-zinc-500 font-bold text-[11px]">CD:</span>
+                  <span class="text-zinc-400 italic text-[11px] flex items-center gap-1"><span>⏳</span><span>Chờ bốc thăm (Rổ Nam CD)</span></span>
                 </div>
                 <div class="flex items-center justify-between p-2 rounded-lg bg-[#350aff]/5 border border-[#350aff]/20">
                   <span class="text-[#350aff] font-bold text-[11px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#350aff]/50"></span>NỮ:</span>
@@ -2749,7 +2744,7 @@
                 <span class="font-bold text-[#1e1e1e] truncate ml-2">${sq.m1.replaceAll(' (RS)', '')}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-zinc-50 border border-zinc-200">
-                <span class="text-zinc-500 font-bold text-[11px]">${sq.m2.includes('(RS)') ? 'RS:' : 'CD:'}</span>
+                <span class="text-zinc-500 font-bold text-[11px]">CD:</span>
                 <span class="font-bold truncate ml-2 ${sq.isPending && sq.m2.includes('Slot') ? 'text-zinc-400 italic' : 'text-[#1e1e1e]'}">${sq.m2.replaceAll(' (CD)', '').replaceAll(' (RS)', '')}</span>
               </div>
               <div class="flex items-center justify-between p-2 rounded-lg bg-[#350aff]/10 border border-[#350aff]/30">
@@ -3175,8 +3170,8 @@
       if (poolLabel) poolLabel.innerText = team.pool;
       if (stepCounter) stepCounter.innerText = `${teamIdx + 1} / 10 ĐỘI`;
 
-      const slot2Header = team.m2.includes('(RS)') ? "REDSEED (NAM 2)" : "CỒN DẬP (NAM)";
-      const slot2Candidates = team.m2.includes('(RS)') ? rsMen : cdMen;
+      const slot2Header = "CỒN DẬP (NAM)";
+      const slot2Candidates = cdMen;
 
       resetSlotBox(1, "REDSEED (NAM 1)", "ĐANG QUAY...");
       resetSlotBox(2, slot2Header, "CHỜ LƯỢT...");
