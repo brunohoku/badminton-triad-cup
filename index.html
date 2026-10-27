@@ -2005,9 +2005,10 @@
           </div>
         </div>
 
-        <!-- Quick Hint Button for Testing Ease -->
-        <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-900 font-sans flex items-center justify-between gap-2">
-          <span>💡 <b>Gợi ý BTC:</b> Sử dụng mật mã <code class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-amber-300 cursor-pointer text-[#350aff]" onclick="fillPasscodeHint('redcon2026')" title="Bấm để điền nhanh">redcon2026</code></span>
+        <!-- Organizer security note (No passcode hint exposed) -->
+        <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-[11px] text-amber-900 font-sans flex items-center gap-2">
+          <span class="text-amber-700">🔒</span>
+          <span><b>Bảo mật BTC:</b> Vui lòng nhập mật mã do Ban Tổ Chức cung cấp để mở quyền bốc thăm.</span>
         </div>
       </div>
 
@@ -2049,6 +2050,9 @@
           <button onclick="skipDrawToEnd()" aria-label="Bỏ qua hiệu ứng và xem ngay kết quả" class="min-h-[40px] px-4 py-2 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black text-xs hover:opacity-90 transition-opacity cursor-pointer focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none flex items-center gap-1">
             <span>BỎ QUA</span>
             <span>➜</span>
+          </button>
+          <button onclick="closeCeremonyModal()" aria-label="Đóng cửa sổ bốc thăm" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white transition-colors flex items-center justify-center text-sm font-bold cursor-pointer" title="Đóng">
+            ✕
           </button>
         </div>
       </div>
@@ -2125,7 +2129,7 @@
             <div class="text-left w-full sm:w-auto">
               <div class="flex items-center gap-1.5 text-[10px] text-zinc-400 font-mono uppercase tracking-wider">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ĐỘI VỪA RỒI</span>
+                <span id="ceremony-next-title">ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ĐỘI VỪA RỒI</span>
               </div>
               <div id="ceremony-next-subtitle" class="text-xs sm:text-sm text-[#bcf015] font-black mt-0.5 tracking-wide">
                 SẴN SÀNG BỐC THĂM ĐỘI TIẾP THEO
@@ -2997,7 +3001,7 @@
         input.classList.add('border-emerald-500', 'bg-emerald-50/50');
 
         playLockSound();
-        showToast("🔓 XÁC THỰC MẬT MÃ BTC THÀNH CÔNG! ĐANG KHỞI CHẠY BỐC THĂM CHÍNH THỨC...");
+        showToast("🔓 XÁC THỰC MẬT MÃ BTC THÀNH CÔNG! ĐÃ MỞ PHIÊN BỐC THĂM CHÍNH THỨC.");
 
         setTimeout(() => {
           closePasscodeModal();
@@ -3046,14 +3050,14 @@
       if (isDrawing) return;
       isDrawing = true;
       isOfficialDrawMode = isOfficial;
-      currentDrawingTeamIdx = 0;
+      currentDrawingTeamIdx = -1; // -1 represents ready stage before starting draw
 
       const dice = document.getElementById('btn-dice-icon');
       const headerDice = document.getElementById('header-dice');
       const heroDice = document.getElementById('hero-dice-icon');
-      if (dice) dice.classList.add('rolling-dice');
-      if (headerDice) headerDice.classList.add('rolling-dice');
-      if (heroDice) heroDice.classList.add('rolling-dice');
+      if (dice) dice.classList.remove('rolling-dice');
+      if (headerDice) headerDice.classList.remove('rolling-dice');
+      if (heroDice) heroDice.classList.remove('rolling-dice');
 
       candidateSquads = generateCollabSquads(true);
 
@@ -3062,7 +3066,11 @@
       const finishBtn = document.getElementById('ceremony-finish-btn');
       const compCount = document.getElementById('ceremony-completed-count');
       const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
+      const nextTitle = document.getElementById('ceremony-next-title');
+      const nextSubtitle = document.getElementById('ceremony-next-subtitle');
+      const nextBtnText = document.getElementById('ceremony-next-btn-text');
       const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
+      const footerNextBtnText = document.getElementById('ceremony-footer-next-btn-text');
 
       const badgeText = document.getElementById('ceremony-badge-text');
       const titleText = document.getElementById('ceremony-title-text');
@@ -3083,9 +3091,48 @@
       if (!modal) return;
       if (histList) histList.innerHTML = '';
       if (finishBtn) finishBtn.classList.add('hidden');
-      if (nextActionWrap) nextActionWrap.classList.add('hidden');
-      if (footerNextBtn) footerNextBtn.classList.add('hidden');
       if (compCount) compCount.innerText = '0 / 10';
+
+      const firstTeam = candidateSquads && candidateSquads[0] ? candidateSquads[0] : { id: "ĐỘI 01", pool: "BẢNG A (SÂN 6)" };
+      const teamLabel = document.getElementById('ceremony-current-team');
+      const poolLabel = document.getElementById('ceremony-current-pool');
+      const stepCounter = document.getElementById('ceremony-step-counter');
+
+      if (teamLabel) teamLabel.innerText = firstTeam.id;
+      if (poolLabel) poolLabel.innerText = firstTeam.pool;
+      if (stepCounter) stepCounter.innerText = "0 / 10 ĐỘI (CHỜ BẮT ĐẦU)";
+
+      // Reset slot boxes to clean standby state
+      resetSlotBox(1, "REDSEED (NAM 1)", "CHỜ BẮT ĐẦU...");
+      resetSlotBox(2, "CỒN DẬP (NAM)", "CHỜ BẮT ĐẦU...");
+      resetSlotBox(3, "BÓNG HỒNG", "CHỜ BẮT ĐẦU...");
+
+      // Configure prominent START button (waits for streamer to click before running)
+      if (nextTitle) {
+        nextTitle.innerText = isOfficial 
+          ? "🔴 MẬT MÃ BTC HỢP LỆ • PHIÊN BỐC THĂM ĐÃ SẴN SÀNG" 
+          : "🟢 HỆ THỐNG ĐÃ SẴN SÀNG BỐC THĂM THỬ NGHIỆM";
+      }
+      if (nextSubtitle) {
+        nextSubtitle.innerText = `BẤM NÚT BÊN DƯỚI ĐỂ BẮT ĐẦU BỐC THĂM ${firstTeam.id} • ${firstTeam.pool}`;
+      }
+      if (nextBtnText) {
+        nextBtnText.innerText = `▶ BẮT ĐẦU BỐC THĂM ${firstTeam.id}`;
+      }
+      if (footerNextBtnText) {
+        footerNextBtnText.innerText = `▶ BẮT ĐẦU BỐC THĂM`;
+      }
+
+      if (nextActionWrap) {
+        nextActionWrap.classList.remove('hidden');
+        if (window.gsap) {
+          gsap.fromTo(nextActionWrap, 
+            { scale: 0.94, opacity: 0, y: 10 },
+            { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }
+          );
+        }
+      }
+      if (footerNextBtn) footerNextBtn.classList.remove('hidden');
 
       modal.classList.remove('opacity-0', 'pointer-events-none');
       modal.classList.add('opacity-100');
@@ -3096,8 +3143,6 @@
           { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }
         );
       }
-
-      runTeamDrawStep(0);
     }
 
     function runTeamDrawStep(teamIdx) {
@@ -3162,10 +3207,12 @@
             } else {
               // Pause and show interactive NEXT button to draw next team!
               const nextTeam = candidateSquads[teamIdx + 1];
+              const nextTitle = document.getElementById('ceremony-next-title');
               const nextBtnText = document.getElementById('ceremony-next-btn-text');
               const footerNextBtnText = document.getElementById('ceremony-footer-next-btn-text');
               const nextSubtitle = document.getElementById('ceremony-next-subtitle');
 
+              if (nextTitle) nextTitle.innerText = `✓ ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ${team.id}`;
               if (nextBtnText) nextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
               if (footerNextBtnText) footerNextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
               if (nextSubtitle) nextSubtitle.innerText = `TIẾP THEO: ${nextTeam.id} • ${nextTeam.pool}`;
@@ -3189,7 +3236,12 @@
     function nextTeamDrawStep() {
       if (!isDrawing) return;
       playTickSound();
-      runTeamDrawStep(currentDrawingTeamIdx + 1);
+      if (currentDrawingTeamIdx === -1) {
+        // Start first team on click
+        runTeamDrawStep(0);
+      } else {
+        runTeamDrawStep(currentDrawingTeamIdx + 1);
+      }
     }
 
     function resetSlotBox(slotNum, header, status) {
@@ -3368,6 +3420,7 @@
 
     function closeCeremonyModal() {
       isDrawing = false;
+      currentDrawingTeamIdx = -1;
       clearTimeout(drawTimer);
       const dice = document.getElementById('btn-dice-icon');
       const headerDice = document.getElementById('header-dice');
