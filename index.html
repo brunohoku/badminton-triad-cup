@@ -2148,7 +2148,7 @@
             <span>CÁC ĐỘI ĐÃ HOÀN TẤT BỐC THĂM:</span>
             <span id="ceremony-completed-count" class="text-zinc-600 font-bold">0 / 10</span>
           </div>
-          <div id="ceremony-history-list" class="grid grid-cols-1 sm:grid-cols-3 gap-2 max-h-36 overflow-y-auto p-1">
+          <div id="ceremony-history-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto p-1">
             <!-- Dynamically populated as teams lock in -->
           </div>
         </div>
@@ -3296,7 +3296,9 @@
           drawTimer = setTimeout(tick, delay);
         } else {
           if (nameEl) {
-            nameEl.innerText = targetName;
+            const cleanTarget = (targetName || '').replace(/\s*\([A-Z]+\)$/, '').trim();
+            nameEl.innerText = cleanTarget;
+            nameEl.title = cleanTarget;
             nameEl.className = "text-base md:text-lg font-black text-[#1e1e1e] block truncate scale-105 transition-transform";
           }
           if (statusEl) {
@@ -3321,11 +3323,24 @@
       const compCount = document.getElementById('ceremony-completed-count');
       if (!histList) return;
 
+      const cleanM1 = (team.m1 || '').replace(/\s*\([A-Z]+\)$/, '').trim();
+      const cleanM2 = (team.m2 || '').replace(/\s*\([A-Z]+\)$/, '').trim();
+      const cleanF = (team.f || '').replace(/\s*\([A-Z]+\)$/, '').trim();
+      const fullText = `${cleanM1} + ${cleanM2} + ${cleanF}`;
+      const isM2RS = (team.m2 || '').includes('(RS)');
+
       const chip = document.createElement('div');
-      chip.className = "p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-[10px] font-mono flex items-center justify-between";
+      chip.className = "p-2.5 px-3 rounded-xl bg-zinc-50 hover:bg-white border border-zinc-200 text-[11px] font-mono flex items-center justify-between gap-2 shadow-xs transition-colors";
+      chip.title = `${team.id}: ${fullText}`;
       chip.innerHTML = `
-        <span class="font-bold text-[#1e1e1e]">${team.id}:</span>
-        <span class="text-zinc-600 truncate ml-1">${team.m1.split(' ')[0]} + ${team.m2.split(' ')[0]} + ${team.f.split(' ')[0]}</span>
+        <span class="font-black text-[#1e1e1e] shrink-0">${team.id}:</span>
+        <span class="text-zinc-700 truncate ml-1 font-medium text-left">
+          <span class="text-rose-600 font-bold">${cleanM1}</span>
+          <span class="text-zinc-400 mx-0.5">+</span>
+          <span class="${isM2RS ? 'text-rose-600' : 'text-[#350aff]'} font-bold">${cleanM2}</span>
+          <span class="text-zinc-400 mx-0.5">+</span>
+          <span class="text-emerald-600 font-bold">${cleanF}</span>
+        </span>
       `;
       histList.appendChild(chip);
 
