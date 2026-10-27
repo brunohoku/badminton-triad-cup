@@ -1619,10 +1619,10 @@
       <!-- TOP 1: VÔ ĐỊCH (Center Column - Elevated / Grand Champion Glow) (order-1 lg:order-2) -->
       <div class="tds-card p-6 md:p-8 flex flex-col justify-between stagger-scale-item bg-white border-2 border-amber-400 hover:border-[#bcf015] shadow-2xl shadow-amber-500/15 lg:-translate-y-4 transition-all duration-300 order-1 lg:order-2 relative overflow-hidden group">
         <!-- Golden Neon Aura Badge -->
-        <div class="absolute -top-12 -right-12 w-44 h-44 bg-gradient-to-br from-amber-400/25 via-amber-300/15 to-[#bcf015]/20 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -top-12 -right-12 w-48 h-48 bg-gradient-to-br from-amber-400/25 via-amber-300/15 to-[#bcf015]/20 rounded-full blur-2xl pointer-events-none"></div>
 
         <div>
-          <!-- Header Pill -->
+          <!-- Header Pill & Rank -->
           <div class="flex items-center justify-between border-b border-amber-200 pb-3 mb-4">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-white text-[11px] font-black tracking-widest uppercase shadow-sm">
               <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
@@ -1632,56 +1632,145 @@
           </div>
 
           <div class="mb-4">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider">Shopee Mall</span>
+              <span class="text-xs font-bold text-zinc-600 font-mono flex items-center gap-1">
+                <span class="text-amber-500">★★★★★</span>
+                <span class="font-bold text-[#1e1e1e]">4.9</span>
+                <span class="text-zinc-400 font-normal">(7.1k+ đã bán)</span>
+              </span>
+            </div>
             <h3 class="text-2xl md:text-3xl font-black text-[#1e1e1e] uppercase tracking-tight">NHÀ VÔ ĐỊCH TRIAD CUP</h3>
-            <p class="text-xs text-amber-900/80 font-sans mt-0.5 font-medium">Phần thưởng cao quý nhất dành cho đội vô địch giải đấu</p>
+            <p class="text-xs text-amber-900/80 font-sans mt-0.5 font-medium">Tặng 01 Balo Cầu Lông Cao Cấp chính hãng cho mỗi VĐV trong đội vô địch</p>
           </div>
 
-          <!-- Hero Prize Showcase: BALO CẦU LÔNG PRO -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-amber-500/15 via-amber-400/5 to-white border-2 border-amber-400/60 text-center mb-6 relative overflow-hidden group-hover:border-[#bcf015] transition-colors">
-            <div class="text-5xl md:text-6xl mb-2 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 inline-block">
-              🎒
+          <!-- Hero Prize Product Card: BALO CẦU LÔNG NATOLI PROSPORT B26 -->
+          <div onclick="openBaloModal()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openBaloModal();}" class="cursor-pointer group/balo relative rounded-2xl p-4 bg-gradient-to-b from-amber-500/10 via-amber-50/50 to-white border-2 border-amber-400/70 hover:border-[#350aff] transition-all duration-300 shadow-md hover:shadow-xl mb-5 text-left" title="Nhấn để xem ảnh thực tế & chi tiết thông số Shopee Mall">
+            
+            <!-- Badges Floating -->
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#1e1e1e] text-[#bcf015] font-black text-[10px] tracking-wider uppercase">
+                <span>✦</span>
+                <span>BST PROSPORT B26</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold">
+                <span>🛡️</span>
+                <span>Bảo hành trọn đời</span>
+              </span>
             </div>
-            <div class="font-black text-lg md:text-xl text-[#1e1e1e] tracking-tight uppercase">
-              BALO CẦU LÔNG CAO CẤP
-            </div>
-            <p class="text-xs text-zinc-600 font-sans mt-1 max-w-xs mx-auto leading-relaxed">
-              Balo thể thao đa ngăn chuyên dụng cho vợt thủ (ngăn đựng vợt riêng biệt, ngăn để giày thông thoáng khử mùi, ngăn chống nước).
-            </p>
-            <div class="inline-flex items-center gap-1.5 mt-3 px-3 py-1 rounded-full bg-[#1e1e1e] text-[#bcf015] font-black text-[10px] tracking-wider uppercase shadow-md">
-              <span>✦</span>
-              <span>QUÀ TẶNG VÔ ĐỊCH ĐỘC QUYỀN</span>
-            </div>
-          </div>
 
-          <!-- Perks List -->
-          <div class="space-y-2.5 text-xs font-mono">
-            <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-300/80 flex items-center justify-between gap-2.5">
-              <div class="flex items-center gap-2.5">
-                <span class="text-lg">🎒</span>
-                <div>
-                  <span class="font-black text-[#1e1e1e] block">Balo Cầu Lông Đa Năng</span>
-                  <span class="text-[10px] text-amber-900 font-sans block">Trang bị đỉnh cao cho từng VĐV vô địch</span>
-                </div>
+            <!-- Product Image Display with Zoom Trigger -->
+            <div class="relative w-full h-52 sm:h-56 flex items-center justify-center bg-white/95 rounded-xl overflow-hidden border border-amber-200/60 p-2 group-hover/balo:scale-[1.02] transition-transform duration-300 shadow-inner">
+              <img src="balo-natoli-prosport-b26.png" alt="Balo Cầu Lông Thể Thao BST ProSport B26 NATOLI Chính Hãng" class="w-full h-full object-contain filter drop-shadow-md">
+              
+              <!-- Quick Zoom Pill Indicator -->
+              <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-[#1e1e1e]/85 backdrop-blur-md text-white text-[10px] font-mono font-bold flex items-center gap-1.5 opacity-90 group-hover/balo:opacity-100 group-hover/balo:bg-[#350aff] transition-all shadow-md">
+                <svg class="w-3 h-3 text-[#bcf015]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+                <span>Xem Chi Tiết</span>
               </div>
-              <span class="px-2.5 py-1 rounded-md bg-amber-500 text-white font-black text-[11px] shadow-xs shrink-0">TOP 1</span>
+
+              <!-- Price Tag Corner -->
+              <div class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-red-600 text-white font-mono font-black text-xs shadow-md">
+                484.000₫
+              </div>
             </div>
 
-            <div class="p-2.5 rounded-xl bg-zinc-50 border border-zinc-200/80 flex items-center justify-between gap-2.5">
-              <div class="flex items-center gap-2.5">
+            <!-- Brand & Model Name -->
+            <div class="mt-3">
+              <div class="text-[11px] font-black uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+                <span>NATOLI OFFICIAL STORE</span>
+                <span class="w-1 h-1 rounded-full bg-amber-400"></span>
+                <span>CHÍNH HÃNG</span>
+              </div>
+              <h4 class="font-black text-sm sm:text-base text-[#1e1e1e] uppercase tracking-tight mt-0.5 line-clamp-2">
+                Balo Cầu Lông BST ProSport Backpack B26
+              </h4>
+            </div>
+
+            <!-- 5 Color Swatches Preview -->
+            <div class="mt-3 pt-2.5 border-t border-amber-200/60">
+              <div class="flex items-center justify-between text-[11px] font-mono mb-1.5">
+                <span class="text-zinc-500 font-sans">Chọn 1 trong 5 phối màu:</span>
+                <span class="font-bold text-[#1e1e1e]">Be • Đen • Navy • Xám • Hồng</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <!-- Be -->
+                <div class="w-5 h-5 rounded-full border-2 border-amber-600 bg-[#E8DFC9] shadow-xs cursor-pointer hover:scale-125 transition-transform" title="Màu Be (Cream Sand - như ảnh)"></div>
+                <!-- Đen -->
+                <div class="w-5 h-5 rounded-full border border-zinc-400 bg-[#1e1e1e] shadow-xs cursor-pointer hover:scale-125 transition-transform" title="Màu Đen (Stealth Black)"></div>
+                <!-- Xanh Navy -->
+                <div class="w-5 h-5 rounded-full border border-zinc-400 bg-[#1A2C4B] shadow-xs cursor-pointer hover:scale-125 transition-transform" title="Màu Xanh Navy (Deep Navy)"></div>
+                <!-- Xám -->
+                <div class="w-5 h-5 rounded-full border border-zinc-400 bg-[#9CA3AF] shadow-xs cursor-pointer hover:scale-125 transition-transform" title="Màu Xám (Athletic Grey)"></div>
+                <!-- Hồng -->
+                <div class="w-5 h-5 rounded-full border border-zinc-400 bg-[#F4A7B9] shadow-xs cursor-pointer hover:scale-125 transition-transform" title="Màu Hồng (Pastel Pink)"></div>
+                <span class="text-[10px] text-amber-800 font-bold ml-1 font-mono">+ Tự do chọn màu</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Feature Cards Grid (2x2) -->
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono mb-4">
+            <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-200 flex flex-col justify-between">
+              <div class="flex items-center gap-1.5 text-base mb-1">
+                <span>🏸</span>
+                <span class="font-black text-[#1e1e1e] text-[11px] uppercase">Ngăn Vợt Riêng</span>
+              </div>
+              <p class="text-[10px] text-zinc-600 font-sans leading-tight">Đựng 2-3 cây có quai dán khóa cán vợt cố định</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-200 flex flex-col justify-between">
+              <div class="flex items-center gap-1.5 text-base mb-1">
+                <span>👟</span>
+                <span class="font-black text-[#1e1e1e] text-[11px] uppercase">Ngăn Giày Đáy</span>
+              </div>
+              <p class="text-[10px] text-zinc-600 font-sans leading-tight">Lỗ thoát khí riêng biệt, chống ám mùi quần áo</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-200 flex flex-col justify-between">
+              <div class="flex items-center gap-1.5 text-base mb-1">
+                <span>🌧️</span>
+                <span class="font-black text-[#1e1e1e] text-[11px] uppercase">Chống Nước Pro</span>
+              </div>
+              <p class="text-[10px] text-zinc-600 font-sans leading-tight">Vải Oxford trượt nước mưa, chống bám bụi</p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-200 flex flex-col justify-between">
+              <div class="flex items-center gap-1.5 text-base mb-1">
+                <span>🛡️</span>
+                <span class="font-black text-[#1e1e1e] text-[11px] uppercase">Quai Air-Mesh</span>
+              </div>
+              <p class="text-[10px] text-zinc-600 font-sans leading-tight">Đệm mút tản nhiệt êm ái, giảm tải vai lưng</p>
+            </div>
+          </div>
+
+          <!-- Extra Perks (Cup & Glory) -->
+          <div class="space-y-2 text-xs font-mono">
+            <div class="p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-between gap-2.5">
+              <div class="flex items-center gap-2">
                 <span class="text-base">🏆</span>
-                <span class="font-bold text-[#1e1e1e]">Cúp Vinh Quang Triad Collab 2026</span>
+                <span class="font-bold text-[#1e1e1e]">Cúp Vàng Triad Collab 2026</span>
               </div>
-              <span class="px-2 py-0.5 rounded-md bg-zinc-200 font-bold text-[10px] text-zinc-700 shrink-0">CÚP LƯU NIỆM</span>
+              <span class="px-2 py-0.5 rounded-md bg-amber-500 text-white font-bold text-[10px] shrink-0">CÚP VÔ ĐỊCH</span>
             </div>
 
-            <div class="p-2.5 rounded-xl bg-zinc-50 border border-zinc-200/80 flex items-center justify-between gap-2.5">
-              <div class="flex items-center gap-2.5">
+            <div class="p-2.5 rounded-xl bg-zinc-50 border border-zinc-200 flex items-center justify-between gap-2.5">
+              <div class="flex items-center gap-2">
                 <span class="text-base">👑</span>
-                <span class="font-bold text-[#1e1e1e]">Danh hiệu Bộ Ba Huyền Thoại Mùa 1</span>
+                <span class="font-bold text-[#1e1e1e]">Vinh danh Bộ Ba Huyền Thoại Mùa 1</span>
               </div>
               <span class="px-2 py-0.5 rounded-md bg-zinc-200 font-bold text-[10px] text-zinc-700 shrink-0">BẢNG VÀNG</span>
             </div>
           </div>
+
+          <!-- Big Action Button to Open Lightbox -->
+          <button onclick="openBaloModal()" class="w-full mt-4 py-3 px-4 rounded-xl bg-[#1e1e1e] hover:bg-[#350aff] text-white font-mono font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md group/btn cursor-pointer">
+            <svg class="w-4 h-4 text-[#bcf015]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>XEM ẢNH THỰC TẾ & THÔNG SỐ BALO</span>
+            <span class="transition-transform group-hover/btn:translate-x-1 text-[#bcf015]">➜</span>
+          </button>
+
         </div>
 
         <div class="mt-6 pt-3 border-t border-amber-200 flex items-center justify-between text-[11px] text-amber-900 font-mono font-bold">
@@ -2496,6 +2585,260 @@
   </div>
 
   <!-- ========================================== -->
+  <!-- 11C. BALO PROSPORT B26 DETAIL MODAL        -->
+  <!-- ========================================== -->
+  <div id="balo-detail-modal" onclick="handleBaloModalBackdropClick(event)" class="fixed inset-0 z-[230] bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Chi tiết giải thưởng Balo Cầu Lông Natoli ProSport B26">
+    <div class="relative w-full max-w-4xl max-h-[92vh] bg-white rounded-2xl md:rounded-3xl shadow-2xl border border-zinc-200 flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Header -->
+      <div class="p-3.5 sm:p-5 bg-zinc-900 text-white flex items-center justify-between border-b border-zinc-800 shrink-0">
+        <div class="flex items-center gap-2.5 sm:gap-3 truncate">
+          <span class="px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-black uppercase tracking-wider shrink-0">Shopee Mall</span>
+          <div class="truncate">
+            <h3 class="text-sm sm:text-base md:text-lg font-black uppercase tracking-tight truncate flex items-center gap-2">
+              <span>Balo Cầu Lông NATOLI ProSport B26</span>
+              <span class="hidden sm:inline-block text-[#bcf015] text-xs font-mono">✦ TOP 1 PRIZE</span>
+            </h3>
+            <p class="text-[11px] text-zinc-400 font-mono truncate hidden sm:block">Gian hàng chính hãng NATOLI • Giá 484.000₫ • Đánh giá 4.9★ (7.1k+ đã bán)</p>
+          </div>
+        </div>
+        <button onclick="closeBaloModal()" aria-label="Đóng bảng chi tiết balo" class="w-8 h-8 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white flex items-center justify-center text-sm font-bold transition-colors cursor-pointer shrink-0 ml-2 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          ✕
+        </button>
+      </div>
+
+      <!-- Tab Switcher Navigation -->
+      <div class="flex items-center border-b border-zinc-200 bg-zinc-50 px-3 sm:px-6 pt-2 shrink-0 overflow-x-auto text-xs font-mono">
+        <button id="balo-tab-btn-photo" onclick="switchBaloTab('photo')" class="px-4 py-2.5 font-bold border-b-2 border-[#350aff] text-[#350aff] transition-all cursor-pointer flex items-center gap-2 shrink-0">
+          <span>📸</span>
+          <span>ẢNH THỰC TẾ & THIẾT KẾ</span>
+        </button>
+        <button id="balo-tab-btn-spec" onclick="switchBaloTab('spec')" class="px-4 py-2.5 font-bold border-b-2 border-transparent text-zinc-500 hover:text-zinc-900 transition-all cursor-pointer flex items-center gap-2 shrink-0">
+          <span>📊</span>
+          <span>CHỨNG NHẬN SHOPEE MALL & THÔNG SỐ</span>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="overflow-y-auto overflow-x-hidden p-3.5 sm:p-6 bg-zinc-100 flex-1 min-h-0 overscroll-contain">
+        
+        <!-- VIEW 1: PHOTO & ERGONOMICS -->
+        <div id="balo-tab-view-photo" class="space-y-6">
+          
+          <!-- Image + Hero Details Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-white p-4 sm:p-6 rounded-2xl border border-zinc-200 shadow-sm">
+            <!-- Left: Studio Image with badge -->
+            <div class="relative bg-zinc-50 rounded-xl p-4 flex items-center justify-center border border-zinc-200/80 group">
+              <img src="balo-natoli-prosport-b26.png" alt="Balo Cầu Lông NATOLI ProSport B26 thực tế" class="max-h-72 w-auto object-contain mx-auto filter drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+              <div class="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-amber-500 text-white font-mono font-bold text-[10px] shadow-sm">
+                MẪU CHÍNH: BE (CREAM SAND)
+              </div>
+              <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-[#1e1e1e]/80 text-[#bcf015] font-mono text-[10px] font-bold">
+                CÓ KHÓA GIỮ 2-3 CÂY VỢT
+              </div>
+            </div>
+
+            <!-- Right: Quick highlights & trust factors -->
+            <div class="space-y-3.5 font-mono text-xs">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[11px]">QUÁN QUÂN 2026</span>
+                <span class="text-zinc-500 font-sans text-xs">• 1 Chiếc / 1 Vận Động Viên</span>
+              </div>
+              <h4 class="text-lg sm:text-xl font-black text-[#1e1e1e] font-sans leading-tight">
+                BST ProSport B26 – Dòng Balo Thể Thao Đa Ngăn Chuyên Nghiệp Cho Cầu Lông
+              </h4>
+              <p class="text-xs text-zinc-600 font-sans leading-relaxed">
+                Thiết kế thời thượng, chuẩn phom thể thao hiện đại. Được trang bị các ngăn chuyên biệt giải quyết toàn bộ bài toán trang bị khi ra sân tập và thi đấu:
+              </p>
+
+              <div class="space-y-2 pt-1 font-mono text-[11px]">
+                <div class="flex items-start gap-2 text-zinc-700">
+                  <span class="text-emerald-600 font-bold shrink-0">✔</span>
+                  <span><b>Ngăn đựng vợt có đai khóa:</b> Giữ cố định 2-3 cây vợt không va đập.</span>
+                </div>
+                <div class="flex items-start gap-2 text-zinc-700">
+                  <span class="text-emerald-600 font-bold shrink-0">✔</span>
+                  <span><b>Ngăn để giày đáy riêng biệt:</b> Tản khí chống mùi hôi ám vào trang phục.</span>
+                </div>
+                <div class="flex items-start gap-2 text-zinc-700">
+                  <span class="text-emerald-600 font-bold shrink-0">✔</span>
+                  <span><b>Vải Oxford chống nước cao cấp:</b> Bảo vệ đồ đạc tối đa khi trời mưa.</span>
+                </div>
+                <div class="flex items-start gap-2 text-zinc-700">
+                  <span class="text-emerald-600 font-bold shrink-0">✔</span>
+                  <span><b>Quai Air-Mesh tản nhiệt:</b> Siêu êm, trợ lực tốt, giảm mỏi vai lưng.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 Color Palette Showcase -->
+          <div class="bg-white p-4 sm:p-6 rounded-2xl border border-zinc-200 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-4 border-b border-zinc-200 gap-1">
+              <div>
+                <h5 class="font-black text-sm uppercase text-[#1e1e1e] tracking-tight">5 PHỐI MÀU CHÍNH HÃNG DÀNH CHO NHÀ VÔ ĐỊCH</h5>
+                <p class="text-xs text-zinc-500 font-sans">Mỗi thành viên đội vô địch được quyền tùy chọn 1 màu sắc yêu thích:</p>
+              </div>
+              <span class="text-[11px] font-mono text-[#350aff] font-bold">100% CHÍNH HÃNG NATOLI</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 font-mono text-center">
+              <!-- Color 1: Be -->
+              <div class="p-3 rounded-xl bg-zinc-50 border-2 border-amber-500/80 hover:bg-amber-50/50 transition-colors flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#E8DFC9] border-2 border-amber-600 shadow-sm mb-2"></div>
+                <span class="font-bold text-xs text-[#1e1e1e]">MÀU BE</span>
+                <span class="text-[10px] text-zinc-500 font-sans mt-0.5">Cream Sand (Ảnh mẫu)</span>
+                <span class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-amber-500 text-white font-bold">BEST SELLER</span>
+              </div>
+
+              <!-- Color 2: Đen -->
+              <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200 hover:border-zinc-400 transition-colors flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#1e1e1e] border-2 border-zinc-400 shadow-sm mb-2"></div>
+                <span class="font-bold text-xs text-[#1e1e1e]">MÀU ĐEN</span>
+                <span class="text-[10px] text-zinc-500 font-sans mt-0.5">Stealth Black</span>
+                <span class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-700 font-bold">MẠNH MẼ</span>
+              </div>
+
+              <!-- Color 3: Xanh Navy -->
+              <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200 hover:border-zinc-400 transition-colors flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#1A2C4B] border-2 border-blue-400 shadow-sm mb-2"></div>
+                <span class="font-bold text-xs text-[#1e1e1e]">XANH NAVY</span>
+                <span class="text-[10px] text-zinc-500 font-sans mt-0.5">Deep Navy</span>
+                <span class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-bold">THỂ THAO PRO</span>
+              </div>
+
+              <!-- Color 4: Xám -->
+              <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200 hover:border-zinc-400 transition-colors flex flex-col items-center">
+                <div class="w-8 h-8 rounded-full bg-[#9CA3AF] border-2 border-zinc-300 shadow-sm mb-2"></div>
+                <span class="font-bold text-xs text-[#1e1e1e]">MÀU XÁM</span>
+                <span class="text-[10px] text-zinc-500 font-sans mt-0.5">Athletic Grey</span>
+                <span class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-zinc-200 text-zinc-700 font-bold">TINH TẾ</span>
+              </div>
+
+              <!-- Color 5: Hồng -->
+              <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200 hover:border-zinc-400 transition-colors flex flex-col items-center col-span-2 sm:col-span-1">
+                <div class="w-8 h-8 rounded-full bg-[#F4A7B9] border-2 border-pink-300 shadow-sm mb-2"></div>
+                <span class="font-bold text-xs text-[#1e1e1e]">MÀU HỒNG</span>
+                <span class="text-[10px] text-zinc-500 font-sans mt-0.5">Pastel Pink</span>
+                <span class="mt-2 text-[9px] px-1.5 py-0.5 rounded bg-pink-100 text-pink-800 font-bold">NỔI BẬT</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VIEW 2: SHOPEE MALL SPEC & PROOF -->
+        <div id="balo-tab-view-spec" class="hidden space-y-6">
+          
+          <!-- Shopee Mall Listing Image View -->
+          <div class="bg-white p-4 sm:p-6 rounded-2xl border border-zinc-200 shadow-sm text-center">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-zinc-200">
+              <div class="text-left">
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-black uppercase">Shopee Mall</span>
+                  <span class="text-xs font-bold text-zinc-700 font-mono">NATOLI Official Store</span>
+                </div>
+                <div class="text-xs text-zinc-500 font-sans mt-0.5">Ảnh chụp màn hình thực tế từ gian hàng chính hãng Shopee Mall</div>
+              </div>
+              <div class="text-right font-mono text-xs">
+                <div class="text-red-600 font-black text-sm">484.000₫</div>
+                <div class="text-[10px] text-zinc-500">Bảo hành trọn đời</div>
+              </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto rounded-xl overflow-hidden border border-zinc-200/90 shadow-md">
+              <img src="balo-natoli-shopee-spec.png" alt="Chi tiết gian hàng Shopee Mall Balo NATOLI ProSport B26" class="w-full h-auto object-contain mx-auto block">
+            </div>
+          </div>
+
+          <!-- Specs Table & Guarantee Policy -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Table 1: Tech Specs -->
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-zinc-200 shadow-sm font-mono text-xs">
+              <div class="font-bold text-[#1e1e1e] uppercase tracking-wider pb-2.5 border-b border-zinc-200 mb-3 flex items-center gap-2">
+                <span>📐</span>
+                <span>THÔNG SỐ KỸ THUẬT SẢN PHẨM</span>
+              </div>
+              <div class="space-y-2 text-[11px]">
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Thương hiệu:</span>
+                  <span class="font-bold text-[#1e1e1e]">NATOLI Vietnam (Shopee Mall)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Dòng sản phẩm:</span>
+                  <span class="font-bold text-[#1e1e1e]">ProSport Backpack B26</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Sức chứa vợt:</span>
+                  <span class="font-bold text-[#1e1e1e]">2 - 3 cây vợt cầu lông</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Ngăn để giày:</span>
+                  <span class="font-bold text-[#1e1e1e]">Ngăn riêng đáy có lỗ thoát hơi</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Chất liệu:</span>
+                  <span class="font-bold text-[#1e1e1e]">Vải Oxford cao cấp trượt nước</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Đệm quai:</span>
+                  <span class="font-bold text-[#1e1e1e]">Mút lưới Air-Mesh trợ lực</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table 2: Shopee Mall Trust & Reviews -->
+            <div class="bg-white p-4 sm:p-5 rounded-2xl border border-zinc-200 shadow-sm font-mono text-xs">
+              <div class="font-bold text-[#1e1e1e] uppercase tracking-wider pb-2.5 border-b border-zinc-200 mb-3 flex items-center gap-2">
+                <span>🛡️</span>
+                <span>CHÍNH SÁCH BẢO HÀNH & ĐÁNH GIÁ</span>
+              </div>
+              <div class="space-y-2 text-[11px]">
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Điểm đánh giá:</span>
+                  <span class="font-bold text-amber-600">4.9 / 5.0 ★ (1.300+ lượt)</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Lượng hàng bán:</span>
+                  <span class="font-bold text-emerald-600">7.100+ chiếc đã bán</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Bảo hành hãng:</span>
+                  <span class="font-bold text-[#1e1e1e]">BẢO HÀNH TRỌN ĐỜI</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Đổi trả Shopee:</span>
+                  <span class="font-bold text-[#1e1e1e]">15 ngày miễn phí đổi trả</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-zinc-100">
+                  <span class="text-zinc-500">Cam kết:</span>
+                  <span class="font-bold text-[#1e1e1e]">100% Chính Hãng Natoli Mall</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-3 sm:p-4 bg-white border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-500 font-mono text-[11px] shrink-0">
+        <div class="flex items-center gap-2 text-[#1e1e1e] truncate">
+          <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
+          <span class="truncate"><b>TRAO GIẢI:</b> Đội vô địch nhận 03 chiếc (mỗi VĐV 01 chiếc) tại Lễ Bế mạc 15/11/2026</span>
+        </div>
+        <button onclick="closeBaloModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-full bg-[#1e1e1e] hover:bg-[#350aff] text-white font-bold uppercase transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+          ĐÓNG LẠI
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
   <!-- 12. SCRIPT ENGINE                          -->
   <!-- ========================================== -->
   <script>
@@ -2583,6 +2926,7 @@
         if (typeof closePasscodeModal === 'function') closePasscodeModal();
         if (typeof closeRulesInfographicModal === 'function') closeRulesInfographicModal();
         if (typeof closeCeremonyModal === 'function') closeCeremonyModal();
+        if (typeof closeBaloModal === 'function') closeBaloModal();
       } else if (e.key === ' ' || e.key === 'Enter') {
         const ceremonyModal = document.getElementById('draw-ceremony-modal');
         if (ceremonyModal && ceremonyModal.classList.contains('opacity-100')) {
@@ -3769,6 +4113,54 @@
     function handleRulesModalBackdropClick(e) {
       if (e.target.id === 'rules-infographic-modal') {
         closeRulesInfographicModal();
+      }
+    }
+
+    // ----------------------------------------------------
+    // BALO PROSPORT B26 DETAIL MODAL CONTROLLER
+    // ----------------------------------------------------
+    function openBaloModal() {
+      const modal = document.getElementById('balo-detail-modal');
+      if (!modal) return;
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+      // Reset to first tab
+      switchBaloTab('photo');
+    }
+
+    function closeBaloModal() {
+      const modal = document.getElementById('balo-detail-modal');
+      if (!modal) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100');
+      document.body.style.overflow = '';
+    }
+
+    function handleBaloModalBackdropClick(e) {
+      if (e.target.id === 'balo-detail-modal') {
+        closeBaloModal();
+      }
+    }
+
+    function switchBaloTab(tabName) {
+      const photoView = document.getElementById('balo-tab-view-photo');
+      const specView = document.getElementById('balo-tab-view-spec');
+      const btnPhoto = document.getElementById('balo-tab-btn-photo');
+      const btnSpec = document.getElementById('balo-tab-btn-spec');
+
+      if (!photoView || !specView || !btnPhoto || !btnSpec) return;
+
+      if (tabName === 'photo') {
+        photoView.classList.remove('hidden');
+        specView.classList.add('hidden');
+        btnPhoto.className = "px-4 py-2.5 font-bold border-b-2 border-[#350aff] text-[#350aff] transition-all cursor-pointer flex items-center gap-2 shrink-0";
+        btnSpec.className = "px-4 py-2.5 font-bold border-b-2 border-transparent text-zinc-500 hover:text-zinc-900 transition-all cursor-pointer flex items-center gap-2 shrink-0";
+      } else {
+        photoView.classList.add('hidden');
+        specView.classList.remove('hidden');
+        btnSpec.className = "px-4 py-2.5 font-bold border-b-2 border-[#350aff] text-[#350aff] transition-all cursor-pointer flex items-center gap-2 shrink-0";
+        btnPhoto.className = "px-4 py-2.5 font-bold border-b-2 border-transparent text-zinc-500 hover:text-zinc-900 transition-all cursor-pointer flex items-center gap-2 shrink-0";
       }
     }
 
