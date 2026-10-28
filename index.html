@@ -1931,20 +1931,104 @@
         Mỗi đội gồm <b>2 Nam + 1 Nữ</b> ghép cặp ngẫu nhiên giữa <b>REDSEED</b> và <b>CỒN DẬP</b>.
       </p>
 
-      <!-- Official Status Card: Draw Complete -->
-      <div class="mt-6 p-4 sm:p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200/90 text-center font-mono max-w-2xl mx-auto shadow-xs">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>KẾT QUẢ BỐC THĂM CHÍNH THỨC • ĐÃ HOÀN TẤT</span>
+      <!-- Pool Draw Control Station -->
+      <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-white border-2 border-zinc-200 shadow-md max-w-3xl mx-auto text-left font-mono">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-zinc-200">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-[#350aff] text-white flex items-center justify-center text-lg font-black shadow-md shadow-[#350aff]/20 shrink-0">
+              🎱
+            </div>
+            <div>
+              <div class="flex items-center gap-2 text-xs font-bold text-[#350aff] uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-[#350aff] animate-pulse"></span>
+                <span>ĐIỀU PHỐI BẢNG ĐẤU // PHÂN BỔ 3 SÂN PINPON</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-black text-zinc-900 uppercase tracking-tight">
+                BỐC THĂM PHÂN BẢNG A - B - C
+              </h3>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 self-start sm:self-center">
+            <span id="pool-draw-status-badge" class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold border border-emerald-300 flex items-center gap-1.5 shadow-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>10 ĐỘI ĐÃ VÀO BẢNG</span>
+            </span>
+          </div>
         </div>
-        <p class="text-xs sm:text-sm text-emerald-950 font-sans leading-relaxed">
-          10 Đội hình Collab đã được bốc thăm ngẫu nhiên & công khai. 3 bảng đấu chính thức tranh tài tại 3 sân PinPon (13:30 – 17:30 ngày 27/10/2026).
+
+        <p class="text-xs text-zinc-600 font-sans mt-3 leading-relaxed">
+          10 Đội hình đã hoàn tất nhân sự. Sử dụng công cụ bên dưới để <b>bốc thăm ngẫu nhiên từng đội vào 3 bảng đấu</b> (Bảng A: 4 đội thi đấu Sân 6; Bảng B: 3 đội thi đấu Sân 7; Bảng C: 3 đội thi đấu Sân 8).
         </p>
-        <div class="mt-3 pt-3 border-t border-emerald-200/60 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[11px] font-mono">
-          <span class="px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-zinc-800 font-bold shadow-xs">BẢNG A (SÂN 6): 4 ĐỘI</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-zinc-800 font-bold shadow-xs">BẢNG B (SÂN 7): 3 ĐỘI</span>
-          <span class="px-2.5 py-1 rounded-lg bg-white border border-emerald-200 text-zinc-800 font-bold shadow-xs">BẢNG C (SÂN 8): 3 ĐỘI</span>
+
+        <!-- Pool Distribution Stats Row -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 my-4">
+          <div class="p-3 rounded-xl bg-blue-50/80 border border-blue-200 flex items-center justify-between">
+            <div>
+              <div class="text-[10px] text-blue-700 font-bold uppercase">SÂN 6 • 4 TIẾNG</div>
+              <div class="text-xs font-black text-blue-900 mt-0.5">BẢNG A (4 ĐỘI)</div>
+            </div>
+            <span id="stat-pool-a" class="text-xs font-black px-2.5 py-1 rounded-lg bg-blue-600 text-white font-mono">4 ĐỘI</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-purple-50/80 border border-purple-200 flex items-center justify-between">
+            <div>
+              <div class="text-[10px] text-purple-700 font-bold uppercase">SÂN 7 • 4 TIẾNG</div>
+              <div class="text-xs font-black text-purple-900 mt-0.5">BẢNG B (3 ĐỘI)</div>
+            </div>
+            <span id="stat-pool-b" class="text-xs font-black px-2.5 py-1 rounded-lg bg-purple-600 text-white font-mono">3 ĐỘI</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-amber-50/80 border border-amber-200 flex items-center justify-between">
+            <div>
+              <div class="text-[10px] text-amber-700 font-bold uppercase">SÂN 8 • 2 TIẾNG</div>
+              <div class="text-xs font-black text-amber-900 mt-0.5">BẢNG C (3 ĐỘI)</div>
+            </div>
+            <span id="stat-pool-c" class="text-xs font-black px-2.5 py-1 rounded-lg bg-amber-600 text-white font-mono">3 ĐỘI</span>
+          </div>
         </div>
+
+        <!-- Action Buttons: Live Draw Ceremony + Quick Randomize + Reset -->
+        <div class="pt-3 border-t border-zinc-200 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="openPoolDrawCeremonyModal()" aria-label="Mở lễ bốc thăm phân bảng A B C trực tiếp từng bước" class="min-h-[44px] px-5 sm:px-6 py-2.5 rounded-full bg-[#350aff] hover:bg-[#2b08cc] text-white font-bold text-xs font-mono tracking-wider uppercase shadow-md shadow-[#350aff]/25 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none">
+              <span class="text-sm">🎱</span>
+              <span>BỐC THĂM PHÂN BẢNG TRỰC TIẾP</span>
+            </button>
+            <button onclick="quickRandomizePools()" aria-label="Xếp ngẫu nhiên 10 đội vào bảng A B C ngay lập tức" class="min-h-[44px] px-4 sm:px-5 py-2.5 rounded-full bg-zinc-900 hover:bg-black text-[#bcf015] font-bold text-xs font-mono tracking-wider uppercase border border-[#bcf015]/40 transition-all flex items-center gap-2 cursor-pointer hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none" title="Xếp ngẫu nhiên 1 click tức thì">
+              <span id="btn-quick-dice">🎲</span>
+              <span>XẾP BẢNG NGẪU NHIÊN NHANH</span>
+            </button>
+          </div>
+
+          <button onclick="resetDefaultPools()" aria-label="Khôi phục thứ tự phân bảng mặc định ban đầu" class="min-h-[40px] px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs font-mono tracking-wider uppercase border border-zinc-300 transition-colors flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:outline-none" title="Khôi phục phân bảng ban đầu (Đội 1-4 Bảng A, Đội 5-7 Bảng B, Đội 8-10 Bảng C)">
+            <span>↺</span>
+            <span>MẶC ĐỊNH</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pool Filter Tabs -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-2 font-mono text-xs" role="tablist" aria-label="Lọc đội hình theo bảng đấu">
+        <button id="pool-tab-all" onclick="filterSquadsByPool('all')" role="tab" aria-selected="true" class="min-h-[40px] px-4 py-2 rounded-full bg-[#1e1e1e] text-white font-bold transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center gap-1.5">
+          <span>TẤT CẢ</span>
+          <span class="px-1.5 py-0.2 rounded bg-white/20 text-[10px]">10</span>
+        </button>
+        <button id="pool-tab-A" onclick="filterSquadsByPool('A')" role="tab" aria-selected="false" class="min-h-[40px] px-4 py-2 rounded-full bg-white hover:bg-blue-50 text-blue-800 border border-blue-200 font-bold transition-all focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          <span>BẢNG A • SÂN 6</span>
+          <span id="tab-badge-A" class="px-1.5 py-0.2 rounded bg-blue-100 text-[10px] font-black">4</span>
+        </button>
+        <button id="pool-tab-B" onclick="filterSquadsByPool('B')" role="tab" aria-selected="false" class="min-h-[40px] px-4 py-2 rounded-full bg-white hover:bg-purple-50 text-purple-800 border border-purple-200 font-bold transition-all focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:outline-none flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+          <span>BẢNG B • SÂN 7</span>
+          <span id="tab-badge-B" class="px-1.5 py-0.2 rounded bg-purple-100 text-[10px] font-black">3</span>
+        </button>
+        <button id="pool-tab-C" onclick="filterSquadsByPool('C')" role="tab" aria-selected="false" class="min-h-[40px] px-4 py-2 rounded-full bg-white hover:bg-amber-50 text-amber-800 border border-amber-200 font-bold transition-all focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+          <span>BẢNG C • SÂN 8</span>
+          <span id="tab-badge-C" class="px-1.5 py-0.2 rounded bg-amber-100 text-[10px] font-black">3</span>
+        </button>
       </div>
     </div>
 
@@ -2336,146 +2420,149 @@
   </div>
 
   <!-- ========================================== -->
-  <!-- CEREMONIAL LIVE RANDOM DRAW MODAL          -->
+  <!-- POOL DRAW CEREMONY MODAL (BỐC THĂM PHÂN BẢNG) -->
   <!-- ========================================== -->
-  <div id="draw-ceremony-modal" class="fixed inset-0 z-[200] bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="w-full max-w-3xl bg-white rounded-3xl border-2 border-[#1e1e1e] shadow-2xl overflow-hidden flex flex-col font-mono text-xs max-h-[92vh]">
+  <div id="pool-draw-modal" onclick="handlePoolDrawModalBackdrop(event)" class="fixed inset-0 z-[220] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="Lễ bốc thăm phân bảng A B C">
+    <div id="pool-draw-card" class="w-full max-w-4xl bg-white rounded-3xl border-2 border-zinc-900 shadow-2xl overflow-hidden flex flex-col font-mono text-xs max-h-[94vh] relative transform transition-all duration-300 scale-95">
       
       <!-- Modal Header -->
-      <div class="p-5 md:p-6 bg-[#1e1e1e] text-white flex items-center justify-between border-b border-white/10">
-        <div>
-          <div class="flex items-center gap-2 text-[#bcf015] font-bold text-[10px] tracking-widest uppercase">
-            <span class="w-2 h-2 rounded-full bg-[#bcf015] animate-ping"></span>
-            <span id="ceremony-badge-text">LỄ BỐC THĂM ĐỘI HÌNH COLLAB 2026 (THỬ NGHIỆM)</span>
+      <div class="p-4 sm:p-5 bg-[#1e1e1e] text-white flex items-center justify-between border-b border-white/10 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-[#bcf015] text-[#1e1e1e] flex items-center justify-center text-base font-black shrink-0 shadow-sm">
+            🎱
           </div>
-          <h3 id="ceremony-title-text" class="text-lg md:text-2xl font-black uppercase tracking-tight text-white mt-1">
-            VÒNG QUAY BỐC THĂM THỬ NGHIỆM 10 ĐỘI TRIAD
-          </h3>
+          <div>
+            <div class="flex items-center gap-2 text-[#bcf015] font-bold text-[10px] tracking-widest uppercase">
+              <span class="w-2 h-2 rounded-full bg-[#bcf015] animate-ping"></span>
+              <span>LỄ BỐC THĂM PHÂN BẢNG CHÍNH THỨC</span>
+            </div>
+            <h3 class="text-sm sm:text-lg font-black uppercase tracking-tight text-white mt-0.5">
+              PHÂN BỔ 10 ĐỘI VÀO BẢNG A • B • C (SÂN 6, 7, 8)
+            </h3>
+          </div>
         </div>
+
         <div class="flex items-center gap-2">
-          <button id="draw-speed-btn" onclick="toggleDrawSpeed()" aria-label="Thay đổi tốc độ quay bốc thăm" class="min-h-[40px] px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#bcf015] focus-visible:outline-none flex items-center gap-1.5">
-            <span>⚡ TỐC ĐỘ: 1X</span>
+          <button id="pool-speed-btn" onclick="togglePoolDrawSpeed()" class="min-h-[38px] px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors cursor-pointer flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-[#bcf015]">
+            <span id="pool-speed-text">⚡ 1X</span>
           </button>
-          <button onclick="skipDrawToEnd()" aria-label="Bỏ qua hiệu ứng và xem ngay kết quả" class="min-h-[40px] px-4 py-2 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black text-xs hover:opacity-90 transition-opacity cursor-pointer focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none flex items-center gap-1">
+          <button onclick="skipPoolDrawToEnd()" class="min-h-[38px] px-3.5 py-1.5 rounded-full bg-[#bcf015] text-[#1e1e1e] font-black text-xs hover:bg-[#d4ff38] transition-colors cursor-pointer flex items-center gap-1 shadow-sm focus-visible:ring-2 focus-visible:ring-white">
             <span>BỎ QUA</span>
             <span>➜</span>
           </button>
-          <button onclick="closeCeremonyModal()" aria-label="Đóng cửa sổ bốc thăm" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white transition-colors flex items-center justify-center text-sm font-bold cursor-pointer" title="Đóng">
+          <button onclick="closePoolDrawCeremonyModal()" aria-label="Đóng cửa sổ bốc thăm" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white transition-colors flex items-center justify-center text-sm font-bold cursor-pointer">
             ✕
           </button>
         </div>
       </div>
 
-      <!-- Live Ceremony Stage -->
-      <div class="p-5 md:p-8 flex-1 overflow-y-auto space-y-6">
+      <!-- Modal Body -->
+      <div class="p-4 sm:p-6 flex-1 overflow-y-auto space-y-5 bg-zinc-50">
         
-        <!-- Status & Team Badge -->
-        <div class="flex items-center justify-between bg-zinc-100 p-4 rounded-2xl border border-zinc-200">
-          <div>
-            <span class="text-[10px] text-zinc-500 font-bold block uppercase tracking-wider">ĐANG RÚT THĂM CHO:</span>
-            <span id="ceremony-current-team" class="text-xl md:text-3xl font-black text-[#1e1e1e] uppercase">ĐỘI 01</span>
-            <span id="ceremony-current-pool" class="text-xs text-[#350aff] font-bold block mt-0.5">BẢNG A (SÂN 6)</span>
+        <!-- Live Center Draw Roller -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-zinc-900 text-white border border-zinc-800 shadow-xl relative overflow-hidden">
+          <div class="flex items-center justify-between text-[11px] text-zinc-400 font-bold mb-2 border-b border-zinc-800 pb-2">
+            <span class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+              <span id="pool-roller-status">SẴN SÀNG RÚT THĂM...</span>
+            </span>
+            <span id="pool-draw-counter" class="text-[#bcf015] font-black">0 / 10 ĐỘI</span>
           </div>
-          <div class="text-right">
-            <span class="text-[10px] text-zinc-500 font-bold block uppercase">TIẾN TRÌNH:</span>
-            <span id="ceremony-step-counter" class="text-xl font-black text-[#350aff]">1 / 10 ĐỘI</span>
+
+          <div class="py-3 text-center">
+            <div id="pool-roller-target" class="text-xs font-bold text-[#350aff] uppercase tracking-widest mb-1">
+              RÚT THĂM VỊ TRÍ BẢNG A (1/4)
+            </div>
+            <div id="pool-roller-team-name" class="text-2xl sm:text-4xl font-black text-white tracking-tight font-sans py-1 transition-all">
+              BẤM NÚT ĐỂ BẮT ĐẦU
+            </div>
+            <div id="pool-roller-members" class="text-xs text-zinc-400 font-mono mt-1 max-w-md mx-auto truncate">
+              Chưa bốc thăm đội nào
+            </div>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden mt-3">
+            <div id="pool-draw-progress-bar" class="h-full bg-[#bcf015] w-0 transition-all duration-300"></div>
           </div>
         </div>
 
-        <!-- 3 Slots Machine Carousel -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 3 Target Pools Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
           
-          <!-- Slot 1: Nam Redseed -->
-          <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-1">
-            <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-rose-600 font-black">REDSEED (NAM)</span>
-              <span id="slot-status-1" class="text-zinc-400">CHỜ...</span>
-            </div>
-            <div class="my-auto text-center py-2">
-              <span id="slot-name-1" class="text-base md:text-lg font-black text-[#1e1e1e] block truncate">---</span>
-              <span id="slot-role-1" class="text-[10px] text-zinc-400 mt-1 block">Vợt Thủ Redseed</span>
-            </div>
-            <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
-              <div id="slot-bar-1" class="h-full bg-rose-500 w-0 transition-all duration-100"></div>
-            </div>
-          </div>
-
-          <!-- Slot 2: Nam Cồn Dập -->
-          <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-2">
-            <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-[#350aff] font-black">CỒN DẬP (NAM)</span>
-              <span id="slot-status-2" class="text-zinc-400">CHỜ...</span>
-            </div>
-            <div class="my-auto text-center py-2">
-              <span id="slot-name-2" class="text-base md:text-lg font-black text-[#1e1e1e] block truncate">---</span>
-              <span id="slot-role-2" class="text-[10px] text-zinc-400 mt-1 block">Vợt Thủ Cồn Dập</span>
-            </div>
-            <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
-              <div id="slot-bar-2" class="h-full bg-[#350aff] w-0 transition-all duration-100"></div>
-            </div>
-          </div>
-
-          <!-- Slot 3: Bóng Hồng -->
-          <div class="p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all" id="slot-box-3">
-            <div class="flex items-center justify-between text-[10px] text-zinc-500 font-bold border-b border-zinc-200 pb-2">
-              <span class="text-emerald-600 font-black">BÓNG HỒNG</span>
-              <span id="slot-status-3" class="text-zinc-400">CHỜ...</span>
-            </div>
-            <div class="my-auto text-center py-2">
-              <span id="slot-name-3" class="text-base md:text-lg font-black text-[#1e1e1e] block truncate">---</span>
-              <span id="slot-role-3" class="text-[10px] text-zinc-400 mt-1 block">Bóng Hồng Sân Đấu</span>
-            </div>
-            <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
-              <div id="slot-bar-3" class="h-full bg-emerald-500 w-0 transition-all duration-100"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Next Team Interactive Action Bar (Appears after each team completes) -->
-        <div id="ceremony-next-action-wrap" class="hidden text-center py-2 animate-in fade-in zoom-in-95 duration-200">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:px-6 rounded-2xl bg-zinc-900 border border-[#bcf015]/40 shadow-xl shadow-black/15">
-            <div class="text-left w-full sm:w-auto">
-              <div class="flex items-center gap-1.5 text-[10px] text-zinc-400 font-mono uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span id="ceremony-next-title">ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ĐỘI VỪA RỒI</span>
+          <!-- Pool A Box -->
+          <div class="p-4 rounded-2xl bg-white border-2 border-blue-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-blue-100 pb-2 mb-2.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                  <span class="font-black text-blue-900 text-xs sm:text-sm uppercase">BẢNG A (SÂN 6)</span>
+                </div>
+                <span id="pool-a-count" class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold">0 / 4</span>
               </div>
-              <div id="ceremony-next-subtitle" class="text-xs sm:text-sm text-[#bcf015] font-black mt-0.5 tracking-wide">
-                SẴN SÀNG BỐC THĂM ĐỘI TIẾP THEO
+              <div class="text-[10px] text-blue-700 font-mono mb-2">✦ 4 Tiếng (13:30 – 17:30) • Vào BK1 & CK</div>
+              <div id="pool-a-slots" class="space-y-1.5 font-mono text-xs">
+                <!-- 4 Slots -->
               </div>
             </div>
-            <button id="ceremony-next-btn" onclick="nextTeamDrawStep()" aria-label="Bốc thăm đội tiếp theo" class="w-full sm:w-auto min-h-[48px] px-8 py-3 rounded-full bg-[#bcf015] hover:bg-[#d4ff38] text-[#1e1e1e] font-black text-xs sm:text-sm tracking-wider uppercase shadow-lg shadow-[#bcf015]/30 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">
-              <span id="ceremony-next-btn-text">BỐC THĂM ĐỘI 02</span>
-              <span class="text-base font-bold">➜</span>
-            </button>
           </div>
-        </div>
 
-        <!-- History of Locked Teams so far -->
-        <div>
-          <div class="text-[10px] text-zinc-400 font-bold uppercase tracking-wider mb-2 flex items-center justify-between">
-            <span>CÁC ĐỘI ĐÃ HOÀN TẤT BỐC THĂM:</span>
-            <span id="ceremony-completed-count" class="text-zinc-600 font-bold">0 / 10</span>
+          <!-- Pool B Box -->
+          <div class="p-4 rounded-2xl bg-white border-2 border-purple-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-purple-100 pb-2 mb-2.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+                  <span class="font-black text-purple-900 text-xs sm:text-sm uppercase">BẢNG B (SÂN 7)</span>
+                </div>
+                <span id="pool-b-count" class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[10px] font-bold">0 / 3</span>
+              </div>
+              <div class="text-[10px] text-purple-700 font-mono mb-2">✦ 4 Tiếng (13:30 – 17:30) • Vào BK2 & Hạng 3</div>
+              <div id="pool-b-slots" class="space-y-1.5 font-mono text-xs">
+                <!-- 3 Slots -->
+              </div>
+            </div>
           </div>
-          <div id="ceremony-history-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto p-1">
-            <!-- Dynamically populated as teams lock in -->
+
+          <!-- Pool C Box -->
+          <div class="p-4 rounded-2xl bg-white border-2 border-amber-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between border-b border-amber-100 pb-2 mb-2.5">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+                  <span class="font-black text-amber-900 text-xs sm:text-sm uppercase">BẢNG C (SÂN 8)</span>
+                </div>
+                <span id="pool-c-count" class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold">0 / 3</span>
+              </div>
+              <div class="text-[10px] text-amber-700 font-mono mb-2">⚡ 2 Tiếng (13:30 – 15:30) • Trả sân sớm</div>
+              <div id="pool-c-slots" class="space-y-1.5 font-mono text-xs">
+                <!-- 3 Slots -->
+              </div>
+            </div>
           </div>
+
         </div>
 
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-4 bg-zinc-50 border-t border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-        <div class="text-zinc-500 text-[11px] flex items-center gap-2">
-          <span id="ceremony-footer-note">⚠️ <i>Mục đích thử nghiệm vui vẻ. Lễ bốc thăm chính thức diễn ra lúc 8:00 ngày 27/10/2026 qua Livestream Facebook / Google Meet.</i></span>
+      <div class="p-4 bg-white border-t border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shrink-0">
+        <div class="text-zinc-500 text-[11px] font-mono">
+          <span id="pool-footer-hint">Bốc thăm ngẫu nhiên công khai 100% minh bạch</span>
         </div>
-        <div class="flex items-center gap-2 justify-end">
-          <button id="ceremony-footer-next-btn" onclick="nextTeamDrawStep()" aria-label="Bốc thăm đội tiếp theo" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#bcf015] hover:bg-[#d4ff38] text-[#1e1e1e] font-black tracking-wider uppercase shadow-md shadow-[#bcf015]/20 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#1e1e1e]">
-            <span id="ceremony-footer-next-btn-text">BỐC THĂM ĐỘI 02</span>
+        
+        <div class="flex items-center gap-2.5 justify-end">
+          <button id="btn-draw-next-pool" onclick="drawNextPoolStep()" class="min-h-[44px] px-6 py-2.5 rounded-xl bg-[#350aff] hover:bg-[#2b08cc] text-white font-black tracking-wider uppercase shadow-md shadow-[#350aff]/25 hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#350aff]">
+            <span>🎱</span>
+            <span id="btn-draw-next-pool-text">BỐC ĐỘI ĐẦU TIÊN</span>
             <span>➜</span>
           </button>
-          <button id="ceremony-finish-btn" onclick="closeCeremonyModal()" aria-label="Hoàn tất bốc thăm và xem bảng đội hình" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-[#350aff] text-white font-bold tracking-wider uppercase shadow-lg shadow-[#350aff]/25 transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center justify-center">
-            HOÀN TẤT & XEM BẢNG ĐỘI HÌNH ➜
+          <button id="btn-auto-draw-pools" onclick="toggleAutoDrawPools()" class="min-h-[44px] px-4 py-2.5 rounded-xl bg-zinc-900 hover:bg-black text-[#bcf015] font-bold text-xs tracking-wider uppercase border border-[#bcf015]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span id="auto-draw-text">⚡ TỰ ĐỘNG BỐC</span>
+          </button>
+          <button id="btn-finish-pool-draw" onclick="finishAndApplyPoolDraw()" class="hidden min-h-[44px] px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black tracking-wider uppercase shadow-lg shadow-emerald-600/30 transition-all cursor-pointer flex items-center gap-2">
+            <span>✓</span>
+            <span>ÁP DỤNG KẾT QUẢ & XONG ➜</span>
           </button>
         </div>
       </div>
@@ -3217,27 +3304,86 @@
       showToast("🏸 10 Đội hình Collab đã bốc thăm chính thức và sẵn sàng xung trận!");
     }
 
-    let currentSquads = [...officialCollabSquads];
+    let currentSquads = officialCollabSquads.map(sq => ({ ...sq }));
+    let currentPoolFilter = 'all'; // 'all', 'A', 'B', 'C'
+
+    function filterSquadsByPool(poolKey) {
+      currentPoolFilter = poolKey;
+
+      const tabs = ['all', 'A', 'B', 'C'];
+      tabs.forEach(k => {
+        const btn = document.getElementById('pool-tab-' + k);
+        if (!btn) return;
+        if (k === poolKey) {
+          btn.className = "min-h-[40px] px-4 py-2 rounded-full bg-[#1e1e1e] text-white font-bold transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center gap-1.5";
+          btn.setAttribute('aria-selected', 'true');
+        } else {
+          const borderClass = k === 'A' ? 'text-blue-800 border-blue-200 hover:bg-blue-50' : (k === 'B' ? 'text-purple-800 border-purple-200 hover:bg-purple-50' : (k === 'C' ? 'text-amber-800 border-amber-200 hover:bg-amber-50' : 'text-zinc-700 border-zinc-200 hover:bg-zinc-100'));
+          btn.className = `min-h-[40px] px-4 py-2 rounded-full bg-white ${borderClass} border font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#350aff] focus-visible:outline-none flex items-center gap-1.5`;
+          btn.setAttribute('aria-selected', 'false');
+        }
+      });
+
+      renderSquadsGrid();
+    }
+
+    function updatePoolStats() {
+      const pA = currentSquads.filter(s => s.pool.includes('BẢNG A')).length;
+      const pB = currentSquads.filter(s => s.pool.includes('BẢNG B')).length;
+      const pC = currentSquads.filter(s => s.pool.includes('BẢNG C')).length;
+
+      const elA = document.getElementById('stat-pool-a');
+      const elB = document.getElementById('stat-pool-b');
+      const elC = document.getElementById('stat-pool-c');
+      const tbA = document.getElementById('tab-badge-A');
+      const tbB = document.getElementById('tab-badge-B');
+      const tbC = document.getElementById('tab-badge-C');
+
+      if (elA) elA.innerText = `${pA} ĐỘI`;
+      if (elB) elB.innerText = `${pB} ĐỘI`;
+      if (elC) elC.innerText = `${pC} ĐỘI`;
+      if (tbA) tbA.innerText = `${pA}`;
+      if (tbB) tbB.innerText = `${pB}`;
+      if (tbC) tbC.innerText = `${pC}`;
+    }
 
     function renderSquadsGrid() {
       const container = document.getElementById('squads-grid');
       if (!container) return;
       container.innerHTML = '';
 
-      currentSquads.forEach((sq, idx) => {
+      let filtered = currentSquads;
+      if (currentPoolFilter === 'A') {
+        filtered = currentSquads.filter(sq => sq.pool.includes('BẢNG A'));
+      } else if (currentPoolFilter === 'B') {
+        filtered = currentSquads.filter(sq => sq.pool.includes('BẢNG B'));
+      } else if (currentPoolFilter === 'C') {
+        filtered = currentSquads.filter(sq => sq.pool.includes('BẢNG C'));
+      }
+
+      filtered.forEach((sq, idx) => {
+        const isPoolA = sq.pool.includes('BẢNG A');
+        const isPoolB = sq.pool.includes('BẢNG B');
+
+        const poolBadgeClass = isPoolA 
+          ? "bg-blue-50 border-blue-200 text-blue-800" 
+          : (isPoolB ? "bg-purple-50 border-purple-200 text-purple-800" : "bg-amber-50 border-amber-200 text-amber-800");
+
+        const dotClass = isPoolA ? "bg-blue-600" : (isPoolB ? "bg-purple-600" : "bg-amber-600");
+
         const card = document.createElement('div');
         card.className = "tds-card p-5 flex flex-col justify-between stagger-scale-item";
-        card.style.transitionDelay = `${120 + (idx % 6) * 20}ms`;
+        card.style.transitionDelay = `${80 + (idx % 6) * 20}ms`;
 
         card.innerHTML = `
           <div>
             <!-- Header: Team Number + Pool Tag -->
             <div class="flex items-center justify-between border-b border-zinc-200 pb-3 mb-3">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-[#350aff]"></span>
+                <span class="w-2.5 h-2.5 rounded-full ${dotClass}"></span>
                 <h3 class="text-base sm:text-lg font-black text-[#1e1e1e] tracking-tight uppercase">${sq.id}</h3>
               </div>
-              <span class="px-2.5 py-0.5 rounded-full bg-zinc-100 border border-zinc-200 font-mono text-[11px] font-bold text-zinc-700">${sq.pool}</span>
+              <span class="px-2.5 py-0.5 rounded-full border font-mono text-[11px] font-bold ${poolBadgeClass}">${sq.pool}</span>
             </div>
 
             <!-- 3 Compact Roster Rows -->
@@ -3265,9 +3411,7 @@
         container.appendChild(card);
       });
       initCardGlares();
-      if (typeof updateCourtDataFromSquads === 'function') {
-        updateCourtDataFromSquads();
-      }
+      updatePoolStats();
     }
 
     // ----------------------------------------------------
@@ -3524,442 +3668,418 @@
     }
 
     // ----------------------------------------------------
-    // CEREMONIAL LIVE SLOT-MACHINE RANDOM DRAW ENGINE
+    // POOL RANDOM DRAW ACTIONS & STATE (BỐC THĂM PHÂN BẢNG A, B, C)
     // ----------------------------------------------------
-    let isDrawing = false;
-    let drawSpeed = 1;
-    let candidateSquads = [];
-    let drawTimer = null;
-    let currentDrawingTeamIdx = 0;
-
-    function toggleDrawSpeed() {
-      drawSpeed = drawSpeed === 1 ? 2 : 1;
-      const btn = document.getElementById('draw-speed-btn');
-      if (btn) btn.innerText = drawSpeed === 2 ? "⚡ TỐC ĐỘ: 2X (NHANH)" : "⚡ TỐC ĐỘ: 1X";
-    }
-
-    function randomizeSquads(isOfficial = false) {
-      isOfficialDrawMode = isOfficial;
-      triggerHeroGlitchBurst();
-      startCeremonialRandomDraw(isOfficial);
-    }
-
-    function startCeremonialRandomDraw(isOfficial = false) {
-      if (isDrawing) return;
-      isDrawing = true;
-      isOfficialDrawMode = isOfficial;
-      currentDrawingTeamIdx = -1; // -1 represents ready stage before starting draw
-
-      const dice = document.getElementById('btn-dice-icon');
-      const headerDice = document.getElementById('header-dice');
-      const heroDice = document.getElementById('hero-dice-icon');
-      if (dice) dice.classList.remove('rolling-dice');
-      if (headerDice) headerDice.classList.remove('rolling-dice');
-      if (heroDice) heroDice.classList.remove('rolling-dice');
-
-      candidateSquads = generateCollabSquads(true);
-
-      const modal = document.getElementById('draw-ceremony-modal');
-      const histList = document.getElementById('ceremony-history-list');
-      const finishBtn = document.getElementById('ceremony-finish-btn');
-      const compCount = document.getElementById('ceremony-completed-count');
-      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
-      const nextTitle = document.getElementById('ceremony-next-title');
-      const nextSubtitle = document.getElementById('ceremony-next-subtitle');
-      const nextBtnText = document.getElementById('ceremony-next-btn-text');
-      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
-      const footerNextBtnText = document.getElementById('ceremony-footer-next-btn-text');
-
-      const badgeText = document.getElementById('ceremony-badge-text');
-      const titleText = document.getElementById('ceremony-title-text');
-      const footerNote = document.getElementById('ceremony-footer-note');
-
-      if (badgeText) {
-        badgeText.innerText = isOfficial ? "🔴 LỄ BỐC THĂM CHÍNH THỨC 2026 (XÁC THỰC BTC)" : "🎲 LỄ BỐC THĂM ĐỘI HÌNH COLLAB (THỬ NGHIỆM)";
-      }
-      if (titleText) {
-        titleText.innerText = isOfficial ? "VÒNG QUAY BỐC THĂM 10 ĐỘI HÌNH CHÍNH THỨC" : "VÒNG QUAY BỐC THĂM THỬ NGHIỆM 10 ĐỘI TRIAD";
-      }
-      if (footerNote) {
-        footerNote.innerHTML = isOfficial 
-          ? "🔒 <i>Phiên bốc thăm chính thức được ủy quyền và xác thực bởi Ban Tổ Chức REDSEED × CỒN DẬP 2026.</i>" 
-          : "⚠️ <i>Mục đích thử nghiệm vui vẻ. Lễ bốc thăm chính thức diễn ra lúc 8:00 ngày 27/10/2026 qua Livestream Facebook / Google Meet.</i>";
+    function quickRandomizePools() {
+      const dice = document.getElementById('btn-quick-dice');
+      if (dice) {
+        dice.classList.add('rolling-dice');
+        setTimeout(() => dice.classList.remove('rolling-dice'), 650);
       }
 
-      if (!modal) return;
-      if (histList) histList.innerHTML = '';
-      if (finishBtn) finishBtn.classList.add('hidden');
-      if (compCount) compCount.innerText = '0 / 10';
+      // Shuffle 10 teams into Pools: 4 in A, 3 in B, 3 in C
+      const shuffled = shuffleArray(officialCollabSquads.map(sq => ({ ...sq })));
 
-      const firstTeam = candidateSquads && candidateSquads[0] ? candidateSquads[0] : { id: "ĐỘI 01", pool: "BẢNG A (SÂN 6)" };
-      const teamLabel = document.getElementById('ceremony-current-team');
-      const poolLabel = document.getElementById('ceremony-current-pool');
-      const stepCounter = document.getElementById('ceremony-step-counter');
+      const poolAssignments = [
+        "BẢNG A • SÂN 6", "BẢNG A • SÂN 6", "BẢNG A • SÂN 6", "BẢNG A • SÂN 6",
+        "BẢNG B • SÂN 7", "BẢNG B • SÂN 7", "BẢNG B • SÂN 7",
+        "BẢNG C • SÂN 8", "BẢNG C • SÂN 8", "BẢNG C • SÂN 8"
+      ];
 
-      if (teamLabel) teamLabel.innerText = firstTeam.id;
-      if (poolLabel) poolLabel.innerText = firstTeam.pool;
-      if (stepCounter) stepCounter.innerText = "0 / 10 ĐỘI (CHỜ BẮT ĐẦU)";
-
-      // Reset slot boxes to clean standby state
-      resetSlotBox(1, "REDSEED (NAM 1)", "CHỜ BẮT ĐẦU...");
-      resetSlotBox(2, "CỒN DẬP (NAM)", "CHỜ BẮT ĐẦU...");
-      resetSlotBox(3, "BÓNG HỒNG", "CHỜ BẮT ĐẦU...");
-
-      // Configure prominent START button (waits for streamer to click before running)
-      if (nextTitle) {
-        nextTitle.innerText = isOfficial 
-          ? "🔴 MẬT MÃ BTC HỢP LỆ • PHIÊN BỐC THĂM ĐÃ SẴN SÀNG" 
-          : "🟢 HỆ THỐNG ĐÃ SẴN SÀNG BỐC THĂM THỬ NGHIỆM";
-      }
-      if (nextSubtitle) {
-        nextSubtitle.innerText = `BẤM NÚT BÊN DƯỚI ĐỂ BẮT ĐẦU BỐC THĂM ${firstTeam.id} • ${firstTeam.pool}`;
-      }
-      if (nextBtnText) {
-        nextBtnText.innerText = `▶ BẮT ĐẦU BỐC THĂM ${firstTeam.id}`;
-      }
-      if (footerNextBtnText) {
-        footerNextBtnText.innerText = `▶ BẮT ĐẦU BỐC THĂM`;
-      }
-
-      if (nextActionWrap) {
-        nextActionWrap.classList.remove('hidden');
-        if (window.gsap) {
-          gsap.fromTo(nextActionWrap, 
-            { scale: 0.94, opacity: 0, y: 10 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }
-          );
-        }
-      }
-      if (footerNextBtn) footerNextBtn.classList.remove('hidden');
-
-      modal.classList.remove('opacity-0', 'pointer-events-none');
-      modal.classList.add('opacity-100');
-
-      if (window.gsap) {
-        gsap.fromTo(modal.firstElementChild, 
-          { scale: 0.9, opacity: 0, y: 30 },
-          { scale: 1, opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.4)" }
-        );
-      }
-    }
-
-    function runTeamDrawStep(teamIdx) {
-      if (!isDrawing) return;
-      currentDrawingTeamIdx = teamIdx;
-
-      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
-      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
-      if (nextActionWrap) nextActionWrap.classList.add('hidden');
-      if (footerNextBtn) footerNextBtn.classList.add('hidden');
-
-      const dice = document.getElementById('btn-dice-icon');
-      const headerDice = document.getElementById('header-dice');
-      const heroDice = document.getElementById('hero-dice-icon');
-      if (dice) dice.classList.add('rolling-dice');
-      if (headerDice) headerDice.classList.add('rolling-dice');
-      if (heroDice) heroDice.classList.add('rolling-dice');
-
-      if (teamIdx >= 10) {
-        finishCeremonyDraw();
-        return;
-      }
-
-      const team = candidateSquads[teamIdx];
-      const teamLabel = document.getElementById('ceremony-current-team');
-      const poolLabel = document.getElementById('ceremony-current-pool');
-      const stepCounter = document.getElementById('ceremony-step-counter');
-
-      if (teamLabel) teamLabel.innerText = team.id;
-      if (poolLabel) poolLabel.innerText = team.pool;
-      if (stepCounter) stepCounter.innerText = `${teamIdx + 1} / 10 ĐỘI`;
-
-      const slot2Header = "CỒN DẬP (NAM)";
-      const slot2Candidates = cdMen;
-
-      resetSlotBox(1, "REDSEED (NAM 1)", "ĐANG QUAY...");
-      resetSlotBox(2, slot2Header, "CHỜ LƯỢT...");
-      resetSlotBox(3, "BÓNG HỒNG", "CHỜ LƯỢT...");
-
-      spinSingleSlot(1, rsMen, team.m1, () => {
-        if (!isDrawing) return;
-        resetSlotBox(2, slot2Header, "ĐANG QUAY...");
-        spinSingleSlot(2, slot2Candidates, team.m2, () => {
-          if (!isDrawing) return;
-          resetSlotBox(3, "BÓNG HỒNG", "ĐANG QUAY...");
-          const allWomen = [...rsWomen, ...cdWomen];
-          spinSingleSlot(3, allWomen, team.f, () => {
-            if (!isDrawing) return;
-            addTeamToHistory(team);
-
-            // Turn off dice rolling while paused waiting for next action
-            if (dice) dice.classList.remove('rolling-dice');
-            if (headerDice) headerDice.classList.remove('rolling-dice');
-            if (heroDice) heroDice.classList.remove('rolling-dice');
-
-            // If this was the final team (Team 10, index 9), wrap up!
-            if (teamIdx >= 9) {
-              const pause = drawSpeed === 2 ? 300 : 600;
-              drawTimer = setTimeout(() => {
-                finishCeremonyDraw();
-              }, pause);
-            } else {
-              // Pause and show interactive NEXT button to draw next team!
-              const nextTeam = candidateSquads[teamIdx + 1];
-              const nextTitle = document.getElementById('ceremony-next-title');
-              const nextBtnText = document.getElementById('ceremony-next-btn-text');
-              const footerNextBtnText = document.getElementById('ceremony-footer-next-btn-text');
-              const nextSubtitle = document.getElementById('ceremony-next-subtitle');
-
-              if (nextTitle) nextTitle.innerText = `✓ ĐÃ CHỐT 3 VẬN ĐỘNG VIÊN CHO ${team.id}`;
-              if (nextBtnText) nextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
-              if (footerNextBtnText) footerNextBtnText.innerText = `BỐC THĂM ${nextTeam.id}`;
-              if (nextSubtitle) nextSubtitle.innerText = `TIẾP THEO: ${nextTeam.id} • ${nextTeam.pool}`;
-
-              if (nextActionWrap) {
-                nextActionWrap.classList.remove('hidden');
-                if (window.gsap) {
-                  gsap.fromTo(nextActionWrap, 
-                    { scale: 0.94, opacity: 0, y: 8 },
-                    { scale: 1, opacity: 1, y: 0, duration: 0.25, ease: "back.out(2)" }
-                  );
-                }
-              }
-              if (footerNextBtn) footerNextBtn.classList.remove('hidden');
-            }
-          });
-        });
+      shuffled.forEach((team, idx) => {
+        team.pool = poolAssignments[idx];
       });
-    }
 
-    function nextTeamDrawStep() {
-      if (!isDrawing) return;
-      playTickSound();
-      if (currentDrawingTeamIdx === -1) {
-        // Start first team on click
-        runTeamDrawStep(0);
-      } else {
-        runTeamDrawStep(currentDrawingTeamIdx + 1);
-      }
-    }
-
-    function resetSlotBox(slotNum, header, status) {
-      const box = document.getElementById(`slot-box-${slotNum}`);
-      const statusEl = document.getElementById(`slot-status-${slotNum}`);
-      const nameEl = document.getElementById(`slot-name-${slotNum}`);
-      const barEl = document.getElementById(`slot-bar-${slotNum}`);
-
-      if (box) {
-        box.className = "p-4 rounded-2xl border-2 border-zinc-200 bg-zinc-50 flex flex-col justify-between h-44 relative overflow-hidden transition-all";
-      }
-      if (statusEl) {
-        statusEl.innerText = status;
-        statusEl.className = "text-zinc-400 font-bold";
-      }
-      if (nameEl) {
-        nameEl.innerText = "---";
-        nameEl.className = "text-base md:text-lg font-black text-zinc-400 block truncate";
-      }
-      if (barEl) barEl.style.width = "0%";
-    }
-
-    function spinSingleSlot(slotNum, candidates, targetName, onComplete) {
-      const box = document.getElementById(`slot-box-${slotNum}`);
-      const nameEl = document.getElementById(`slot-name-${slotNum}`);
-      const statusEl = document.getElementById(`slot-status-${slotNum}`);
-      const barEl = document.getElementById(`slot-bar-${slotNum}`);
-
-      if (box) {
-        box.classList.remove('border-zinc-200', 'bg-zinc-50');
-        box.classList.add('border-[#350aff]', 'bg-white', 'shadow-md');
-      }
-
-      let tickCount = 0;
-      const totalTicks = drawSpeed === 2 ? 8 : 14;
-      const baseDelay = drawSpeed === 2 ? 35 : 55;
-
-      function tick() {
-        if (!isDrawing) return;
-        tickCount++;
-        const pct = Math.min(100, Math.round((tickCount / totalTicks) * 100));
-        if (barEl) barEl.style.width = pct + "%";
-
-        if (tickCount < totalTicks) {
-          const randName = candidates[Math.floor(Math.random() * candidates.length)];
-          if (nameEl) {
-            nameEl.innerText = randName;
-            nameEl.className = "text-base md:text-lg font-black text-[#1e1e1e] block truncate opacity-75 blur-[0.4px]";
-          }
-          playTickSound();
-          const delay = baseDelay + (tickCount * (drawSpeed === 2 ? 7 : 14));
-          drawTimer = setTimeout(tick, delay);
-        } else {
-          if (nameEl) {
-            const cleanTarget = (targetName || '').replace(/\s*\([A-Z]+\)$/, '').trim();
-            nameEl.innerText = cleanTarget;
-            nameEl.title = cleanTarget;
-            nameEl.className = "text-base md:text-lg font-black text-[#1e1e1e] block truncate scale-105 transition-transform";
-          }
-          if (statusEl) {
-            statusEl.innerText = "✓ ĐÃ CHỐT";
-            statusEl.className = "text-emerald-600 font-bold";
-          }
-          if (box) {
-            box.classList.remove('border-[#350aff]');
-            box.classList.add('border-emerald-500', 'bg-emerald-50/40');
-          }
-          playLockSound();
-          const waitLock = drawSpeed === 2 ? 150 : 320;
-          drawTimer = setTimeout(onComplete, waitLock);
-        }
-      }
-
-      tick();
-    }
-
-    function addTeamToHistory(team) {
-      const histList = document.getElementById('ceremony-history-list');
-      const compCount = document.getElementById('ceremony-completed-count');
-      if (!histList) return;
-
-      const cleanM1 = (team.m1 || '').replace(/\s*\([A-Z]+\)$/, '').trim();
-      const cleanM2 = (team.m2 || '').replace(/\s*\([A-Z]+\)$/, '').trim();
-      const cleanF = (team.f || '').replace(/\s*\([A-Z]+\)$/, '').trim();
-      const fullText = `${cleanM1} + ${cleanM2} + ${cleanF}`;
-      const isM2RS = (team.m2 || '').includes('(RS)');
-
-      const chip = document.createElement('div');
-      chip.className = "p-2.5 px-3 rounded-xl bg-zinc-50 hover:bg-white border border-zinc-200 text-[11px] font-mono flex items-center justify-between gap-2 shadow-xs transition-colors";
-      chip.title = `${team.id}: ${fullText}`;
-      chip.innerHTML = `
-        <span class="font-black text-[#1e1e1e] shrink-0">${team.id}:</span>
-        <span class="text-zinc-700 truncate ml-1 font-medium text-left">
-          <span class="text-rose-600 font-bold">${cleanM1}</span>
-          <span class="text-zinc-400 mx-0.5">+</span>
-          <span class="${isM2RS ? 'text-rose-600' : 'text-[#350aff]'} font-bold">${cleanM2}</span>
-          <span class="text-zinc-400 mx-0.5">+</span>
-          <span class="text-emerald-600 font-bold">${cleanF}</span>
-        </span>
-      `;
-      histList.appendChild(chip);
-
-      if (compCount) {
-        compCount.innerText = `${histList.children.length} / 10`;
-      }
-    }
-
-    function skipDrawToEnd() {
-      clearTimeout(drawTimer);
-      const histList = document.getElementById('ceremony-history-list');
-      if (histList && candidateSquads) {
-        const curCount = histList.children.length;
-        for (let i = curCount; i < candidateSquads.length; i++) {
-          addTeamToHistory(candidateSquads[i]);
-        }
-      }
-      finishCeremonyDraw();
-    }
-
-    function finishCeremonyDraw() {
-      isDrawing = false;
-      clearTimeout(drawTimer);
-
-      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
-      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
-      if (nextActionWrap) nextActionWrap.classList.add('hidden');
-      if (footerNextBtn) footerNextBtn.classList.add('hidden');
-
-      const statusEl = document.getElementById('ceremony-current-team');
-      if (statusEl) statusEl.innerText = "🎉 BỐC THĂM HOÀN TẤT!";
-      const poolEl = document.getElementById('ceremony-current-pool');
-      if (poolEl) poolEl.innerText = "ĐÃ ĐẦY ĐỦ 10 ĐỘI HÌNH COLLAB TRIAD";
-      const stepCounter = document.getElementById('ceremony-step-counter');
-      if (stepCounter) stepCounter.innerText = "10 / 10 ĐỘI";
-
-      const histList = document.getElementById('ceremony-history-list');
-      if (histList && candidateSquads) {
-        const curCount = histList.children.length;
-        for (let i = curCount; i < candidateSquads.length; i++) {
-          addTeamToHistory(candidateSquads[i]);
-        }
-      }
-
-      const finishBtn = document.getElementById('ceremony-finish-btn');
-      if (finishBtn) {
-        finishBtn.classList.remove('hidden');
-        if (window.gsap) {
-          gsap.fromTo(finishBtn,
-            { scale: 0.9, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" }
-          );
-        }
-      }
-
-      const dice = document.getElementById('btn-dice-icon');
-      const headerDice = document.getElementById('header-dice');
-      const heroDice = document.getElementById('hero-dice-icon');
-      if (dice) dice.classList.remove('rolling-dice');
-      if (headerDice) headerDice.classList.remove('rolling-dice');
-      if (heroDice) heroDice.classList.remove('rolling-dice');
-
-      playFanfareSound();
-      triggerConfetti();
-
-      isDrawOpened = true;
-      currentSquads = candidateSquads;
+      currentSquads = shuffled;
       renderSquadsGrid();
       updateCourtDataFromSquads();
       updateBroadcastText();
 
-      // Update Section 04 Status Pill and reveal Reset button
-      const statusPill = document.getElementById('squads-status-pill');
-      const statusPillText = document.getElementById('squads-status-pill-text');
-      const resetBtn = document.getElementById('reset-squads-btn');
-      if (statusPill) {
-        statusPill.className = "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-800 text-xs font-mono font-bold mb-3 shadow-xs";
-      }
-      if (statusPillText) {
-        statusPillText.innerText = isOfficialDrawMode 
-          ? "TRẠNG THÁI: ĐÃ HOÀN TẤT BỐC THĂM CHÍNH THỨC (10 ĐỘI COLLAB)" 
-          : "TRẠNG THÁI: KẾT QUẢ BỐC THĂM THỬ NGHIỆM (10 ĐỘI COLLAB)";
-      }
-      if (resetBtn) {
-        resetBtn.classList.remove('hidden');
-      }
-
-      showToast(isOfficialDrawMode 
-        ? "🎉 ĐÃ HOÀN TẤT LỄ BỐC THĂM CHÍNH THỨC 10 ĐỘI COLLAB TRIAD CUP!" 
-        : "🎲 ĐÃ HOÀN TẤT BỐC THĂM THỬ NGHIỆM 10 ĐỘI COLLAB!");
+      triggerConfetti();
+      playFanfareSound();
+      showToast("🎲 ĐÃ XẾP NGẪU NHIÊN 10 ĐỘI VÀO BẢNG A (4 ĐỘI), BẢNG B (3 ĐỘI), BẢNG C (3 ĐỘI)!");
     }
 
-    function closeCeremonyModal() {
-      isDrawing = false;
-      currentDrawingTeamIdx = -1;
-      clearTimeout(drawTimer);
-      const dice = document.getElementById('btn-dice-icon');
-      const headerDice = document.getElementById('header-dice');
-      const heroDice = document.getElementById('hero-dice-icon');
-      if (dice) dice.classList.remove('rolling-dice');
-      if (headerDice) headerDice.classList.remove('rolling-dice');
-      if (heroDice) heroDice.classList.remove('rolling-dice');
+    function resetDefaultPools() {
+      currentSquads = officialCollabSquads.map(sq => ({ ...sq }));
+      renderSquadsGrid();
+      updateCourtDataFromSquads();
+      updateBroadcastText();
 
-      const nextActionWrap = document.getElementById('ceremony-next-action-wrap');
-      const footerNextBtn = document.getElementById('ceremony-footer-next-btn');
-      if (nextActionWrap) nextActionWrap.classList.add('hidden');
-      if (footerNextBtn) footerNextBtn.classList.add('hidden');
+      showToast("↺ ĐÃ KHÔI PHỤC THỨ TỰ PHÂN BẢNG MẶC ĐỊNH (ĐỘI 1-4 BẢNG A, 5-7 BẢNG B, 8-10 BẢNG C)!");
+    }
 
-      const modal = document.getElementById('draw-ceremony-modal');
+    // ----------------------------------------------------
+    // CEREMONIAL STEP-BY-STEP POOL DRAW ENGINE
+    // ----------------------------------------------------
+    let poolDrawActive = false;
+    let poolDrawSpeed = 1; // 1 or 2
+    let poolDrawStep = 0; // 0 to 10
+    let poolDrawSequence = []; // 10 teams shuffled
+    let poolDrawAutoTimer = null;
+    let isPoolAutoDrawing = false;
+    let isPoolDrawingStep = false;
+
+    const POOL_TARGETS = [
+      { pool: "BẢNG A • SÂN 6", poolKey: "A", label: "BẢNG A (1/4)", court: "SÂN 6" },
+      { pool: "BẢNG A • SÂN 6", poolKey: "A", label: "BẢNG A (2/4)", court: "SÂN 6" },
+      { pool: "BẢNG A • SÂN 6", poolKey: "A", label: "BẢNG A (3/4)", court: "SÂN 6" },
+      { pool: "BẢNG A • SÂN 6", poolKey: "A", label: "BẢNG A (4/4)", court: "SÂN 6" },
+      { pool: "BẢNG B • SÂN 7", poolKey: "B", label: "BẢNG B (1/3)", court: "SÂN 7" },
+      { pool: "BẢNG B • SÂN 7", poolKey: "B", label: "BẢNG B (2/3)", court: "SÂN 7" },
+      { pool: "BẢNG B • SÂN 7", poolKey: "B", label: "BẢNG B (3/3)", court: "SÂN 7" },
+      { pool: "BẢNG C • SÂN 8", poolKey: "C", label: "BẢNG C (1/3)", court: "SÂN 8" },
+      { pool: "BẢNG C • SÂN 8", poolKey: "C", label: "BẢNG C (2/3)", court: "SÂN 8" },
+      { pool: "BẢNG C • SÂN 8", poolKey: "C", label: "BẢNG C (3/3)", court: "SÂN 8" }
+    ];
+
+    function openPoolDrawCeremonyModal() {
+      const modal = document.getElementById('pool-draw-modal');
+      const card = document.getElementById('pool-draw-card');
       if (!modal) return;
+
+      poolDrawActive = true;
+      poolDrawStep = 0;
+      isPoolAutoDrawing = false;
+      isPoolDrawingStep = false;
+      clearTimeout(poolDrawAutoTimer);
+
+      poolDrawSequence = shuffleArray(officialCollabSquads.map(sq => ({ ...sq })));
+
+      initPoolModalSlots();
+
+      const btnDraw = document.getElementById('btn-draw-next-pool');
+      const btnAuto = document.getElementById('btn-auto-draw-pools');
+      const btnFinish = document.getElementById('btn-finish-pool-draw');
+      const autoText = document.getElementById('auto-draw-text');
+      const drawText = document.getElementById('btn-draw-next-pool-text');
+      const rollerStatus = document.getElementById('pool-roller-status');
+      const rollerTarget = document.getElementById('pool-roller-target');
+      const rollerTeam = document.getElementById('pool-roller-team-name');
+      const rollerMembers = document.getElementById('pool-roller-members');
+      const counter = document.getElementById('pool-draw-counter');
+      const prog = document.getElementById('pool-draw-progress-bar');
+      const hint = document.getElementById('pool-footer-hint');
+
+      if (btnDraw) {
+        btnDraw.classList.remove('hidden');
+        btnDraw.disabled = false;
+      }
+      if (btnAuto) btnAuto.classList.remove('hidden');
+      if (btnFinish) btnFinish.classList.add('hidden');
+      if (autoText) autoText.innerText = "⚡ TỰ ĐỘNG BỐC";
+      if (drawText) drawText.innerText = "BỐC ĐỘI ĐẦU TIÊN (1/10)";
+      if (rollerStatus) rollerStatus.innerText = "SẴN SÀNG RÚT THĂM...";
+      if (rollerTarget) rollerTarget.innerText = "RÚT THĂM VỊ TRÍ: BẢNG A (1/4)";
+      if (rollerTeam) rollerTeam.innerText = "BẤM NÚT ĐỂ BẮT ĐẦU";
+      if (rollerMembers) rollerMembers.innerText = "Chưa bốc thăm đội nào";
+      if (counter) counter.innerText = "0 / 10 ĐỘI";
+      if (prog) prog.style.width = "0%";
+      if (hint) hint.innerText = "Bốc thăm ngẫu nhiên công khai 100% minh bạch";
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+
+      if (window.gsap && card) {
+        gsap.fromTo(card,
+          { scale: 0.92, opacity: 0, y: 15 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.28, ease: "back.out(1.5)" }
+        );
+      }
+    }
+
+    function closePoolDrawCeremonyModal() {
+      const modal = document.getElementById('pool-draw-modal');
+      if (!modal) return;
+      clearTimeout(poolDrawAutoTimer);
+      isPoolAutoDrawing = false;
       modal.classList.add('opacity-0', 'pointer-events-none');
       modal.classList.remove('opacity-100');
+      document.body.style.overflow = '';
     }
 
-    function resetDefaultSquads() {
-      isDrawOpened = true;
-      isOfficialDrawMode = true;
-      currentSquads = [...officialCollabSquads];
-      renderSquadsGrid();
-      showToast("✓ ĐÃ ĐỒNG BỘ 10 ĐỘI HÌNH BỐC THĂM CHÍNH THỨC");
+    function handlePoolDrawModalBackdrop(e) {
+      if (e.target.id === 'pool-draw-modal') {
+        closePoolDrawCeremonyModal();
+      }
     }
+
+    function togglePoolDrawSpeed() {
+      poolDrawSpeed = poolDrawSpeed === 1 ? 2 : 1;
+      const text = document.getElementById('pool-speed-text');
+      if (text) text.innerText = poolDrawSpeed === 2 ? "⚡ 2X (NHANH)" : "⚡ 1X";
+    }
+
+    function initPoolModalSlots() {
+      const aSlots = document.getElementById('pool-a-slots');
+      const bSlots = document.getElementById('pool-b-slots');
+      const cSlots = document.getElementById('pool-c-slots');
+
+      if (aSlots) {
+        aSlots.innerHTML = '';
+        for (let i = 0; i < 4; i++) {
+          aSlots.innerHTML += `
+            <div id="modal-slot-A-${i}" class="p-2 sm:p-2.5 rounded-xl border border-dashed border-blue-200 bg-blue-50/40 text-blue-400 flex items-center justify-between transition-all">
+              <span class="font-bold text-[11px]">Vị trí A${i + 1}:</span>
+              <span class="italic text-[11px]">Chờ bốc thăm...</span>
+            </div>
+          `;
+        }
+      }
+
+      if (bSlots) {
+        bSlots.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+          bSlots.innerHTML += `
+            <div id="modal-slot-B-${i}" class="p-2 sm:p-2.5 rounded-xl border border-dashed border-purple-200 bg-purple-50/40 text-purple-400 flex items-center justify-between transition-all">
+              <span class="font-bold text-[11px]">Vị trí B${i + 1}:</span>
+              <span class="italic text-[11px]">Chờ bốc thăm...</span>
+            </div>
+          `;
+        }
+      }
+
+      if (cSlots) {
+        cSlots.innerHTML = '';
+        for (let i = 0; i < 3; i++) {
+          cSlots.innerHTML += `
+            <div id="modal-slot-C-${i}" class="p-2 sm:p-2.5 rounded-xl border border-dashed border-amber-200 bg-amber-50/40 text-amber-400 flex items-center justify-between transition-all">
+              <span class="font-bold text-[11px]">Vị trí C${i + 1}:</span>
+              <span class="italic text-[11px]">Chờ bốc thăm...</span>
+            </div>
+          `;
+        }
+      }
+
+      const elCountA = document.getElementById('pool-a-count');
+      const elCountB = document.getElementById('pool-b-count');
+      const elCountC = document.getElementById('pool-c-count');
+      if (elCountA) elCountA.innerText = "0 / 4";
+      if (elCountB) elCountB.innerText = "0 / 3";
+      if (elCountC) elCountC.innerText = "0 / 3";
+    }
+
+    function drawNextPoolStep() {
+      if (poolDrawStep >= 10 || isPoolDrawingStep) return;
+      isPoolDrawingStep = true;
+
+      const target = POOL_TARGETS[poolDrawStep];
+      const selectedTeam = poolDrawSequence[poolDrawStep];
+
+      const btnDraw = document.getElementById('btn-draw-next-pool');
+      if (btnDraw) btnDraw.disabled = true;
+
+      const rollerStatus = document.getElementById('pool-roller-status');
+      const rollerTarget = document.getElementById('pool-roller-target');
+      const rollerTeam = document.getElementById('pool-roller-team-name');
+      const rollerMembers = document.getElementById('pool-roller-members');
+
+      if (rollerStatus) rollerStatus.innerText = `ĐANG QUAY CHO ${target.label}...`;
+      if (rollerTarget) rollerTarget.innerText = `➜ ĐANG RÚT THĂM VÀO ${target.pool}`;
+
+      const remainingTeams = poolDrawSequence.slice(poolDrawStep);
+      let cycleCount = 0;
+      const totalCycles = poolDrawSpeed === 2 ? 6 : 12;
+      const cycleInterval = poolDrawSpeed === 2 ? 55 : 80;
+
+      const cycleTimer = setInterval(() => {
+        cycleCount++;
+        playTickSound();
+        const randTeam = remainingTeams[Math.floor(Math.random() * remainingTeams.length)];
+        if (rollerTeam) rollerTeam.innerText = randTeam.id;
+        if (rollerMembers) rollerMembers.innerText = `${randTeam.m1.replaceAll(' (RS)','')} • ${randTeam.m2.replaceAll(' (CD)','')} • ${randTeam.f}`;
+
+        if (cycleCount >= totalCycles) {
+          clearInterval(cycleTimer);
+          lockTeamIntoPool(poolDrawStep, selectedTeam, target);
+        }
+      }, cycleInterval);
+    }
+
+    function lockTeamIntoPool(stepIdx, team, target) {
+      const rollerStatus = document.getElementById('pool-roller-status');
+      const rollerTarget = document.getElementById('pool-roller-target');
+      const rollerTeam = document.getElementById('pool-roller-team-name');
+      const rollerMembers = document.getElementById('pool-roller-members');
+      const counter = document.getElementById('pool-draw-counter');
+      const prog = document.getElementById('pool-draw-progress-bar');
+      const btnDraw = document.getElementById('btn-draw-next-pool');
+      const drawText = document.getElementById('btn-draw-next-pool-text');
+
+      playLockSound();
+
+      if (rollerStatus) rollerStatus.innerText = `✓ ĐÃ KHÓA VÀO ${target.label}`;
+      if (rollerTarget) rollerTarget.innerText = `VỊ TRÍ: ${target.pool}`;
+      if (rollerTeam) {
+        rollerTeam.innerText = `✦ ${team.id} ✦`;
+        if (window.gsap) {
+          gsap.fromTo(rollerTeam, { scale: 1.2, color: '#bcf015' }, { scale: 1, color: '#ffffff', duration: 0.3 });
+        }
+      }
+      if (rollerMembers) {
+        rollerMembers.innerText = `${team.m1.replaceAll(' (RS)','')} (RS) + ${team.m2.replaceAll(' (CD)','')} (CD) + ${team.f}`;
+      }
+
+      let slotIdx = stepIdx;
+      if (target.poolKey === 'B') slotIdx = stepIdx - 4;
+      if (target.poolKey === 'C') slotIdx = stepIdx - 7;
+
+      const slotEl = document.getElementById(`modal-slot-${target.poolKey}-${slotIdx}`);
+      if (slotEl) {
+        const bgBorder = target.poolKey === 'A' ? 'bg-blue-50 border-blue-400 text-blue-900' : (target.poolKey === 'B' ? 'bg-purple-50 border-purple-400 text-purple-900' : 'bg-amber-50 border-amber-400 text-amber-900');
+        slotEl.className = `p-2 sm:p-2.5 rounded-xl border-2 ${bgBorder} flex items-center justify-between font-mono shadow-xs transition-all animate-in fade-in zoom-in-95`;
+        slotEl.innerHTML = `
+          <div class="flex items-center gap-1.5 truncate">
+            <span class="w-2 h-2 rounded-full ${target.poolKey === 'A' ? 'bg-blue-600' : (target.poolKey === 'B' ? 'bg-purple-600' : 'bg-amber-600')}"></span>
+            <span class="font-black text-xs">${team.id}:</span>
+            <span class="text-[11px] truncate text-zinc-700">${team.m1.replaceAll(' (RS)','')} + ${team.m2.replaceAll(' (CD)','')}</span>
+          </div>
+          <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${target.poolKey === 'A' ? 'bg-blue-200/80 text-blue-950' : (target.poolKey === 'B' ? 'bg-purple-200/80 text-purple-950' : 'bg-amber-200/80 text-amber-950')} shrink-0">${target.poolKey}${slotIdx + 1}</span>
+        `;
+      }
+
+      updateModalPoolCounts(stepIdx + 1);
+
+      poolDrawStep++;
+      if (counter) counter.innerText = `${poolDrawStep} / 10 ĐỘI`;
+      if (prog) prog.style.width = `${(poolDrawStep / 10) * 100}%`;
+
+      isPoolDrawingStep = false;
+      if (btnDraw) btnDraw.disabled = false;
+
+      if (poolDrawStep < 10) {
+        const nextTarget = POOL_TARGETS[poolDrawStep];
+        if (drawText) drawText.innerText = `BỐC TIẾP (${poolDrawStep + 1}/10) ➜ ${nextTarget.poolKey}`;
+        if (isPoolAutoDrawing) {
+          const delay = poolDrawSpeed === 2 ? 300 : 650;
+          poolDrawAutoTimer = setTimeout(drawNextPoolStep, delay);
+        }
+      } else {
+        finishPoolDrawCelebration();
+      }
+    }
+
+    function updateModalPoolCounts(completedCount) {
+      const elCountA = document.getElementById('pool-a-count');
+      const elCountB = document.getElementById('pool-b-count');
+      const elCountC = document.getElementById('pool-c-count');
+
+      const countA = Math.min(4, completedCount);
+      const countB = Math.max(0, Math.min(3, completedCount - 4));
+      const countC = Math.max(0, Math.min(3, completedCount - 7));
+
+      if (elCountA) elCountA.innerText = `${countA} / 4`;
+      if (elCountB) elCountB.innerText = `${countB} / 3`;
+      if (elCountC) elCountC.innerText = `${countC} / 3`;
+    }
+
+    function toggleAutoDrawPools() {
+      isPoolAutoDrawing = !isPoolAutoDrawing;
+      const text = document.getElementById('auto-draw-text');
+      if (text) text.innerText = isPoolAutoDrawing ? "⏸ TẠM DỪNG" : "⚡ TỰ ĐỘNG BỐC";
+
+      if (isPoolAutoDrawing && poolDrawStep < 10 && !isPoolDrawingStep) {
+        drawNextPoolStep();
+      } else if (!isPoolAutoDrawing) {
+        clearTimeout(poolDrawAutoTimer);
+      }
+    }
+
+    function skipPoolDrawToEnd() {
+      clearTimeout(poolDrawAutoTimer);
+      isPoolAutoDrawing = false;
+
+      while (poolDrawStep < 10) {
+        const target = POOL_TARGETS[poolDrawStep];
+        const team = poolDrawSequence[poolDrawStep];
+
+        let slotIdx = poolDrawStep;
+        if (target.poolKey === 'B') slotIdx = poolDrawStep - 4;
+        if (target.poolKey === 'C') slotIdx = poolDrawStep - 7;
+
+        const slotEl = document.getElementById(`modal-slot-${target.poolKey}-${slotIdx}`);
+        if (slotEl) {
+          const bgBorder = target.poolKey === 'A' ? 'bg-blue-50 border-blue-400 text-blue-900' : (target.poolKey === 'B' ? 'bg-purple-50 border-purple-400 text-purple-900' : 'bg-amber-50 border-amber-400 text-amber-900');
+          slotEl.className = `p-2 sm:p-2.5 rounded-xl border-2 ${bgBorder} flex items-center justify-between font-mono shadow-xs`;
+          slotEl.innerHTML = `
+            <div class="flex items-center gap-1.5 truncate">
+              <span class="w-2 h-2 rounded-full ${target.poolKey === 'A' ? 'bg-blue-600' : (target.poolKey === 'B' ? 'bg-purple-600' : 'bg-amber-600')}"></span>
+              <span class="font-black text-xs">${team.id}:</span>
+              <span class="text-[11px] truncate text-zinc-700">${team.m1.replaceAll(' (RS)','')} + ${team.m2.replaceAll(' (CD)','')}</span>
+            </div>
+            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${target.poolKey === 'A' ? 'bg-blue-200/80 text-blue-950' : (target.poolKey === 'B' ? 'bg-purple-200/80 text-purple-950' : 'bg-amber-200/80 text-amber-950')} shrink-0">${target.poolKey}${slotIdx + 1}</span>
+          `;
+        }
+        poolDrawStep++;
+      }
+
+      updateModalPoolCounts(10);
+      const counter = document.getElementById('pool-draw-counter');
+      const prog = document.getElementById('pool-draw-progress-bar');
+      if (counter) counter.innerText = "10 / 10 ĐỘI";
+      if (prog) prog.style.width = "100%";
+
+      finishPoolDrawCelebration();
+    }
+
+    function finishPoolDrawCelebration() {
+      clearTimeout(poolDrawAutoTimer);
+      isPoolAutoDrawing = false;
+
+      const btnDraw = document.getElementById('btn-draw-next-pool');
+      const btnAuto = document.getElementById('btn-auto-draw-pools');
+      const btnFinish = document.getElementById('btn-finish-pool-draw');
+      const rollerStatus = document.getElementById('pool-roller-status');
+      const rollerTarget = document.getElementById('pool-roller-target');
+      const rollerTeam = document.getElementById('pool-roller-team-name');
+      const rollerMembers = document.getElementById('pool-roller-members');
+      const hint = document.getElementById('pool-footer-hint');
+
+      if (btnDraw) btnDraw.classList.add('hidden');
+      if (btnAuto) btnAuto.classList.add('hidden');
+      if (btnFinish) {
+        btnFinish.classList.remove('hidden');
+        if (window.gsap) {
+          gsap.fromTo(btnFinish, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" });
+        }
+      }
+
+      if (rollerStatus) rollerStatus.innerText = "🎉 BỐC THĂM PHÂN BẢNG HOÀN TẤT!";
+      if (rollerTarget) rollerTarget.innerText = "ĐÃ ĐẦY ĐỦ 10 ĐỘI VÀO 3 BẢNG ĐẤU";
+      if (rollerTeam) rollerTeam.innerText = "KẾT QUẢ ĐÃ SẴN SÀNG";
+      if (rollerMembers) rollerMembers.innerText = "Bấm nút [ÁP DỤNG KẾT QUẢ & XONG] bên dưới để cập nhật lên toàn bộ web!";
+      if (hint) hint.innerText = "✓ 10 Đội đã được chia đều vào Bảng A (4 đội), B (3 đội), C (3 đội)";
+
+      triggerConfetti();
+      playFanfareSound();
+    }
+
+    function finishAndApplyPoolDraw() {
+      const newSquads = poolDrawSequence.map((team, idx) => {
+        return {
+          ...team,
+          pool: POOL_TARGETS[idx].pool
+        };
+      });
+
+      currentSquads = newSquads;
+      renderSquadsGrid();
+      updateCourtDataFromSquads();
+      updateBroadcastText();
+
+      closePoolDrawCeremonyModal();
+
+      showToast("🎉 ĐÃ ÁP DỤNG KẾT QUẢ BỐC THĂM PHÂN BẢNG VÀO HỆ THỐNG!");
+
+      const sec = document.getElementById('squads-section');
+      if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Legacy Aliases for safety
+    function closeCeremonyModal() { closePoolDrawCeremonyModal(); }
+    function resetDefaultSquads() { resetDefaultPools(); }
+    function randomizeSquads() { openPoolDrawCeremonyModal(); }
 
     // ----------------------------------------------------
     // RULES INFOGRAPHIC MODAL CONTROLLER
@@ -4155,12 +4275,16 @@
     let currentActiveMatch = 0; // 0: Trận 1 (Nam 1 + Nữ), 1: Trận 2 (Nam 1 + Nam 2), 2: Trận 3 (Nam 2 + Nữ)
 
     function updateCourtDataFromSquads() {
-      const sq1 = currentSquads[0]; // Đội 01 (Bảng A)
-      const sq2 = currentSquads[1]; // Đội 02 (Bảng A)
-      const sq5 = currentSquads[4]; // Đội 05 (Bảng B)
-      const sq6 = currentSquads[5]; // Đội 06 (Bảng B)
-      const sq8 = currentSquads[7]; // Đội 08 (Bảng C)
-      const sq9 = currentSquads[8]; // Đội 09 (Bảng C)
+      const poolA = currentSquads.filter(sq => sq.pool.includes('BẢNG A'));
+      const poolB = currentSquads.filter(sq => sq.pool.includes('BẢNG B'));
+      const poolC = currentSquads.filter(sq => sq.pool.includes('BẢNG C'));
+
+      const sq1 = poolA[0] || currentSquads[0]; // Đội 1 Bảng A
+      const sq2 = poolA[1] || currentSquads[1]; // Đội 2 Bảng A
+      const sq5 = poolB[0] || currentSquads[4]; // Đội 1 Bảng B
+      const sq6 = poolB[1] || currentSquads[5]; // Đội 2 Bảng B
+      const sq8 = poolC[0] || currentSquads[7]; // Đội 1 Bảng C
+      const sq9 = poolC[1] || currentSquads[8]; // Đội 2 Bảng C
 
       courtStages = [
         {
@@ -4412,12 +4536,23 @@
       const area = document.getElementById('broadcast-content');
       if (!area) return;
 
+      const pA = currentSquads.filter(sq => sq.pool.includes('BẢNG A'));
+      const pB = currentSquads.filter(sq => sq.pool.includes('BẢNG B'));
+      const pC = currentSquads.filter(sq => sq.pool.includes('BẢNG C'));
+
       let squadList = "";
-      if (currentSquads && currentSquads.length) {
-        currentSquads.forEach((sq, i) => {
-          squadList += `• ${sq.id} [${sq.pool}]: RS: ${sq.m1.replaceAll(' (RS)', '')} | CD: ${sq.m2.replaceAll(' (CD)', '')} | Nữ: ${sq.f}\n`;
-        });
-      }
+      squadList += `🏆 BẢNG A (SÂN PINPON 6 • 4 TIẾNG • ${pA.length} ĐỘI):\n`;
+      pA.forEach((sq, i) => {
+        squadList += `  ${i + 1}. ${sq.id}: ${sq.m1.replaceAll(' (RS)', '')} (RS) + ${sq.m2.replaceAll(' (CD)', '')} (CD) + ${sq.f}\n`;
+      });
+      squadList += `\n⚡ BẢNG B (SÂN PINPON 7 • 4 TIẾNG • ${pB.length} ĐỘI):\n`;
+      pB.forEach((sq, i) => {
+        squadList += `  ${i + 1}. ${sq.id}: ${sq.m1.replaceAll(' (RS)', '')} (RS) + ${sq.m2.replaceAll(' (CD)', '')} (CD) + ${sq.f}\n`;
+      });
+      squadList += `\n🔥 BẢNG C (SÂN PINPON 8 • 2 TIẾNG • ${pC.length} ĐỘI):\n`;
+      pC.forEach((sq, i) => {
+        squadList += `  ${i + 1}. ${sq.id}: ${sq.m1.replaceAll(' (RS)', '')} (RS) + ${sq.m2.replaceAll(' (CD)', '')} (CD) + ${sq.f}\n`;
+      });
 
       area.value = `🏸 THÔNG BÁO CHÍNH THỨC: GIẢI CẦU LÔNG REDSEED × CỒN DẬP 2026 🏸
 "Chơi Hết Mình – Gắn Kết Đồng Đội"
@@ -4434,9 +4569,9 @@
 👉 Đảm bảo mỗi VĐV đánh đúng 2 trận và có 1 trận nghỉ hồi phục trọn vẹn!
 
 🏟️ PHÂN BỔ 3 SÂN THI ĐẤU (SÂN PINPON 6, 7, 8):
-• Sân 6 (4H, 13:00–17:30): Bảng A (Đội 1-4) + Bán Kết 1 + CHUNG KẾT TRANH HCV 🥇
-• Sân 7 (4H, 13:00–17:30): Bảng B (Đội 5-7) + Bán Kết 2 + Tranh Hạng Ba (HCĐ 🥉)
-• Sân 8 (2H, 13:30–15:30): Bảng C (Đội 8-10) - [Hoàn tất và trả sân đúng 15:30]
+• Sân 6 (4H, 13:00–17:30): Bảng A (${pA.length} đội) + Bán Kết 1 + CHUNG KẾT TRANH HCV 🥇
+• Sân 7 (4H, 13:00–17:30): Bảng B (${pB.length} đội) + Bán Kết 2 + Tranh Hạng Ba (HCĐ 🥉)
+• Sân 8 (2H, 13:30–15:30): Bảng C (${pC.length} đội) - [Hoàn tất và trả sân đúng 15:30]
 
 🎁 CƠ CẤU PHẦN THƯỞNG & VINH DANH:
 🥇 Quán Quân: Balo Cầu Lông NATOLI ProSport B26 + Huy Chương Vàng (03 chiếc)
@@ -4444,7 +4579,7 @@
 🥉 Quý Quân: Combo 2 món phụ kiện (Quấn cán + Tất thi đấu) + Huy Chương Đồng (03 chiếc)
 🎖️ Toàn Đoàn: 100% VĐV và các đội không có giải đều được trao Kỷ Niệm Chương danh dự!
 
-👥 DANH SÁCH 10 ĐỘI HÌNH COLLAB CHÍNH THỨC:
+👥 KẾT QUẢ PHÂN BẢNG THI ĐẤU COLLAB:
 ${squadList}
 Anh chị em vui lòng có mặt đúng 13:00 ngày ${currentEventDate} (mỗi người tự chuẩn bị đồng phục thể thao), khởi động và chụp ảnh lưu niệm toàn đoàn! 🏸🔥`;
     }
