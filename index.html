@@ -2144,9 +2144,9 @@
               <div class="flex justify-around items-center pb-2">
                 <div class="pin-3d flex flex-col items-center cursor-pointer group hover:scale-110 active:scale-95 transition-transform" id="pin-b1-wrap" title="Nhấn để xem thông tin VĐV">
                   <div class="w-9 h-9 rounded-full bg-white border-2 border-[#1e1e1e] flex items-center justify-center text-xs font-black shadow-lg transition-colors group-hover:border-[#350aff]" id="pin-b1-circle">
-                    <span id="pin-b1-sub" class="text-[#1e1e1e]">KC</span>
+                    <span id="pin-b1-sub" class="text-[#1e1e1e]">ĐC</span>
                   </div>
-                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Khầy Chiến</span>
+                  <span id="pin-b1-lbl" class="mt-1 px-2 py-0.5 rounded bg-black/90 text-[11px] font-mono font-bold text-white border border-white/20 whitespace-nowrap shadow-sm group-hover:bg-[#350aff]">Đức Cọt</span>
                   <span id="pin-b1-role" class="text-[10px] font-mono font-bold text-zinc-300 uppercase tracking-wider">NAM 1</span>
                 </div>
 
@@ -3036,10 +3036,10 @@
     // ----------------------------------------------------
     // 5. OFFICIAL ATHLETES RAW DATA & VIEW ENGINES
     // ----------------------------------------------------
-    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Khầy Chiến", "Xuân Dị", "K-H-O-U", "a Hoàng", "a Tuấn Bin", "Gia Huy", "Thanh Hiếu", "Xuân Trái Dứng"];
-    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Văn Vĩnh Chiến Thắng", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu", "LeeBum"];
-    const rsWomen = ["Dung MaMa", "Nga Villa", "Hoài Oanh", "Thảo", "Mi Mi"];
-    const cdWomen = ["Mai Hương Sushi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà", "Tớ là Nhun"];
+    const rsMen = ["Hiếu Trưởng Thôn", "Vũ", "Đức Cọt", "Xuân Dị", "K-H-O-U", "a Hoàng", "a Tuấn Bin", "Gia Huy", "Thanh Hiếu", "Xuân Trái Dứng"];
+    const cdMen = ["Phúc Khánh", "Thanh Nam", "Lý Đức", "Đức Lưu", "Văn Thọ", "Thắng Tóc Đỏ", "Văn Vĩnh Minh Chiến", "Thành Ngô", "Phạm Hậu", "LeeBum"];
+    const rsWomen = ["Dung MaMa", "Nga Villa", "Hoài Oanh", "Thảo", "Mi hihi"];
+    const cdWomen = ["Mây TBKừi", "Thuỷ Soo", "Khánh Huyền", "Thanh Hà", "Tớ là Nhun"];
 
     // Roster of all 30 Athletes for Directory
     const rawAthletes = [
@@ -3268,20 +3268,20 @@
     // ----------------------------------------------------
     const officialCollabSquads = [
       // BẢNG A • SÂN 6 (4 ĐỘI)
-      { id: "ĐỘI 05", pool: "BẢNG A • SÂN 6", m1: "Vũ (RS)", m2: "Phúc Khánh (CD)", f: "Mai Hương Sushi (CD)", isPending: false, base: "COLLAB RS × CD" },
+      { id: "ĐỘI 05", pool: "BẢNG A • SÂN 6", m1: "Vũ (RS)", m2: "Phúc Khánh (CD)", f: "Mây TBKừi (CD)", isPending: false, base: "COLLAB RS × CD" },
       { id: "ĐỘI 01", pool: "BẢNG A • SÂN 6", m1: "a Tuân Bin (RS)", m2: "Lý Đức (CD)", f: "Dung MaMa (RS)", isPending: false, base: "COLLAB RS × CD" },
       { id: "ĐỘI 02", pool: "BẢNG A • SÂN 6", m1: "a Hoàng (RS)", m2: "Thanh Nam (CD)", f: "Nga Villa (RS)", isPending: false, base: "COLLAB RS × CD" },
-      { id: "ĐỘI 06", pool: "BẢNG A • SÂN 6", m1: "Thanh Hiếu (RS)", m2: "Văn Thọ (CD)", f: "Mi Mi (RS)", isPending: false, base: "COLLAB RS × CD" },
+      { id: "ĐỘI 06", pool: "BẢNG A • SÂN 6", m1: "Thanh Hiếu (RS)", m2: "Văn Thọ (CD)", f: "Mi hihi (RS)", isPending: false, base: "COLLAB RS × CD" },
 
       // BẢNG B • SÂN 7 (3 ĐỘI)
       { id: "ĐỘI 07", pool: "BẢNG B • SÂN 7", m1: "Gia Huy (RS)", m2: "Phạm Hậu (CD)", f: "Thảo (RS)", isPending: false, base: "COLLAB RS × CD" },
-      { id: "ĐỘI 04", pool: "BẢNG B • SÂN 7", m1: "Xuân Dị (RS)", m2: "Văn Vĩnh Chiến Thắng (CD)", f: "Thuỳ Soo (CD)", isPending: false, base: "COLLAB RS × CD" },
+      { id: "ĐỘI 04", pool: "BẢNG B • SÂN 7", m1: "Xuân Dị (RS)", m2: "Thắng Tóc Đỏ (CD)", f: "Thuỷ Soo (CD)", isPending: false, base: "COLLAB RS × CD" },
       { id: "ĐỘI 10", pool: "BẢNG B • SÂN 7", m1: "Xuân Trái Dứng (RS)", m2: "Đức Lưu (CD)", f: "Khánh Huyên (CD)", isPending: false, base: "COLLAB RS × CD" },
 
       // BẢNG C • SÂN 8 (3 ĐỘI)
       { id: "ĐỘI 08", pool: "BẢNG C • SÂN 8", m1: "K-H-O-U (RS)", m2: "Thành Ngô (CD)", f: "Hoài Oanh (RS)", isPending: false, base: "COLLAB RS × CD" },
       { id: "ĐỘI 09", pool: "BẢNG C • SÂN 8", m1: "Hiếu Trưởng Thôn (RS)", m2: "Văn Vĩnh Minh Chiến (CD)", f: "Thanh Hà (CD)", isPending: false, base: "COLLAB RS × CD" },
-      { id: "ĐỘI 03", pool: "BẢNG C • SÂN 8", m1: "Khầy Chiến (RS)", m2: "LeeBum (CD)", f: "Tớ là Nhun (CD)", isPending: false, base: "COLLAB RS × CD" }
+      { id: "ĐỘI 03", pool: "BẢNG C • SÂN 8", m1: "Đức Cọt (RS)", m2: "LeeBum (CD)", f: "Tớ là Nhun (CD)", isPending: false, base: "COLLAB RS × CD" }
     ];
 
     let isDrawOpened = true;
